@@ -1,6 +1,7 @@
 import HeroSection from "@/components/sections/hero-section";
 import ClientsSection from "@/components/sections/clients-section";
 import FeaturesSection from "@/components/sections/features-section";
+import DataManagementSection from "@/components/sections/data-management-section";
 import IndustrySection from "@/components/sections/industry-section";
 import TestimonialsSection from "@/components/sections/testimonials-section";
 import ContactSection from "@/components/sections/contact-section";
@@ -13,6 +14,7 @@ const HomePage = () => {
       <HeroSection />
       <ClientsSection />
       <FeaturesSection />
+      <DataManagementSection />
       <IndustrySection />
       <TestimonialsSection />
       <ContactSection />
