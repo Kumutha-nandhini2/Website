@@ -1,5 +1,5 @@
 import { Link } from "wouter";
-import { ShieldCheck } from "lucide-react";
+import { ShieldCheck, Mail, Phone } from "lucide-react";
 import { FaLinkedinIn, FaTwitter, FaFacebookF, FaInstagram } from "react-icons/fa";
 
 const Footer = () => {
@@ -17,6 +17,20 @@ const Footer = () => {
             <p className="mb-6 text-white text-opacity-80">
               Empowering organizations with AI-driven privacy automation solutions to protect data and maintain compliance.
             </p>
+            <div className="mb-6 flex flex-col space-y-3">
+              <div className="flex items-center">
+                <Mail className="text-white mr-2" size={18} />
+                <a href="mailto:mittal21jiya@gmail.com" className="text-white text-opacity-80 hover:text-opacity-100">
+                  mittal21jiya@gmail.com
+                </a>
+              </div>
+              <div className="flex items-center">
+                <Phone className="text-white mr-2" size={18} />
+                <a href="tel:+919087695972" className="text-white text-opacity-80 hover:text-opacity-100">
+                  +91-9087695972
+                </a>
+              </div>
+            </div>
             <div className="flex space-x-4">
               <a href="#" className="w-10 h-10 rounded-full bg-white bg-opacity-10 flex items-center justify-center hover:bg-opacity-20 transition-colors">
                 <FaLinkedinIn />
@@ -71,7 +85,7 @@ const Footer = () => {
         
         <div className="flex flex-col md:flex-row justify-between items-center">
           <div className="mb-4 md:mb-0">
-            <p className="text-white text-opacity-80">© 2023 PrivacyWeave. All rights reserved.</p>
+            <p className="text-white text-opacity-80">© 2025 PrivacyWeave. All rights reserved.</p>
           </div>
           <div className="flex space-x-6">
             <a href="#" className="text-white text-opacity-80 hover:text-opacity-100 transition-colors">Privacy Policy</a>

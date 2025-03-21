@@ -158,21 +158,30 @@ export class MemStorage implements IStorage {
   private seedJobListings() {
     const listings: InsertJobListing[] = [
       {
-        title: "Senior Data Privacy Engineer",
-        description: "Design and implement advanced privacy solutions using cutting-edge technologies.",
-        requirements: "5+ years of experience in data privacy engineering, strong knowledge of encryption technologies.",
+        title: "AI/ML Engineer (0-1 Year Experience)",
+        description: "Join our innovative team to develop and implement AI/ML solutions for data privacy and compliance automation. You'll work on cutting-edge privacy-preserving AI models and contribute to our machine learning pipeline for data classification and policy automation.",
+        requirements: "Bachelor's degree in Computer Science, AI, or related field. Basic knowledge of Python and machine learning libraries (TensorFlow, PyTorch, or scikit-learn). Understanding of fundamental ML concepts and algorithms. Eagerness to learn privacy-enhancing technologies. Strong analytical and problem-solving skills. Collaborative mindset and ability to work in cross-functional teams.",
         type: "Full-time",
-        location: "Remote",
-        experience: "Senior Level",
+        location: "Coimbatore",
+        experience: "Entry Level (0-1 Year)",
         isActive: true
       },
       {
-        title: "AI/ML Engineer",
-        description: "Develop machine learning models for privacy risk assessment and automated compliance.",
-        requirements: "3+ years of ML experience, familiarity with privacy regulations, strong Python skills.",
+        title: "Full Stack Developer (0-1 Year Experience)",
+        description: "Develop responsive web applications and APIs for our privacy automation platform. You'll help build intuitive interfaces for privacy management tools and contribute to developing scalable backend services that power our data governance solutions.",
+        requirements: "Bachelor's degree in Computer Science or related technical field. Knowledge of JavaScript/TypeScript, HTML, and CSS. Familiarity with React or similar frontend frameworks. Basic understanding of Node.js and RESTful API concepts. Willingness to learn and adapt to new technologies. Passion for creating user-friendly interfaces. Basic understanding of database concepts.",
         type: "Full-time",
         location: "Coimbatore",
-        experience: "Mid-Senior Level",
+        experience: "Entry Level (0-1 Year)",
+        isActive: true
+      },
+      {
+        title: "Cybersecurity & Encryption Specialist (0-1 Year Experience)",
+        description: "Help implement end-to-end encryption and security protocols for our privacy-focused applications. You'll work on data protection mechanisms, assist in security assessment of our systems, and help implement encryption standards that ensure our clients' data remains secure.",
+        requirements: "Bachelor's degree in Computer Science, Cybersecurity, or related field. Knowledge of fundamental encryption algorithms and techniques. Basic understanding of network security principles. Interest in privacy regulations (GDPR, CCPA, etc.). Familiarity with security tools and practices. Strong attention to detail. Excellent analytical and problem-solving skills. Eagerness to learn modern security frameworks.",
+        type: "Full-time",
+        location: "Coimbatore",
+        experience: "Entry Level (0-1 Year)",
         isActive: true
       }
     ];

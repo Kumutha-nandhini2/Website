@@ -102,7 +102,7 @@ const ContactSection = () => {
                 </div>
                 <div className="ml-4">
                   <h4 className="font-bold text-primary-dark mb-1">Call Us</h4>
-                  <p className="text-neutral-dark">+91 (123) 456-7890</p>
+                  <p className="text-neutral-dark">+91-9087695972</p>
                 </div>
               </div>
               <div className="flex items-start">
@@ -111,7 +111,7 @@ const ContactSection = () => {
                 </div>
                 <div className="ml-4">
                   <h4 className="font-bold text-primary-dark mb-1">Email Us</h4>
-                  <p className="text-neutral-dark">contact@privacyweave.com</p>
+                  <p className="text-neutral-dark">mittal21jiya@gmail.com</p>
                 </div>
               </div>
             </div>
