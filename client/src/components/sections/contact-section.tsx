@@ -93,7 +93,7 @@ const ContactSection = () => {
                 </div>
                 <div className="ml-4">
                   <h4 className="font-bold text-primary-dark mb-1">Visit Us</h4>
-                  <p className="text-neutral-dark">100 Tech Park, Coimbatore, Tamil Nadu 641028, India</p>
+                  <p className="text-neutral-dark">Ramnagar, Coimbatore</p>
                 </div>
               </div>
               <div className="flex items-start">

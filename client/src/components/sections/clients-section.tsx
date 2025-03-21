@@ -12,16 +12,6 @@ const ClientsSection = () => {
           transition={{ duration: 0.6 }}
         >
           <h2 className="text-2xl font-bold text-neutral-dark mb-6">Trusted by Leading Organizations</h2>
-          <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-6 gap-8 items-center">
-            {Array.from({ length: 6 }).map((_, i) => (
-              <div 
-                key={i} 
-                className="flex justify-center items-center h-16 grayscale opacity-70 hover:grayscale-0 hover:opacity-100 transition-all"
-              >
-                <div className="bg-neutral-200 w-32 h-10 rounded"></div>
-              </div>
-            ))}
-          </div>
         </motion.div>
       </div>
     </section>
