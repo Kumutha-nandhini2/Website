@@ -163,20 +163,20 @@ const DataManagementSection = () => {
                 transition={{ duration: 1.5, ease: "easeInOut", delay: 0.6 }}
               />
               
-              {/* Network flow lines */}
+              {/* Primary Network flow lines */}
               <motion.path
                 d="M-100,-40 C-70,-30 -40,-25 0,0"
-                stroke="rgba(74, 222, 128, 0.4)"
-                strokeWidth="1.5"
+                stroke="rgba(74, 222, 128, 0.6)"
+                strokeWidth="2"
                 strokeDasharray="4,4"
                 fill="none"
                 animate={{ 
-                  opacity: [0, 0.8, 0],
+                  opacity: [0, 1, 0],
                   pathLength: [0, 1, 0],
                   pathOffset: [0, 0, 1]
                 }}
                 transition={{
-                  duration: 5,
+                  duration: 4,
                   repeat: Infinity,
                   repeatType: "loop"
                 }}
@@ -184,17 +184,17 @@ const DataManagementSection = () => {
               
               <motion.path
                 d="M-100,40 C-70,30 -40,25 0,0"
-                stroke="rgba(74, 222, 128, 0.4)"
-                strokeWidth="1.5"
+                stroke="rgba(74, 222, 128, 0.6)" 
+                strokeWidth="2"
                 strokeDasharray="4,4"
                 fill="none"
                 animate={{ 
-                  opacity: [0, 0.8, 0],
+                  opacity: [0, 1, 0],
                   pathLength: [0, 1, 0],
                   pathOffset: [0, 0, 1]
                 }}
                 transition={{
-                  duration: 5,
+                  duration: 4,
                   repeat: Infinity,
                   repeatType: "loop",
                   delay: 1.5
@@ -203,17 +203,17 @@ const DataManagementSection = () => {
               
               <motion.path
                 d="M0,0 C40,25 70,30 100,40"
-                stroke="rgba(14, 165, 233, 0.4)"
-                strokeWidth="1.5"
+                stroke="rgba(14, 165, 233, 0.6)"
+                strokeWidth="2"
                 strokeDasharray="4,4"
                 fill="none"
                 animate={{ 
-                  opacity: [0, 0.8, 0],
+                  opacity: [0, 1, 0],
                   pathLength: [0, 1, 0],
                   pathOffset: [0, 0, 1]
                 }}
                 transition={{
-                  duration: 5,
+                  duration: 4,
                   repeat: Infinity,
                   repeatType: "loop",
                   delay: 0.5
@@ -222,9 +222,29 @@ const DataManagementSection = () => {
               
               <motion.path
                 d="M0,0 C40,-25 70,-30 100,-40"
-                stroke="rgba(14, 165, 233, 0.4)"
-                strokeWidth="1.5"
+                stroke="rgba(14, 165, 233, 0.6)"
+                strokeWidth="2"
                 strokeDasharray="4,4"
+                fill="none"
+                animate={{ 
+                  opacity: [0, 1, 0],
+                  pathLength: [0, 1, 0],
+                  pathOffset: [0, 0, 1]
+                }}
+                transition={{
+                  duration: 4,
+                  repeat: Infinity,
+                  repeatType: "loop",
+                  delay: 2
+                }}
+              />
+              
+              {/* Secondary Network Flow Lines */}
+              <motion.path
+                d="M-110,-20 C-70,-15 -30,-5 0,0"
+                stroke="rgba(74, 222, 128, 0.5)"
+                strokeWidth="1.5"
+                strokeDasharray="3,3"
                 fill="none"
                 animate={{ 
                   opacity: [0, 0.8, 0],
@@ -235,43 +255,23 @@ const DataManagementSection = () => {
                   duration: 5,
                   repeat: Infinity,
                   repeatType: "loop",
-                  delay: 2
-                }}
-              />
-              
-              {/* Cross connections */}
-              <motion.path
-                d="M-90,-20 C-60,-10 -30,0 0,0"
-                stroke="rgba(74, 222, 128, 0.25)"
-                strokeWidth="1"
-                strokeDasharray="3,3"
-                fill="none"
-                animate={{ 
-                  opacity: [0, 0.6, 0],
-                  pathLength: [0, 1, 0],
-                  pathOffset: [0, 0, 1]
-                }}
-                transition={{
-                  duration: 4,
-                  repeat: Infinity,
-                  repeatType: "loop",
                   delay: 0.7
                 }}
               />
               
               <motion.path
-                d="M-90,20 C-60,10 -30,0 0,0"
-                stroke="rgba(74, 222, 128, 0.25)"
-                strokeWidth="1"
+                d="M-110,20 C-70,15 -30,5 0,0"
+                stroke="rgba(74, 222, 128, 0.5)"
+                strokeWidth="1.5"
                 strokeDasharray="3,3"
                 fill="none"
                 animate={{ 
-                  opacity: [0, 0.6, 0],
+                  opacity: [0, 0.8, 0],
                   pathLength: [0, 1, 0],
                   pathOffset: [0, 0, 1]
                 }}
                 transition={{
-                  duration: 4,
+                  duration: 5,
                   repeat: Infinity,
                   repeatType: "loop",
                   delay: 2.2
@@ -279,18 +279,18 @@ const DataManagementSection = () => {
               />
               
               <motion.path
-                d="M0,0 C30,0 60,10 90,20"
-                stroke="rgba(14, 165, 233, 0.25)"
-                strokeWidth="1"
+                d="M0,0 C30,5 70,15 110,20"
+                stroke="rgba(14, 165, 233, 0.5)"
+                strokeWidth="1.5"
                 strokeDasharray="3,3"
                 fill="none"
                 animate={{ 
-                  opacity: [0, 0.6, 0],
+                  opacity: [0, 0.8, 0],
                   pathLength: [0, 1, 0],
                   pathOffset: [0, 0, 1]
                 }}
                 transition={{
-                  duration: 4,
+                  duration: 5,
                   repeat: Infinity,
                   repeatType: "loop",
                   delay: 1.1
@@ -298,21 +298,175 @@ const DataManagementSection = () => {
               />
               
               <motion.path
-                d="M0,0 C30,0 60,-10 90,-20"
-                stroke="rgba(14, 165, 233, 0.25)"
-                strokeWidth="1"
+                d="M0,0 C30,-5 70,-15 110,-20"
+                stroke="rgba(14, 165, 233, 0.5)"
+                strokeWidth="1.5"
                 strokeDasharray="3,3"
                 fill="none"
                 animate={{ 
-                  opacity: [0, 0.6, 0],
+                  opacity: [0, 0.8, 0],
                   pathLength: [0, 1, 0],
                   pathOffset: [0, 0, 1]
                 }}
                 transition={{
-                  duration: 4,
+                  duration: 5,
                   repeat: Infinity,
                   repeatType: "loop",
                   delay: 2.8
+                }}
+              />
+              
+              {/* Cross Network Flow Lines */}
+              <motion.path
+                d="M-90,-60 C-60,-40 -30,-20 0,0"
+                stroke="rgba(74, 222, 128, 0.4)"
+                strokeWidth="1"
+                strokeDasharray="3,5"
+                fill="none"
+                animate={{ 
+                  opacity: [0, 0.7, 0],
+                  pathLength: [0, 1, 0],
+                  pathOffset: [0, 0, 1]
+                }}
+                transition={{
+                  duration: 5.5,
+                  repeat: Infinity,
+                  repeatType: "loop",
+                  delay: 0.3
+                }}
+              />
+              
+              <motion.path
+                d="M-90,60 C-60,40 -30,20 0,0"
+                stroke="rgba(74, 222, 128, 0.4)"
+                strokeWidth="1"
+                strokeDasharray="3,5"
+                fill="none"
+                animate={{ 
+                  opacity: [0, 0.7, 0],
+                  pathLength: [0, 1, 0],
+                  pathOffset: [0, 0, 1]
+                }}
+                transition={{
+                  duration: 5.5,
+                  repeat: Infinity,
+                  repeatType: "loop",
+                  delay: 1.2
+                }}
+              />
+              
+              <motion.path
+                d="M0,0 C30,20 60,40 90,60"
+                stroke="rgba(14, 165, 233, 0.4)"
+                strokeWidth="1"
+                strokeDasharray="3,5"
+                fill="none"
+                animate={{ 
+                  opacity: [0, 0.7, 0],
+                  pathLength: [0, 1, 0],
+                  pathOffset: [0, 0, 1]
+                }}
+                transition={{
+                  duration: 5.5,
+                  repeat: Infinity,
+                  repeatType: "loop",
+                  delay: 0.9
+                }}
+              />
+              
+              <motion.path
+                d="M0,0 C30,-20 60,-40 90,-60"
+                stroke="rgba(14, 165, 233, 0.4)"
+                strokeWidth="1"
+                strokeDasharray="3,5"
+                fill="none"
+                animate={{ 
+                  opacity: [0, 0.7, 0],
+                  pathLength: [0, 1, 0],
+                  pathOffset: [0, 0, 1]
+                }}
+                transition={{
+                  duration: 5.5,
+                  repeat: Infinity,
+                  repeatType: "loop",
+                  delay: 1.8
+                }}
+              />
+              
+              {/* Additional Connecting Network Lines */}
+              <motion.path
+                d="M-70,-50 C-40,-30 -10,-10 0,0"
+                stroke="rgba(74, 222, 128, 0.3)"
+                strokeWidth="1"
+                strokeDasharray="2,6"
+                fill="none"
+                animate={{ 
+                  opacity: [0, 0.5, 0],
+                  pathLength: [0, 1, 0],
+                  pathOffset: [0, 0, 1]
+                }}
+                transition={{
+                  duration: 4.5,
+                  repeat: Infinity,
+                  repeatType: "loop",
+                  delay: 0.4
+                }}
+              />
+              
+              <motion.path
+                d="M-70,50 C-40,30 -10,10 0,0"
+                stroke="rgba(74, 222, 128, 0.3)"
+                strokeWidth="1"
+                strokeDasharray="2,6"
+                fill="none"
+                animate={{ 
+                  opacity: [0, 0.5, 0],
+                  pathLength: [0, 1, 0],
+                  pathOffset: [0, 0, 1]
+                }}
+                transition={{
+                  duration: 4.5,
+                  repeat: Infinity,
+                  repeatType: "loop",
+                  delay: 2.4
+                }}
+              />
+              
+              <motion.path
+                d="M0,0 C10,10 40,30 70,50"
+                stroke="rgba(14, 165, 233, 0.3)"
+                strokeWidth="1"
+                strokeDasharray="2,6"
+                fill="none"
+                animate={{ 
+                  opacity: [0, 0.5, 0],
+                  pathLength: [0, 1, 0],
+                  pathOffset: [0, 0, 1]
+                }}
+                transition={{
+                  duration: 4.5,
+                  repeat: Infinity,
+                  repeatType: "loop",
+                  delay: 1.4
+                }}
+              />
+              
+              <motion.path
+                d="M0,0 C10,-10 40,-30 70,-50"
+                stroke="rgba(14, 165, 233, 0.3)"
+                strokeWidth="1"
+                strokeDasharray="2,6"
+                fill="none"
+                animate={{ 
+                  opacity: [0, 0.5, 0],
+                  pathLength: [0, 1, 0],
+                  pathOffset: [0, 0, 1]
+                }}
+                transition={{
+                  duration: 4.5,
+                  repeat: Infinity,
+                  repeatType: "loop",
+                  delay: 3.3
                 }}
               />
               
