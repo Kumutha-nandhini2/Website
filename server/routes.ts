@@ -7,6 +7,7 @@ import * as fs from 'fs';
 import * as path from 'path';
 import { promisify } from 'util';
 import { fileURLToPath } from 'url';
+import { sendInquiryEmail, sendJobApplicationEmail } from './services/email';
 
 // Use dynamic import for multer
 const multerModule = await import('multer');
@@ -68,6 +69,14 @@ export async function registerRoutes(app: Express): Promise<Server> {
       
       // Create inquiry
       const inquiry = await storage.createInquiry(validatedData);
+      
+      // Send email notification
+      try {
+        await sendInquiryEmail(inquiry);
+      } catch (emailError) {
+        console.error('Failed to send email notification:', emailError);
+        // Continue with the response even if email fails
+      }
       
       res.status(201).json(inquiry);
     } catch (error) {
