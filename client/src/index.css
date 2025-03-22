@@ -4,12 +4,12 @@
 
 @layer base {
   :root {
-    --neutral-light: 40 40% 94%; /* Warmer light beige */
-    --neutral-dark: 30 30% 20%;  /* Deeper dark brown */
-    --primary-dark: 32 50% 30%;  /* Richer medium-toned brown with more depth */
-    --primary-light: 35 60% 88%; /* Warmer, richer beige */
-    --accent: 15 80% 50%;        /* Strong rusty orange-red accent */
-    --accent-light: 15 60% 65%;  /* Lighter version of accent */
+    --neutral-light: 37 100% 93%; /* FFF2DB - Light beige */
+    --neutral-dark: 30 30% 20%;   /* Deeper dark brown */
+    --primary-dark: 32 50% 30%;   /* Richer medium-toned brown */
+    --primary-light: 37 100% 93%; /* FFF2DB - Light beige */
+    --accent: 267 37% 44%;        /* 563A9C - Purple accent */
+    --accent-light: 267 37% 60%;  /* Lighter version of purple accent */
   }
 
   * {

@@ -7,11 +7,11 @@ interface LogoProps {
 }
 
 const Logo: React.FC<LogoProps> = ({ className = '', width = 200, height = 80 }) => {
-  // Warm beige and brown color scheme with accent
-  const primaryDark = "hsl(32, 50%, 30%)"; // Richer medium-toned brown
-  const primaryMedium = "hsl(30, 40%, 45%)"; // Medium brown
-  const primaryLight = "hsl(35, 60%, 88%)"; // Warm, rich beige background
-  const accentColor = "hsl(15, 80%, 50%)"; // Strong rusty orange-red accent
+  // Purple and beige color scheme
+  const primaryDark = "hsl(267, 37%, 44%)"; // 563A9C - Purple for text and knot lines
+  const primaryMedium = "hsl(267, 37%, 55%)"; // Medium purple
+  const primaryLight = "hsl(37, 100%, 93%)"; // FFF2DB - Light beige background
+  const accentColor = "hsl(267, 37%, 60%)"; // Lighter purple accent
 
   return (
     <div className={`flex flex-col items-center ${className}`}>
