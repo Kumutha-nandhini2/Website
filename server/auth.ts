@@ -117,6 +117,8 @@ export function setupAuth(app: Express) {
       if (!adminUser) {
         const user = await storage.createUser({
           username: "admin",
+          email: "admin@privacyweave.com",
+          name: "Admin User",
           password: await hashPassword("admin123"), // In production, use a secure password
         });
         // Update the user role to admin
