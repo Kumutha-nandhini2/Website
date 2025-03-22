@@ -1,8 +1,13 @@
 import { users, type User, type InsertUser, inquiries, type Inquiry, type InsertInquiry, jobApplications, type JobApplication, type InsertJobApplication, jobListings, type JobListing, type InsertJobListing } from "@shared/schema";
 import session from "express-session";
 import createMemoryStore from "memorystore";
+import connectPg from "connect-pg-simple";
+import { db } from "./db";
+import { eq, desc } from "drizzle-orm";
+import { Pool } from '@neondatabase/serverless';
 
 const MemoryStore = createMemoryStore(session);
+const PostgresSessionStore = connectPg(session);
 
 // Interface for storage operations
 export interface IStorage {
@@ -31,6 +36,172 @@ export interface IStorage {
   sessionStore: any;
 }
 
+// Database implementation
+export class DatabaseStorage implements IStorage {
+  sessionStore: any;
+  
+  constructor() {
+    // Initialize the PostgreSQL session store
+    this.sessionStore = new PostgresSessionStore({
+      conObject: {
+        connectionString: process.env.DATABASE_URL,
+      },
+      createTableIfMissing: true,
+    });
+  }
+
+  // User operations
+  async getUser(id: number): Promise<User | undefined> {
+    const [user] = await db.select().from(users).where(eq(users.id, id));
+    return user;
+  }
+
+  async getUserByUsername(username: string): Promise<User | undefined> {
+    const [user] = await db.select().from(users).where(eq(users.username, username));
+    return user;
+  }
+
+  async createUser(insertUser: InsertUser): Promise<User> {
+    // The timestamp fields are handled automatically by the defaultNow() in the schema
+    const [user] = await db
+      .insert(users)
+      .values({ ...insertUser, role: "user" })
+      .returning();
+    return user;
+  }
+  
+  // Inquiry operations
+  async createInquiry(insertInquiry: InsertInquiry): Promise<Inquiry> {
+    const [inquiry] = await db
+      .insert(inquiries)
+      .values(insertInquiry)
+      .returning();
+    return inquiry;
+  }
+  
+  async getInquiries(): Promise<Inquiry[]> {
+    return await db
+      .select()
+      .from(inquiries)
+      .orderBy(desc(inquiries.createdAt));
+  }
+  
+  async getInquiry(id: number): Promise<Inquiry | undefined> {
+    const [inquiry] = await db
+      .select()
+      .from(inquiries)
+      .where(eq(inquiries.id, id));
+    return inquiry;
+  }
+  
+  // Job application operations
+  async createJobApplication(insertApplication: InsertJobApplication): Promise<JobApplication> {
+    const [application] = await db
+      .insert(jobApplications)
+      .values({
+        ...insertApplication,
+        resumePath: null,
+        message: insertApplication.message || null,
+      })
+      .returning();
+    return application;
+  }
+  
+  async getJobApplications(): Promise<JobApplication[]> {
+    return await db
+      .select()
+      .from(jobApplications)
+      .orderBy(desc(jobApplications.createdAt));
+  }
+  
+  async getJobApplication(id: number): Promise<JobApplication | undefined> {
+    const [application] = await db
+      .select()
+      .from(jobApplications)
+      .where(eq(jobApplications.id, id));
+    return application;
+  }
+  
+  // Job listings operations
+  async createJobListing(insertListing: InsertJobListing): Promise<JobListing> {
+    const [listing] = await db
+      .insert(jobListings)
+      .values({
+        ...insertListing,
+        isActive: insertListing.isActive ?? true,
+      })
+      .returning();
+    return listing;
+  }
+  
+  async getJobListings(): Promise<JobListing[]> {
+    return await db
+      .select()
+      .from(jobListings)
+      .orderBy(desc(jobListings.createdAt));
+  }
+  
+  async getActiveJobListings(): Promise<JobListing[]> {
+    return await db
+      .select()
+      .from(jobListings)
+      .where(eq(jobListings.isActive, true))
+      .orderBy(desc(jobListings.createdAt));
+  }
+  
+  async getJobListing(id: number): Promise<JobListing | undefined> {
+    const [listing] = await db
+      .select()
+      .from(jobListings)
+      .where(eq(jobListings.id, id));
+    return listing;
+  }
+  
+  // Seed job listings
+  async seedJobListings() {
+    // Check if we have any job listings
+    const existingListings = await db.select().from(jobListings);
+    
+    // If no listings exist, create them
+    if (existingListings.length === 0) {
+      const listings: InsertJobListing[] = [
+        {
+          title: "AI/ML Engineer (0-1 Year Experience)",
+          description: "Join our innovative team to develop and implement AI/ML solutions for data privacy and compliance automation. You'll work on cutting-edge privacy-preserving AI models and contribute to our machine learning pipeline for data classification and policy automation.",
+          requirements: "Bachelor's degree in Computer Science, AI, or related field. Basic knowledge of Python and machine learning libraries (TensorFlow, PyTorch, or scikit-learn). Understanding of fundamental ML concepts and algorithms. Eagerness to learn privacy-enhancing technologies. Strong analytical and problem-solving skills. Collaborative mindset and ability to work in cross-functional teams.",
+          type: "Full-time",
+          location: "Coimbatore",
+          experience: "Entry Level (0-1 Year)",
+          isActive: true
+        },
+        {
+          title: "Full Stack Developer (0-1 Year Experience)",
+          description: "Develop responsive web applications and APIs for our privacy automation platform. You'll help build intuitive interfaces for privacy management tools and contribute to developing scalable backend services that power our data governance solutions.",
+          requirements: "Bachelor's degree in Computer Science or related technical field. Knowledge of JavaScript/TypeScript, HTML, and CSS. Familiarity with React or similar frontend frameworks. Basic understanding of Node.js and RESTful API concepts. Willingness to learn and adapt to new technologies. Passion for creating user-friendly interfaces. Basic understanding of database concepts.",
+          type: "Full-time",
+          location: "Coimbatore",
+          experience: "Entry Level (0-1 Year)",
+          isActive: true
+        },
+        {
+          title: "Cybersecurity & Encryption Specialist (0-1 Year Experience)",
+          description: "Help implement end-to-end encryption and security protocols for our privacy-focused applications. You'll work on data protection mechanisms, assist in security assessment of our systems, and help implement encryption standards that ensure our clients' data remains secure.",
+          requirements: "Bachelor's degree in Computer Science, Cybersecurity, or related field. Knowledge of fundamental encryption algorithms and techniques. Basic understanding of network security principles. Interest in privacy regulations (GDPR, CCPA, etc.). Familiarity with security tools and practices. Strong attention to detail. Excellent analytical and problem-solving skills. Eagerness to learn modern security frameworks.",
+          type: "Full-time",
+          location: "Coimbatore",
+          experience: "Entry Level (0-1 Year)",
+          isActive: true
+        }
+      ];
+      
+      for (const listing of listings) {
+        await this.createJobListing(listing);
+      }
+    }
+  }
+}
+
+// Keep the in-memory storage as a backup
 export class MemStorage implements IStorage {
   private users: Map<number, User>;
   private inquiries: Map<number, Inquiry>;
@@ -61,7 +232,6 @@ export class MemStorage implements IStorage {
     this.seedJobListings();
   }
 
-  // User operations
   async getUser(id: number): Promise<User | undefined> {
     return this.users.get(id);
   }
@@ -74,12 +244,16 @@ export class MemStorage implements IStorage {
 
   async createUser(insertUser: InsertUser): Promise<User> {
     const id = this.userIdCounter++;
-    const user: User = { ...insertUser, id, role: "user" };
+    const user: User = { 
+      ...insertUser, 
+      id, 
+      role: "user",
+      createdAt: new Date()
+    };
     this.users.set(id, user);
     return user;
   }
   
-  // Inquiry operations
   async createInquiry(insertInquiry: InsertInquiry): Promise<Inquiry> {
     const id = this.inquiryIdCounter++;
     const inquiry: Inquiry = { 
@@ -101,13 +275,12 @@ export class MemStorage implements IStorage {
     return this.inquiries.get(id);
   }
   
-  // Job application operations
   async createJobApplication(insertApplication: InsertJobApplication): Promise<JobApplication> {
     const id = this.jobApplicationIdCounter++;
     const application: JobApplication = { 
       ...insertApplication, 
       id, 
-      resumePath: null, // This would be updated after file upload
+      resumePath: null,
       message: insertApplication.message || null,
       createdAt: new Date() 
     };
@@ -125,7 +298,6 @@ export class MemStorage implements IStorage {
     return this.jobApplications.get(id);
   }
   
-  // Job listings operations
   async createJobListing(insertListing: InsertJobListing): Promise<JobListing> {
     const id = this.jobListingIdCounter++;
     const listing: JobListing = { 
@@ -154,7 +326,6 @@ export class MemStorage implements IStorage {
     return this.jobListings.get(id);
   }
   
-  // Seed job listings
   private seedJobListings() {
     const listings: InsertJobListing[] = [
       {
@@ -192,4 +363,5 @@ export class MemStorage implements IStorage {
   }
 }
 
-export const storage = new MemStorage();
+// Change this line to use the database storage
+export const storage = new DatabaseStorage();
