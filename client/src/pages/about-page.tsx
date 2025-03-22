@@ -287,7 +287,7 @@ const AboutPage = () => {
         </div>
       </section>
 
-      {/* Our Clients Section */}
+      {/* Our Technology Section */}
       <section className="py-20 bg-neutral-light">
         <div className="container mx-auto px-4">
           <motion.div
@@ -297,28 +297,94 @@ const AboutPage = () => {
             viewport={{ once: true }}
             transition={{ duration: 0.6 }}
           >
-            <h2 className="text-3xl md:text-4xl font-bold text-primary-dark mb-6">Trusted By Industry Leaders</h2>
+            <h2 className="text-3xl md:text-4xl font-bold text-primary-dark mb-6">Our Technology Stack</h2>
             <p className="text-lg text-neutral-dark max-w-3xl mx-auto">
-              We're proud to work with leading organizations across healthcare, finance, and technology sectors.
+              We leverage cutting-edge technologies to deliver robust, scalable privacy solutions.
             </p>
           </motion.div>
 
-          <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-8">
-            {/* Since we're not using real logos, we'll use styled blocks */}
-            {Array.from({ length: 8 }).map((_, index) => (
-              <motion.div
-                key={index}
-                className="bg-white h-24 rounded-lg shadow-sm flex items-center justify-center"
-                initial={{ opacity: 0, y: 20 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true }}
-                transition={{ duration: 0.4, delay: index * 0.1 }}
-              >
-                <div className="w-full h-12 flex items-center justify-center">
-                  <Building className="w-10 h-10 text-neutral-300" />
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-8 mb-12">
+            <motion.div
+              className="bg-white p-8 rounded-xl shadow-md"
+              initial={{ opacity: 0, x: -20 }}
+              whileInView={{ opacity: 1, x: 0 }}
+              viewport={{ once: true }}
+              transition={{ duration: 0.6 }}
+            >
+              <h3 className="text-2xl font-bold text-primary-dark mb-6 flex items-center">
+                <div className="w-10 h-10 rounded-full bg-primary bg-opacity-10 flex items-center justify-center mr-3">
+                  <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className="text-primary">
+                    <path d="M12 18.5a6.5 6.5 0 1 0 0-13 6.5 6.5 0 0 0 0 13Z"></path>
+                    <path d="M12 22v-3.5"></path>
+                    <path d="M12 2v3.5"></path>
+                    <path d="M4.2 4.2l2.5 2.5"></path>
+                    <path d="M19.8 4.2l-2.5 2.5"></path>
+                    <path d="M4.2 19.8l2.5-2.5"></path>
+                    <path d="M19.8 19.8l-2.5-2.5"></path>
+                  </svg>
                 </div>
-              </motion.div>
-            ))}
+                AI-Powered Analysis
+              </h3>
+              <ul className="space-y-3">
+                <li className="flex items-start">
+                  <svg xmlns="http://www.w3.org/2000/svg" className="h-5 w-5 text-primary mr-2 mt-0.5" viewBox="0 0 20 20" fill="currentColor">
+                    <path fillRule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clipRule="evenodd" />
+                  </svg>
+                  <span>Advanced machine learning algorithms for data pattern recognition</span>
+                </li>
+                <li className="flex items-start">
+                  <svg xmlns="http://www.w3.org/2000/svg" className="h-5 w-5 text-primary mr-2 mt-0.5" viewBox="0 0 20 20" fill="currentColor">
+                    <path fillRule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clipRule="evenodd" />
+                  </svg>
+                  <span>Automated risk assessment and threat detection</span>
+                </li>
+                <li className="flex items-start">
+                  <svg xmlns="http://www.w3.org/2000/svg" className="h-5 w-5 text-primary mr-2 mt-0.5" viewBox="0 0 20 20" fill="currentColor">
+                    <path fillRule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clipRule="evenodd" />
+                  </svg>
+                  <span>Continuous learning systems for evolving threat landscapes</span>
+                </li>
+              </ul>
+            </motion.div>
+            
+            <motion.div
+              className="bg-white p-8 rounded-xl shadow-md"
+              initial={{ opacity: 0, x: 20 }}
+              whileInView={{ opacity: 1, x: 0 }}
+              viewport={{ once: true }}
+              transition={{ duration: 0.6, delay: 0.2 }}
+            >
+              <h3 className="text-2xl font-bold text-primary-dark mb-6 flex items-center">
+                <div className="w-10 h-10 rounded-full bg-secondary bg-opacity-10 flex items-center justify-center mr-3">
+                  <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className="text-secondary">
+                    <rect width="18" height="18" x="3" y="3" rx="2" ry="2"></rect>
+                    <path d="M3 9h18"></path>
+                    <path d="M9 21V9"></path>
+                  </svg>
+                </div>
+                Encryption Systems
+              </h3>
+              <ul className="space-y-3">
+                <li className="flex items-start">
+                  <svg xmlns="http://www.w3.org/2000/svg" className="h-5 w-5 text-secondary mr-2 mt-0.5" viewBox="0 0 20 20" fill="currentColor">
+                    <path fillRule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clipRule="evenodd" />
+                  </svg>
+                  <span>End-to-end encryption with 256-bit standards</span>
+                </li>
+                <li className="flex items-start">
+                  <svg xmlns="http://www.w3.org/2000/svg" className="h-5 w-5 text-secondary mr-2 mt-0.5" viewBox="0 0 20 20" fill="currentColor">
+                    <path fillRule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clipRule="evenodd" />
+                  </svg>
+                  <span>Homomorphic encryption for secure data processing</span>
+                </li>
+                <li className="flex items-start">
+                  <svg xmlns="http://www.w3.org/2000/svg" className="h-5 w-5 text-secondary mr-2 mt-0.5" viewBox="0 0 20 20" fill="currentColor">
+                    <path fillRule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clipRule="evenodd" />
+                  </svg>
+                  <span>Zero-knowledge protocols for ultimate privacy</span>
+                </li>
+              </ul>
+            </motion.div>
           </div>
         </div>
       </section>

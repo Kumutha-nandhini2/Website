@@ -30,8 +30,8 @@ const Header = () => {
   };
 
   return (
-    <header className="fixed top-0 left-0 right-0 bg-white z-50 shadow-md">
-      <div className="container mx-auto px-4 py-4 flex justify-between items-center">
+    <header className="fixed top-0 left-0 right-0 bg-white z-50 backdrop-blur-sm bg-white/90 border-b border-gray-100">
+      <div className="container mx-auto px-4 py-3 flex justify-between items-center">
         <div className="flex items-center">
           <Link href="/" className="flex items-center">
             <Logo width={160} height={50} className="lg:w-[160px] lg:h-[50px] w-[130px] h-[40px]" />
@@ -39,7 +39,7 @@ const Header = () => {
         </div>
         
         {/* Desktop Navigation */}
-        <nav className="hidden lg:flex items-center space-x-8">
+        <nav className="hidden lg:flex items-center space-x-6">
           {/* Products Dropdown */}
           <div className="relative">
             <DropdownMenu>
@@ -131,7 +131,10 @@ const Header = () => {
         
         <div className="hidden lg:flex items-center space-x-4">
           <Link href="/contact">
-            <Button variant="outline" className="border-primary text-primary hover:bg-primary hover:text-white">
+            <Button 
+              variant="outline" 
+              className="border-primary border-2 text-primary hover:bg-primary/10 hover:text-primary rounded-md font-medium transition-all"
+            >
               Request Demo
             </Button>
           </Link>
@@ -139,7 +142,12 @@ const Header = () => {
           {user ? (
             <DropdownMenu>
               <DropdownMenuTrigger asChild>
-                <Button variant="default">Account</Button>
+                <Button 
+                  variant="default" 
+                  className="bg-gradient-to-r from-primary to-primary-dark hover:opacity-90 font-medium rounded-md"
+                >
+                  Account
+                </Button>
               </DropdownMenuTrigger>
               <DropdownMenuContent>
                 {user.role === 'admin' && (
@@ -154,7 +162,12 @@ const Header = () => {
             </DropdownMenu>
           ) : (
             <Link href="/auth">
-              <Button variant="default">Login</Button>
+              <Button 
+                variant="default" 
+                className="bg-gradient-to-r from-primary to-primary-dark hover:opacity-90 font-medium rounded-md"
+              >
+                Login
+              </Button>
             </Link>
           )}
         </div>
@@ -206,7 +219,10 @@ const Header = () => {
 
               <div className="pt-4 space-y-3">
                 <Link href="/contact" onClick={() => setMenuOpen(false)}>
-                  <Button variant="outline" className="w-full border-primary text-primary">
+                  <Button 
+                    variant="outline" 
+                    className="w-full border-primary border-2 text-primary hover:bg-primary/10 hover:text-primary rounded-md font-medium transition-all"
+                  >
                     Request Demo
                   </Button>
                 </Link>
@@ -215,21 +231,31 @@ const Header = () => {
                   <div className="space-y-3">
                     {user.role === 'admin' && (
                       <Link href="/admin" onClick={() => setMenuOpen(false)}>
-                        <Button variant="default" className="w-full">
+                        <Button 
+                          variant="default" 
+                          className="w-full bg-gradient-to-r from-primary to-primary-dark hover:opacity-90 font-medium rounded-md"
+                        >
                           Admin Dashboard
                         </Button>
                       </Link>
                     )}
-                    <Button variant="default" className="w-full" onClick={() => {
-                      handleLogout();
-                      setMenuOpen(false);
-                    }}>
+                    <Button 
+                      variant="default" 
+                      className="w-full bg-gradient-to-r from-primary to-primary-dark hover:opacity-90 font-medium rounded-md"
+                      onClick={() => {
+                        handleLogout();
+                        setMenuOpen(false);
+                      }}
+                    >
                       Logout
                     </Button>
                   </div>
                 ) : (
                   <Link href="/auth" onClick={() => setMenuOpen(false)}>
-                    <Button variant="default" className="w-full">
+                    <Button 
+                      variant="default" 
+                      className="w-full bg-gradient-to-r from-primary to-primary-dark hover:opacity-90 font-medium rounded-md"
+                    >
                       Login
                     </Button>
                   </Link>
