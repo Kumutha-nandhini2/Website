@@ -396,7 +396,7 @@ const DataManagementSection = () => {
               {/* Additional Connecting Network Lines */}
               <motion.path
                 d="M-70,-50 C-40,-30 -10,-10 0,0"
-                stroke="hsla(15, 80%, 50%, 0.3)"
+                stroke="hsla(267, 37%, 44%, 0.3)"
                 strokeWidth="1"
                 strokeDasharray="2,6"
                 fill="none"
@@ -415,7 +415,7 @@ const DataManagementSection = () => {
               
               <motion.path
                 d="M-70,50 C-40,30 -10,10 0,0"
-                stroke="hsla(15, 80%, 50%, 0.3)"
+                stroke="hsla(267, 37%, 44%, 0.3)"
                 strokeWidth="1"
                 strokeDasharray="2,6"
                 fill="none"
@@ -434,7 +434,7 @@ const DataManagementSection = () => {
               
               <motion.path
                 d="M0,0 C10,10 40,30 70,50"
-                stroke="hsla(32, 50%, 30%, 0.3)"
+                stroke="hsla(267, 37%, 60%, 0.3)"
                 strokeWidth="1"
                 strokeDasharray="2,6"
                 fill="none"
@@ -453,7 +453,7 @@ const DataManagementSection = () => {
               
               <motion.path
                 d="M0,0 C10,-10 40,-30 70,-50"
-                stroke="hsla(32, 50%, 30%, 0.3)"
+                stroke="hsla(267, 37%, 60%, 0.3)"
                 strokeWidth="1"
                 strokeDasharray="2,6"
                 fill="none"
