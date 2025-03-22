@@ -28,7 +28,7 @@ const DataManagementSection = () => {
   ];
 
   return (
-    <section id="data-management" className="py-20 bg-gray-50">
+    <section id="data-management" className="py-20 bg-neutral-light">
       <div className="container mx-auto px-4">
         <motion.div
           className="text-center mb-16"
@@ -98,13 +98,13 @@ const DataManagementSection = () => {
             transition={{ duration: 0.8, delay: 0.5 }}
           >
             <motion.div
-              className="bg-green-100 rounded-full w-24 h-24 flex items-center justify-center shadow-lg"
-              whileHover={{ scale: 1.1, backgroundColor: "#dcfce7" }}
+              className="bg-primary-light rounded-full w-24 h-24 flex items-center justify-center shadow-lg"
+              whileHover={{ scale: 1.1, backgroundColor: "#f8f3e5" }}
               animate={{
                 boxShadow: [
-                  "0 0 0 rgba(74, 222, 128, 0.4)",
-                  "0 0 20px rgba(74, 222, 128, 0.6)",
-                  "0 0 0 rgba(74, 222, 128, 0.4)"
+                  "0 0 0 rgba(140, 100, 60, 0.4)",
+                  "0 0 20px rgba(140, 100, 60, 0.6)",
+                  "0 0 0 rgba(140, 100, 60, 0.4)"
                 ],
                 transition: {
                   duration: 3,
@@ -121,7 +121,7 @@ const DataManagementSection = () => {
               {/* Main data paths */}
               <motion.path
                 d="M-130,0 C-100,-50 -70,-20 0,0"
-                stroke="#4ADE80"
+                stroke="#8D6E63"
                 strokeWidth="3"
                 fill="none"
                 initial={{ pathLength: 0, opacity: 0 }}
@@ -132,7 +132,7 @@ const DataManagementSection = () => {
               
               <motion.path
                 d="M0,0 C70,-20 100,-50 130,0"
-                stroke="#0EA5E9"
+                stroke="#A1887F"
                 strokeWidth="3"
                 fill="none"
                 initial={{ pathLength: 0, opacity: 0 }}
@@ -143,7 +143,7 @@ const DataManagementSection = () => {
 
               <motion.path
                 d="M-130,0 C-100,50 -70,20 0,0"
-                stroke="#4ADE80"
+                stroke="#8D6E63"
                 strokeWidth="3"
                 fill="none"
                 initial={{ pathLength: 0, opacity: 0 }}
@@ -154,7 +154,7 @@ const DataManagementSection = () => {
 
               <motion.path
                 d="M0,0 C70,20 100,50 130,0"
-                stroke="#0EA5E9"
+                stroke="#A1887F"
                 strokeWidth="3"
                 fill="none"
                 initial={{ pathLength: 0, opacity: 0 }}
