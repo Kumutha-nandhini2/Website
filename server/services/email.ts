@@ -1,26 +1,93 @@
-import nodemailer from 'nodemailer';
+import * as nodemailer from 'nodemailer';
 import { Inquiry, JobApplication } from '@shared/schema';
+
+// Define proper nodemailer transport config type
+interface TransportConfig {
+  service?: string;
+  host?: string;
+  port?: number;
+  secure?: boolean;
+  auth: {
+    user: string;
+    pass: string;
+  };
+  tls?: {
+    rejectUnauthorized: boolean;
+  };
+  debug?: boolean;
+  logger?: boolean;
+}
 
 // Email configuration
 const getTransporter = () => {
-  // Create a transporter using environment variables
-  const transporter = nodemailer.createTransport({
-    service: process.env.EMAIL_SERVICE || 'gmail',
-    auth: {
-      user: process.env.EMAIL_USER,
-      pass: process.env.EMAIL_PASSWORD
-    },
-    // Add debug options for troubleshooting
-    debug: process.env.NODE_ENV !== 'production',
-    logger: process.env.NODE_ENV !== 'production'
-  });
+  let transporterConfig: TransportConfig;
   
-  // Verify connection configuration
+  // Use service specific configuration based on service name
+  if (process.env.EMAIL_SERVICE?.toLowerCase() === 'gmail') {
+    transporterConfig = {
+      service: 'gmail',
+      auth: {
+        user: process.env.EMAIL_USER || '',
+        pass: process.env.EMAIL_PASSWORD || ''
+      },
+      // Gmail-specific options for better deliverability
+      tls: {
+        rejectUnauthorized: false // More lenient TLS requirements
+      }
+    };
+  } else if (process.env.EMAIL_SERVICE?.toLowerCase() === 'outlook' || 
+             process.env.EMAIL_SERVICE?.toLowerCase() === 'hotmail') {
+    transporterConfig = {
+      host: 'smtp-mail.outlook.com',
+      port: 587,
+      secure: false, // true for 465, false for other ports
+      auth: {
+        user: process.env.EMAIL_USER || '',
+        pass: process.env.EMAIL_PASSWORD || ''
+      }
+    };
+  } else if (process.env.EMAIL_SERVICE?.toLowerCase() === 'yahoo') {
+    transporterConfig = {
+      host: 'smtp.mail.yahoo.com',
+      port: 465,
+      secure: true,
+      auth: {
+        user: process.env.EMAIL_USER || '',
+        pass: process.env.EMAIL_PASSWORD || ''
+      }
+    };
+  } else {
+    // Default generic configuration
+    transporterConfig = {
+      service: process.env.EMAIL_SERVICE || 'gmail',
+      auth: {
+        user: process.env.EMAIL_USER || '',
+        pass: process.env.EMAIL_PASSWORD || ''
+      }
+    };
+  }
+  
+  // Add debug options for troubleshooting
+  if (process.env.NODE_ENV !== 'production') {
+    transporterConfig.debug = true;
+    transporterConfig.logger = true;
+  }
+  
+  const transporter = nodemailer.createTransport(transporterConfig as any);
+  
+  // Show connection configuration
   if (process.env.NODE_ENV !== 'production') {
     console.log('Email configuration:');
     console.log(`- Service: ${process.env.EMAIL_SERVICE}`);
     console.log(`- User: ${process.env.EMAIL_USER}`);
     console.log(`- Password: ${process.env.EMAIL_PASSWORD ? '[PROVIDED]' : '[MISSING]'}`);
+    
+    // Log detailed configuration (excluding sensitive data)
+    const safeConfig = { ...transporterConfig };
+    if (safeConfig.auth) {
+      safeConfig.auth = { ...safeConfig.auth, pass: '[REDACTED]' };
+    }
+    console.log('- Detailed config:', JSON.stringify(safeConfig, null, 2));
   }
   
   return transporter;
@@ -106,7 +173,15 @@ export const sendInquiryEmail = async (inquiry: Inquiry): Promise<boolean> => {
  */
 export const sendJobApplicationEmail = async (application: JobApplication): Promise<boolean> => {
   try {
+    // Verify we have email credentials before attempting to send
+    if (!process.env.EMAIL_USER || !process.env.EMAIL_PASSWORD) {
+      console.warn('Email credentials not configured, skipping notification');
+      return false;
+    }
+    
     const transporter = getTransporter();
+    
+    console.log(`Attempting to send job application email notification for ${application.position}`);
     
     // Create email content
     const subject = `New Career Application: ${application.position}`;
@@ -170,6 +245,14 @@ export const sendJobApplicationEmail = async (application: JobApplication): Prom
     return true;
   } catch (error) {
     console.error('Error sending job application email:', error);
+    
+    // More detailed error information for debugging
+    if (error instanceof Error) {
+      console.error(`Error type: ${error.name}`);
+      console.error(`Error message: ${error.message}`);
+      console.error(`Error stack: ${error.stack}`);
+    }
+    
     return false;
   }
 };

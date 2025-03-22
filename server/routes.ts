@@ -68,14 +68,21 @@ export async function registerRoutes(app: Express): Promise<Server> {
       const inquiry = await storage.createInquiry(validatedData);
       
       // Send email notification
+      let emailSent = false;
       try {
-        await sendInquiryEmail(inquiry);
+        emailSent = await sendInquiryEmail(inquiry);
       } catch (emailError) {
         console.error('Failed to send email notification:', emailError);
         // Continue with the response even if email fails
       }
       
-      res.status(201).json(inquiry);
+      // Add the email status to the response
+      res.status(201).json({
+        ...inquiry,
+        _meta: {
+          emailNotificationSent: emailSent
+        }
+      });
     } catch (error) {
       next(error);
     }
@@ -104,14 +111,21 @@ export async function registerRoutes(app: Express): Promise<Server> {
       }
       
       // Send email notification
+      let emailSent = false;
       try {
-        await sendJobApplicationEmail(jobApplication);
+        emailSent = await sendJobApplicationEmail(jobApplication);
       } catch (emailError) {
         console.error('Failed to send job application email notification:', emailError);
         // Continue with the response even if email fails
       }
       
-      res.status(201).json(jobApplication);
+      // Add the email status to the response
+      res.status(201).json({
+        ...jobApplication,
+        _meta: {
+          emailNotificationSent: emailSent
+        }
+      });
     } catch (error) {
       // If there's an error, remove the uploaded file if it exists
       if (req.file) {
