@@ -121,7 +121,7 @@ const DataManagementSection = () => {
               {/* Main data paths */}
               <motion.path
                 d="M-130,0 C-100,-50 -70,-20 0,0"
-                stroke="#8D6E63"
+                stroke="hsl(32, 50%, 30%)"
                 strokeWidth="3"
                 fill="none"
                 initial={{ pathLength: 0, opacity: 0 }}
@@ -132,7 +132,7 @@ const DataManagementSection = () => {
               
               <motion.path
                 d="M0,0 C70,-20 100,-50 130,0"
-                stroke="#A1887F"
+                stroke="hsl(30, 40%, 45%)"
                 strokeWidth="3"
                 fill="none"
                 initial={{ pathLength: 0, opacity: 0 }}
@@ -143,7 +143,7 @@ const DataManagementSection = () => {
 
               <motion.path
                 d="M-130,0 C-100,50 -70,20 0,0"
-                stroke="#8D6E63"
+                stroke="hsl(32, 50%, 30%)"
                 strokeWidth="3"
                 fill="none"
                 initial={{ pathLength: 0, opacity: 0 }}
@@ -154,7 +154,7 @@ const DataManagementSection = () => {
 
               <motion.path
                 d="M0,0 C70,20 100,50 130,0"
-                stroke="#A1887F"
+                stroke="hsl(30, 40%, 45%)"
                 strokeWidth="3"
                 fill="none"
                 initial={{ pathLength: 0, opacity: 0 }}
@@ -166,7 +166,7 @@ const DataManagementSection = () => {
               {/* Primary Network flow lines */}
               <motion.path
                 d="M-100,-40 C-70,-30 -40,-25 0,0"
-                stroke="rgba(74, 222, 128, 0.6)"
+                stroke="hsla(15, 80%, 50%, 0.6)"
                 strokeWidth="2"
                 strokeDasharray="4,4"
                 fill="none"
@@ -184,7 +184,7 @@ const DataManagementSection = () => {
               
               <motion.path
                 d="M-100,40 C-70,30 -40,25 0,0"
-                stroke="rgba(74, 222, 128, 0.6)" 
+                stroke="hsla(15, 80%, 50%, 0.6)" 
                 strokeWidth="2"
                 strokeDasharray="4,4"
                 fill="none"
@@ -203,7 +203,7 @@ const DataManagementSection = () => {
               
               <motion.path
                 d="M0,0 C40,25 70,30 100,40"
-                stroke="rgba(14, 165, 233, 0.6)"
+                stroke="hsla(30, 40%, 45%, 0.6)"
                 strokeWidth="2"
                 strokeDasharray="4,4"
                 fill="none"
@@ -222,7 +222,7 @@ const DataManagementSection = () => {
               
               <motion.path
                 d="M0,0 C40,-25 70,-30 100,-40"
-                stroke="rgba(14, 165, 233, 0.6)"
+                stroke="hsla(30, 40%, 45%, 0.6)"
                 strokeWidth="2"
                 strokeDasharray="4,4"
                 fill="none"
@@ -242,7 +242,7 @@ const DataManagementSection = () => {
               {/* Secondary Network Flow Lines */}
               <motion.path
                 d="M-110,-20 C-70,-15 -30,-5 0,0"
-                stroke="rgba(74, 222, 128, 0.5)"
+                stroke="hsla(15, 80%, 50%, 0.5)"
                 strokeWidth="1.5"
                 strokeDasharray="3,3"
                 fill="none"
@@ -261,7 +261,7 @@ const DataManagementSection = () => {
               
               <motion.path
                 d="M-110,20 C-70,15 -30,5 0,0"
-                stroke="rgba(74, 222, 128, 0.5)"
+                stroke="hsla(15, 80%, 50%, 0.5)"
                 strokeWidth="1.5"
                 strokeDasharray="3,3"
                 fill="none"
@@ -280,7 +280,7 @@ const DataManagementSection = () => {
               
               <motion.path
                 d="M0,0 C30,5 70,15 110,20"
-                stroke="rgba(14, 165, 233, 0.5)"
+                stroke="hsla(32, 50%, 30%, 0.5)"
                 strokeWidth="1.5"
                 strokeDasharray="3,3"
                 fill="none"
@@ -299,7 +299,7 @@ const DataManagementSection = () => {
               
               <motion.path
                 d="M0,0 C30,-5 70,-15 110,-20"
-                stroke="rgba(14, 165, 233, 0.5)"
+                stroke="hsla(32, 50%, 30%, 0.5)"
                 strokeWidth="1.5"
                 strokeDasharray="3,3"
                 fill="none"
@@ -319,7 +319,7 @@ const DataManagementSection = () => {
               {/* Cross Network Flow Lines */}
               <motion.path
                 d="M-90,-60 C-60,-40 -30,-20 0,0"
-                stroke="rgba(74, 222, 128, 0.4)"
+                stroke="hsla(15, 80%, 50%, 0.4)"
                 strokeWidth="1"
                 strokeDasharray="3,5"
                 fill="none"
@@ -338,7 +338,7 @@ const DataManagementSection = () => {
               
               <motion.path
                 d="M-90,60 C-60,40 -30,20 0,0"
-                stroke="rgba(74, 222, 128, 0.4)"
+                stroke="hsla(15, 80%, 50%, 0.4)"
                 strokeWidth="1"
                 strokeDasharray="3,5"
                 fill="none"
@@ -357,7 +357,7 @@ const DataManagementSection = () => {
               
               <motion.path
                 d="M0,0 C30,20 60,40 90,60"
-                stroke="rgba(14, 165, 233, 0.4)"
+                stroke="hsla(32, 50%, 30%, 0.4)"
                 strokeWidth="1"
                 strokeDasharray="3,5"
                 fill="none"
@@ -376,7 +376,7 @@ const DataManagementSection = () => {
               
               <motion.path
                 d="M0,0 C30,-20 60,-40 90,-60"
-                stroke="rgba(14, 165, 233, 0.4)"
+                stroke="hsla(32, 50%, 30%, 0.4)"
                 strokeWidth="1"
                 strokeDasharray="3,5"
                 fill="none"
@@ -396,7 +396,7 @@ const DataManagementSection = () => {
               {/* Additional Connecting Network Lines */}
               <motion.path
                 d="M-70,-50 C-40,-30 -10,-10 0,0"
-                stroke="rgba(74, 222, 128, 0.3)"
+                stroke="hsla(15, 80%, 50%, 0.3)"
                 strokeWidth="1"
                 strokeDasharray="2,6"
                 fill="none"
@@ -415,7 +415,7 @@ const DataManagementSection = () => {
               
               <motion.path
                 d="M-70,50 C-40,30 -10,10 0,0"
-                stroke="rgba(74, 222, 128, 0.3)"
+                stroke="hsla(15, 80%, 50%, 0.3)"
                 strokeWidth="1"
                 strokeDasharray="2,6"
                 fill="none"
@@ -434,7 +434,7 @@ const DataManagementSection = () => {
               
               <motion.path
                 d="M0,0 C10,10 40,30 70,50"
-                stroke="rgba(14, 165, 233, 0.3)"
+                stroke="hsla(32, 50%, 30%, 0.3)"
                 strokeWidth="1"
                 strokeDasharray="2,6"
                 fill="none"
@@ -453,7 +453,7 @@ const DataManagementSection = () => {
               
               <motion.path
                 d="M0,0 C10,-10 40,-30 70,-50"
-                stroke="rgba(14, 165, 233, 0.3)"
+                stroke="hsla(32, 50%, 30%, 0.3)"
                 strokeWidth="1"
                 strokeDasharray="2,6"
                 fill="none"
@@ -475,7 +475,7 @@ const DataManagementSection = () => {
                 cx="0"
                 cy="0"
                 r="5"
-                fill="#4ADE80"
+                fill="hsl(15, 80%, 50%)"
                 initial={{ cx: -80, cy: -30 }}
                 animate={{
                   cx: [-80, -40, 0],
@@ -492,7 +492,7 @@ const DataManagementSection = () => {
                 cx="0"
                 cy="0"
                 r="5"
-                fill="#0EA5E9"
+                fill="hsl(32, 50%, 30%)"
                 initial={{ cx: 0, cy: 0 }}
                 animate={{
                   cx: [0, 40, 80],
@@ -510,7 +510,7 @@ const DataManagementSection = () => {
                 cx="0"
                 cy="0"
                 r="5"
-                fill="#4ADE80"
+                fill="hsl(15, 80%, 50%)"
                 initial={{ cx: -80, cy: 30 }}
                 animate={{
                   cx: [-80, -40, 0],
@@ -528,7 +528,7 @@ const DataManagementSection = () => {
                 cx="0"
                 cy="0"
                 r="5"
-                fill="#0EA5E9"
+                fill="hsl(32, 50%, 30%)"
                 initial={{ cx: 0, cy: 0 }}
                 animate={{
                   cx: [0, 40, 80],
@@ -547,7 +547,7 @@ const DataManagementSection = () => {
                 cx="0"
                 cy="0"
                 r="3"
-                fill="rgba(74, 222, 128, 0.7)"
+                fill="hsla(15, 80%, 50%, 0.7)"
                 initial={{ cx: -90, cy: -20 }}
                 animate={{
                   cx: [-90, -60, -30, 0],
@@ -565,7 +565,7 @@ const DataManagementSection = () => {
                 cx="0"
                 cy="0"
                 r="3"
-                fill="rgba(14, 165, 233, 0.7)"
+                fill="hsla(32, 50%, 30%, 0.7)"
                 initial={{ cx: 0, cy: 0 }}
                 animate={{
                   cx: [0, 30, 60, 90],
@@ -583,7 +583,7 @@ const DataManagementSection = () => {
                 cx="0"
                 cy="0"
                 r="3"
-                fill="rgba(74, 222, 128, 0.7)"
+                fill="hsla(15, 80%, 50%, 0.7)"
                 initial={{ cx: -90, cy: 20 }}
                 animate={{
                   cx: [-90, -60, -30, 0],
@@ -601,7 +601,7 @@ const DataManagementSection = () => {
                 cx="0"
                 cy="0"
                 r="3"
-                fill="rgba(14, 165, 233, 0.7)"
+                fill="hsla(32, 50%, 30%, 0.7)"
                 initial={{ cx: 0, cy: 0 }}
                 animate={{
                   cx: [0, 30, 60, 90],
