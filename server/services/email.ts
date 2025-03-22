@@ -9,8 +9,19 @@ const getTransporter = () => {
     auth: {
       user: process.env.EMAIL_USER,
       pass: process.env.EMAIL_PASSWORD
-    }
+    },
+    // Add debug options for troubleshooting
+    debug: process.env.NODE_ENV !== 'production',
+    logger: process.env.NODE_ENV !== 'production'
   });
+  
+  // Verify connection configuration
+  if (process.env.NODE_ENV !== 'production') {
+    console.log('Email configuration:');
+    console.log(`- Service: ${process.env.EMAIL_SERVICE}`);
+    console.log(`- User: ${process.env.EMAIL_USER}`);
+    console.log(`- Password: ${process.env.EMAIL_PASSWORD ? '[PROVIDED]' : '[MISSING]'}`);
+  }
   
   return transporter;
 };
@@ -23,7 +34,15 @@ const recipients = ['sadhanaa2326@gmail.com', 'mittal21jiya@gmail.com'];
  */
 export const sendInquiryEmail = async (inquiry: Inquiry): Promise<boolean> => {
   try {
+    // Verify we have email credentials before attempting to send
+    if (!process.env.EMAIL_USER || !process.env.EMAIL_PASSWORD) {
+      console.warn('Email credentials not configured, skipping notification');
+      return false;
+    }
+    
     const transporter = getTransporter();
+    
+    console.log(`Attempting to send inquiry email notification for ${inquiry.company}`);
     
     // Create email content
     const subject = `New Demo Request: ${inquiry.company}`;
@@ -70,6 +89,14 @@ export const sendInquiryEmail = async (inquiry: Inquiry): Promise<boolean> => {
     return true;
   } catch (error) {
     console.error('Error sending inquiry email:', error);
+    
+    // More detailed error information for debugging
+    if (error instanceof Error) {
+      console.error(`Error type: ${error.name}`);
+      console.error(`Error message: ${error.message}`);
+      console.error(`Error stack: ${error.stack}`);
+    }
+    
     return false;
   }
 };

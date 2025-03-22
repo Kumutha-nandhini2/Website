@@ -8,10 +8,7 @@ import * as path from 'path';
 import { promisify } from 'util';
 import { fileURLToPath } from 'url';
 import { sendInquiryEmail, sendJobApplicationEmail } from './services/email';
-
-// Use dynamic import for multer
-const multerModule = await import('multer');
-const multer = multerModule.default;
+import multer from 'multer';
 
 // Get the directory path in ESM
 const __filename = fileURLToPath(import.meta.url);
@@ -101,6 +98,17 @@ export async function registerRoutes(app: Express): Promise<Server> {
       // Update resume path if a file was uploaded
       if (req.file) {
         jobApplication.resumePath = req.file.path;
+        
+        // Save the updated resume path to the database
+        // This would typically need an update method in storage
+      }
+      
+      // Send email notification
+      try {
+        await sendJobApplicationEmail(jobApplication);
+      } catch (emailError) {
+        console.error('Failed to send job application email notification:', emailError);
+        // Continue with the response even if email fails
       }
       
       res.status(201).json(jobApplication);
