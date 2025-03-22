@@ -1,6 +1,76 @@
 import * as nodemailer from 'nodemailer';
 import { Inquiry, JobApplication } from '@shared/schema';
 
+/**
+ * Check if email is properly configured
+ */
+export const isEmailConfigured = (): boolean => {
+  return !!(process.env.EMAIL_SERVICE && 
+           process.env.EMAIL_USER && 
+           process.env.EMAIL_PASSWORD);
+};
+
+/**
+ * Get the current email configuration
+ */
+export const getEmailConfig = () => {
+  const configured = isEmailConfigured();
+  
+  const recipients = getRecipients();
+  
+  return {
+    configured,
+    service: process.env.EMAIL_SERVICE || 'Not configured',
+    user: process.env.EMAIL_USER 
+      ? `${process.env.EMAIL_USER.slice(0, 3)}...${process.env.EMAIL_USER.split('@')[1] || ''}` 
+      : 'Not configured',
+    recipients,
+    missingVariables: [
+      !process.env.EMAIL_SERVICE && 'EMAIL_SERVICE',
+      !process.env.EMAIL_USER && 'EMAIL_USER', 
+      !process.env.EMAIL_PASSWORD && 'EMAIL_PASSWORD'
+    ].filter(Boolean) as string[]
+  };
+};
+
+/**
+ * Send a test email of the specified type
+ */
+export const sendTestEmail = async (type: 'inquiry' | 'job-application'): Promise<boolean> => {
+  if (type === 'inquiry') {
+    // Create a test inquiry
+    const testInquiry: Inquiry = {
+      id: 0,
+      firstName: 'Test',
+      lastName: 'User',
+      email: 'test@example.com',
+      company: 'Test Company',
+      industry: 'technology',
+      message: 'This is a test email sent from the admin panel.',
+      createdAt: new Date()
+    };
+    
+    return await sendInquiryEmail(testInquiry);
+  } else if (type === 'job-application') {
+    // Create a test job application
+    const testApplication: JobApplication = {
+      id: 0,
+      fullName: 'Test Applicant',
+      email: 'test@example.com',
+      phone: '+91-1234567890',
+      position: 'Test Position',
+      experience: '1',
+      message: 'This is a test job application email sent from the admin panel.',
+      resumePath: null,
+      createdAt: new Date()
+    };
+    
+    return await sendJobApplicationEmail(testApplication);
+  }
+  
+  return false;
+};
+
 // Define proper nodemailer transport config type
 interface TransportConfig {
   service?: string;

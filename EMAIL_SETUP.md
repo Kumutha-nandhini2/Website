@@ -1,84 +1,90 @@
 # Email Setup Guide for PrivacyWeave
 
-This guide explains how to set up email notifications for form submissions on the PrivacyWeave website.
+This guide provides instructions on how to set up email notifications for the PrivacyWeave website. When properly configured, the system will automatically send email notifications when users submit contact forms or job applications.
 
-## Prerequisites
+## Required Environment Variables
 
-You will need:
-- Email account credentials (Gmail, Outlook, Yahoo, etc.)
-- For Gmail: An App Password (requires 2-Step Verification to be enabled)
+To enable email functionality, you need to set the following environment variables:
 
-## Setting Up Email Credentials
+1. `EMAIL_SERVICE` - The name of the email service provider
+2. `EMAIL_USER` - The email address used to send notifications
+3. `EMAIL_PASSWORD` - The password or app password for the email account
+4. `EMAIL_RECIPIENTS` - (Optional) Comma-separated list of email addresses to receive notifications
 
-### Gmail Setup (Recommended)
+If `EMAIL_RECIPIENTS` is not provided, notifications will be sent to the default recipients: `sadhanaa2326@gmail.com` and `mittal21jiya@gmail.com`.
 
-1. **Enable 2-Step Verification:**
-   - Go to your Google Account security settings: https://myaccount.google.com/security
-   - Enable 2-Step Verification if not already enabled
+## Setting Up Gmail
 
-2. **Generate an App Password:**
-   - Go to: https://myaccount.google.com/apppasswords
-   - Select "App" → "Other (Custom name)" → Enter "PrivacyWeave Website"
-   - Click "Generate"
-   - Copy the 16-character password (spaces will be removed automatically)
+For Gmail accounts, follow these steps:
 
-3. **Update Environment Variables:**
-   - Create a `.env` file in the root of the project with:
-   ```
-   EMAIL_SERVICE=gmail
-   EMAIL_USER=your.email@gmail.com
-   EMAIL_PASSWORD=your-16-character-app-password
-   EMAIL_RECIPIENTS=sadhanaa2326@gmail.com,mittal21jiya@gmail.com
-   ```
+1. **Create an App Password** (recommended instead of your regular password):
+   - Go to your Google Account settings at https://myaccount.google.com/
+   - Navigate to Security > App passwords
+   - You may need to enable 2-Step Verification first if you haven't already
+   - Select "Mail" as the app and "Other" as the device (name it "PrivacyWeave")
+   - Copy the 16-character app password that is generated
 
-### Outlook/Hotmail Setup
+2. **Set the environment variables**:
+   - `EMAIL_SERVICE` = `gmail`
+   - `EMAIL_USER` = `your.email@gmail.com`
+   - `EMAIL_PASSWORD` = `your-16-character-app-password`
+   - `EMAIL_RECIPIENTS` = `recipient1@example.com,recipient2@example.com`
 
-1. **Update Environment Variables:**
-   - Create a `.env` file in the root of the project with:
-   ```
-   EMAIL_SERVICE=outlook
-   EMAIL_USER=your.email@outlook.com
-   EMAIL_PASSWORD=your-regular-password
-   EMAIL_RECIPIENTS=sadhanaa2326@gmail.com,mittal21jiya@gmail.com
-   ```
+## Setting Up Outlook/Hotmail
 
-### Yahoo Setup
+For Outlook or Hotmail accounts:
 
-1. **Generate App Password:**
-   - Go to Yahoo Account Security settings
-   - Create an app password for "PrivacyWeave Website"
+1. **Set the environment variables**:
+   - `EMAIL_SERVICE` = `outlook` (or `hotmail`)
+   - `EMAIL_USER` = `your.email@outlook.com`
+   - `EMAIL_PASSWORD` = `your-account-password`
+   - `EMAIL_RECIPIENTS` = `recipient1@example.com,recipient2@example.com`
 
-2. **Update Environment Variables:**
-   - Create a `.env` file in the root of the project with:
-   ```
-   EMAIL_SERVICE=yahoo
-   EMAIL_USER=your.email@yahoo.com
-   EMAIL_PASSWORD=your-app-password
-   EMAIL_RECIPIENTS=sadhanaa2326@gmail.com,mittal21jiya@gmail.com
-   ```
+## Setting Up Yahoo Mail
+
+For Yahoo Mail accounts:
+
+1. **Generate an App Password**:
+   - Go to your Yahoo Account security settings
+   - Enable two-step verification if not already enabled
+   - Generate an app password specifically for this application
+
+2. **Set the environment variables**:
+   - `EMAIL_SERVICE` = `yahoo`
+   - `EMAIL_USER` = `your.email@yahoo.com`
+   - `EMAIL_PASSWORD` = `your-app-password`
+   - `EMAIL_RECIPIENTS` = `recipient1@example.com,recipient2@example.com`
+
+## Other Email Providers
+
+For other email providers, use the following environment variables:
+
+- `EMAIL_SERVICE` = The service name (if supported by Nodemailer) or `SMTP`
+- `EMAIL_USER` = Your email address
+- `EMAIL_PASSWORD` = Your password
+- `EMAIL_RECIPIENTS` = Comma-separated recipient list
+
+If your provider is not directly supported, you may need to manually configure SMTP settings in the `email.ts` file.
 
 ## Testing Email Configuration
 
-After setting up your credentials:
+After setting up the environment variables:
 
-1. Restart the application
-2. Submit a test form (contact or job application)
-3. Check console logs for email status
-4. Verify that recipients received the notification email
+1. Log in to the admin dashboard
+2. Navigate to the "Email Settings" tab
+3. Check if the status shows as "Configured"
+4. Use the "Test Inquiry Email" or "Test Job Application Email" buttons to send test emails
+
+If the test is successful, you'll see a confirmation message, and the recipients should receive the test email.
 
 ## Troubleshooting
 
 If emails are not being sent:
 
-1. Check console logs for detailed error messages
-2. Verify your credentials are correct
-3. For Gmail: Ensure you're using an App Password, not your regular password
-4. Try a different email service
-5. Check if your email provider has any sending limits
-
-## Additional Configuration
-
-To add or change email recipients:
-
-1. Edit the `EMAIL_RECIPIENTS` variable in your `.env` file
-2. Use commas to separate multiple recipients: `email1@example.com,email2@example.com`
+1. Check the server logs for detailed error messages
+2. Verify that all environment variables are set correctly
+3. For Gmail users:
+   - Ensure that "Less secure app access" is enabled in your Google Account settings (if not using an app password)
+   - Try using an app password instead of your regular password
+4. Check if your email provider is blocking the sending of emails
+5. Try a different email service if the current one continues to have issues

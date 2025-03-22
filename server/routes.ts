@@ -7,7 +7,12 @@ import * as fs from 'fs';
 import * as path from 'path';
 import { promisify } from 'util';
 import { fileURLToPath } from 'url';
-import { sendInquiryEmail, sendJobApplicationEmail } from './services/email';
+import { 
+  sendInquiryEmail, 
+  sendJobApplicationEmail,
+  sendTestEmail, 
+  getEmailConfig 
+} from './services/email';
 import multer from 'multer';
 
 // Get the directory path in ESM
@@ -62,43 +67,15 @@ export async function registerRoutes(app: Express): Promise<Server> {
   app.post('/api/admin/test-email', isAdmin, async (req, res, next) => {
     try {
       const { emailType } = req.body;
-      let result = false;
       
-      if (emailType === 'inquiry') {
-        // Create a test inquiry
-        const testInquiry = {
-          id: 0,
-          firstName: 'Test',
-          lastName: 'User',
-          email: 'test@example.com',
-          company: 'Test Company',
-          industry: 'Technology',
-          message: 'This is a test email from the admin panel.',
-          createdAt: new Date()
-        };
-        
-        result = await sendInquiryEmail(testInquiry);
-      } else if (emailType === 'job-application') {
-        // Create a test job application
-        const testApplication = {
-          id: 0,
-          fullName: 'Test Applicant',
-          email: 'test@example.com',
-          phone: '+91-1234567890',
-          position: 'Test Position',
-          experience: '1',
-          message: 'This is a test job application email from the admin panel.',
-          resumePath: null,
-          createdAt: new Date()
-        };
-        
-        result = await sendJobApplicationEmail(testApplication);
-      } else {
+      if (emailType !== 'inquiry' && emailType !== 'job-application') {
         return res.status(400).json({ 
           success: false, 
           message: 'Invalid email type. Use "inquiry" or "job-application".' 
         });
       }
+      
+      const result = await sendTestEmail(emailType);
       
       res.json({ 
         success: result,
@@ -113,27 +90,7 @@ export async function registerRoutes(app: Express): Promise<Server> {
   
   // Email configuration status route (admin-only)
   app.get('/api/admin/email-config', isAdmin, (req, res) => {
-    const configured = !!(process.env.EMAIL_SERVICE && 
-                        process.env.EMAIL_USER && 
-                        process.env.EMAIL_PASSWORD);
-    
-    const recipients = process.env.EMAIL_RECIPIENTS 
-      ? process.env.EMAIL_RECIPIENTS.split(',').map(email => email.trim())
-      : ['sadhanaa2326@gmail.com', 'mittal21jiya@gmail.com'];
-    
-    res.json({
-      configured,
-      service: process.env.EMAIL_SERVICE || 'Not configured',
-      user: process.env.EMAIL_USER 
-        ? `${process.env.EMAIL_USER.slice(0, 3)}...${process.env.EMAIL_USER.split('@')[1] || ''}` 
-        : 'Not configured',
-      recipients,
-      missingVariables: [
-        !process.env.EMAIL_SERVICE && 'EMAIL_SERVICE',
-        !process.env.EMAIL_USER && 'EMAIL_USER', 
-        !process.env.EMAIL_PASSWORD && 'EMAIL_PASSWORD'
-      ].filter(Boolean)
-    });
+    res.json(getEmailConfig());
   });
 
   // Client Inquiry Endpoints

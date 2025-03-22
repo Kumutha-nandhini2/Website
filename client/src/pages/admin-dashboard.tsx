@@ -213,10 +213,15 @@ const AdminDashboard = () => {
                     <Pagination className="mt-6">
                       <PaginationContent>
                         <PaginationItem>
-                          <PaginationPrevious 
+                          <Button 
+                            variant="outline" 
+                            size="icon"
                             onClick={() => setInquiriesPage(Math.max(1, inquiriesPage - 1))}
                             disabled={inquiriesPage === 1}
-                          />
+                          >
+                            <span className="sr-only">Go to previous page</span>
+                            &lt;
+                          </Button>
                         </PaginationItem>
                         {Array.from({ length: totalInquiryPages }).map((_, i) => (
                           <PaginationItem key={i}>
@@ -229,10 +234,15 @@ const AdminDashboard = () => {
                           </PaginationItem>
                         ))}
                         <PaginationItem>
-                          <PaginationNext 
+                          <Button 
+                            variant="outline" 
+                            size="icon"
                             onClick={() => setInquiriesPage(Math.min(totalInquiryPages, inquiriesPage + 1))}
                             disabled={inquiriesPage === totalInquiryPages}
-                          />
+                          >
+                            <span className="sr-only">Go to next page</span>
+                            &gt;
+                          </Button>
                         </PaginationItem>
                       </PaginationContent>
                     </Pagination>
@@ -310,10 +320,15 @@ const AdminDashboard = () => {
                     <Pagination className="mt-6">
                       <PaginationContent>
                         <PaginationItem>
-                          <PaginationPrevious 
+                          <Button 
+                            variant="outline" 
+                            size="icon"
                             onClick={() => setApplicationsPage(Math.max(1, applicationsPage - 1))}
                             disabled={applicationsPage === 1}
-                          />
+                          >
+                            <span className="sr-only">Go to previous page</span>
+                            &lt;
+                          </Button>
                         </PaginationItem>
                         {Array.from({ length: totalApplicationPages }).map((_, i) => (
                           <PaginationItem key={i}>
@@ -326,10 +341,15 @@ const AdminDashboard = () => {
                           </PaginationItem>
                         ))}
                         <PaginationItem>
-                          <PaginationNext 
+                          <Button 
+                            variant="outline" 
+                            size="icon"
                             onClick={() => setApplicationsPage(Math.min(totalApplicationPages, applicationsPage + 1))}
                             disabled={applicationsPage === totalApplicationPages}
-                          />
+                          >
+                            <span className="sr-only">Go to next page</span>
+                            &gt;
+                          </Button>
                         </PaginationItem>
                       </PaginationContent>
                     </Pagination>
