@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { useQuery } from "@tanstack/react-query";
+import { useQuery, useMutation } from "@tanstack/react-query";
 import { Inquiry, JobApplication } from "@shared/schema";
 import { 
   Tabs, 
@@ -13,6 +13,7 @@ import {
   CardDescription,
   CardHeader,
   CardTitle,
+  CardFooter,
 } from "@/components/ui/card";
 import {
   Table,
@@ -31,9 +32,11 @@ import {
   PaginationPrevious 
 } from "@/components/ui/pagination";
 import { Button } from "@/components/ui/button";
-import { Loader2, Download } from "lucide-react";
+import { Loader2, Download, CheckCircle, AlertCircle, Mail, Settings } from "lucide-react";
 import { useAuth } from "@/hooks/use-auth";
+import { useToast } from "@/hooks/use-toast";
 import { format } from "date-fns";
+import { apiRequest } from "@/lib/queryClient";
 
 const AdminDashboard = () => {
   const [inquiriesPage, setInquiriesPage] = useState(1);
@@ -85,6 +88,63 @@ const AdminDashboard = () => {
     );
   }
 
+  // Define the interface for email config
+  interface EmailConfig {
+    configured: boolean;
+    service: string;
+    user: string;
+    recipients: string[];
+    missingVariables: string[];
+  }
+  
+  // Fetch email configuration
+  const { 
+    data: emailConfig, 
+    isLoading: emailConfigLoading,
+    refetch: refetchEmailConfig
+  } = useQuery<EmailConfig>({
+    queryKey: ['/api/admin/email-config'],
+    queryFn: async () => {
+      const res = await apiRequest('GET', '/api/admin/email-config');
+      return res.json();
+    }
+  });
+  
+  // Test email mutation
+  const { toast } = useToast();
+  const testEmailMutation = useMutation({
+    mutationFn: async (emailType: 'inquiry' | 'job-application') => {
+      const res = await apiRequest('POST', '/api/admin/test-email', { emailType });
+      return res.json();
+    },
+    onSuccess: (data) => {
+      if (data.success) {
+        toast({
+          title: "Email Sent",
+          description: "Test email was sent successfully.",
+          variant: "default",
+        });
+      } else {
+        toast({
+          title: "Failed to Send",
+          description: data.message || "Could not send test email. Check server logs.",
+          variant: "destructive",
+        });
+      }
+    },
+    onError: (error) => {
+      toast({
+        title: "Error",
+        description: `Failed to send test email: ${(error as Error).message}`,
+        variant: "destructive",
+      });
+    }
+  });
+  
+  const sendTestEmail = async (type: 'inquiry' | 'job-application') => {
+    testEmailMutation.mutate(type);
+  };
+  
   return (
     <div className="container mx-auto px-4 py-8">
       <h1 className="text-3xl font-bold mb-6">Admin Dashboard</h1>
@@ -93,6 +153,10 @@ const AdminDashboard = () => {
         <TabsList className="mb-8">
           <TabsTrigger value="inquiries">Client Inquiries</TabsTrigger>
           <TabsTrigger value="applications">Job Applications</TabsTrigger>
+          <TabsTrigger value="email">
+            <Mail className="h-4 w-4 mr-2" />
+            Email Settings
+          </TabsTrigger>
         </TabsList>
         
         {/* Inquiries Tab */}
@@ -276,6 +340,111 @@ const AdminDashboard = () => {
                   <p className="text-neutral-dark">No job applications yet</p>
                 </div>
               )}
+            </CardContent>
+          </Card>
+        </TabsContent>
+        
+        {/* Email Settings Tab */}
+        <TabsContent value="email">
+          <Card>
+            <CardHeader>
+              <CardTitle>Email Configuration</CardTitle>
+              <CardDescription>Email service status and settings</CardDescription>
+            </CardHeader>
+            <CardContent>
+              {emailConfigLoading ? (
+                <div className="flex justify-center py-8">
+                  <Loader2 className="h-8 w-8 animate-spin text-primary" />
+                </div>
+              ) : (
+                <div className="space-y-4">
+                  <div className="flex items-center">
+                    <span className="font-semibold mr-2">Status:</span>
+                    {emailConfig?.configured ? (
+                      <span className="flex items-center text-green-500">
+                        <CheckCircle className="w-4 h-4 mr-1" />
+                        Configured
+                      </span>
+                    ) : (
+                      <span className="flex items-center text-red-500">
+                        <AlertCircle className="w-4 h-4 mr-1" />
+                        Not Configured
+                      </span>
+                    )}
+                  </div>
+                  
+                  <div>
+                    <span className="font-semibold">Service:</span> {emailConfig?.service}
+                  </div>
+                  
+                  <div>
+                    <span className="font-semibold">Email User:</span> {emailConfig?.user}
+                  </div>
+                  
+                  <div>
+                    <span className="font-semibold">Recipients:</span>
+                    <ul className="list-disc list-inside ml-4">
+                      {emailConfig?.recipients.map((recipient, index) => (
+                        <li key={index} className="text-sm">{recipient}</li>
+                      ))}
+                    </ul>
+                  </div>
+                  
+                  {!emailConfig?.configured && emailConfig?.missingVariables && emailConfig.missingVariables.length > 0 && (
+                    <div className="mt-4">
+                      <span className="font-semibold text-red-500">Missing Environment Variables:</span>
+                      <ul className="list-disc list-inside ml-4">
+                        {emailConfig.missingVariables.map((variable, index) => (
+                          <li key={index} className="text-sm text-red-500">{variable}</li>
+                        ))}
+                      </ul>
+                      <p className="text-sm mt-2">
+                        See EMAIL_SETUP.md for instructions on how to set up email credentials.
+                      </p>
+                    </div>
+                  )}
+                </div>
+              )}
+            </CardContent>
+            <CardFooter className="flex flex-col items-start space-y-2 sm:flex-row sm:space-y-0 sm:space-x-2">
+              <Button
+                onClick={() => sendTestEmail('inquiry')}
+                disabled={!emailConfig?.configured || testEmailMutation.isPending}
+              >
+                Test Inquiry Email
+              </Button>
+              <Button
+                onClick={() => sendTestEmail('job-application')}
+                disabled={!emailConfig?.configured || testEmailMutation.isPending}
+              >
+                Test Job Application Email
+              </Button>
+              <Button 
+                onClick={() => refetchEmailConfig()} 
+                variant="outline"
+              >
+                Refresh Status
+              </Button>
+            </CardFooter>
+          </Card>
+          
+          <Card className="mt-6">
+            <CardHeader>
+              <CardTitle>Email Setup Instructions</CardTitle>
+            </CardHeader>
+            <CardContent>
+              <p className="text-sm mb-4">
+                To configure email notifications, you need to set the following environment variables:
+              </p>
+              <ul className="list-disc list-inside space-y-1 ml-4">
+                <li className="text-sm"><strong>EMAIL_SERVICE</strong> - The email service (gmail, outlook, etc.)</li>
+                <li className="text-sm"><strong>EMAIL_USER</strong> - The sender email address</li>
+                <li className="text-sm"><strong>EMAIL_PASSWORD</strong> - The email password or app password</li>
+                <li className="text-sm"><strong>EMAIL_RECIPIENTS</strong> - Comma-separated list of recipient emails</li>
+              </ul>
+              <p className="text-sm mt-4">
+                For detailed setup instructions, please refer to the EMAIL_SETUP.md file in the project root.
+              </p>
             </CardContent>
           </Card>
         </TabsContent>
