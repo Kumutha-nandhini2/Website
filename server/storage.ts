@@ -48,6 +48,11 @@ export class DatabaseStorage implements IStorage {
       },
       createTableIfMissing: true,
     });
+    
+    // Seed job listings
+    this.seedJobListings().catch(error => {
+      console.error('Failed to seed job listings:', error);
+    });
   }
 
   // User operations
