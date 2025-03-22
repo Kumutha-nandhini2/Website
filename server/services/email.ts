@@ -93,8 +93,14 @@ const getTransporter = () => {
   return transporter;
 };
 
-// Recipients list
-const recipients = ['sadhanaa2326@gmail.com', 'mittal21jiya@gmail.com'];
+// Recipients list from environment variables, fallback to defaults if not specified
+const defaultRecipients = ['sadhanaa2326@gmail.com', 'mittal21jiya@gmail.com'];
+const getRecipients = (): string[] => {
+  if (process.env.EMAIL_RECIPIENTS) {
+    return process.env.EMAIL_RECIPIENTS.split(',').map(email => email.trim());
+  }
+  return defaultRecipients;
+};
 
 /**
  * Send email for a new inquiry/demo request
@@ -146,7 +152,7 @@ export const sendInquiryEmail = async (inquiry: Inquiry): Promise<boolean> => {
     // Send email
     const info = await transporter.sendMail({
       from: process.env.EMAIL_USER,
-      to: recipients.join(', '),
+      to: getRecipients().join(', '),
       subject,
       text,
       html
@@ -222,7 +228,7 @@ export const sendJobApplicationEmail = async (application: JobApplication): Prom
     // Prepare email options
     const mailOptions: nodemailer.SendMailOptions = {
       from: process.env.EMAIL_USER,
-      to: recipients.join(', '),
+      to: getRecipients().join(', '),
       subject,
       text,
       html
