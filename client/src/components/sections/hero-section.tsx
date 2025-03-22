@@ -52,7 +52,7 @@ const HeroSection = () => {
             <div className="absolute -top-8 -left-8 w-24 h-24 bg-secondary opacity-10 rounded-full"></div>
             <div className="rounded-xl overflow-hidden shadow-lg relative z-10">
               <img
-                src="https://images.unsplash.com/photo-1639322537228-f710d846310a?auto=format&fit=crop&w=800&q=80"
+                src="https://images.unsplash.com/photo-1517134191118-9d595e4c8c2b?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=800&q=80"
                 alt="Data privacy visualization"
                 className="w-full h-auto"
               />
