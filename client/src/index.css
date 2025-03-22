@@ -3,11 +3,42 @@
 @tailwind utilities;
 
 @layer base {
+  :root {
+    --neutral-light: 45 30% 94%; /* Light beige */
+    --neutral-dark: 33 25% 23%;  /* Dark brown */
+    --primary-dark: 35 40% 25%;  /* Rich brown */
+    --primary-light: 38 40% 90%; /* Soft beige */
+  }
+
   * {
     @apply border-border;
   }
 
   body {
     @apply font-sans antialiased bg-background text-foreground;
+  }
+
+  .bg-neutral-light {
+    @apply bg-[hsl(var(--neutral-light))];
+  }
+
+  .bg-neutral-dark {
+    @apply bg-[hsl(var(--neutral-dark))];
+  }
+
+  .bg-primary-dark {
+    @apply bg-[hsl(var(--primary-dark))];
+  }
+
+  .bg-primary-light {
+    @apply bg-[hsl(var(--primary-light))];
+  }
+
+  .text-neutral-dark {
+    @apply text-[hsl(var(--neutral-dark))];
+  }
+
+  .text-primary-dark {
+    @apply text-[hsl(var(--primary-dark))];
   }
 }
