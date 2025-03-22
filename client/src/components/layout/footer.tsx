@@ -10,10 +10,7 @@ const Footer = () => {
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-5 gap-8">
           <div className="lg:col-span-2">
             <Link href="/" className="flex items-center mb-6">
-              <div className="w-10 h-10 rounded-md bg-white flex items-center justify-center">
-                <ShieldCheck className="text-primary-dark" size={20} />
-              </div>
-              <span className="ml-2 text-2xl font-bold">PrivacyWeave</span>
+              <Logo width={140} height={50} className="w-[140px] h-[50px]" />
             </Link>
             <p className="mb-6 text-white text-opacity-80">
               Empowering organizations with AI-driven privacy automation solutions to protect data and maintain compliance.

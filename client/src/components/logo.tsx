@@ -7,11 +7,11 @@ interface LogoProps {
 }
 
 const Logo: React.FC<LogoProps> = ({ className = '', width = 200, height = 80 }) => {
-  // Our beige and brown color scheme
-  const primaryDark = "#8D6E63"; // Dark brown 
-  const primaryMedium = "#A1887F"; // Medium brown
-  const primaryLight = "#F8F3E5"; // Light beige
-  const accentColor = "#D7CCC8"; // Light brownish-gray
+  // Blue color scheme as specified in the design
+  const primaryDark = "#2563EB"; // Medium Blue for text and knot lines
+  const primaryMedium = "#2563EB"; // Medium Blue
+  const primaryLight = "#FFFFFF"; // White background
+  const accentColor = "#06B6D4"; // Cyan highlight for upper portions
 
   return (
     <div className={`flex flex-col items-center ${className}`}>
@@ -22,7 +22,7 @@ const Logo: React.FC<LogoProps> = ({ className = '', width = 200, height = 80 })
         fill="none"
         xmlns="http://www.w3.org/2000/svg"
       >
-        {/* Rounded Rectangle Background */}
+        {/* Rounded Square Background */}
         <rect
           x="40"
           y="10"
@@ -34,77 +34,82 @@ const Logo: React.FC<LogoProps> = ({ className = '', width = 200, height = 80 })
           strokeWidth="2"
         />
         
-        {/* The Knot Design - Celtic-inspired privacy knot */}
+        {/* Celtic Knot Design with P&W shapes */}
         <g transform="translate(100, 35) scale(0.8)">
-          {/* Outer loop - left */}
+          {/* Main knot outline */}
           <path
-            d="M-30,0 C-30,-20 -10,-30 0,-20 C10,-30 30,-20 30,0 C30,20 10,30 0,20 C-10,30 -30,20 -30,0 Z"
+            d="M-25,0 A25,25 0 1,1 25,0 A25,25 0 1,1 -25,0"
             stroke={primaryDark}
-            strokeWidth="4"
+            strokeWidth="3"
             fill="none"
           />
           
-          {/* Inner horizontal crossing lines */}
+          {/* P and W formation - horizontal cross lines */}
           <path
-            d="M-20,-5 C-10,-5 -10,5 0,5 C10,5 10,-5 20,-5"
+            d="M-20,-5 C-15,-5 -10,5 0,5 C10,5 15,-5 20,-5"
             stroke={primaryDark}
-            strokeWidth="4"
+            strokeWidth="3"
             fill="none"
           />
           
           <path
-            d="M-20,5 C-10,5 -10,-5 0,-5 C10,-5 10,5 20,5"
+            d="M-20,5 C-15,5 -10,-5 0,-5 C10,-5 15,5 20,5"
             stroke={primaryDark}
-            strokeWidth="4"
+            strokeWidth="3"
             fill="none"
           />
           
-          {/* Weaving elements that form P & W */}
+          {/* P formation */}
           <path
             d="M-15,-10 C-15,-5 -10,0 -15,5 C-20,10 -15,15 -10,15"
-            stroke={primaryMedium}
-            strokeWidth="3"
-            fill="none"
-          />
-          
-          <path
-            d="M5,-10 C5,-5 0,0 5,5 C10,10 15,5 15,0 C15,-5 10,-10 5,-10"
-            stroke={primaryMedium}
-            strokeWidth="3"
-            fill="none"
-          />
-          
-          {/* Decorative accents - representing data flow */}
-          <path
-            d="M-25,-5 C-20,-15 -10,-15 -5,-5"
-            stroke={accentColor}
+            stroke={primaryDark}
             strokeWidth="2.5"
             fill="none"
-            strokeDasharray="1,1"
+          />
+          
+          {/* W formation */}
+          <path
+            d="M0,10 L5,0 L10,10 L15,0"
+            stroke={primaryDark}
+            strokeWidth="2.5"
+            fill="none"
+          />
+          
+          {/* Cyan highlights on upper portions */}
+          <path
+            d="M-20,-5 C-15,-15 -5,-15 0,-5"
+            stroke={accentColor}
+            strokeWidth="2"
+            fill="none"
           />
           
           <path
-            d="M5,-5 C10,-15 20,-15 25,-5"
+            d="M0,-5 C5,-15 15,-15 20,-5"
             stroke={accentColor}
-            strokeWidth="2.5"
+            strokeWidth="2"
             fill="none"
-            strokeDasharray="1,1"
+          />
+          
+          {/* Additional decorative elements */}
+          <path
+            d="M-10,-15 C-5,-10 5,-10 10,-15"
+            stroke={accentColor}
+            strokeWidth="1.5"
+            fill="none"
           />
           
           <path
-            d="M-25,5 C-20,15 -10,15 -5,5"
-            stroke={accentColor}
-            strokeWidth="2.5"
+            d="M-15,0 C-10,-5 -5,0 0,5"
+            stroke={primaryDark}
+            strokeWidth="2"
             fill="none"
-            strokeDasharray="1,1"
           />
           
           <path
-            d="M5,5 C10,15 20,15 25,5"
-            stroke={accentColor}
-            strokeWidth="2.5"
+            d="M0,5 C5,0 10,-5 15,0"
+            stroke={primaryDark}
+            strokeWidth="2"
             fill="none"
-            strokeDasharray="1,1"
           />
         </g>
         
