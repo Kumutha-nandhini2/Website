@@ -1,6 +1,7 @@
 import { Link } from "wouter";
-import { ShieldCheck, Mail, Phone } from "lucide-react";
+import { Mail, Phone } from "lucide-react";
 import { FaLinkedinIn, FaTwitter, FaFacebookF, FaInstagram } from "react-icons/fa";
+import Logo from "@/components/logo";
 
 const Footer = () => {
   return (

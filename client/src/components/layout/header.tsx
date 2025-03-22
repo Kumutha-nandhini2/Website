@@ -13,7 +13,8 @@ import {
   DropdownMenuTrigger,
 } from "@/components/ui/dropdown-menu";
 import { Button } from "@/components/ui/button";
-import { Menu, ShieldCheck, ChevronDown } from "lucide-react";
+import { Menu, ChevronDown } from "lucide-react";
+import Logo from "@/components/logo";
 
 const Header = () => {
   const [location] = useLocation();
@@ -33,10 +34,7 @@ const Header = () => {
       <div className="container mx-auto px-4 py-4 flex justify-between items-center">
         <div className="flex items-center">
           <Link href="/" className="flex items-center">
-            <div className="w-10 h-10 rounded-md bg-gradient-to-r from-primary-dark to-primary flex items-center justify-center">
-              <ShieldCheck className="text-white" size={20} />
-            </div>
-            <span className="ml-2 text-2xl font-bold font-heading text-primary-dark">PrivacyWeave</span>
+            <Logo width={160} height={50} className="lg:w-[160px] lg:h-[50px] w-[130px] h-[40px]" />
           </Link>
         </div>
         
@@ -169,7 +167,10 @@ const Header = () => {
             </Button>
           </SheetTrigger>
           <SheetContent side="right">
-            <div className="flex flex-col gap-6 mt-10">
+            <div className="flex justify-center mb-6 mt-4">
+              <Logo width={140} height={50} />
+            </div>
+            <div className="flex flex-col gap-6">
               <div className="space-y-3">
                 <div className="font-bold text-lg mb-2">Products</div>
                 <Link href="#" onClick={() => setMenuOpen(false)}>
