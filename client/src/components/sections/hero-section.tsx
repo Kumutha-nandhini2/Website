@@ -35,11 +35,15 @@ const HeroSection = () => {
               </Link>
             </div>
             <div className="mt-8 flex items-center">
-              <span className="text-sm text-neutral-dark">Trusted by top healthcare institutions in Coimbatore</span>
-              <div className="ml-4 flex space-x-3">
-                <div className="w-8 h-8 rounded-full bg-neutral-200"></div>
-                <div className="w-8 h-8 rounded-full bg-neutral-200"></div>
-                <div className="w-8 h-8 rounded-full bg-neutral-200"></div>
+              <div className="flex items-center py-2 px-4 bg-white rounded-lg shadow-sm">
+                <div className="mr-3 text-primary">
+                  <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+                    <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"></path>
+                  </svg>
+                </div>
+                <span className="text-sm font-medium">
+                  End-to-end encryption with industry-leading 256-bit standards
+                </span>
               </div>
             </div>
           </motion.div>
