@@ -6,13 +6,13 @@
 
 @layer base {
   :root {
-    --neutral-light: 40 40% 94%; /* Warmer light beige */
-    --neutral-dark: 30 30% 20%;  /* Deeper dark brown */
-    --primary-dark: 32 50% 30%;  /* Richer medium-toned brown with more depth */
-    --primary-light: 35 60% 88%; /* Warmer, richer beige */
-    --accent: 15 80% 50%;        /* Strong rusty orange-red accent */
-    --accent-light: 15 60% 65%;  /* Lighter version of accent */
-    --primary-darker: 32 55% 25%; /* Even darker shade of primary for gradients */
+    --background: 39 75% 92%; /* #FFECD6 Soft Beige background */
+    --foreground: 0 0% 20%; /* #333333 Dark Gray text */
+    --heading: 223 70% 23%; /* #0F2167 Deep Blue for headings */
+    --accent: 201 100% 23%; /* #004D73 Dark Blue-Gray for accents */
+    --accent-light: 201 80% 40%; /* Lighter version of accent */
+    --primary-light: 210 80% 60%; /* Lighter blue */
+    --primary-dark: 210 100% 30%; /* Darker blue */
   }
 
   * {
@@ -27,13 +27,13 @@
   }
 
   body {
-    @apply font-sans antialiased bg-background text-foreground;
+    @apply font-sans antialiased bg-[#FFECD6] text-[#333333];
     font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
     letter-spacing: -0.01em;
   }
   
   h1, h2, h3, h4, h5, h6 {
-    @apply font-sans tracking-tight;
+    @apply font-sans tracking-tight text-[#0F2167];
     letter-spacing: -0.02em;
   }
   
@@ -53,34 +53,54 @@
   }
   
   p {
-    @apply text-neutral-dark text-opacity-80;
+    @apply text-[#333333] text-opacity-90;
     line-height: 1.6;
   }
 
-  .bg-neutral-light {
-    @apply bg-[hsl(var(--neutral-light))];
+  /* Background classes */
+  .bg-soft-beige {
+    @apply bg-[#FFECD6];
   }
 
-  .bg-neutral-dark {
-    @apply bg-[hsl(var(--neutral-dark))];
+  .bg-blue {
+    @apply bg-[#0054A6];
   }
 
-  .bg-primary-dark {
-    @apply bg-[hsl(var(--primary-dark))];
+  .bg-dark-blue {
+    @apply bg-[#004D73];
   }
 
-  .bg-primary-light {
+  .bg-light-blue {
     @apply bg-[hsl(var(--primary-light))];
   }
 
-  .text-neutral-dark {
-    @apply text-[hsl(var(--neutral-dark))];
+  /* Text classes */
+  .text-dark-gray {
+    @apply text-[#333333];
   }
 
-  .text-primary-dark {
-    @apply text-[hsl(var(--primary-dark))];
+  .text-deep-blue {
+    @apply text-[#0F2167];
   }
 
+  .text-blue {
+    @apply text-[#0054A6];
+  }
+
+  .text-dark-blue {
+    @apply text-[#004D73];
+  }
+
+  /* Border classes */
+  .border-blue {
+    @apply border-[#0054A6];
+  }
+
+  .border-dark-blue {
+    @apply border-[#004D73];
+  }
+  
+  /* Accent colors */
   .bg-accent {
     @apply bg-[hsl(var(--accent))];
   }
@@ -95,18 +115,6 @@
 
   .border-accent {
     @apply border-[hsl(var(--accent))];
-  }
-  
-  .bg-primary-darker {
-    @apply bg-[hsl(var(--primary-darker))];
-  }
-  
-  .text-primary-darker {
-    @apply text-[hsl(var(--primary-darker))];
-  }
-  
-  .border-primary-darker {
-    @apply border-[hsl(var(--primary-darker))];
   }
   
   /* Add subtle texture to beige backgrounds */
