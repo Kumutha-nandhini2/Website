@@ -5,12 +5,12 @@ import Logo from "@/components/logo";
 
 const Footer = () => {
   return (
-    <footer className="bg-gradient-to-r from-primary-dark to-primary-darker text-white py-16">
+    <footer className="bg-dark-blue text-white py-16">
       <div className="container mx-auto px-4">
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-5 gap-8">
           <div className="lg:col-span-2">
             <Link href="/" className="flex items-center mb-6">
-              <Logo width={140} height={50} className="w-[140px] h-[50px]" />
+              <Logo width={160} height={50} className="w-[160px] h-[50px]" />
             </Link>
             <p className="mb-6 text-white text-opacity-90 font-light">
               Empowering organizations with AI-driven privacy automation solutions to protect data and maintain compliance.
@@ -84,7 +84,7 @@ const Footer = () => {
         </div>
         
         <div className="relative my-12">
-          <div className="absolute left-0 right-0 h-px bg-gradient-to-r from-transparent via-white/20 to-transparent"></div>
+          <div className="absolute left-0 right-0 h-px bg-white/20"></div>
         </div>
         
         <div className="flex flex-col md:flex-row justify-between items-center">
