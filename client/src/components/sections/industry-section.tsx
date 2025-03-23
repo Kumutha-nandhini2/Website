@@ -3,20 +3,32 @@ import { motion } from "framer-motion";
 const industries = [
   {
     title: "Healthcare",
-    description: "HIPAA-compliant solutions for hospitals and healthcare providers.",
-    image: "https://images.unsplash.com/photo-1631217868264-e5b90bb7e133?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=600&q=80",
+    description: "HIPAA-compliant solutions for healthcare providers.",
+    image: "https://images.unsplash.com/photo-1516574187841-cb9cc2ca948b?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80",
     delay: 0
   },
   {
     title: "Finance",
     description: "Secure financial data handling with regulatory compliance.",
-    image: "https://images.unsplash.com/photo-1460925895917-afdab827c52f?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=600&q=80",
-    delay: 0.2
+    image: "https://images.unsplash.com/photo-1579621970588-a35d0e7ab9b6?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80",
+    delay: 0.1
   },
   {
     title: "Technology",
-    description: "AI-driven tech solutions for software companies and startups.",
-    image: "https://images.unsplash.com/photo-1563986768609-322da13575f3?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=600&q=80",
+    description: "AI-driven tech solutions for software companies.",
+    image: "https://images.unsplash.com/photo-1581090700227-8e3b56af722e?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80",
+    delay: 0.2
+  },
+  {
+    title: "Retail",
+    description: "Protect customer data and maintain privacy compliance.",
+    image: "https://images.unsplash.com/photo-1610438465533-6841dc0cf939?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80",
+    delay: 0.3
+  },
+  {
+    title: "Car Dealerships",
+    description: "Secure customer and inventory data management.",
+    image: "https://images.unsplash.com/photo-1603553329474-99f95f35394f?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80",
     delay: 0.4
   }
 ];
@@ -24,26 +36,26 @@ const industries = [
 const IndustryCard = ({ industry }: { industry: typeof industries[0] }) => {
   return (
     <motion.div 
-      className="group rounded-xl overflow-hidden shadow-md relative"
-      initial={{ opacity: 0, y: 20 }}
+      className="group rounded-lg overflow-hidden shadow-sm relative"
+      initial={{ opacity: 0, y: 10 }}
       whileInView={{ opacity: 1, y: 0 }}
       viewport={{ once: true }}
-      transition={{ duration: 0.6, delay: industry.delay }}
+      transition={{ duration: 0.5, delay: industry.delay }}
     >
-      <div className="absolute inset-0 bg-gradient-to-b from-transparent to-primary-dark opacity-70 z-10"></div>
+      <div className="absolute inset-0 bg-gradient-to-b from-transparent to-dark-blue opacity-70 z-10"></div>
       <img
         src={industry.image}
         alt={`${industry.title} privacy solutions`}
-        className="w-full h-80 object-cover transition-transform group-hover:scale-105"
+        className="w-full h-56 object-cover transition-transform group-hover:scale-105"
       />
-      <div className="absolute bottom-0 left-0 right-0 p-6 z-20">
-        <h3 className="text-2xl font-bold text-white mb-2">{industry.title}</h3>
-        <p className="text-white text-opacity-90 mb-4">
+      <div className="absolute bottom-0 left-0 right-0 p-4 z-20">
+        <h3 className="text-xl font-bold text-white mb-1">{industry.title}</h3>
+        <p className="text-white text-opacity-90 text-sm mb-2">
           {industry.description}
         </p>
-        <a href="#" className="text-white inline-flex items-center font-medium">
+        <a href="#" className="text-white text-sm inline-flex items-center font-medium">
           Learn more
-          <svg xmlns="http://www.w3.org/2000/svg" className="h-4 w-4 ml-1" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+          <svg xmlns="http://www.w3.org/2000/svg" className="h-3 w-3 ml-1" fill="none" viewBox="0 0 24 24" stroke="currentColor">
             <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
           </svg>
         </a>
@@ -54,22 +66,22 @@ const IndustryCard = ({ industry }: { industry: typeof industries[0] }) => {
 
 const IndustrySection = () => {
   return (
-    <section className="py-20 bg-white">
+    <section className="py-12 bg-[#F6F4F0]">
       <div className="container mx-auto px-4">
         <motion.div 
-          className="text-center mb-16"
+          className="text-center mb-10"
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
           transition={{ duration: 0.6 }}
         >
-          <h2 className="text-3xl md:text-4xl font-bold text-primary-dark mb-6">Industry Solutions</h2>
-          <p className="text-lg text-neutral-dark max-w-3xl mx-auto">
-            PrivacyWeave delivers tailored privacy solutions for a variety of industries, with special focus on healthcare, finance, and technology sectors.
+          <h2 className="text-2xl md:text-3xl font-bold text-deep-blue mb-4">Industry Solutions</h2>
+          <p className="text-base text-dark-gray max-w-2xl mx-auto">
+            PrivacyWeave delivers tailored privacy solutions across multiple industries including healthcare, finance, technology, retail, and automotive.
           </p>
         </motion.div>
         
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-5 gap-4">
           {industries.map((industry, index) => (
             <IndustryCard key={index} industry={industry} />
           ))}
