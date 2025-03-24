@@ -21,50 +21,10 @@ const AboutPage = () => {
         </div>
       </section>
 
-      {/* Our Story Section */}
-      <section className="py-16 bg-white">
-        <div className="container mx-auto px-4">
-          <div className="grid grid-cols-1 lg:grid-cols-2 gap-10 items-center">
-            <motion.div
-              initial={{ opacity: 0, x: -15 }}
-              whileInView={{ opacity: 1, x: 0 }}
-              viewport={{ once: true }}
-              transition={{ duration: 0.5 }}
-            >
-              <h2 className="text-2xl md:text-3xl font-bold text-deep-blue mb-4">Our Story</h2>
-              <p className="text-base text-dark-gray mb-4">
-                PrivacyWeave was founded in 2020 by a team of privacy experts, cybersecurity professionals, and AI engineers with a shared mission: to transform how organizations protect sensitive data.
-              </p>
-              <p className="text-base text-dark-gray mb-4">
-                We recognized that as data collection accelerated and privacy regulations grew more complex, traditional approaches to data protection were no longer sufficient. Organizations needed intelligent, automated solutions that could scale with their needs.
-              </p>
-              <p className="text-base text-dark-gray">
-                Today, PrivacyWeave serves clients across healthcare, finance, and technology sectors, providing end-to-end privacy solutions powered by cutting-edge AI and encryption technologies.
-              </p>
-            </motion.div>
-            <motion.div
-              initial={{ opacity: 0, x: 15 }}
-              whileInView={{ opacity: 1, x: 0 }}
-              viewport={{ once: true }}
-              transition={{ duration: 0.5, delay: 0.2 }}
-              className="relative"
-            >
-              <div className="absolute -top-6 -left-6 w-20 h-20 bg-blue/10 rounded-lg"></div>
-              <div className="rounded-lg overflow-hidden shadow-md relative z-10">
-                <img
-                  src="https://images.unsplash.com/photo-1519389950473-47ba0277781c?auto=format&fit=crop&w=800&q=80"
-                  alt="PrivacyWeave team collaboration"
-                  className="w-full h-auto"
-                />
-              </div>
-              <div className="absolute -bottom-6 -right-6 w-32 h-32 bg-dark-blue/10 rounded-lg"></div>
-            </motion.div>
-          </div>
-        </div>
-      </section>
+
 
       {/* Mission & Values Section */}
-      <section className="py-16 bg-[#F6F4F0]">
+      <section className="py-16 bg-[#FDFAF6]">
         <div className="container mx-auto px-4">
           <motion.div
             className="text-center mb-12"
@@ -168,7 +128,7 @@ const AboutPage = () => {
 
 
       {/* Our Technology Section */}
-      <section className="py-16 bg-[#F6F4F0]">
+      <section className="py-16 bg-[#FDFAF6]">
         <div className="container mx-auto px-4">
           <motion.div
             className="text-center mb-12"
