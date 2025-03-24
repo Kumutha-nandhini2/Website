@@ -5,7 +5,7 @@ import Logo from "@/components/logo";
 
 const Footer = () => {
   return (
-    <footer className="bg-blue text-white py-16">
+    <footer className="bg-dark-blue text-white py-16">
       <div className="container mx-auto px-4">
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-5 gap-8">
           <div className="lg:col-span-2">
@@ -17,7 +17,7 @@ const Footer = () => {
             </p>
             <div className="mb-6 flex flex-col space-y-3">
               <div className="flex items-center group">
-                <div className="w-8 h-8 rounded-md bg-white/10 flex items-center justify-center mr-3 transition-all group-hover:bg-white/20">
+                <div className="w-8 h-8 rounded-full bg-white/10 flex items-center justify-center mr-3 transition-all group-hover:bg-white/20">
                   <Mail className="text-white" size={16} />
                 </div>
                 <a href="mailto:mittal21jiya@gmail.com" className="text-white text-opacity-90 hover:text-opacity-100 transition-all">
@@ -25,7 +25,7 @@ const Footer = () => {
                 </a>
               </div>
               <div className="flex items-center group">
-                <div className="w-8 h-8 rounded-md bg-white/10 flex items-center justify-center mr-3 transition-all group-hover:bg-white/20">
+                <div className="w-8 h-8 rounded-full bg-white/10 flex items-center justify-center mr-3 transition-all group-hover:bg-white/20">
                   <Phone className="text-white" size={16} />
                 </div>
                 <a href="tel:+919087695972" className="text-white text-opacity-90 hover:text-opacity-100 transition-all">
@@ -34,16 +34,16 @@ const Footer = () => {
               </div>
             </div>
             <div className="flex space-x-3">
-              <a href="#" className="w-9 h-9 rounded-md bg-white/10 flex items-center justify-center hover:bg-white/20 transition-all">
+              <a href="#" className="w-9 h-9 rounded-full bg-white/10 flex items-center justify-center hover:bg-white/20 transition-all">
                 <FaLinkedinIn size={16} />
               </a>
-              <a href="#" className="w-9 h-9 rounded-md bg-white/10 flex items-center justify-center hover:bg-white/20 transition-all">
+              <a href="#" className="w-9 h-9 rounded-full bg-white/10 flex items-center justify-center hover:bg-white/20 transition-all">
                 <FaTwitter size={16} />
               </a>
-              <a href="#" className="w-9 h-9 rounded-md bg-white/10 flex items-center justify-center hover:bg-white/20 transition-all">
+              <a href="#" className="w-9 h-9 rounded-full bg-white/10 flex items-center justify-center hover:bg-white/20 transition-all">
                 <FaFacebookF size={16} />
               </a>
-              <a href="#" className="w-9 h-9 rounded-md bg-white/10 flex items-center justify-center hover:bg-white/20 transition-all">
+              <a href="#" className="w-9 h-9 rounded-full bg-white/10 flex items-center justify-center hover:bg-white/20 transition-all">
                 <FaInstagram size={16} />
               </a>
             </div>

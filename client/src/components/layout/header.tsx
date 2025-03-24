@@ -30,7 +30,7 @@ const Header = () => {
   };
 
   return (
-    <header className="fixed top-0 left-0 right-0 bg-white z-50 backdrop-blur-sm bg-white/90 border-b border-gray-100 shadow-sm">
+    <header className="fixed top-0 left-0 right-0 bg-white z-50 backdrop-blur-sm bg-white/90 border-b border-blue shadow-sm">
       <div className="container mx-auto px-4 py-3 flex justify-between items-center">
         <div className="flex items-center">
           <Link href="/" className="flex items-center">
@@ -44,9 +44,9 @@ const Header = () => {
           <div className="relative">
             <DropdownMenu>
               <DropdownMenuTrigger asChild>
-                <Button variant="ghost" className="flex items-center gap-1 py-2 font-medium text-dark-gray hover:text-blue">
+                <Button variant="ghost" className="flex items-center gap-1 py-2 font-medium">
                   Products
-                  <ChevronDown size={16} className="text-gray-400" />
+                  <ChevronDown size={16} />
                 </Button>
               </DropdownMenuTrigger>
               <DropdownMenuContent align="start" className="w-72">
@@ -85,9 +85,9 @@ const Header = () => {
           <div className="relative">
             <DropdownMenu>
               <DropdownMenuTrigger asChild>
-                <Button variant="ghost" className="flex items-center gap-1 py-2 font-medium text-dark-gray hover:text-blue">
+                <Button variant="ghost" className="flex items-center gap-1 py-2 font-medium">
                   Solutions
-                  <ChevronDown size={16} className="text-gray-400" />
+                  <ChevronDown size={16} />
                 </Button>
               </DropdownMenuTrigger>
               <DropdownMenuContent align="start" className="w-64">
@@ -119,7 +119,7 @@ const Header = () => {
           <Link href="/about">
             <Button 
               variant="ghost" 
-              className={`font-medium text-dark-gray hover:text-blue ${isActive("/about") ? "text-blue" : ""}`}
+              className={`font-medium ${isActive("/about") ? "text-primary" : ""}`}
             >
               About
             </Button>
@@ -128,7 +128,7 @@ const Header = () => {
           <Link href="/careers">
             <Button 
               variant="ghost" 
-              className={`font-medium text-dark-gray hover:text-blue ${isActive("/careers") ? "text-blue" : ""}`}
+              className={`font-medium ${isActive("/careers") ? "text-primary" : ""}`}
             >
               Careers
             </Button>

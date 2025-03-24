@@ -1,5 +1,4 @@
 @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap');
-@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700&display=swap');
 
 @tailwind base;
 @tailwind components;
@@ -9,13 +8,11 @@
   :root {
     --background: 40 30% 98%; /* #FDFAF6 Clean light background */
     --foreground: 0 0% 20%; /* #333333 Dark Gray text */
-    --heading: 210 70% 30%; /* #2A5485 Deep Blue for headings */
-    --blue: 213 66% 57%; /* #578FCA Blue for CTAs */
-    --dark-blue: 210 53% 34%; /* #2A5485 Darker blue */
-    --light-blue: 213 66% 67%; /* #78A9DA Lighter blue */
-    --neutral-light: 0 0% 98%; /* #fafafa Very light gray */
-    --neutral: 0 0% 90%; /* #e6e6e6 Light gray */
-    --neutral-dark: 0 0% 40%; /* #666666 Medium gray */
+    --heading: 223 70% 23%; /* #0F2167 Deep Blue for headings */
+    --accent: 213 66% 57%; /* #578FCA Blue for CTAs */
+    --accent-light: 213 66% 67%; /* Lighter version of accent */
+    --primary-light: 213 66% 67%; /* Lighter blue */
+    --primary-dark: 210 100% 30%; /* Darker blue */
   }
 
   * {
@@ -36,8 +33,7 @@
   }
   
   h1, h2, h3, h4, h5, h6 {
-    @apply font-sans tracking-tight text-deep-blue;
-    font-family: 'Montserrat', 'Inter', sans-serif;
+    @apply font-sans tracking-tight text-[#0F2167];
     letter-spacing: -0.02em;
   }
   
@@ -57,7 +53,7 @@
   }
   
   p {
-    @apply text-dark-gray text-opacity-90;
+    @apply text-[#333333] text-opacity-90;
     line-height: 1.6;
   }
 
