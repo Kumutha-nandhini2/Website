@@ -30,7 +30,7 @@ const Header = () => {
   };
 
   return (
-    <header className="fixed top-0 left-0 right-0 bg-white z-50 backdrop-blur-sm bg-white/90 border-b border-blue shadow-sm">
+    <header className="fixed top-0 left-0 right-0 bg-white z-50 backdrop-blur-sm bg-white/90 border-b border-[#578FCA]/20 shadow-sm">
       <div className="container mx-auto px-4 py-3 flex justify-between items-center">
         <div className="flex items-center">
           <Link href="/" className="flex items-center">
@@ -49,9 +49,9 @@ const Header = () => {
                   <ChevronDown size={16} />
                 </Button>
               </DropdownMenuTrigger>
-              <DropdownMenuContent align="start" className="w-72">
-                <div className="px-4 py-2 border-b border-neutral-200">
-                  <span className="text-sm font-semibold text-blue">Privacy Solutions</span>
+              <DropdownMenuContent align="start" className="w-72 bg-white/95 backdrop-blur-sm border border-[#578FCA]/10 shadow-sm">
+                <div className="px-4 py-2 border-b border-[#578FCA]/10">
+                  <span className="text-sm font-semibold text-[#578FCA]">Privacy Solutions</span>
                 </div>
                 <DropdownMenuItem asChild>
                   <Link href="#" className="flex flex-col gap-1 cursor-pointer">
@@ -90,9 +90,9 @@ const Header = () => {
                   <ChevronDown size={16} />
                 </Button>
               </DropdownMenuTrigger>
-              <DropdownMenuContent align="start" className="w-64">
-                <div className="px-4 py-2 border-b border-neutral-200">
-                  <span className="text-sm font-semibold text-primary">By Industry</span>
+              <DropdownMenuContent align="start" className="w-64 bg-white/95 backdrop-blur-sm border border-[#578FCA]/10 shadow-sm">
+                <div className="px-4 py-2 border-b border-[#578FCA]/10">
+                  <span className="text-sm font-semibold text-[#578FCA]">By Industry</span>
                 </div>
                 <DropdownMenuItem asChild>
                   <Link href="#" className="flex flex-col gap-1 cursor-pointer">
@@ -139,7 +139,7 @@ const Header = () => {
           <Link href="/contact">
             <Button 
               variant="outline" 
-              className="border-dark-blue border-2 text-dark-blue hover:bg-dark-blue/10 hover:text-dark-blue rounded-md font-medium transition-all"
+              className="border-[#578FCA] border-2 text-[#578FCA] hover:bg-[#578FCA]/10 hover:text-[#578FCA] rounded-md font-medium transition-all"
             >
               Request Demo
             </Button>
@@ -150,12 +150,12 @@ const Header = () => {
               <DropdownMenuTrigger asChild>
                 <Button 
                   variant="default" 
-                  className="bg-blue hover:bg-dark-blue text-white font-medium rounded-md transition-colors"
+                  className="bg-[#578FCA] hover:bg-[#2A5485] text-white font-medium rounded-md transition-colors"
                 >
                   Account
                 </Button>
               </DropdownMenuTrigger>
-              <DropdownMenuContent>
+              <DropdownMenuContent className="bg-white/95 backdrop-blur-sm border border-[#578FCA]/10 shadow-sm">
                 {user.role === 'admin' && (
                   <DropdownMenuItem asChild>
                     <Link href="/admin" className="cursor-pointer">Admin Dashboard</Link>
@@ -170,7 +170,7 @@ const Header = () => {
             <Link href="/auth">
               <Button 
                 variant="default" 
-                className="bg-blue hover:bg-dark-blue text-white font-medium rounded-md transition-colors"
+                className="bg-[#578FCA] hover:bg-[#2A5485] text-white font-medium rounded-md transition-colors"
               >
                 Login
               </Button>
@@ -230,7 +230,7 @@ const Header = () => {
                 <Link href="/contact" onClick={() => setMenuOpen(false)}>
                   <Button 
                     variant="outline" 
-                    className="w-full border-dark-blue border-2 text-dark-blue hover:bg-dark-blue/10 hover:text-dark-blue rounded-md font-medium transition-all"
+                    className="w-full border-[#578FCA] border-2 text-[#578FCA] hover:bg-[#578FCA]/10 hover:text-[#578FCA] rounded-md font-medium transition-all"
                   >
                     Request Demo
                   </Button>
@@ -242,7 +242,7 @@ const Header = () => {
                       <Link href="/admin" onClick={() => setMenuOpen(false)}>
                         <Button 
                           variant="default" 
-                          className="w-full bg-blue hover:bg-dark-blue text-white font-medium rounded-md transition-colors"
+                          className="w-full bg-[#578FCA] hover:bg-[#2A5485] text-white font-medium rounded-md transition-colors"
                         >
                           Admin Dashboard
                         </Button>
@@ -250,7 +250,7 @@ const Header = () => {
                     )}
                     <Button 
                       variant="default" 
-                      className="w-full bg-blue hover:bg-dark-blue text-white font-medium rounded-md transition-colors"
+                      className="w-full bg-[#578FCA] hover:bg-[#2A5485] text-white font-medium rounded-md transition-colors"
                       onClick={() => {
                         handleLogout();
                         setMenuOpen(false);
@@ -263,7 +263,7 @@ const Header = () => {
                   <Link href="/auth" onClick={() => setMenuOpen(false)}>
                     <Button 
                       variant="default" 
-                      className="w-full bg-blue hover:bg-dark-blue text-white font-medium rounded-md transition-colors"
+                      className="w-full bg-[#578FCA] hover:bg-[#2A5485] text-white font-medium rounded-md transition-colors"
                     >
                       Login
                     </Button>
