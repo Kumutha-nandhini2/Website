@@ -49,26 +49,32 @@ const Header = () => {
                   <ChevronDown size={16} />
                 </Button>
               </DropdownMenuTrigger>
-              <DropdownMenuContent align="start" className="w-64">
+              <DropdownMenuContent align="start" className="w-72">
                 <div className="px-4 py-2 border-b border-neutral-200">
-                  <span className="text-sm font-semibold text-primary">Data Privacy Solutions</span>
+                  <span className="text-sm font-semibold text-blue">Privacy Solutions</span>
                 </div>
                 <DropdownMenuItem asChild>
                   <Link href="#" className="flex flex-col gap-1 cursor-pointer">
-                    <div className="font-medium">Privacy Management</div>
-                    <div className="text-xs text-muted-foreground">Automate privacy compliance</div>
+                    <div className="font-medium">Data Classification</div>
+                    <div className="text-xs text-muted-foreground">Secure your PII across tech stack through smart data discovery</div>
                   </Link>
                 </DropdownMenuItem>
                 <DropdownMenuItem asChild>
                   <Link href="#" className="flex flex-col gap-1 cursor-pointer">
-                    <div className="font-medium">AI Privacy Framework</div>
-                    <div className="text-xs text-muted-foreground">Privacy-first AI implementations</div>
+                    <div className="font-medium">Consent Management</div>
+                    <div className="text-xs text-muted-foreground">Smart, automated consent management for seamless privacy compliance</div>
                   </Link>
                 </DropdownMenuItem>
                 <DropdownMenuItem asChild>
                   <Link href="#" className="flex flex-col gap-1 cursor-pointer">
-                    <div className="font-medium">Data Encryption</div>
-                    <div className="text-xs text-muted-foreground">End-to-end encryption solutions</div>
+                    <div className="font-medium">Privacy Automation</div>
+                    <div className="text-xs text-muted-foreground">Enable privacy workflow automation while complying with regulations</div>
+                  </Link>
+                </DropdownMenuItem>
+                <DropdownMenuItem asChild>
+                  <Link href="#" className="flex flex-col gap-1 cursor-pointer">
+                    <div className="font-medium">Breach Management & Reporting</div>
+                    <div className="text-xs text-muted-foreground">Identify and mitigate threats with AI-driven monitoring and reporting</div>
                   </Link>
                 </DropdownMenuItem>
               </DropdownMenuContent>
@@ -187,13 +193,16 @@ const Header = () => {
               <div className="space-y-3">
                 <div className="font-bold text-lg mb-2">Products</div>
                 <Link href="#" onClick={() => setMenuOpen(false)}>
-                  <div className="py-2">Privacy Management</div>
+                  <div className="py-2">Data Classification</div>
                 </Link>
                 <Link href="#" onClick={() => setMenuOpen(false)}>
-                  <div className="py-2">AI Privacy Framework</div>
+                  <div className="py-2">Consent Management</div>
                 </Link>
                 <Link href="#" onClick={() => setMenuOpen(false)}>
-                  <div className="py-2">Data Encryption</div>
+                  <div className="py-2">Privacy Automation</div>
+                </Link>
+                <Link href="#" onClick={() => setMenuOpen(false)}>
+                  <div className="py-2">Breach Management & Reporting</div>
                 </Link>
               </div>
 

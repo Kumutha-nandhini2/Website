@@ -1,6 +1,6 @@
 import { motion } from "framer-motion";
 
-// Replaced with a privacy features section
+// Privacy technology features section
 const privacyFeatures = [
   {
     title: "End-to-End Encryption",
@@ -26,34 +26,34 @@ const privacyFeatures = [
 
 const ClientsSection = () => {
   return (
-    <section className="py-16 bg-primary-light">
+    <section className="py-14 bg-[#F6F4F0]">
       <div className="container mx-auto px-4">
         <motion.div 
-          className="text-center mb-12"
+          className="text-center mb-10"
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
           transition={{ duration: 0.6 }}
         >
-          <h2 className="text-3xl font-bold text-primary-dark mb-6">Advanced Privacy Technologies</h2>
-          <p className="text-lg text-neutral-dark max-w-3xl mx-auto">
-            Our proprietary solutions leverage cutting-edge AI to transform how organizations manage data privacy.
+          <h2 className="text-2xl md:text-3xl font-bold text-deep-blue mb-4">Advanced Privacy Technologies</h2>
+          <p className="text-base text-dark-gray max-w-2xl mx-auto">
+            Our solutions leverage cutting-edge AI to transform how organizations manage data privacy and compliance.
           </p>
         </motion.div>
         
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-5">
           {privacyFeatures.map((feature, index) => (
             <motion.div
               key={index}
-              className="bg-white rounded-lg shadow-md p-6 transition-all duration-300 hover:shadow-lg"
-              initial={{ opacity: 0, y: 20 }}
+              className="bg-white rounded-lg shadow-sm p-5 transition-all duration-300 hover:shadow-md"
+              initial={{ opacity: 0, y: 15 }}
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
               transition={{ duration: 0.5, delay: feature.delay }}
-              whileHover={{ y: -5 }}
+              whileHover={{ y: -3 }}
             >
-              <h3 className="text-xl font-semibold text-primary-dark mb-3">{feature.title}</h3>
-              <p className="text-neutral-dark">{feature.description}</p>
+              <h3 className="text-lg font-semibold text-deep-blue mb-2">{feature.title}</h3>
+              <p className="text-sm text-dark-gray">{feature.description}</p>
             </motion.div>
           ))}
         </div>
