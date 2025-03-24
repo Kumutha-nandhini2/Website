@@ -6,12 +6,12 @@
 
 @layer base {
   :root {
-    --background: 39 75% 92%; /* #FFECD6 Soft Beige background */
+    --background: 40 30% 98%; /* #FDFAF6 Clean light background */
     --foreground: 0 0% 20%; /* #333333 Dark Gray text */
     --heading: 223 70% 23%; /* #0F2167 Deep Blue for headings */
-    --accent: 201 100% 23%; /* #004D73 Dark Blue-Gray for accents */
-    --accent-light: 201 80% 40%; /* Lighter version of accent */
-    --primary-light: 210 80% 60%; /* Lighter blue */
+    --accent: 213 66% 57%; /* #578FCA Blue for CTAs */
+    --accent-light: 213 66% 67%; /* Lighter version of accent */
+    --primary-light: 213 66% 67%; /* Lighter blue */
     --primary-dark: 210 100% 30%; /* Darker blue */
   }
 
@@ -27,7 +27,7 @@
   }
 
   body {
-    @apply font-sans antialiased bg-[#F6F4F0] text-[#333333];
+    @apply font-sans antialiased bg-[#FDFAF6] text-[#333333];
     font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
     letter-spacing: -0.01em;
   }
@@ -59,19 +59,19 @@
 
   /* Background classes */
   .bg-soft-beige {
-    @apply bg-[#F6F4F0];
+    @apply bg-[#FDFAF6];
   }
 
   .bg-blue {
-    @apply bg-[#0054A6];
+    @apply bg-[#578FCA];
   }
 
   .bg-dark-blue {
-    @apply bg-[#004D73];
+    @apply bg-[#2A5485];
   }
 
   .bg-light-blue {
-    @apply bg-[hsl(var(--primary-light))];
+    @apply bg-[#78A9DA];
   }
 
   /* Text classes */
@@ -80,24 +80,24 @@
   }
 
   .text-deep-blue {
-    @apply text-[#0F2167];
+    @apply text-[#2A5485];
   }
 
   .text-blue {
-    @apply text-[#0054A6];
+    @apply text-[#578FCA];
   }
 
   .text-dark-blue {
-    @apply text-[#004D73];
+    @apply text-[#2A5485];
   }
 
   /* Border classes */
   .border-blue {
-    @apply border-[#0054A6];
+    @apply border-[#578FCA];
   }
 
   .border-dark-blue {
-    @apply border-[#004D73];
+    @apply border-[#2A5485];
   }
   
   /* Accent colors */
