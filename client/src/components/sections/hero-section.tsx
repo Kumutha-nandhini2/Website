@@ -5,7 +5,7 @@ import { Shield, CheckCircle } from "lucide-react";
 
 const HeroSection = () => {
   return (
-    <section className="bg-gradient-to-b from-white to-neutral-light/30 py-20 md:py-28 lg:py-32 relative overflow-hidden">
+    <section className="bg-[#FDFAF6] py-20 md:py-28 lg:py-32 relative overflow-hidden">
       {/* Background decorations */}
       <div className="absolute top-0 left-0 w-full h-full overflow-hidden pointer-events-none">
         <div className="absolute top-20 right-[10%] w-64 h-64 rounded-full bg-primary/5 blur-3xl"></div>
@@ -39,12 +39,12 @@ const HeroSection = () => {
             
             <div className="flex flex-col sm:flex-row gap-4 mb-10">
               <Link href="/contact">
-                <Button size="lg" className="bg-gradient-to-r from-primary to-primary-dark hover:opacity-90 px-8 rounded-md font-medium">
+                <Button size="lg" className="bg-[#578FCA] hover:bg-[#578FCA]/90 text-white px-8 rounded-md font-medium">
                   Request a Demo
                 </Button>
               </Link>
               <Link href="#">
-                <Button size="lg" variant="outline" className="px-8 border-2 border-primary text-primary hover:bg-primary/10 hover:text-primary rounded-md font-medium transition-all">
+                <Button size="lg" variant="outline" className="px-8 border-2 border-[#578FCA] text-[#578FCA] hover:bg-[#578FCA]/10 hover:text-[#578FCA] rounded-md font-medium transition-all">
                   View Solutions
                 </Button>
               </Link>
@@ -89,7 +89,7 @@ const HeroSection = () => {
             <div className="relative rounded-2xl overflow-hidden shadow-2xl">
               <div className="absolute inset-0 bg-gradient-to-tr from-primary/20 to-transparent mix-blend-overlay z-10"></div>
               <img
-                src="https://images.unsplash.com/photo-1517134191118-9d595e4c8c2b?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=800&q=80"
+                src="/attached_assets/Tracking%20not%20allowed%20(unless%20you%27re%20Google).jpg"
                 alt="Data privacy visualization"
                 className="w-full h-auto object-cover"
               />

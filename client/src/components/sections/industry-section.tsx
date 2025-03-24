@@ -26,7 +26,7 @@ const industries = [
     delay: 0.3
   },
   {
-    title: "Car Dealerships",
+    title: "Automobile",
     description: "Secure customer and inventory data management.",
     image: "/attached_assets/Insurance.jpg",
     delay: 0.4
