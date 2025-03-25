@@ -9,9 +9,8 @@
     --background: 40 30% 98%; /* #FDFAF6 Clean light background */
     --foreground: 0 0% 20%; /* #333333 Dark Gray text */
     --heading: 223 70% 23%; /* #0F2167 Deep Blue for headings */
-    --accent: 203 100% 43%; /* #008DDA Bright Blue for CTAs */
-    --accent-light: 203 100% 50%; /* Lighter version of accent */
-    --hover-color: 33 14% 82%; /* #DCD7C9 Hover color */
+    --accent: 213 66% 57%; /* #578FCA Blue for CTAs */
+    --accent-light: 213 66% 67%; /* Lighter version of accent */
     --primary-light: 213 66% 67%; /* Lighter blue */
     --primary-dark: 210 100% 30%; /* Darker blue */
   }
@@ -64,19 +63,15 @@
   }
 
   .bg-blue {
-    @apply bg-[#008DDA];
+    @apply bg-[#578FCA];
   }
 
   .bg-dark-blue {
-    @apply bg-[#006DAA];
+    @apply bg-[#2A5485];
   }
 
   .bg-light-blue {
-    @apply bg-[#45A7FF];
-  }
-  
-  .bg-hover {
-    @apply bg-[#DCD7C9];
+    @apply bg-[#78A9DA];
   }
 
   /* Text classes */
@@ -85,24 +80,24 @@
   }
 
   .text-deep-blue {
-    @apply text-[#006DAA];
+    @apply text-[#2A5485];
   }
 
   .text-blue {
-    @apply text-[#008DDA];
+    @apply text-[#578FCA];
   }
 
   .text-dark-blue {
-    @apply text-[#006DAA];
+    @apply text-[#2A5485];
   }
 
   /* Border classes */
   .border-blue {
-    @apply border-[#008DDA];
+    @apply border-[#578FCA];
   }
 
   .border-dark-blue {
-    @apply border-[#006DAA];
+    @apply border-[#2A5485];
   }
   
   /* Accent colors */

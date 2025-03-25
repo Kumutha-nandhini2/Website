@@ -276,7 +276,7 @@ export function ChatJobApplication({
                   type="button"
                   variant="outline"
                   onClick={() => fileInputRef.current?.click()}
-                  className={`w-full ${errors.resumeFile ? "border-destructive text-destructive" : "border-[#578FCA] text-[#578FCA] hover:bg-[#578FCA]/10"}`}
+                  className={`w-full ${errors.resumeFile ? "border-destructive text-destructive" : ""}`}
                 >
                   <Paperclip className="mr-2 h-4 w-4" />
                   {formData.resumeFile ? 'Change Resume' : 'Attach Resume'}
@@ -293,7 +293,7 @@ export function ChatJobApplication({
                     variant="ghost" 
                     size="sm" 
                     onClick={removeFile}
-                    className="h-8 w-8 p-0 hover:bg-[#DCD7C9] hover:text-[#008DDA] transition-colors"
+                    className="h-8 w-8 p-0"
                   >
                     <X className="h-4 w-4" />
                   </Button>
@@ -312,9 +312,9 @@ export function ChatJobApplication({
         
           <DialogFooter className="pt-4">
             <DialogClose asChild>
-              <Button type="button" variant="outline" className="border-[#008DDA] text-[#008DDA] hover:bg-[#DCD7C9] transition-colors">Cancel</Button>
+              <Button type="button" variant="outline">Cancel</Button>
             </DialogClose>
-            <Button type="submit" className="bg-[#008DDA] hover:bg-[#DCD7C9] text-white hover:text-[#008DDA] transition-colors">Submit Application</Button>
+            <Button type="submit">Submit Application</Button>
           </DialogFooter>
         </form>
       </DialogContent>

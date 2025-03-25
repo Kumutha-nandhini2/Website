@@ -23,7 +23,7 @@ const HeroSection = () => {
             className="max-w-xl"
           >
             <div className="inline-flex items-center px-4 py-2 bg-primary/5 text-primary rounded-full text-sm font-medium mb-6 gap-2">
-              <div className="size-5 bg-primary text-[#2973B2] rounded-full flex items-center justify-center">
+              <div className="size-5 bg-primary text-white rounded-full flex items-center justify-center">
                 <Shield className="size-3" />
               </div>
               <span>Smart Privacy. Smarter Business.</span>
@@ -39,12 +39,12 @@ const HeroSection = () => {
             
             <div className="flex flex-col sm:flex-row gap-4 mb-10">
               <Link href="/contact">
-                <Button size="lg" className="bg-[#008DDA] hover:bg-[#DCD7C9] text-white px-8 rounded-md font-medium transition-colors">
+                <Button size="lg" className="bg-[#578FCA] hover:bg-[#578FCA]/90 text-white px-8 rounded-md font-medium">
                   Request a Demo
                 </Button>
               </Link>
               <Link href="#">
-                <Button size="lg" variant="outline" className="px-8 border-2 border-[#008DDA] text-[#008DDA] hover:bg-[#DCD7C9] hover:text-[#008DDA] rounded-md font-medium transition-colors">
+                <Button size="lg" variant="outline" className="px-8 border-2 border-[#578FCA] text-[#578FCA] hover:bg-[#578FCA]/10 hover:text-[#578FCA] rounded-md font-medium transition-all">
                   View Solutions
                 </Button>
               </Link>
@@ -89,7 +89,7 @@ const HeroSection = () => {
             <div className="relative rounded-2xl overflow-hidden shadow-2xl">
               <div className="absolute inset-0 bg-gradient-to-tr from-primary/20 to-transparent mix-blend-overlay z-10"></div>
               <img
-                src="/images/personal-data-visualization.jpg"
+                src="attached_assets/image_1742876221155.png"
                 alt="Data privacy visualization"
                 className="w-full h-auto object-cover"
               />

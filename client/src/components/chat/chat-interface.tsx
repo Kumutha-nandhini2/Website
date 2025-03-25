@@ -175,17 +175,6 @@ export function ChatInterface({ minimized = false, onMinimize }: ChatInterfacePr
   // Send a message
   const handleSendMessage = (e: React.FormEvent) => {
     e.preventDefault();
-    
-    // Check if name and email are provided for the first message
-    if (messages.length === 0 && (!userInfo.name.trim() || !userInfo.email.trim())) {
-      toast({
-        title: 'Required Fields',
-        description: 'Please provide your name and email to start the conversation.',
-        variant: 'destructive'
-      });
-      return;
-    }
-    
     if (message.trim() || attachment) {
       sendMessageMutation.mutate();
     }
@@ -399,7 +388,7 @@ export function ChatInterface({ minimized = false, onMinimize }: ChatInterfacePr
                           <Button 
                             variant="outline" 
                             size="sm"
-                            className="w-full text-xs border-[#008DDA] text-[#008DDA] hover:bg-[#DCD7C9] transition-colors"
+                            className="w-full text-xs"
                             onClick={() => setIsApplicationDialogOpen(true)}
                           >
                             <BriefcaseBusiness className="mr-1 h-3 w-3" />
@@ -420,24 +409,22 @@ export function ChatInterface({ minimized = false, onMinimize }: ChatInterfacePr
             <div className="p-4 border-t">
               <div className="grid gap-4">
                 <div className="grid gap-2">
-                  <Label htmlFor="name">Your Name *</Label>
+                  <Label htmlFor="name">Your Name (optional)</Label>
                   <Input
                     id="name"
                     placeholder="Enter your name"
                     value={userInfo.name}
                     onChange={(e) => setUserInfo({...userInfo, name: e.target.value})}
-                    required
                   />
                 </div>
                 <div className="grid gap-2">
-                  <Label htmlFor="email">Your Email *</Label>
+                  <Label htmlFor="email">Your Email (optional)</Label>
                   <Input
                     id="email"
                     type="email"
                     placeholder="Enter your email"
                     value={userInfo.email}
                     onChange={(e) => setUserInfo({...userInfo, email: e.target.value})}
-                    required
                   />
                 </div>
               </div>
@@ -455,7 +442,7 @@ export function ChatInterface({ minimized = false, onMinimize }: ChatInterfacePr
                 <Button 
                   variant="ghost" 
                   size="icon"
-                  className="h-6 w-6 rounded-full hover:bg-[#DCD7C9] hover:text-[#008DDA] transition-colors"
+                  className="h-6 w-6 rounded-full"
                   onClick={handleRemoveAttachment}
                 >
                   <X className="h-4 w-4" />
@@ -475,7 +462,7 @@ export function ChatInterface({ minimized = false, onMinimize }: ChatInterfacePr
                 type="button"
                 variant="outline"
                 size="icon"
-                className="flex-shrink-0 border-[#008DDA] text-[#008DDA] hover:bg-[#DCD7C9] transition-colors"
+                className="flex-shrink-0"
                 onClick={() => fileInputRef.current?.click()}
               >
                 <Paperclip className="h-4 w-4" />
@@ -496,7 +483,7 @@ export function ChatInterface({ minimized = false, onMinimize }: ChatInterfacePr
                 type="submit" 
                 size="icon" 
                 disabled={(!message.trim() && !attachment) || sendMessageMutation.isPending}
-                className="flex-shrink-0 bg-[#008DDA] hover:bg-[#DCD7C9] text-white hover:text-[#008DDA] transition-colors"
+                className="flex-shrink-0"
               >
                 <SendHorizontal className="h-4 w-4" />
               </Button>
