@@ -41,16 +41,16 @@ const CareerSection = () => {
                 viewport={{ once: true }}
                 transition={{ duration: 0.6, delay: index * 0.2 }}
               >
-                <h3 className="text-xl font-bold mb-4">{job.title}</h3>
+                <h3 className="text-xl font-bold mb-4 text-[#3674B5]">{job.title}</h3>
                 <p className="mb-6 text-white text-opacity-90">
                   {job.description}
                 </p>
                 <div className="flex flex-wrap gap-2 mb-6">
-                  <span className="px-3 py-1 rounded-full bg-white bg-opacity-20 text-sm">{job.type}</span>
-                  <span className="px-3 py-1 rounded-full bg-white bg-opacity-20 text-sm">{job.location}</span>
-                  <span className="px-3 py-1 rounded-full bg-white bg-opacity-20 text-sm">{job.experience}</span>
+                  <span className="px-3 py-1 rounded-full bg-[#3674B5] bg-opacity-30 text-sm font-medium">{job.type}</span>
+                  <span className="px-3 py-1 rounded-full bg-[#3674B5] bg-opacity-30 text-sm font-medium">{job.location}</span>
+                  <span className="px-3 py-1 rounded-full bg-[#3674B5] bg-opacity-30 text-sm font-medium">{job.experience}</span>
                 </div>
-                <Link href={`/careers/apply/${job.id}`} className="text-white inline-flex items-center font-medium">
+                <Link href={`/careers/apply/${job.id}`} className="text-[#3674B5] inline-flex items-center font-medium">
                   Apply Now
                   <svg xmlns="http://www.w3.org/2000/svg" className="h-4 w-4 ml-1" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                     <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
