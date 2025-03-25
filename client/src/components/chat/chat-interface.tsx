@@ -455,7 +455,7 @@ export function ChatInterface({ minimized = false, onMinimize }: ChatInterfacePr
                 <Button 
                   variant="ghost" 
                   size="icon"
-                  className="h-6 w-6 rounded-full hover:bg-[#578FCA]/10 hover:text-[#578FCA]"
+                  className="h-6 w-6 rounded-full hover:bg-[#DCD7C9] hover:text-[#008DDA] transition-colors"
                   onClick={handleRemoveAttachment}
                 >
                   <X className="h-4 w-4" />
