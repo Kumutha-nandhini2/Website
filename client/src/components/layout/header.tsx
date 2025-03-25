@@ -105,31 +105,31 @@ const Header = () => {
                   <ChevronDown size={16} />
                 </Button>
               </DropdownMenuTrigger>
-              <DropdownMenuContent align="start" className="w-72 bg-white/95 backdrop-blur-sm border border-[#578FCA]/10 shadow-sm">
-                <div className="px-4 py-2 border-b border-[#578FCA]/10">
+              <DropdownMenuContent align="start" className="w-72 bg-white/95 backdrop-blur-sm border border-[#008DDA]/10 shadow-sm">
+                <div className="px-4 py-2 border-b border-[#008DDA]/10">
                   <span className="text-sm font-semibold text-[#008DDA]">By Industry</span>
                 </div>
                 <DropdownMenuItem asChild>
                   <Link href="#" className="flex flex-col gap-1 cursor-pointer">
-                    <div className="font-medium text-[#578FCA]">Healthcare</div>
+                    <div className="font-medium text-[#008DDA]">Healthcare</div>
                     <div className="text-xs text-muted-foreground">HIPAA-compliant privacy solutions for patient data</div>
                   </Link>
                 </DropdownMenuItem>
                 <DropdownMenuItem asChild>
                   <Link href="#" className="flex flex-col gap-1 cursor-pointer">
-                    <div className="font-medium text-[#578FCA]">Financial Services</div>
+                    <div className="font-medium text-[#008DDA]">Financial Services</div>
                     <div className="text-xs text-muted-foreground">PCI-DSS compliant solutions for financial institutions</div>
                   </Link>
                 </DropdownMenuItem>
                 <DropdownMenuItem asChild>
                   <Link href="#" className="flex flex-col gap-1 cursor-pointer">
-                    <div className="font-medium text-[#578FCA]">Retail & eCommerce</div>
+                    <div className="font-medium text-[#008DDA]">Retail & eCommerce</div>
                     <div className="text-xs text-muted-foreground">Protect customer data while enabling personalization</div>
                   </Link>
                 </DropdownMenuItem>
                 <DropdownMenuItem asChild>
                   <Link href="#" className="flex flex-col gap-1 cursor-pointer">
-                    <div className="font-medium text-[#578FCA]">Automobile</div>
+                    <div className="font-medium text-[#008DDA]">Automobile</div>
                     <div className="text-xs text-muted-foreground">Safeguard connected vehicle and customer information</div>
                   </Link>
                 </DropdownMenuItem>
@@ -138,19 +138,19 @@ const Header = () => {
                 </div>
                 <DropdownMenuItem asChild>
                   <Link href="#" className="flex flex-col gap-1 cursor-pointer">
-                    <div className="font-medium text-[#578FCA]">GDPR & DPDP Compliance</div>
+                    <div className="font-medium text-[#008DDA]">GDPR & DPDP Compliance</div>
                     <div className="text-xs text-muted-foreground">Meet global data protection requirements</div>
                   </Link>
                 </DropdownMenuItem>
                 <DropdownMenuItem asChild>
                   <Link href="#" className="flex flex-col gap-1 cursor-pointer">
-                    <div className="font-medium text-[#578FCA]">HIPAA Compliance</div>
+                    <div className="font-medium text-[#008DDA]">HIPAA Compliance</div>
                     <div className="text-xs text-muted-foreground">Healthcare information protection standards</div>
                   </Link>
                 </DropdownMenuItem>
                 <DropdownMenuItem asChild>
                   <Link href="#" className="flex flex-col gap-1 cursor-pointer">
-                    <div className="font-medium text-[#578FCA]">Cross-Border Data Flows</div>
+                    <div className="font-medium text-[#008DDA]">Cross-Border Data Flows</div>
                     <div className="text-xs text-muted-foreground">Secure global data transfers and processing</div>
                   </Link>
                 </DropdownMenuItem>
