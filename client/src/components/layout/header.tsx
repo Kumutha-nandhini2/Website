@@ -77,7 +77,7 @@ const Header = () => {
                     <div className="text-xs text-muted-foreground">Identify, mitigate and report threats with AI-driven tools</div>
                   </Link>
                 </DropdownMenuItem>
-                <div className="px-4 py-2 border-b border-t border-[#578FCA]/10 mt-2">
+                <div className="px-4 py-2 border-b border-t border-[#008DDA]/10 mt-2">
                   <span className="text-sm font-semibold text-[#008DDA]">Advanced Privacy Technologies</span>
                 </div>
                 <DropdownMenuItem asChild>
@@ -133,7 +133,7 @@ const Header = () => {
                     <div className="text-xs text-muted-foreground">Safeguard connected vehicle and customer information</div>
                   </Link>
                 </DropdownMenuItem>
-                <div className="px-4 py-2 border-b border-t border-[#578FCA]/10 mt-2">
+                <div className="px-4 py-2 border-b border-t border-[#008DDA]/10 mt-2">
                   <span className="text-sm font-semibold text-[#008DDA]">By Use Case</span>
                 </div>
                 <DropdownMenuItem asChild>
@@ -197,7 +197,7 @@ const Header = () => {
                   Account
                 </Button>
               </DropdownMenuTrigger>
-              <DropdownMenuContent className="bg-white/95 backdrop-blur-sm border border-[#578FCA]/10 shadow-sm">
+              <DropdownMenuContent className="bg-white/95 backdrop-blur-sm border border-[#008DDA]/10 shadow-sm">
                 {user.role === 'admin' && (
                   <DropdownMenuItem asChild>
                     <Link href="/admin" className="cursor-pointer">Admin Dashboard</Link>
