@@ -128,6 +128,14 @@ export function ChatJobApplication({
       newErrors.position = 'Position is required';
     }
     
+    if (!formData.experience.trim()) {
+      newErrors.experience = 'Years of experience is required';
+    }
+    
+    if (!formData.resumeFile) {
+      newErrors.resumeFile = 'Resume is required';
+    }
+    
     setErrors(newErrors);
     return Object.keys(newErrors).length === 0;
   };
@@ -219,14 +227,21 @@ export function ChatJobApplication({
           </div>
           
           <div className="grid gap-2">
-            <Label htmlFor="experience">Years of Experience</Label>
+            <Label htmlFor="experience" className="flex items-center">
+              Years of Experience
+              <span className="text-destructive ml-1">*</span>
+            </Label>
             <Input
               id="experience"
               name="experience"
               placeholder="E.g. 1-2 years"
               value={formData.experience}
               onChange={handleChange}
+              className={errors.experience ? "border-destructive" : ""}
             />
+            {errors.experience && (
+              <p className="text-xs text-destructive">{errors.experience}</p>
+            )}
           </div>
           
           <div className="grid gap-2">
@@ -242,7 +257,10 @@ export function ChatJobApplication({
           </div>
           
           <div className="grid gap-2">
-            <Label>Resume / CV</Label>
+            <Label className="flex items-center">
+              Resume / CV
+              <span className="text-destructive ml-1">*</span>
+            </Label>
             <div className="flex flex-col gap-2">
               <div className="flex items-center gap-2">
                 <Input
@@ -258,7 +276,7 @@ export function ChatJobApplication({
                   type="button"
                   variant="outline"
                   onClick={() => fileInputRef.current?.click()}
-                  className="w-full"
+                  className={`w-full ${errors.resumeFile ? "border-destructive text-destructive" : ""}`}
                 >
                   <Paperclip className="mr-2 h-4 w-4" />
                   {formData.resumeFile ? 'Change Resume' : 'Attach Resume'}
@@ -280,6 +298,10 @@ export function ChatJobApplication({
                     <X className="h-4 w-4" />
                   </Button>
                 </div>
+              )}
+              
+              {errors.resumeFile && (
+                <p className="text-xs text-destructive">{errors.resumeFile}</p>
               )}
               
               <p className="text-xs text-muted-foreground">
