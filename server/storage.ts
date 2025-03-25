@@ -1,4 +1,4 @@
-import { users, type User, type InsertUser, inquiries, type Inquiry, type InsertInquiry, jobApplications, type JobApplication, type InsertJobApplication, jobListings, type JobListing, type InsertJobListing } from "@shared/schema";
+import { users, type User, type InsertUser, inquiries, type Inquiry, type InsertInquiry, jobApplications, type JobApplication, type InsertJobApplication, jobListings, type JobListing, type InsertJobListing, chatConversations, type ChatConversation, type InsertChatConversation, chatMessages, type ChatMessage, type InsertChatMessage } from "@shared/schema";
 import session from "express-session";
 import createMemoryStore from "memorystore";
 import connectPg from "connect-pg-simple";
@@ -31,6 +31,16 @@ export interface IStorage {
   getJobListings(): Promise<JobListing[]>;
   getActiveJobListings(): Promise<JobListing[]>;
   getJobListing(id: number): Promise<JobListing | undefined>;
+
+  // Chat conversation operations
+  createChatConversation(conversation: InsertChatConversation): Promise<ChatConversation>;
+  getChatConversation(id: number): Promise<ChatConversation | undefined>;
+  getChatConversationBySessionId(sessionId: string): Promise<ChatConversation | undefined>;
+  updateChatConversation(id: number, updates: Partial<ChatConversation>): Promise<ChatConversation | undefined>;
+  
+  // Chat message operations
+  createChatMessage(message: InsertChatMessage): Promise<ChatMessage>;
+  getChatMessagesByConversationId(conversationId: number): Promise<ChatMessage[]>;
   
   // Session store
   sessionStore: any;
@@ -161,6 +171,60 @@ export class DatabaseStorage implements IStorage {
       .where(eq(jobListings.id, id));
     return listing;
   }
+
+  // Chat conversation operations
+  async createChatConversation(insertConversation: InsertChatConversation): Promise<ChatConversation> {
+    const [conversation] = await db
+      .insert(chatConversations)
+      .values(insertConversation)
+      .returning();
+    return conversation;
+  }
+
+  async getChatConversation(id: number): Promise<ChatConversation | undefined> {
+    const [conversation] = await db
+      .select()
+      .from(chatConversations)
+      .where(eq(chatConversations.id, id));
+    return conversation;
+  }
+
+  async getChatConversationBySessionId(sessionId: string): Promise<ChatConversation | undefined> {
+    const [conversation] = await db
+      .select()
+      .from(chatConversations)
+      .where(eq(chatConversations.sessionId, sessionId));
+    return conversation;
+  }
+
+  async updateChatConversation(id: number, updates: Partial<ChatConversation>): Promise<ChatConversation | undefined> {
+    const [updatedConversation] = await db
+      .update(chatConversations)
+      .set({
+        ...updates,
+        lastMessageAt: new Date(),
+      })
+      .where(eq(chatConversations.id, id))
+      .returning();
+    return updatedConversation;
+  }
+
+  // Chat message operations
+  async createChatMessage(insertMessage: InsertChatMessage): Promise<ChatMessage> {
+    const [message] = await db
+      .insert(chatMessages)
+      .values(insertMessage)
+      .returning();
+    return message;
+  }
+
+  async getChatMessagesByConversationId(conversationId: number): Promise<ChatMessage[]> {
+    return await db
+      .select()
+      .from(chatMessages)
+      .where(eq(chatMessages.conversationId, conversationId))
+      .orderBy(chatMessages.timestamp);
+  }
   
   // Seed job listings
   async seedJobListings() {
@@ -212,10 +276,14 @@ export class MemStorage implements IStorage {
   private inquiries: Map<number, Inquiry>;
   private jobApplications: Map<number, JobApplication>;
   private jobListings: Map<number, JobListing>;
+  private chatConversations: Map<number, ChatConversation>;
+  private chatMessages: Map<number, ChatMessage>;
   private userIdCounter: number;
   private inquiryIdCounter: number;
   private jobApplicationIdCounter: number;
   private jobListingIdCounter: number;
+  private chatConversationIdCounter: number;
+  private chatMessageIdCounter: number;
   sessionStore: any;
 
   constructor() {
@@ -223,11 +291,15 @@ export class MemStorage implements IStorage {
     this.inquiries = new Map();
     this.jobApplications = new Map();
     this.jobListings = new Map();
+    this.chatConversations = new Map();
+    this.chatMessages = new Map();
     
     this.userIdCounter = 1;
     this.inquiryIdCounter = 1;
     this.jobApplicationIdCounter = 1;
     this.jobListingIdCounter = 1;
+    this.chatConversationIdCounter = 1;
+    this.chatMessageIdCounter = 1;
     
     this.sessionStore = new MemoryStore({
       checkPeriod: 86400000, // Prune expired entries every 24h
@@ -329,6 +401,63 @@ export class MemStorage implements IStorage {
   
   async getJobListing(id: number): Promise<JobListing | undefined> {
     return this.jobListings.get(id);
+  }
+
+  // Chat conversation operations
+  async createChatConversation(insertConversation: InsertChatConversation): Promise<ChatConversation> {
+    const id = this.chatConversationIdCounter++;
+    const now = new Date();
+    const conversation: ChatConversation = {
+      ...insertConversation,
+      id,
+      startedAt: now,
+      lastMessageAt: now,
+      status: 'active',
+    };
+    this.chatConversations.set(id, conversation);
+    return conversation;
+  }
+
+  async getChatConversation(id: number): Promise<ChatConversation | undefined> {
+    return this.chatConversations.get(id);
+  }
+
+  async getChatConversationBySessionId(sessionId: string): Promise<ChatConversation | undefined> {
+    return Array.from(this.chatConversations.values()).find(
+      (conversation) => conversation.sessionId === sessionId,
+    );
+  }
+
+  async updateChatConversation(id: number, updates: Partial<ChatConversation>): Promise<ChatConversation | undefined> {
+    const conversation = this.chatConversations.get(id);
+    if (!conversation) return undefined;
+
+    const updatedConversation: ChatConversation = {
+      ...conversation,
+      ...updates,
+      lastMessageAt: new Date(),
+    };
+    this.chatConversations.set(id, updatedConversation);
+    return updatedConversation;
+  }
+
+  // Chat message operations
+  async createChatMessage(insertMessage: InsertChatMessage): Promise<ChatMessage> {
+    const id = this.chatMessageIdCounter++;
+    const message: ChatMessage = {
+      ...insertMessage,
+      id,
+      timestamp: new Date(),
+      isApplicationRequest: insertMessage.isApplicationRequest || false,
+    };
+    this.chatMessages.set(id, message);
+    return message;
+  }
+
+  async getChatMessagesByConversationId(conversationId: number): Promise<ChatMessage[]> {
+    return Array.from(this.chatMessages.values())
+      .filter(message => message.conversationId === conversationId)
+      .sort((a, b) => a.timestamp.getTime() - b.timestamp.getTime());
   }
   
   private seedJobListings() {

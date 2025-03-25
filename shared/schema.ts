@@ -90,6 +90,48 @@ export const insertJobListingSchema = createInsertSchema(jobListings).pick({
   isActive: true,
 });
 
+// Chat Conversation schema
+export const chatConversations = pgTable("chat_conversations", {
+  id: serial("id").primaryKey(),
+  sessionId: text("session_id").notNull(),
+  userEmail: text("user_email"),
+  userName: text("user_name"),
+  startedAt: timestamp("started_at").notNull().defaultNow(),
+  lastMessageAt: timestamp("last_message_at").notNull().defaultNow(),
+  category: text("category"), // 'career', 'service', 'general'
+  status: text("status").notNull().default('active'), // 'active', 'closed'
+});
+
+export const insertChatConversationSchema = createInsertSchema(chatConversations).pick({
+  sessionId: true,
+  userEmail: true,
+  userName: true,
+  category: true,
+});
+
+// Chat Message schema
+export const chatMessages = pgTable("chat_messages", {
+  id: serial("id").primaryKey(),
+  conversationId: integer("conversation_id").notNull().references(() => chatConversations.id, { onDelete: 'cascade' }),
+  sender: text("sender").notNull(), // 'user' or 'bot'
+  content: text("content").notNull(),
+  timestamp: timestamp("timestamp").notNull().defaultNow(),
+  attachmentUrl: text("attachment_url"),
+  attachmentType: text("attachment_type"),
+  isApplicationRequest: boolean("is_application_request").default(false),
+  metadata: jsonb("metadata"), // additional data like position applied for, skills, etc.
+});
+
+export const insertChatMessageSchema = createInsertSchema(chatMessages).pick({
+  conversationId: true,
+  sender: true,
+  content: true,
+  attachmentUrl: true,
+  attachmentType: true,
+  isApplicationRequest: true,
+  metadata: true,
+});
+
 // Exported types
 export type User = typeof users.$inferSelect;
 export type InsertUser = z.infer<typeof insertUserSchema>;
@@ -103,3 +145,9 @@ export type JobApplicationWithResume = z.infer<typeof jobApplicationWithResumeSc
 
 export type JobListing = typeof jobListings.$inferSelect;
 export type InsertJobListing = z.infer<typeof insertJobListingSchema>;
+
+export type ChatConversation = typeof chatConversations.$inferSelect;
+export type InsertChatConversation = z.infer<typeof insertChatConversationSchema>;
+
+export type ChatMessage = typeof chatMessages.$inferSelect;
+export type InsertChatMessage = z.infer<typeof insertChatMessageSchema>;
