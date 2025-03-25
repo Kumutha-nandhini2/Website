@@ -56,7 +56,7 @@ const HeroSection = () => {
                   <CheckCircle className="size-4" />
                 </div>
                 <span className="text-neutral-dark group-hover:text-primary transition-all">
-                  End-to-end encryption with industry-leading 256-bit standards
+                  Empower all forms of businesses with AI-driven, automated privacy solutions that ensure compliance and data security
                 </span>
               </div>
               <div className="flex items-center gap-3 group">
@@ -64,7 +64,7 @@ const HeroSection = () => {
                   <CheckCircle className="size-4" />
                 </div>
                 <span className="text-neutral-dark group-hover:text-primary transition-all">
-                  AI-powered data protection that adapts to evolving threats
+                  Enable organizations to handle sensitive data with advanced encryption, tokenization, and zero-trust architectures
                 </span>
               </div>
               <div className="flex items-center gap-3 group">
@@ -72,7 +72,7 @@ const HeroSection = () => {
                   <CheckCircle className="size-4" />
                 </div>
                 <span className="text-neutral-dark group-hover:text-primary transition-all">
-                  Trusted by high-tech teams for maximum data security
+                  Developing cutting-edge solutions like ZKP, SMPC, and Federated Learning to redefine data privacy and security
                 </span>
               </div>
             </div>
