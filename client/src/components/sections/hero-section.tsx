@@ -39,12 +39,12 @@ const HeroSection = () => {
             
             <div className="flex flex-col sm:flex-row gap-4 mb-10">
               <Link href="/contact">
-                <Button size="lg" className="bg-[#578FCA] hover:bg-[#578FCA]/90 text-[#2973B2] px-8 rounded-md font-medium">
+                <Button size="lg" className="bg-[#008DDA] hover:bg-[#DCD7C9] text-white px-8 rounded-md font-medium transition-colors">
                   Request a Demo
                 </Button>
               </Link>
               <Link href="#">
-                <Button size="lg" variant="outline" className="px-8 border-2 border-[#578FCA] text-[#578FCA] hover:bg-[#578FCA]/10 hover:text-[#578FCA] rounded-md font-medium transition-all">
+                <Button size="lg" variant="outline" className="px-8 border-2 border-[#008DDA] text-[#008DDA] hover:bg-[#DCD7C9] hover:text-[#008DDA] rounded-md font-medium transition-colors">
                   View Solutions
                 </Button>
               </Link>
