@@ -63,11 +63,12 @@ export const insertJobApplicationSchema = createInsertSchema(jobApplications).pi
   message: true,
 });
 
-// Extend the job application schema to ensure fullName and email fields are required
+// Extend the job application schema to ensure required fields
 export const jobApplicationWithResumeSchema = insertJobApplicationSchema.extend({
   fullName: z.string().min(1, "Name is required"),
   email: z.string().min(1, "Email is required").email("Invalid email format"),
-  resumeFile: z.instanceof(File).optional(),
+  experience: z.string().min(1, "Years of experience is required"),
+  resumeFile: z.instanceof(File, { message: "Resume is required" }),
 });
 
 // Job Listings
