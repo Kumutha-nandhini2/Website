@@ -39,7 +39,7 @@ const HeroSection = () => {
             
             <div className="flex flex-col sm:flex-row gap-4 mb-10">
               <Link href="/contact">
-                <Button size="lg" className="bg-[#578FCA] hover:bg-[#578FCA]/90 text-white px-8 rounded-md font-medium">
+                <Button size="lg" className="bg-[#578FCA] hover:bg-[#578FCA]/90 text-[#2973B2] px-8 rounded-md font-medium">
                   Request a Demo
                 </Button>
               </Link>
