@@ -293,7 +293,7 @@ export function ChatJobApplication({
                     variant="ghost" 
                     size="sm" 
                     onClick={removeFile}
-                    className="h-8 w-8 p-0"
+                    className="h-8 w-8 p-0 hover:bg-[#578FCA]/10 hover:text-[#578FCA]"
                   >
                     <X className="h-4 w-4" />
                   </Button>
@@ -312,9 +312,9 @@ export function ChatJobApplication({
         
           <DialogFooter className="pt-4">
             <DialogClose asChild>
-              <Button type="button" variant="outline">Cancel</Button>
+              <Button type="button" variant="outline" className="border-[#578FCA] text-[#578FCA] hover:bg-[#578FCA]/10">Cancel</Button>
             </DialogClose>
-            <Button type="submit">Submit Application</Button>
+            <Button type="submit" className="bg-[#578FCA] hover:bg-[#578FCA]/90 text-[#2973B2]">Submit Application</Button>
           </DialogFooter>
         </form>
       </DialogContent>
