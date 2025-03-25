@@ -413,6 +413,9 @@ export class MemStorage implements IStorage {
       startedAt: now,
       lastMessageAt: now,
       status: 'active',
+      userEmail: insertConversation.userEmail || null,
+      userName: insertConversation.userName || null,
+      category: insertConversation.category || null,
     };
     this.chatConversations.set(id, conversation);
     return conversation;
