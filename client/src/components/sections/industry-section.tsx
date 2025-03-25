@@ -10,13 +10,13 @@ const industries = [
   {
     title: "Finance",
     description: "Secure financial data handling with regulatory compliance.",
-    image: "attached_assets/How Bitcoin Brings Financial Literacy To Everyone.jpg",
+    image: "attached_assets/image_1742542333688.png",
     delay: 0.1
   },
   {
     title: "Technology",
     description: "AI-driven tech solutions for software companies.",
-    image: "attached_assets/Cloud Computing and Its Increasing Impacts.jpg",
+    image: "attached_assets/image_1742539987120.png",
     delay: 0.2
   },
   {
@@ -28,7 +28,7 @@ const industries = [
   {
     title: "Automobile",
     description: "Secure customer and inventory data management.",
-    image: "attached_assets/Insurance.jpg",
+    image: "attached_assets/image_1742539120311.png",
     delay: 0.4
   }
 ];
