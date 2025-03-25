@@ -89,7 +89,7 @@ const HeroSection = () => {
             <div className="relative rounded-2xl overflow-hidden shadow-2xl">
               <div className="absolute inset-0 bg-gradient-to-tr from-primary/20 to-transparent mix-blend-overlay z-10"></div>
               <img
-                src="/attached_assets/Tracking%20not%20allowed%20(unless%20you%27re%20Google).jpg"
+                src="/attached_assets/DALL·E%202025-03-22%2022.34.05%20-%20A%20clean%20and%20simple%20tech%20logo%20for%20'Privacy%20Weave',%20a%20data%20privacy%20startup.%20The%20design%20features%20an%20abstract%20weave%20pattern%20forming%20a%20subtle%20keyhole%20or%20lo.webp"
                 alt="Data privacy visualization"
                 className="w-full h-auto object-cover"
               />

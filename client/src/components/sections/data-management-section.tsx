@@ -46,6 +46,23 @@ const DataManagementSection = () => {
           </p>
         </motion.div>
 
+        {/* Data Privacy Visualization Image */}
+        <motion.div
+          className="mx-auto max-w-4xl mb-16"
+          initial={{ opacity: 0, y: 20 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
+          transition={{ duration: 0.7 }}
+        >
+          <div className="rounded-xl overflow-hidden shadow-lg">
+            <img 
+              src="/attached_assets/image_1742876221155.png" 
+              alt="Data privacy visualization" 
+              className="w-full h-auto"
+            />
+          </div>
+        </motion.div>
+
         {/* Interactive Visualization Area */}
         <div className="relative mx-auto w-full max-w-6xl h-[400px] md:h-[500px] mb-16">
           
