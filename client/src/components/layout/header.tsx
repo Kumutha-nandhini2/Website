@@ -73,7 +73,7 @@ const Header = () => {
                 </DropdownMenuItem>
                 <DropdownMenuItem asChild>
                   <Link href="#" className="flex flex-col gap-1 cursor-pointer">
-                    <div className="font-medium text-[#578FCA]">Breach Management & Compliance</div>
+                    <div className="font-medium text-[#578FCA]">Breach Management & Reporting</div>
                     <div className="text-xs text-muted-foreground">Identify, mitigate and report threats with AI-driven tools</div>
                   </Link>
                 </DropdownMenuItem>
@@ -239,7 +239,7 @@ const Header = () => {
                   <div className="py-2">Data & AI Governance</div>
                 </Link>
                 <Link href="#" onClick={() => setMenuOpen(false)}>
-                  <div className="py-2">Breach Management & Compliance</div>
+                  <div className="py-2">Breach Management & Reporting</div>
                 </Link>
                 <div className="px-1 py-1 mt-2 text-sm font-medium text-[#578FCA]">Advanced Privacy Technologies</div>
                 <Link href="#" onClick={() => setMenuOpen(false)}>
