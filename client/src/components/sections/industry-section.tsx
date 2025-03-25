@@ -16,19 +16,19 @@ const industries = [
   {
     title: "Technology",
     description: "AI-driven tech solutions for software companies.",
-    image: "/images/technology-cloud.jpg",
+    image: "attached_assets/image_1742539987120.png",
     delay: 0.2
   },
   {
     title: "Retail",
     description: "Protect customer data and maintain privacy compliance.",
-    image: "/images/retail-ecommerce.jpg",
+    image: "attached_assets/image_1742542749548.png",
     delay: 0.3
   },
   {
     title: "Automobile",
     description: "Secure customer and inventory data management.",
-    image: "/images/automobile-insurance.jpg",
+    image: "attached_assets/image_1742539120311.png",
     delay: 0.4
   }
 ];
@@ -42,18 +42,18 @@ const IndustryCard = ({ industry }: { industry: typeof industries[0] }) => {
       viewport={{ once: true }}
       transition={{ duration: 0.5, delay: industry.delay }}
     >
-      {/* Removed gradient overlay since we now have a dark background behind text */}
+      <div className="absolute inset-0 bg-gradient-to-b from-transparent to-[#2A5485] opacity-70 z-10"></div>
       <img
         src={industry.image}
         alt={`${industry.title} privacy solutions`}
         className="w-full h-48 object-cover transition-transform group-hover:scale-105"
       />
-      <div className="absolute bottom-0 left-0 right-0 p-3 z-20 bg-black bg-opacity-50">
-        <h3 className="text-lg font-bold text-[#3674B5] mb-1">{industry.title}</h3>
+      <div className="absolute bottom-0 left-0 right-0 p-3 z-20">
+        <h3 className="text-lg font-bold text-white mb-1">{industry.title}</h3>
         <p className="text-white text-opacity-90 text-xs mb-2">
           {industry.description}
         </p>
-        <a href="#" className="text-[#3674B5] text-xs inline-flex items-center font-medium">
+        <a href="#" className="text-white text-xs inline-flex items-center font-medium">
           Learn more
           <svg xmlns="http://www.w3.org/2000/svg" className="h-3 w-3 ml-1" fill="none" viewBox="0 0 24 24" stroke="currentColor">
             <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
