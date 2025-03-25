@@ -19,12 +19,12 @@ const CTASection = () => {
           </p>
           <div className="flex flex-col sm:flex-row justify-center gap-4">
             <Link href="/contact">
-              <Button size="lg" className="bg-[#578FCA] hover:bg-[#578FCA]/90 text-white">
+              <Button size="lg" className="bg-[#EAEAEA] hover:bg-[#EAEAEA]/90 text-[#4A628A]">
                 Request a Demo
               </Button>
             </Link>
             <Link href="#">
-              <Button size="lg" variant="outline" className="border-[#578FCA] text-[#578FCA] hover:bg-[#578FCA] hover:text-white">
+              <Button size="lg" variant="outline" className="border-[#578FCA] text-[#4A628A] hover:bg-[#578FCA] hover:text-[#EAEAEA]">
                 Explore Solutions
               </Button>
             </Link>

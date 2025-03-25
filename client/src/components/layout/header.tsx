@@ -138,8 +138,14 @@ const Header = () => {
                 </div>
                 <DropdownMenuItem asChild>
                   <Link href="#" className="flex flex-col gap-1 cursor-pointer">
-                    <div className="font-medium text-[#578FCA]">GDPR Compliance</div>
-                    <div className="text-xs text-muted-foreground">Meet European data protection requirements</div>
+                    <div className="font-medium text-[#578FCA]">GDPR & DPDP Compliance</div>
+                    <div className="text-xs text-muted-foreground">Meet global data protection requirements</div>
+                  </Link>
+                </DropdownMenuItem>
+                <DropdownMenuItem asChild>
+                  <Link href="#" className="flex flex-col gap-1 cursor-pointer">
+                    <div className="font-medium text-[#578FCA]">HIPAA Compliance</div>
+                    <div className="text-xs text-muted-foreground">Healthcare information protection standards</div>
                   </Link>
                 </DropdownMenuItem>
                 <DropdownMenuItem asChild>
@@ -186,7 +192,7 @@ const Header = () => {
               <DropdownMenuTrigger asChild>
                 <Button 
                   variant="default" 
-                  className="bg-[#578FCA] hover:bg-[#2A5485] text-white font-medium rounded-md transition-colors"
+                  className="bg-[#578FCA] hover:bg-[#2A5485] text-[#EAEAEA] font-medium rounded-md transition-colors"
                 >
                   Account
                 </Button>
@@ -206,7 +212,7 @@ const Header = () => {
             <Link href="/auth">
               <Button 
                 variant="default" 
-                className="bg-[#578FCA] hover:bg-[#2A5485] text-white font-medium rounded-md transition-colors"
+                className="bg-[#578FCA] hover:bg-[#2A5485] text-[#EAEAEA] font-medium rounded-md transition-colors"
               >
                 Login
               </Button>
@@ -267,7 +273,10 @@ const Header = () => {
                 </Link>
                 <div className="px-1 py-1 mt-2 text-sm font-medium text-[#578FCA]">By Use Case</div>
                 <Link href="#" onClick={() => setMenuOpen(false)}>
-                  <div className="py-2">GDPR Compliance</div>
+                  <div className="py-2">GDPR & DPDP Compliance</div>
+                </Link>
+                <Link href="#" onClick={() => setMenuOpen(false)}>
+                  <div className="py-2">HIPAA Compliance</div>
                 </Link>
                 <Link href="#" onClick={() => setMenuOpen(false)}>
                   <div className="py-2">Cross-Border Data Flows</div>
@@ -297,7 +306,7 @@ const Header = () => {
                       <Link href="/admin" onClick={() => setMenuOpen(false)}>
                         <Button 
                           variant="default" 
-                          className="w-full bg-[#578FCA] hover:bg-[#2A5485] text-white font-medium rounded-md transition-colors"
+                          className="w-full bg-[#578FCA] hover:bg-[#2A5485] text-[#EAEAEA] font-medium rounded-md transition-colors"
                         >
                           Admin Dashboard
                         </Button>
@@ -305,7 +314,7 @@ const Header = () => {
                     )}
                     <Button 
                       variant="default" 
-                      className="w-full bg-[#578FCA] hover:bg-[#2A5485] text-white font-medium rounded-md transition-colors"
+                      className="w-full bg-[#578FCA] hover:bg-[#2A5485] text-[#EAEAEA] font-medium rounded-md transition-colors"
                       onClick={() => {
                         handleLogout();
                         setMenuOpen(false);
@@ -318,7 +327,7 @@ const Header = () => {
                   <Link href="/auth" onClick={() => setMenuOpen(false)}>
                     <Button 
                       variant="default" 
-                      className="w-full bg-[#578FCA] hover:bg-[#2A5485] text-white font-medium rounded-md transition-colors"
+                      className="w-full bg-[#578FCA] hover:bg-[#2A5485] text-[#EAEAEA] font-medium rounded-md transition-colors"
                     >
                       Login
                     </Button>
