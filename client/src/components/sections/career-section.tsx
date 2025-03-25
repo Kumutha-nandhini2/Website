@@ -20,7 +20,7 @@ const CareerSection = () => {
           viewport={{ once: true }}
           transition={{ duration: 0.6 }}
         >
-          <h2 className="text-3xl md:text-4xl font-bold mb-6">Join Our Team</h2>
+          <h2 className="text-3xl md:text-4xl font-bold mb-6 text-[#3674B5]">Join Our Team</h2>
           <p className="text-lg text-white text-opacity-90 max-w-3xl mx-auto">
             We're building a team of passionate professionals dedicated to creating cutting-edge privacy solutions. If you're excited about data privacy and AI, we want to hear from you.
           </p>
@@ -35,7 +35,7 @@ const CareerSection = () => {
             {jobListings && jobListings.slice(0, 2).map((job, index) => (
               <motion.div
                 key={job.id}
-                className="bg-white bg-opacity-10 backdrop-blur-sm rounded-xl p-8 border border-white border-opacity-20"
+                className="bg-white bg-opacity-20 backdrop-blur-sm rounded-xl p-8 border border-[#3674B5] border-opacity-30"
                 initial={{ opacity: 0, y: 20 }}
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true }}
@@ -69,7 +69,7 @@ const CareerSection = () => {
           transition={{ duration: 0.6 }}
         >
           <Link href="/careers">
-            <Button variant="outline" className="border-2 border-white text-white hover:bg-white hover:text-primary-dark">
+            <Button variant="outline" className="border-2 border-[#3674B5] text-[#3674B5] hover:bg-[#3674B5] hover:bg-opacity-20 hover:text-white">
               View All Openings
             </Button>
           </Link>
