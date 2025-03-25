@@ -38,6 +38,7 @@ export function ChatInterface({ minimized = false, onMinimize }: ChatInterfacePr
   const [attachment, setAttachment] = useState<File | null>(null);
   const [sessionId, setSessionId] = useState<string | null>(null);
   const [conversationId, setConversationId] = useState<number | null>(null);
+  const [isApplicationDialogOpen, setIsApplicationDialogOpen] = useState(false);
   const fileInputRef = useRef<HTMLInputElement>(null);
   const messagesEndRef = useRef<HTMLDivElement>(null);
   const { toast } = useToast();
@@ -213,9 +214,97 @@ export function ChatInterface({ minimized = false, onMinimize }: ChatInterfacePr
     const date = new Date(timestamp);
     return date.toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' });
   };
+  
+  // Check if a message contains job or career-related content
+  const isJobRelatedMessage = (content: string) => {
+    const lowerContent = content.toLowerCase();
+    return lowerContent.includes('job') || 
+           lowerContent.includes('career') ||
+           lowerContent.includes('position') ||
+           lowerContent.includes('apply') ||
+           lowerContent.includes('resume') ||
+           lowerContent.includes('work') ||
+           lowerContent.includes('employment');
+  };
+  
+  // Handle job application submission
+  const handleApplicationSubmit = async (formData: ApplicationFormData) => {
+    if (!conversationId) return;
+    
+    // Create FormData instance for the API call
+    const apiFormData = new FormData();
+    
+    // Set application flag and add all form fields as metadata
+    apiFormData.append('sender', 'user');
+    apiFormData.append('content', `I'm applying for the "${formData.position}" position.\n\n${formData.message || 'Please consider my application.'}`);
+    apiFormData.append('isApplicationRequest', 'true');
+    
+    const metadata = {
+      fullName: formData.fullName,
+      email: formData.email,
+      phone: formData.phone,
+      position: formData.position,
+      experience: formData.experience,
+      isJobApplication: true
+    };
+    
+    apiFormData.append('metadata', JSON.stringify(metadata));
+    
+    // Add resume if provided
+    if (formData.resumeFile) {
+      apiFormData.append('attachment', formData.resumeFile);
+    }
+    
+    try {
+      // Submit the application message
+      const response = await fetch(`/api/chat/conversations/${conversationId}/messages`, {
+        method: 'POST',
+        body: apiFormData
+      });
+      
+      if (!response.ok) {
+        throw new Error('Failed to submit application');
+      }
+      
+      // Update userInfo if it wasn't set before
+      if (!userInfo.name || !userInfo.email) {
+        setUserInfo({
+          name: formData.fullName,
+          email: formData.email
+        });
+      }
+      
+      // Invalidate query to refresh messages
+      queryClient.invalidateQueries({
+        queryKey: ['/api/chat/conversations', conversationId, 'messages']
+      });
+      
+      toast({
+        title: 'Application Submitted',
+        description: 'Your job application has been submitted successfully. We will contact you soon.',
+        variant: 'default'
+      });
+      
+    } catch (error) {
+      console.error('Application submission error:', error);
+      toast({
+        title: 'Submission Failed',
+        description: 'There was an error submitting your application. Please try again.',
+        variant: 'destructive'
+      });
+    }
+  };
 
   return (
     <>
+      {/* Job Application Dialog */}
+      <ChatJobApplication 
+        conversationId={conversationId || 0}
+        onApplicationSubmit={handleApplicationSubmit}
+        isOpen={isApplicationDialogOpen}
+        onOpenChange={setIsApplicationDialogOpen}
+      />
+      
       {/* Chat Trigger Button */}
       <Sheet open={isOpen} onOpenChange={setIsOpen}>
         <SheetTrigger asChild>
@@ -281,6 +370,21 @@ export function ChatInterface({ minimized = false, onMinimize }: ChatInterfacePr
                         <div className="mt-2 p-2 bg-background/20 rounded flex items-center gap-2">
                           <Paperclip className="h-4 w-4" />
                           <span className="text-xs truncate">Attachment</span>
+                        </div>
+                      )}
+                      
+                      {/* Apply button for bot messages that are job-related */}
+                      {(msg.sender === 'bot' && isJobRelatedMessage(msg.content)) && (
+                        <div className="mt-3">
+                          <Button 
+                            variant="outline" 
+                            size="sm"
+                            className="w-full text-xs"
+                            onClick={() => setIsApplicationDialogOpen(true)}
+                          >
+                            <BriefcaseBusiness className="mr-1 h-3 w-3" />
+                            Apply for a position
+                          </Button>
                         </div>
                       )}
                     </div>

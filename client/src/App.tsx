@@ -14,6 +14,7 @@ import { AuthProvider } from "@/hooks/use-auth";
 import { ProtectedRoute } from "./lib/protected-route";
 import Header from "./components/layout/header";
 import Footer from "./components/layout/footer";
+import { ChatInterface } from "./components/chat/chat-interface";
 
 function Router() {
   return (
@@ -40,6 +41,7 @@ function App() {
             <Router />
           </main>
           <Footer />
+          <ChatInterface />
         </div>
         <Toaster />
       </AuthProvider>
