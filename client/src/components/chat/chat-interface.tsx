@@ -215,16 +215,25 @@ export function ChatInterface({ minimized = false, onMinimize }: ChatInterfacePr
     return date.toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' });
   };
   
-  // Check if a message contains job or career-related content
+  // Check if a message contains explicit job application intent
   const isJobRelatedMessage = (content: string) => {
     const lowerContent = content.toLowerCase();
-    return lowerContent.includes('job') || 
-           lowerContent.includes('career') ||
-           lowerContent.includes('position') ||
-           lowerContent.includes('apply') ||
-           lowerContent.includes('resume') ||
-           lowerContent.includes('work') ||
-           lowerContent.includes('employment');
+    // Only match explicit application intent phrases
+    return (lowerContent.includes('apply for') && 
+              (lowerContent.includes('job') || 
+               lowerContent.includes('position') || 
+               lowerContent.includes('role'))) || 
+           (lowerContent.includes('how') && 
+              lowerContent.includes('apply') && 
+              (lowerContent.includes('job') || 
+               lowerContent.includes('position') || 
+               lowerContent.includes('role'))) ||
+           (lowerContent.includes('interested in') && 
+              lowerContent.includes('position')) ||
+           (lowerContent.includes('job application') && 
+              lowerContent.includes('form')) ||
+           (lowerContent.includes('submit') && 
+              lowerContent.includes('resume'));
   };
   
   // Handle job application submission
