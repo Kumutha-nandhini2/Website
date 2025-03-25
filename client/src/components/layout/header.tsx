@@ -61,24 +61,24 @@ const Header = () => {
                 </DropdownMenuItem>
                 <DropdownMenuItem asChild>
                   <Link href="#" className="flex flex-col gap-1 cursor-pointer">
-                    <div className="font-medium text-[#578FCA]">Consent Management</div>
+                    <div className="font-medium text-[#008DDA]">Consent Management</div>
                     <div className="text-xs text-muted-foreground">Smart, automated consent handling for seamless compliance</div>
                   </Link>
                 </DropdownMenuItem>
                 <DropdownMenuItem asChild>
                   <Link href="#" className="flex flex-col gap-1 cursor-pointer">
-                    <div className="font-medium text-[#578FCA]">Data & AI Governance</div>
+                    <div className="font-medium text-[#008DDA]">Data & AI Governance</div>
                     <div className="text-xs text-muted-foreground">Unified governance across data landscapes and AI models</div>
                   </Link>
                 </DropdownMenuItem>
                 <DropdownMenuItem asChild>
                   <Link href="#" className="flex flex-col gap-1 cursor-pointer">
-                    <div className="font-medium text-[#578FCA]">Breach Management & Reporting</div>
+                    <div className="font-medium text-[#008DDA]">Breach Management & Reporting</div>
                     <div className="text-xs text-muted-foreground">Identify, mitigate and report threats with AI-driven tools</div>
                   </Link>
                 </DropdownMenuItem>
                 <div className="px-4 py-2 border-b border-t border-[#578FCA]/10 mt-2">
-                  <span className="text-sm font-semibold text-[#578FCA]">Advanced Privacy Technologies</span>
+                  <span className="text-sm font-semibold text-[#008DDA]">Advanced Privacy Technologies</span>
                 </div>
                 <DropdownMenuItem asChild>
                   <Link href="#" className="flex flex-col gap-1 cursor-pointer">
@@ -306,7 +306,7 @@ const Header = () => {
                       <Link href="/admin" onClick={() => setMenuOpen(false)}>
                         <Button 
                           variant="default" 
-                          className="w-full bg-[#578FCA] hover:bg-[#2A5485] text-[#2973B2] font-medium rounded-md transition-colors"
+                          className="w-full bg-[#008DDA] hover:bg-[#006DAA] text-white font-medium rounded-md transition-colors"
                         >
                           Admin Dashboard
                         </Button>
@@ -314,7 +314,7 @@ const Header = () => {
                     )}
                     <Button 
                       variant="default" 
-                      className="w-full bg-[#578FCA] hover:bg-[#2A5485] text-[#2973B2] font-medium rounded-md transition-colors"
+                      className="w-full bg-[#008DDA] hover:bg-[#006DAA] text-white font-medium rounded-md transition-colors"
                       onClick={() => {
                         handleLogout();
                         setMenuOpen(false);
@@ -327,7 +327,7 @@ const Header = () => {
                   <Link href="/auth" onClick={() => setMenuOpen(false)}>
                     <Button 
                       variant="default" 
-                      className="w-full bg-[#578FCA] hover:bg-[#2A5485] text-[#2973B2] font-medium rounded-md transition-colors"
+                      className="w-full bg-[#008DDA] hover:bg-[#006DAA] text-white font-medium rounded-md transition-colors"
                     >
                       Login
                     </Button>
