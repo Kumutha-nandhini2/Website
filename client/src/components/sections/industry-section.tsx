@@ -4,31 +4,31 @@ const industries = [
   {
     title: "Healthcare",
     description: "HIPAA-compliant solutions for healthcare providers.",
-    image: "/attached_assets/In%20recent%20years%2C%20digital%20health%20has%20revolutionized%20the%20medical%20field_%20Technology%20has%20reshaped%20how%20we%20approach%20health%20and%20wellness.%20With%20advancements%20in%20digital%20health%2C%20we%20see%20significant%20improvements%20in%20patient.com_b_98",
+    image: "attached_assets/In recent years, digital health has revolutionized the medical field_ Technology has reshaped how we approach health and wellness. With advancements in digital health, we see significant improvements in patient.com_b_98",
     delay: 0
   },
   {
     title: "Finance",
     description: "Secure financial data handling with regulatory compliance.",
-    image: "/attached_assets/How%20Bitcoin%20Brings%20Financial%20Literacy%20To%20Everyone.jpg",
+    image: "attached_assets/How Bitcoin Brings Financial Literacy To Everyone.jpg",
     delay: 0.1
   },
   {
     title: "Technology",
     description: "AI-driven tech solutions for software companies.",
-    image: "/attached_assets/Cloud%20Computing%20and%20Its%20Increasing%20Impacts.jpg",
+    image: "attached_assets/Cloud Computing and Its Increasing Impacts.jpg",
     delay: 0.2
   },
   {
     title: "Retail",
     description: "Protect customer data and maintain privacy compliance.",
-    image: "/attached_assets/5%20Reasons%20PIM%20and%20eCommerce%20Will%20Create%20Magic%20Together%20in%202021.jpg",
+    image: "attached_assets/5 Reasons PIM and eCommerce Will Create Magic Together in 2021.jpg",
     delay: 0.3
   },
   {
     title: "Automobile",
     description: "Secure customer and inventory data management.",
-    image: "/attached_assets/Insurance.jpg",
+    image: "attached_assets/Insurance.jpg",
     delay: 0.4
   }
 ];

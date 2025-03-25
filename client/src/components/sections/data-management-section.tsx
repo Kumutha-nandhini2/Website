@@ -56,7 +56,7 @@ const DataManagementSection = () => {
         >
           <div className="rounded-xl overflow-hidden shadow-lg">
             <img 
-              src="/attached_assets/image_1742876221155.png" 
+              src="attached_assets/image_1742876221155.png" 
               alt="Data privacy visualization" 
               className="w-full h-auto"
             />
