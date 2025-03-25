@@ -28,7 +28,7 @@ const industries = [
   {
     title: "Automobile",
     description: "Secure customer and inventory data management.",
-    image: "attached_assets/image_1742539120311.png",
+    image: "/images/automobile-insurance.jpg",
     delay: 0.4
   }
 ];
