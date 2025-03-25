@@ -79,6 +79,8 @@ export function AuthProvider({ children }: { children: ReactNode }) {
     },
     onSuccess: () => {
       queryClient.setQueryData(["/api/user"], null);
+      // Clear chat session data on logout
+      localStorage.removeItem('chat_session_id');
       toast({
         title: "Logged out",
         description: "You have been successfully logged out.",

@@ -175,6 +175,17 @@ export function ChatInterface({ minimized = false, onMinimize }: ChatInterfacePr
   // Send a message
   const handleSendMessage = (e: React.FormEvent) => {
     e.preventDefault();
+    
+    // Check if name and email are provided for the first message
+    if (messages.length === 0 && (!userInfo.name.trim() || !userInfo.email.trim())) {
+      toast({
+        title: 'Required Fields',
+        description: 'Please provide your name and email to start the conversation.',
+        variant: 'destructive'
+      });
+      return;
+    }
+    
     if (message.trim() || attachment) {
       sendMessageMutation.mutate();
     }
@@ -409,22 +420,24 @@ export function ChatInterface({ minimized = false, onMinimize }: ChatInterfacePr
             <div className="p-4 border-t">
               <div className="grid gap-4">
                 <div className="grid gap-2">
-                  <Label htmlFor="name">Your Name (optional)</Label>
+                  <Label htmlFor="name">Your Name *</Label>
                   <Input
                     id="name"
                     placeholder="Enter your name"
                     value={userInfo.name}
                     onChange={(e) => setUserInfo({...userInfo, name: e.target.value})}
+                    required
                   />
                 </div>
                 <div className="grid gap-2">
-                  <Label htmlFor="email">Your Email (optional)</Label>
+                  <Label htmlFor="email">Your Email *</Label>
                   <Input
                     id="email"
                     type="email"
                     placeholder="Enter your email"
                     value={userInfo.email}
                     onChange={(e) => setUserInfo({...userInfo, email: e.target.value})}
+                    required
                   />
                 </div>
               </div>
