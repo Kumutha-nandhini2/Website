@@ -82,13 +82,13 @@ const Header = () => {
                 </div>
                 <DropdownMenuItem asChild>
                   <Link href="#" className="flex flex-col gap-1 cursor-pointer">
-                    <div className="font-medium text-[#578FCA]">Tokenization</div>
+                    <div className="font-medium text-[#008DDA]">Tokenization</div>
                     <div className="text-xs text-muted-foreground">Replace sensitive data with non-sensitive equivalents</div>
                   </Link>
                 </DropdownMenuItem>
                 <DropdownMenuItem asChild>
                   <Link href="#" className="flex flex-col gap-1 cursor-pointer">
-                    <div className="font-medium text-[#578FCA]">Zero-Knowledge Proofs</div>
+                    <div className="font-medium text-[#008DDA]">Zero-Knowledge Proofs</div>
                     <div className="text-xs text-muted-foreground">Verify data without revealing underlying information</div>
                   </Link>
                 </DropdownMenuItem>
@@ -107,7 +107,7 @@ const Header = () => {
               </DropdownMenuTrigger>
               <DropdownMenuContent align="start" className="w-72 bg-white/95 backdrop-blur-sm border border-[#578FCA]/10 shadow-sm">
                 <div className="px-4 py-2 border-b border-[#578FCA]/10">
-                  <span className="text-sm font-semibold text-[#578FCA]">By Industry</span>
+                  <span className="text-sm font-semibold text-[#008DDA]">By Industry</span>
                 </div>
                 <DropdownMenuItem asChild>
                   <Link href="#" className="flex flex-col gap-1 cursor-pointer">
@@ -134,7 +134,7 @@ const Header = () => {
                   </Link>
                 </DropdownMenuItem>
                 <div className="px-4 py-2 border-b border-t border-[#578FCA]/10 mt-2">
-                  <span className="text-sm font-semibold text-[#578FCA]">By Use Case</span>
+                  <span className="text-sm font-semibold text-[#008DDA]">By Use Case</span>
                 </div>
                 <DropdownMenuItem asChild>
                   <Link href="#" className="flex flex-col gap-1 cursor-pointer">
@@ -234,7 +234,7 @@ const Header = () => {
             <div className="flex flex-col gap-6">
               <div className="space-y-3">
                 <div className="font-bold text-lg mb-2">Products</div>
-                <div className="px-1 py-1 text-sm font-medium text-[#578FCA]">Privacy Platform</div>
+                <div className="px-1 py-1 text-sm font-medium text-[#008DDA]">Privacy Platform</div>
                 <Link href="#" onClick={() => setMenuOpen(false)}>
                   <div className="py-2">Data Classification</div>
                 </Link>
@@ -247,7 +247,7 @@ const Header = () => {
                 <Link href="#" onClick={() => setMenuOpen(false)}>
                   <div className="py-2">Breach Management & Reporting</div>
                 </Link>
-                <div className="px-1 py-1 mt-2 text-sm font-medium text-[#578FCA]">Advanced Privacy Technologies</div>
+                <div className="px-1 py-1 mt-2 text-sm font-medium text-[#008DDA]">Advanced Privacy Technologies</div>
                 <Link href="#" onClick={() => setMenuOpen(false)}>
                   <div className="py-2">Tokenization</div>
                 </Link>
@@ -258,7 +258,7 @@ const Header = () => {
 
               <div className="space-y-3">
                 <div className="font-bold text-lg mb-2">Solutions</div>
-                <div className="px-1 py-1 text-sm font-medium text-[#578FCA]">By Industry</div>
+                <div className="px-1 py-1 text-sm font-medium text-[#008DDA]">By Industry</div>
                 <Link href="#" onClick={() => setMenuOpen(false)}>
                   <div className="py-2">Healthcare</div>
                 </Link>
@@ -271,7 +271,7 @@ const Header = () => {
                 <Link href="#" onClick={() => setMenuOpen(false)}>
                   <div className="py-2">Automobile</div>
                 </Link>
-                <div className="px-1 py-1 mt-2 text-sm font-medium text-[#578FCA]">By Use Case</div>
+                <div className="px-1 py-1 mt-2 text-sm font-medium text-[#008DDA]">By Use Case</div>
                 <Link href="#" onClick={() => setMenuOpen(false)}>
                   <div className="py-2">GDPR & DPDP Compliance</div>
                 </Link>
