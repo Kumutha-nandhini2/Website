@@ -51,30 +51,45 @@ const Header = () => {
               </DropdownMenuTrigger>
               <DropdownMenuContent align="start" className="w-72 bg-white/95 backdrop-blur-sm border border-[#578FCA]/10 shadow-sm">
                 <div className="px-4 py-2 border-b border-[#578FCA]/10">
-                  <span className="text-sm font-semibold text-[#578FCA]">Privacy Solutions</span>
+                  <span className="text-sm font-semibold text-[#578FCA]">Privacy Platform</span>
                 </div>
                 <DropdownMenuItem asChild>
                   <Link href="#" className="flex flex-col gap-1 cursor-pointer">
-                    <div className="font-medium">Data Classification</div>
-                    <div className="text-xs text-muted-foreground">Secure your PII across tech stack through smart data discovery</div>
+                    <div className="font-medium text-[#578FCA]">Data Classification</div>
+                    <div className="text-xs text-muted-foreground">Secure sensitive data through smart discovery and classification</div>
                   </Link>
                 </DropdownMenuItem>
                 <DropdownMenuItem asChild>
                   <Link href="#" className="flex flex-col gap-1 cursor-pointer">
-                    <div className="font-medium">Consent Management</div>
-                    <div className="text-xs text-muted-foreground">Smart, automated consent management for seamless privacy compliance</div>
+                    <div className="font-medium text-[#578FCA]">Consent Management</div>
+                    <div className="text-xs text-muted-foreground">Smart, automated consent handling for seamless compliance</div>
                   </Link>
                 </DropdownMenuItem>
                 <DropdownMenuItem asChild>
                   <Link href="#" className="flex flex-col gap-1 cursor-pointer">
-                    <div className="font-medium">Privacy Automation</div>
-                    <div className="text-xs text-muted-foreground">Enable privacy workflow automation while complying with regulations</div>
+                    <div className="font-medium text-[#578FCA]">Data & AI Governance</div>
+                    <div className="text-xs text-muted-foreground">Unified governance across data landscapes and AI models</div>
                   </Link>
                 </DropdownMenuItem>
                 <DropdownMenuItem asChild>
                   <Link href="#" className="flex flex-col gap-1 cursor-pointer">
-                    <div className="font-medium">Breach Management & Reporting</div>
-                    <div className="text-xs text-muted-foreground">Identify and mitigate threats with AI-driven monitoring and reporting</div>
+                    <div className="font-medium text-[#578FCA]">Breach Management & Compliance</div>
+                    <div className="text-xs text-muted-foreground">Identify, mitigate and report threats with AI-driven tools</div>
+                  </Link>
+                </DropdownMenuItem>
+                <div className="px-4 py-2 border-b border-t border-[#578FCA]/10 mt-2">
+                  <span className="text-sm font-semibold text-[#578FCA]">Advanced Privacy Technologies</span>
+                </div>
+                <DropdownMenuItem asChild>
+                  <Link href="#" className="flex flex-col gap-1 cursor-pointer">
+                    <div className="font-medium text-[#578FCA]">Tokenization</div>
+                    <div className="text-xs text-muted-foreground">Replace sensitive data with non-sensitive equivalents</div>
+                  </Link>
+                </DropdownMenuItem>
+                <DropdownMenuItem asChild>
+                  <Link href="#" className="flex flex-col gap-1 cursor-pointer">
+                    <div className="font-medium text-[#578FCA]">Zero-Knowledge Proofs</div>
+                    <div className="text-xs text-muted-foreground">Verify data without revealing underlying information</div>
                   </Link>
                 </DropdownMenuItem>
               </DropdownMenuContent>
@@ -90,26 +105,47 @@ const Header = () => {
                   <ChevronDown size={16} />
                 </Button>
               </DropdownMenuTrigger>
-              <DropdownMenuContent align="start" className="w-64 bg-white/95 backdrop-blur-sm border border-[#578FCA]/10 shadow-sm">
+              <DropdownMenuContent align="start" className="w-72 bg-white/95 backdrop-blur-sm border border-[#578FCA]/10 shadow-sm">
                 <div className="px-4 py-2 border-b border-[#578FCA]/10">
                   <span className="text-sm font-semibold text-[#578FCA]">By Industry</span>
                 </div>
                 <DropdownMenuItem asChild>
                   <Link href="#" className="flex flex-col gap-1 cursor-pointer">
-                    <div className="font-medium">Healthcare</div>
-                    <div className="text-xs text-muted-foreground">HIPAA-compliant solutions</div>
+                    <div className="font-medium text-[#578FCA]">Healthcare</div>
+                    <div className="text-xs text-muted-foreground">HIPAA-compliant privacy solutions for patient data</div>
                   </Link>
                 </DropdownMenuItem>
                 <DropdownMenuItem asChild>
                   <Link href="#" className="flex flex-col gap-1 cursor-pointer">
-                    <div className="font-medium">Finance</div>
-                    <div className="text-xs text-muted-foreground">Secure financial data handling</div>
+                    <div className="font-medium text-[#578FCA]">Financial Services</div>
+                    <div className="text-xs text-muted-foreground">PCI-DSS compliant solutions for financial institutions</div>
                   </Link>
                 </DropdownMenuItem>
                 <DropdownMenuItem asChild>
                   <Link href="#" className="flex flex-col gap-1 cursor-pointer">
-                    <div className="font-medium">Technology</div>
-                    <div className="text-xs text-muted-foreground">AI-driven tech solutions</div>
+                    <div className="font-medium text-[#578FCA]">Retail & eCommerce</div>
+                    <div className="text-xs text-muted-foreground">Protect customer data while enabling personalization</div>
+                  </Link>
+                </DropdownMenuItem>
+                <DropdownMenuItem asChild>
+                  <Link href="#" className="flex flex-col gap-1 cursor-pointer">
+                    <div className="font-medium text-[#578FCA]">Automobile</div>
+                    <div className="text-xs text-muted-foreground">Safeguard connected vehicle and customer information</div>
+                  </Link>
+                </DropdownMenuItem>
+                <div className="px-4 py-2 border-b border-t border-[#578FCA]/10 mt-2">
+                  <span className="text-sm font-semibold text-[#578FCA]">By Use Case</span>
+                </div>
+                <DropdownMenuItem asChild>
+                  <Link href="#" className="flex flex-col gap-1 cursor-pointer">
+                    <div className="font-medium text-[#578FCA]">GDPR Compliance</div>
+                    <div className="text-xs text-muted-foreground">Meet European data protection requirements</div>
+                  </Link>
+                </DropdownMenuItem>
+                <DropdownMenuItem asChild>
+                  <Link href="#" className="flex flex-col gap-1 cursor-pointer">
+                    <div className="font-medium text-[#578FCA]">Cross-Border Data Flows</div>
+                    <div className="text-xs text-muted-foreground">Secure global data transfers and processing</div>
                   </Link>
                 </DropdownMenuItem>
               </DropdownMenuContent>
@@ -192,6 +228,7 @@ const Header = () => {
             <div className="flex flex-col gap-6">
               <div className="space-y-3">
                 <div className="font-bold text-lg mb-2">Products</div>
+                <div className="px-1 py-1 text-sm font-medium text-[#578FCA]">Privacy Platform</div>
                 <Link href="#" onClick={() => setMenuOpen(false)}>
                   <div className="py-2">Data Classification</div>
                 </Link>
@@ -199,23 +236,41 @@ const Header = () => {
                   <div className="py-2">Consent Management</div>
                 </Link>
                 <Link href="#" onClick={() => setMenuOpen(false)}>
-                  <div className="py-2">Privacy Automation</div>
+                  <div className="py-2">Data & AI Governance</div>
                 </Link>
                 <Link href="#" onClick={() => setMenuOpen(false)}>
-                  <div className="py-2">Breach Management & Reporting</div>
+                  <div className="py-2">Breach Management & Compliance</div>
+                </Link>
+                <div className="px-1 py-1 mt-2 text-sm font-medium text-[#578FCA]">Advanced Privacy Technologies</div>
+                <Link href="#" onClick={() => setMenuOpen(false)}>
+                  <div className="py-2">Tokenization</div>
+                </Link>
+                <Link href="#" onClick={() => setMenuOpen(false)}>
+                  <div className="py-2">Zero-Knowledge Proofs</div>
                 </Link>
               </div>
 
               <div className="space-y-3">
                 <div className="font-bold text-lg mb-2">Solutions</div>
+                <div className="px-1 py-1 text-sm font-medium text-[#578FCA]">By Industry</div>
                 <Link href="#" onClick={() => setMenuOpen(false)}>
                   <div className="py-2">Healthcare</div>
                 </Link>
                 <Link href="#" onClick={() => setMenuOpen(false)}>
-                  <div className="py-2">Finance</div>
+                  <div className="py-2">Financial Services</div>
                 </Link>
                 <Link href="#" onClick={() => setMenuOpen(false)}>
-                  <div className="py-2">Technology</div>
+                  <div className="py-2">Retail & eCommerce</div>
+                </Link>
+                <Link href="#" onClick={() => setMenuOpen(false)}>
+                  <div className="py-2">Automobile</div>
+                </Link>
+                <div className="px-1 py-1 mt-2 text-sm font-medium text-[#578FCA]">By Use Case</div>
+                <Link href="#" onClick={() => setMenuOpen(false)}>
+                  <div className="py-2">GDPR Compliance</div>
+                </Link>
+                <Link href="#" onClick={() => setMenuOpen(false)}>
+                  <div className="py-2">Cross-Border Data Flows</div>
                 </Link>
               </div>
 
