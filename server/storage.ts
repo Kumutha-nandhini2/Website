@@ -407,16 +407,19 @@ export class MemStorage implements IStorage {
   async createChatConversation(insertConversation: InsertChatConversation): Promise<ChatConversation> {
     const id = this.chatConversationIdCounter++;
     const now = new Date();
+    
+    // Create conversation with explicitly set properties to satisfy type checking
     const conversation: ChatConversation = {
-      ...insertConversation,
       id,
-      startedAt: now,
-      lastMessageAt: now,
-      status: 'active',
+      sessionId: insertConversation.sessionId,
       userEmail: insertConversation.userEmail || null,
       userName: insertConversation.userName || null,
+      startedAt: now,
+      lastMessageAt: now,
       category: insertConversation.category || null,
+      status: 'active'
     };
+    
     this.chatConversations.set(id, conversation);
     return conversation;
   }
@@ -451,7 +454,10 @@ export class MemStorage implements IStorage {
       ...insertMessage,
       id,
       timestamp: new Date(),
+      attachmentUrl: insertMessage.attachmentUrl || null,
+      attachmentType: insertMessage.attachmentType || null,
       isApplicationRequest: insertMessage.isApplicationRequest || false,
+      metadata: insertMessage.metadata || {},
     };
     this.chatMessages.set(id, message);
     return message;

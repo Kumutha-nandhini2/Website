@@ -286,7 +286,15 @@ export async function registerRoutes(app: Express): Promise<Server> {
       }
       
       // Prepare message data
-      const messageData = {
+      const messageData: {
+        conversationId: number;
+        sender: string;
+        content: string;
+        isApplicationRequest: boolean;
+        metadata?: any;
+        attachmentUrl?: string;
+        attachmentType?: string;
+      } = {
         conversationId,
         sender: req.body.sender,
         content: req.body.content,
@@ -306,13 +314,16 @@ export async function registerRoutes(app: Express): Promise<Server> {
       
       // If this is a job application request, create a job application entry
       if (message.isApplicationRequest && message.metadata) {
+        // Type guard to ensure metadata has the expected properties
+        const metadata = message.metadata as Record<string, any>;
+        
         // Convert metadata to a JobApplication format
         const applicationData = {
-          fullName: message.metadata.fullName || conversation.userName || 'Unknown',
-          email: message.metadata.email || conversation.userEmail || 'unknown@example.com',
-          phone: message.metadata.phone || 'Not provided',
-          position: message.metadata.position || 'Position via chatbot',
-          experience: message.metadata.experience || 'Not specified',
+          fullName: metadata.fullName || conversation.userName || 'Unknown',
+          email: metadata.email || conversation.userEmail || 'unknown@example.com',
+          phone: metadata.phone || 'Not provided',
+          position: metadata.position || 'Position via chatbot',
+          experience: metadata.experience || 'Not specified',
           message: message.content,
           resumePath: message.attachmentUrl || null,
         };
@@ -393,7 +404,7 @@ export async function registerRoutes(app: Express): Promise<Server> {
   const httpServer = createServer(app);
   
   // Simple chatbot response generator
-  async function generateBotResponse(message, conversation) {
+  async function generateBotResponse(message: string, conversation: any) {
     // Convert message to lowercase for easier matching
     const lowerMessage = message.toLowerCase();
     
