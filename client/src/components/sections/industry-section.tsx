@@ -4,7 +4,7 @@ const industries = [
   {
     title: "Healthcare",
     description: "HIPAA-compliant solutions for healthcare providers.",
-    image: "attached_assets/In recent years, digital health has revolutionized the medical field_ Technology has reshaped how we approach health and wellness. With advancements in digital health, we see significant improvements in patient.com_b_98",
+    image: "attached_assets/image_1742876221155.png",
     delay: 0
   },
   {
@@ -22,7 +22,7 @@ const industries = [
   {
     title: "Retail",
     description: "Protect customer data and maintain privacy compliance.",
-    image: "attached_assets/5 Reasons PIM and eCommerce Will Create Magic Together in 2021.jpg",
+    image: "attached_assets/image_1742542749548.png",
     delay: 0.3
   },
   {
