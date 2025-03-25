@@ -4,31 +4,31 @@ const industries = [
   {
     title: "Healthcare",
     description: "HIPAA-compliant solutions for healthcare providers.",
-    image: "attached_assets/image_1742876221155.png",
+    image: "attached_assets/In recent years, digital health has revolutionized the medical field_ Technology has reshaped how we approach health and wellness. With advancements in digital health, we see significant improvements in pat (1).com_b_98",
     delay: 0
   },
   {
     title: "Finance",
     description: "Secure financial data handling with regulatory compliance.",
-    image: "attached_assets/image_1742542333688.png",
+    image: "attached_assets/How Bitcoin Brings Financial Literacy To Everyone.jpg",
     delay: 0.1
   },
   {
     title: "Technology",
     description: "AI-driven tech solutions for software companies.",
-    image: "/images/technology-cloud.jpg",
+    image: "attached_assets/Cloud Computing and Its Increasing Impacts.jpg",
     delay: 0.2
   },
   {
     title: "Retail",
     description: "Protect customer data and maintain privacy compliance.",
-    image: "/images/retail-ecommerce.jpg",
+    image: "attached_assets/5 Reasons PIM and eCommerce Will Create Magic Together in 2021.jpg",
     delay: 0.3
   },
   {
     title: "Automobile",
     description: "Secure customer and inventory data management.",
-    image: "/images/automobile-insurance.jpg",
+    image: "attached_assets/Insurance.jpg",
     delay: 0.4
   }
 ];
@@ -42,7 +42,7 @@ const IndustryCard = ({ industry }: { industry: typeof industries[0] }) => {
       viewport={{ once: true }}
       transition={{ duration: 0.5, delay: industry.delay }}
     >
-      <div className="absolute inset-0 bg-gradient-to-b from-transparent to-[#2A5485] opacity-70 z-10"></div>
+      <div className="absolute inset-0 bg-gradient-to-b from-transparent to-[#006DAA] opacity-70 z-10"></div>
       <img
         src={industry.image}
         alt={`${industry.title} privacy solutions`}
