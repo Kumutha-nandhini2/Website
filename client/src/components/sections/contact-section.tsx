@@ -22,6 +22,10 @@ import { apiRequest } from "@/lib/queryClient";
 
 // Extend the inquiry schema with validation rules
 const contactFormSchema = insertInquirySchema.extend({
+  firstName: z.string().min(1, "First name is required"),
+  lastName: z.string().min(1, "Last name is required"),
+  email: z.string().min(1, "Email is required").email("Invalid email format"),
+  company: z.string().min(1, "Company name is required"),
   consent: z.boolean().refine(val => val === true, {
     message: "You must agree to the terms and conditions"
   })

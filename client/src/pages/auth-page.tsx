@@ -32,6 +32,9 @@ const loginSchema = z.object({
 });
 
 const registerSchema = insertUserSchema.extend({
+  username: z.string().min(3, "Username must be at least 3 characters"),
+  email: z.string().min(1, "Email is required").email("Invalid email format"),
+  name: z.string().min(1, "Name is required"),
   password: z.string().min(6, "Password must be at least 6 characters"),
   confirmPassword: z.string(),
 }).refine(data => data.password === data.confirmPassword, {
@@ -64,6 +67,8 @@ const AuthPage = () => {
     resolver: zodResolver(registerSchema),
     defaultValues: {
       username: "",
+      email: "",
+      name: "",
       password: "",
       confirmPassword: "",
     },
@@ -141,7 +146,7 @@ const AuthPage = () => {
                         name="username"
                         render={({ field }) => (
                           <FormItem>
-                            <FormLabel>Username</FormLabel>
+                            <FormLabel>Username <span className="text-primary">*</span></FormLabel>
                             <FormControl>
                               <Input placeholder="Enter your username" {...field} />
                             </FormControl>
@@ -154,7 +159,7 @@ const AuthPage = () => {
                         name="password"
                         render={({ field }) => (
                           <FormItem>
-                            <FormLabel>Password</FormLabel>
+                            <FormLabel>Password <span className="text-primary">*</span></FormLabel>
                             <FormControl>
                               <Input type="password" placeholder="Enter your password" {...field} />
                             </FormControl>
@@ -182,9 +187,35 @@ const AuthPage = () => {
                         name="username"
                         render={({ field }) => (
                           <FormItem>
-                            <FormLabel>Username</FormLabel>
+                            <FormLabel>Username <span className="text-primary">*</span></FormLabel>
                             <FormControl>
                               <Input placeholder="Choose a username" {...field} />
+                            </FormControl>
+                            <FormMessage />
+                          </FormItem>
+                        )}
+                      />
+                      <FormField
+                        control={registerForm.control}
+                        name="name"
+                        render={({ field }) => (
+                          <FormItem>
+                            <FormLabel>Full Name <span className="text-primary">*</span></FormLabel>
+                            <FormControl>
+                              <Input placeholder="Enter your full name" {...field} />
+                            </FormControl>
+                            <FormMessage />
+                          </FormItem>
+                        )}
+                      />
+                      <FormField
+                        control={registerForm.control}
+                        name="email"
+                        render={({ field }) => (
+                          <FormItem>
+                            <FormLabel>Email <span className="text-primary">*</span></FormLabel>
+                            <FormControl>
+                              <Input type="email" placeholder="Enter your email" {...field} />
                             </FormControl>
                             <FormMessage />
                           </FormItem>
@@ -195,7 +226,7 @@ const AuthPage = () => {
                         name="password"
                         render={({ field }) => (
                           <FormItem>
-                            <FormLabel>Password</FormLabel>
+                            <FormLabel>Password <span className="text-primary">*</span></FormLabel>
                             <FormControl>
                               <Input type="password" placeholder="Choose a password" {...field} />
                             </FormControl>
@@ -208,7 +239,7 @@ const AuthPage = () => {
                         name="confirmPassword"
                         render={({ field }) => (
                           <FormItem>
-                            <FormLabel>Confirm Password</FormLabel>
+                            <FormLabel>Confirm Password <span className="text-primary">*</span></FormLabel>
                             <FormControl>
                               <Input type="password" placeholder="Confirm your password" {...field} />
                             </FormControl>
