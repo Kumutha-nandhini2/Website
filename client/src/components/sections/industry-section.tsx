@@ -16,13 +16,13 @@ const industries = [
   {
     title: "Technology",
     description: "AI-driven tech solutions for software companies.",
-    image: "attached_assets/image_1742539987120.png",
+    image: "/images/technology-cloud.jpg",
     delay: 0.2
   },
   {
     title: "Retail",
     description: "Protect customer data and maintain privacy compliance.",
-    image: "attached_assets/image_1742542749548.png",
+    image: "/images/retail-ecommerce.jpg",
     delay: 0.3
   },
   {
