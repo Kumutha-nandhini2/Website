@@ -276,7 +276,7 @@ export function ChatJobApplication({
                   type="button"
                   variant="outline"
                   onClick={() => fileInputRef.current?.click()}
-                  className={`w-full ${errors.resumeFile ? "border-destructive text-destructive" : ""}`}
+                  className={`w-full ${errors.resumeFile ? "border-destructive text-destructive" : "border-[#578FCA] text-[#578FCA] hover:bg-[#578FCA]/10"}`}
                 >
                   <Paperclip className="mr-2 h-4 w-4" />
                   {formData.resumeFile ? 'Change Resume' : 'Attach Resume'}

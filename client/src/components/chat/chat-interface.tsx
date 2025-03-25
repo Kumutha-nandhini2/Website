@@ -399,7 +399,7 @@ export function ChatInterface({ minimized = false, onMinimize }: ChatInterfacePr
                           <Button 
                             variant="outline" 
                             size="sm"
-                            className="w-full text-xs"
+                            className="w-full text-xs border-[#578FCA] text-[#578FCA] hover:bg-[#578FCA]/10"
                             onClick={() => setIsApplicationDialogOpen(true)}
                           >
                             <BriefcaseBusiness className="mr-1 h-3 w-3" />
@@ -455,7 +455,7 @@ export function ChatInterface({ minimized = false, onMinimize }: ChatInterfacePr
                 <Button 
                   variant="ghost" 
                   size="icon"
-                  className="h-6 w-6 rounded-full"
+                  className="h-6 w-6 rounded-full hover:bg-[#578FCA]/10 hover:text-[#578FCA]"
                   onClick={handleRemoveAttachment}
                 >
                   <X className="h-4 w-4" />
@@ -475,7 +475,7 @@ export function ChatInterface({ minimized = false, onMinimize }: ChatInterfacePr
                 type="button"
                 variant="outline"
                 size="icon"
-                className="flex-shrink-0"
+                className="flex-shrink-0 border-[#578FCA] text-[#578FCA] hover:bg-[#578FCA]/10"
                 onClick={() => fileInputRef.current?.click()}
               >
                 <Paperclip className="h-4 w-4" />
@@ -496,7 +496,7 @@ export function ChatInterface({ minimized = false, onMinimize }: ChatInterfacePr
                 type="submit" 
                 size="icon" 
                 disabled={(!message.trim() && !attachment) || sendMessageMutation.isPending}
-                className="flex-shrink-0"
+                className="flex-shrink-0 bg-[#578FCA] hover:bg-[#578FCA]/90 text-[#2973B2]"
               >
                 <SendHorizontal className="h-4 w-4" />
               </Button>
