@@ -18,6 +18,14 @@ interface EmailConfig {
   missingVariables: string[];
 }
 
+interface WhatsAppConfig {
+  configured: boolean;
+  accountSid: string;
+  phoneNumber: string;
+  recipientNumber: string;
+  missingVariables: string[];
+}
+
 export default function AdminPage() {
   const { user } = useAuth();
   const { toast } = useToast();
@@ -51,8 +59,12 @@ export default function AdminPage() {
             Applications
           </TabsTrigger>
           <TabsTrigger value="email">
-            <Settings className="w-4 h-4 mr-2" />
+            <Mail className="w-4 h-4 mr-2" />
             Email Settings
+          </TabsTrigger>
+          <TabsTrigger value="whatsapp">
+            <MessageSquare className="w-4 h-4 mr-2" />
+            WhatsApp Settings
           </TabsTrigger>
         </TabsList>
         
@@ -70,6 +82,10 @@ export default function AdminPage() {
         
         <TabsContent value="email">
           <EmailSettings />
+        </TabsContent>
+        
+        <TabsContent value="whatsapp">
+          <WhatsAppSettings />
         </TabsContent>
       </Tabs>
     </div>

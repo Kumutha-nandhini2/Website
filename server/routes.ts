@@ -13,6 +13,12 @@ import {
   sendTestEmail, 
   getEmailConfig 
 } from './services/email';
+import {
+  isWhatsAppConfigured,
+  sendInquiryWhatsAppNotification,
+  sendJobApplicationWhatsAppNotification,
+  sendTestWhatsAppMessage
+} from './services/whatsapp';
 import multer from 'multer';
 
 // Get the directory path in ESM
@@ -92,6 +98,22 @@ export async function registerRoutes(app: Express): Promise<Server> {
   app.get('/api/admin/email-config', isAdmin, (req, res) => {
     res.json(getEmailConfig());
   });
+  
+  // WhatsApp test route (admin-only)
+  app.post('/api/admin/test-whatsapp', isAdmin, async (req, res, next) => {
+    try {
+      const result = await sendTestWhatsAppMessage();
+      
+      res.json({ 
+        success: result,
+        message: result 
+          ? 'Test WhatsApp message sent successfully' 
+          : 'Failed to send test WhatsApp message. Check server logs for details.'
+      });
+    } catch (error) {
+      next(error);
+    }
+  });
 
   // Client Inquiry Endpoints
   app.post('/api/inquiries', async (req, res, next) => {
@@ -111,11 +133,21 @@ export async function registerRoutes(app: Express): Promise<Server> {
         // Continue with the response even if email fails
       }
       
-      // Add the email status to the response
+      // Send WhatsApp notification
+      let whatsappSent = false;
+      try {
+        whatsappSent = await sendInquiryWhatsAppNotification(inquiry);
+      } catch (whatsappError) {
+        console.error('Failed to send WhatsApp notification for inquiry:', whatsappError);
+        // Continue with the response even if WhatsApp fails
+      }
+      
+      // Add the notification statuses to the response
       res.status(201).json({
         ...inquiry,
         _meta: {
-          emailNotificationSent: emailSent
+          emailNotificationSent: emailSent,
+          whatsappNotificationSent: whatsappSent
         }
       });
     } catch (error) {
@@ -154,11 +186,26 @@ export async function registerRoutes(app: Express): Promise<Server> {
         // Continue with the response even if email fails
       }
       
-      // Add the email status to the response
+      // Send WhatsApp notification
+      let whatsappSent = false;
+      try {
+        // Create a resume URL if a file was uploaded
+        const resumeUrl = req.file ? 
+          `${req.protocol}://${req.get('host')}/api/admin/job-applications/${jobApplication.id}/resume` : 
+          undefined;
+        
+        whatsappSent = await sendJobApplicationWhatsAppNotification(jobApplication, resumeUrl);
+      } catch (whatsappError) {
+        console.error('Failed to send WhatsApp notification for job application:', whatsappError);
+        // Continue with the response even if WhatsApp fails
+      }
+      
+      // Add the notification statuses to the response
       res.status(201).json({
         ...jobApplication,
         _meta: {
-          emailNotificationSent: emailSent
+          emailNotificationSent: emailSent,
+          whatsappNotificationSent: whatsappSent
         }
       });
     } catch (error) {
