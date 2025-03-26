@@ -30,12 +30,14 @@ const CornerLogo = () => {
       animate={{ opacity: 1, scale: 1 }}
       transition={{ duration: 0.5 }}
     >
-      <img 
-        src="/images/privacy-weave-logo.png" 
-        alt="PrivacyWeave Logo" 
-        className="w-40 h-40 md:w-52 md:h-52 lg:w-60 lg:h-60 mix-blend-multiply" 
-        style={{ filter: 'brightness(1.05) contrast(1.05)' }}
-      />
+      <div className="rounded-full bg-[#F2EFE7] p-3">
+        <img 
+          src="/images/privacy-weave-logo.png" 
+          alt="PrivacyWeave Logo" 
+          className="w-36 h-36 md:w-48 md:h-48 lg:w-56 lg:h-56 mix-blend-multiply" 
+          style={{ filter: 'brightness(1.05) contrast(1.05)' }}
+        />
+      </div>
     </motion.div>
   );
 };
