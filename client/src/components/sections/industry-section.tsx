@@ -1,58 +1,78 @@
 import { motion } from "framer-motion";
+import { LucideShield, LucideLock, LucideServer, LucideShoppingCart, LucideCar } from "lucide-react";
+
+// Define industry colors
+const colors = {
+  healthcare: "#3b82f6", // blue
+  finance: "#10b981",    // emerald
+  technology: "#8b5cf6", // violet
+  retail: "#f59e0b",     // amber
+  automobile: "#ef4444"  // red
+};
 
 const industries = [
   {
     title: "Healthcare",
     description: "HIPAA-compliant privacy solutions protecting patient data with advanced anonymization and secure health record management.",
-    image: "/images/healthcare-privacy.jpg",
+    icon: LucideShield,
+    color: colors.healthcare,
     delay: 0
   },
   {
     title: "Finance",
     description: "Zero-knowledge proof systems for financial privacy with secure transaction frameworks and regulatory compliance for banking data.",
-    image: "/images/finance-privacy.jpg",
+    icon: LucideLock,
+    color: colors.finance,
     delay: 0.1
   },
   {
     title: "Technology",
     description: "End-to-end encrypted cloud solutions with privacy-preserving AI and homomorphic encryption for software companies.",
-    image: "/images/technology-privacy.jpg",
+    icon: LucideServer,
+    color: colors.technology,
     delay: 0.2
   },
   {
     title: "Retail",
     description: "Privacy-first e-commerce solutions with tokenized customer data and secure PIM systems for personalization without compromising privacy.",
-    image: "/images/retail-privacy.jpg",
+    icon: LucideShoppingCart,
+    color: colors.retail,
     delay: 0.3
   },
   {
     title: "Automobile",
     description: "Privacy-enhanced telematics with secure data vaults for driver information and anonymized usage analytics for safety improvement.",
-    image: "/images/automobile-privacy.jpg",
+    icon: LucideCar,
+    color: colors.automobile,
     delay: 0.4
   }
 ];
 
 const IndustryCard = ({ industry }: { industry: typeof industries[0] }) => {
+  const Icon = industry.icon;
+  
   return (
     <motion.div 
-      className="bg-white rounded-lg overflow-hidden shadow-md hover:shadow-lg transition-all duration-300"
+      className="bg-white rounded-lg overflow-hidden shadow-md hover:shadow-lg transition-all duration-300 flex flex-col"
       initial={{ opacity: 0, y: 10 }}
       whileInView={{ opacity: 1, y: 0 }}
       viewport={{ once: true }}
       transition={{ duration: 0.5, delay: industry.delay }}
     >
-      <div className="h-48 overflow-hidden">
-        <img
-          src={industry.image}
-          alt={`${industry.title} privacy solutions`}
-          className="w-full h-full object-cover hover:scale-105 transition-transform duration-500"
+      <div 
+        className="h-48 flex items-center justify-center p-6"
+        style={{ backgroundColor: `${industry.color}10` }} // Very light background color
+      >
+        <Icon 
+          size={80} 
+          color={industry.color} 
+          className="transition-transform duration-500 hover:scale-110"
         />
       </div>
       
-      <div className="p-4 bg-white">
+      <div className="p-5 bg-white flex-grow flex flex-col">
         <h3 className="text-lg font-bold text-[#0a2c5a] mb-2">{industry.title}</h3>
-        <p className="text-[#0a2c5a] text-sm mb-3">
+        <p className="text-[#0a2c5a] text-sm mb-4 flex-grow">
           {industry.description}
         </p>
         <a 
