@@ -336,12 +336,12 @@ export function ChatInterface({ minimized = false, onMinimize }: ChatInterfacePr
         <SheetContent className="sm:max-w-md p-0 border-l border-l-primary/20 h-full flex flex-col">
           <SheetHeader className="p-4 border-b">
             <div className="flex justify-between items-center">
-              <div className="flex items-center gap-2">
-                <Avatar className="h-8 w-8">
-                  <AvatarImage src="/images/logo.png" alt="PrivacyWeave" />
+              <div className="flex items-center gap-3">
+                <Avatar className="h-10 w-10">
+                  <AvatarImage src="/images/privacy-weave-logo.png" alt="PrivacyWeave" className="mix-blend-multiply" />
                   <AvatarFallback>PW</AvatarFallback>
                 </Avatar>
-                <SheetTitle>PrivacyWeave Support</SheetTitle>
+                <SheetTitle className="text-lg">PrivacyWeave Support</SheetTitle>
               </div>
               <SheetClose className="rounded-full p-0">
                 <X className="h-4 w-4" />
