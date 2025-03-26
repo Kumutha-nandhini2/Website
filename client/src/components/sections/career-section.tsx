@@ -31,26 +31,26 @@ const CareerSection = () => {
             <Loader2 className="h-8 w-8 animate-spin text-white" />
           </div>
         ) : (
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-8 mb-12">
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-8 mb-12 data-governance" style={{ color: "#578FCA" }}>
             {jobListings && jobListings.slice(0, 2).map((job, index) => (
               <motion.div
                 key={job.id}
-                className="bg-white bg-opacity-10 backdrop-blur-sm rounded-xl p-8 border border-white border-opacity-20"
+                className="bg-[#578FCA]/5 backdrop-blur-sm rounded-xl p-8 border border-[#578FCA]/20"
                 initial={{ opacity: 0, y: 20 }}
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true }}
                 transition={{ duration: 0.6, delay: index * 0.2 }}
               >
-                <h3 className="text-xl font-bold mb-4">{job.title}</h3>
-                <p className="mb-6 text-blue-400">
+                <h3 className="text-xl font-bold mb-4 text-[#578FCA]">Data & AI Governance</h3>
+                <p className="mb-6 text-[#578FCA]">
                   {job.description}
                 </p>
                 <div className="flex flex-wrap gap-2 mb-6">
-                  <span className="px-3 py-1 rounded-full bg-white bg-opacity-20 text-sm">{job.type}</span>
-                  <span className="px-3 py-1 rounded-full bg-white bg-opacity-20 text-sm">{job.location}</span>
-                  <span className="px-3 py-1 rounded-full bg-white bg-opacity-20 text-sm">{job.experience}</span>
+                  <span className="px-3 py-1 rounded-full bg-[#578FCA]/20 text-[#578FCA] text-sm">Full-time</span>
+                  <span className="px-3 py-1 rounded-full bg-[#578FCA]/20 text-[#578FCA] text-sm">Remote</span>
+                  <span className="px-3 py-1 rounded-full bg-[#578FCA]/20 text-[#578FCA] text-sm">3+ years</span>
                 </div>
-                <Link href={`/careers/apply/${job.id}`} className="text-white inline-flex items-center font-medium">
+                <Link href={`/careers/apply/${job.id}`} className="text-[#578FCA] inline-flex items-center font-medium">
                   Apply Now
                   <svg xmlns="http://www.w3.org/2000/svg" className="h-4 w-4 ml-1" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                     <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
@@ -69,7 +69,7 @@ const CareerSection = () => {
           transition={{ duration: 0.6 }}
         >
           <Link href="/careers">
-            <Button variant="outline" className="border-2 border-white text-white hover:bg-white hover:text-primary-dark">
+            <Button variant="outline" className="border-2 border-[#578FCA] text-[#578FCA] hover:bg-[#578FCA]/10 hover:border-[#578FCA] transition-all">
               View All Openings
             </Button>
           </Link>
