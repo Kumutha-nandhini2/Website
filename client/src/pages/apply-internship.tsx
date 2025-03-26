@@ -1,4 +1,4 @@
-import { useState, useEffect } from "react";
+import { useState } from "react";
 import { useParams, useLocation } from "wouter";
 import { motion } from "framer-motion";
 import { useForm } from "react-hook-form";
@@ -79,13 +79,18 @@ export default function ApplyInternshipPage() {
         formData.append('resumeFile', data.resumeFile);
       }
       
-      const response = await apiRequest('/api/job-applications', {
+      const response = await fetch('/api/job-applications', {
         method: 'POST',
         body: formData,
-        // Don't set Content-Type header, it will be set automatically for FormData
+        credentials: 'include'
       });
       
-      return response;
+      if (!response.ok) {
+        const text = await response.text();
+        throw new Error(`${response.status}: ${text || response.statusText}`);
+      }
+      
+      return await response.json();
     },
     onSuccess: () => {
       setSubmitted(true);
