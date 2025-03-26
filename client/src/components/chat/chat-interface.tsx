@@ -61,11 +61,17 @@ export function ChatInterface({ minimized = false, onMinimize }: ChatInterfacePr
     mutationFn: async () => {
       if (!sessionId) return null;
       
-      const response = await apiRequest('POST', '/api/chat/conversations', {
-        sessionId,
-        userEmail: userInfo.email || null,
-        userName: userInfo.name || null,
-        category: 'general'
+      const response = await apiRequest('/api/chat/conversations', {
+        method: 'POST',
+        body: JSON.stringify({
+          sessionId,
+          userEmail: userInfo.email || null,
+          userName: userInfo.name || null,
+          category: 'general'
+        }),
+        headers: {
+          'Content-Type': 'application/json'
+        }
       });
       
       return await response.json();
@@ -90,7 +96,7 @@ export function ChatInterface({ minimized = false, onMinimize }: ChatInterfacePr
     queryKey: ['/api/chat/conversations', conversationId, 'messages'],
     queryFn: async () => {
       if (!conversationId) return [];
-      const res = await apiRequest('GET', `/api/chat/conversations/${conversationId}/messages`);
+      const res = await apiRequest(`/api/chat/conversations/${conversationId}/messages`);
       return await res.json();
     },
     enabled: !!conversationId,
