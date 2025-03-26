@@ -41,7 +41,7 @@ const CareerSection = () => {
                 viewport={{ once: true }}
                 transition={{ duration: 0.6, delay: index * 0.2 }}
               >
-                <h3 className="text-xl font-bold mb-4 text-[#578FCA]">Data & AI Governance</h3>
+                <h3 className="text-xl font-bold mb-4 text-[#0a2c5a]">Encryption and Cybersecurity Specialist</h3>
                 <p className="mb-6 text-[#578FCA]">
                   {job.description}
                 </p>
