@@ -93,19 +93,7 @@ const HeroSection = () => {
                 className="w-full h-auto object-cover"
               />
               
-              {/* Floating card element */}
-              <div className="absolute -bottom-6 -right-6 bg-white rounded-xl shadow-lg p-4 max-w-[200px]">
-                <div className="flex items-center mb-2">
-                  <div className="size-8 rounded-full bg-[#e0f0ff] flex items-center justify-center mr-3">
-                    <Shield className="size-4 text-[#0a2c5a]" />
-                  </div>
-                  <span className="font-semibold text-sm text-[#0a2c5a]">Privacy Score</span>
-                </div>
-                <div className="h-2 bg-gray-100 rounded-full overflow-hidden">
-                  <div className="h-full bg-gradient-to-r from-[#4361ee] to-[#0a2c5a] rounded-full w-[90%]"></div>
-                </div>
-                <div className="mt-2 text-xs text-right text-[#0a2c5a]">90% protected</div>
-              </div>
+
             </div>
           </motion.div>
         </div>
