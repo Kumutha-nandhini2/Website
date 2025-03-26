@@ -87,7 +87,6 @@ const HeroSection = () => {
             <div className="absolute inset-0 bg-gradient-to-r from-primary/10 to-secondary/10 blur-3xl opacity-30 -z-10 rounded-full transform translate-x-10"></div>
             
             <div className="relative rounded-2xl overflow-hidden shadow-2xl">
-              <div className="absolute inset-0 bg-gradient-to-tr from-primary/20 to-transparent mix-blend-overlay z-10"></div>
               <img
                 src="/images/data-privacy-visualization.svg"
                 alt="Data privacy visualization"
