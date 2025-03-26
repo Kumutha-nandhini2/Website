@@ -9,8 +9,8 @@ const industries = [
   },
   {
     title: "Finance",
-    description: "Secure financial data handling with regulatory compliance.",
-    image: "/images/finance-privacy.svg",
+    description: "Secure financial data handling with Bitcoin integration and financial literacy solutions.",
+    image: "/images/finance-bitcoin.jpg",
     delay: 0.1
   },
   {
