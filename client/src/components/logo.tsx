@@ -6,7 +6,7 @@ interface LogoProps {
   height?: number;
 }
 
-const Logo: React.FC<LogoProps> = ({ className = '', width = 200, height = 80 }) => {
+const Logo: React.FC<LogoProps> = ({ className = '', width = 240, height = 90 }) => {
   // Using a deep blue for text
   const primaryDeepBlue = "#0F2167";
   
@@ -16,7 +16,7 @@ const Logo: React.FC<LogoProps> = ({ className = '', width = 200, height = 80 })
       style={{ width, height }}
     >
       <span 
-        className="text-3xl font-bold tracking-tight"
+        className="text-4xl font-bold tracking-tight"
         style={{ color: primaryDeepBlue }}
       >
         Privacy<span className="text-primary">Weave</span>

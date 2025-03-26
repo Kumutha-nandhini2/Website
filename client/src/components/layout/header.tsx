@@ -40,7 +40,7 @@ const Header = () => {
       <div className="container mx-auto px-4 py-3 flex justify-between items-center">
         <div className="flex items-center">
           <Link href="/" className="flex items-center">
-            <Logo width={160} height={50} className="lg:w-[180px] lg:h-[50px] w-[160px] h-[40px]" />
+            <Logo width={200} height={60} className="lg:w-[220px] lg:h-[65px] w-[200px] h-[55px]" />
           </Link>
         </div>
         
@@ -229,7 +229,7 @@ const Header = () => {
           </SheetTrigger>
           <SheetContent side="right">
             <div className="flex justify-center mb-6 mt-4">
-              <Logo width={140} height={50} />
+              <Logo width={180} height={60} />
             </div>
             <div className="flex flex-col gap-6">
               <div className="space-y-3">
