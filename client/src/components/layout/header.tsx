@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { Link, useLocation } from "wouter";
 import { useAuth } from "@/hooks/use-auth";
 import {
@@ -20,6 +20,12 @@ const Header = () => {
   const [location] = useLocation();
   const { user, logoutMutation } = useAuth();
   const [menuOpen, setMenuOpen] = useState(false);
+  const [showCornerLogo, setShowCornerLogo] = useState(true);
+  
+  // Check if we're on the homepage and control the corner logo visibility
+  useEffect(() => {
+    setShowCornerLogo(location === '/');
+  }, [location]);
 
   const handleLogout = () => {
     logoutMutation.mutate();

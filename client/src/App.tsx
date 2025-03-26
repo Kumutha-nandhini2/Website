@@ -16,6 +16,7 @@ import { ProtectedRoute } from "./lib/protected-route";
 import Header from "./components/layout/header";
 import Footer from "./components/layout/footer";
 import { ChatInterface } from "./components/chat/chat-interface";
+import CornerLogo from "./components/corner-logo";
 
 function Router() {
   return (
@@ -39,6 +40,7 @@ function App() {
       <AuthProvider>
         <div className="flex flex-col min-h-screen">
           <Header />
+          <CornerLogo />
           <main className="flex-grow pt-20">
             <Router />
           </main>
