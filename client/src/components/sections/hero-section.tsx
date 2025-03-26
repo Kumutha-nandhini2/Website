@@ -29,22 +29,22 @@ const HeroSection = () => {
               <span>Smart Privacy. Smarter Business.</span>
             </div>
             
-            <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold bg-gradient-to-r from-primary-dark to-primary bg-clip-text text-transparent leading-tight mb-6">
+            <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold text-[#0a2c5a] leading-tight mb-6">
               Privacy Automation Powered by AI
             </h1>
             
-            <p className="text-lg text-neutral-dark/90 mb-8 max-w-lg font-light leading-relaxed">
+            <p className="text-lg text-[#0a2c5a] mb-8 max-w-lg font-light leading-relaxed">
               PrivacyWeave delivers end-to-end data privacy solutions with advanced encryption standards and AI-driven automation to protect your most valuable assets.
             </p>
             
             <div className="flex flex-col sm:flex-row gap-4 mb-10">
               <Link href="/contact">
-                <Button size="lg" className="bg-[#578FCA] hover:bg-[#578FCA]/90 text-white px-8 rounded-md font-medium">
+                <Button size="lg" className="bg-[#0a2c5a] hover:bg-[#0a2c5a]/90 text-white px-8 rounded-md font-medium">
                   Request a Demo
                 </Button>
               </Link>
               <Link href="#">
-                <Button size="lg" variant="outline" className="px-8 border-2 border-[#578FCA] text-[#578FCA] hover:bg-[#578FCA]/10 hover:text-[#578FCA] rounded-md font-medium transition-all">
+                <Button size="lg" variant="outline" className="px-8 border-2 border-[#0a2c5a] text-[#0a2c5a] hover:bg-[#0a2c5a]/10 hover:text-[#0a2c5a] rounded-md font-medium transition-all">
                   View Solutions
                 </Button>
               </Link>
@@ -52,26 +52,26 @@ const HeroSection = () => {
             
             <div className="space-y-3">
               <div className="flex items-center gap-3 group">
-                <div className="flex-shrink-0 size-6 rounded-full bg-primary/10 flex items-center justify-center text-primary group-hover:bg-primary/20 transition-all">
+                <div className="flex-shrink-0 size-6 rounded-full bg-[#0a2c5a]/10 flex items-center justify-center text-[#0a2c5a] group-hover:bg-[#0a2c5a]/20 transition-all">
                   <CheckCircle className="size-4" />
                 </div>
-                <span className="text-neutral-dark group-hover:text-primary transition-all">
+                <span className="text-[#0a2c5a] group-hover:text-[#1e5285] transition-all">
                   Empower all forms of businesses with AI-driven, automated privacy solutions that ensure compliance and data security
                 </span>
               </div>
               <div className="flex items-center gap-3 group">
-                <div className="flex-shrink-0 size-6 rounded-full bg-primary/10 flex items-center justify-center text-primary group-hover:bg-primary/20 transition-all">
+                <div className="flex-shrink-0 size-6 rounded-full bg-[#0a2c5a]/10 flex items-center justify-center text-[#0a2c5a] group-hover:bg-[#0a2c5a]/20 transition-all">
                   <CheckCircle className="size-4" />
                 </div>
-                <span className="text-neutral-dark group-hover:text-primary transition-all">
+                <span className="text-[#0a2c5a] group-hover:text-[#1e5285] transition-all">
                   Enable organizations to handle sensitive data with advanced encryption, tokenization, and zero-trust architectures
                 </span>
               </div>
               <div className="flex items-center gap-3 group">
-                <div className="flex-shrink-0 size-6 rounded-full bg-primary/10 flex items-center justify-center text-primary group-hover:bg-primary/20 transition-all">
+                <div className="flex-shrink-0 size-6 rounded-full bg-[#0a2c5a]/10 flex items-center justify-center text-[#0a2c5a] group-hover:bg-[#0a2c5a]/20 transition-all">
                   <CheckCircle className="size-4" />
                 </div>
-                <span className="text-neutral-dark group-hover:text-primary transition-all">
+                <span className="text-[#0a2c5a] group-hover:text-[#1e5285] transition-all">
                   Developing cutting-edge solutions like ZKP, SMPC, and Federated Learning to redefine data privacy and security
                 </span>
               </div>
@@ -84,27 +84,27 @@ const HeroSection = () => {
             transition={{ duration: 0.7, delay: 0.2, ease: "easeOut" }}
             className="relative"
           >
-            <div className="absolute inset-0 bg-gradient-to-r from-primary/10 to-secondary/10 blur-3xl opacity-30 -z-10 rounded-full transform translate-x-10"></div>
+            <div className="absolute inset-0 bg-gradient-to-r from-[#0a2c5a]/10 to-[#3a86ff]/10 blur-3xl opacity-30 -z-10 rounded-full transform translate-x-10"></div>
             
             <div className="relative rounded-2xl overflow-hidden shadow-2xl">
               <img
-                src="/images/data-privacy-visualization.svg"
-                alt="Data privacy visualization"
+                src="/images/dynamic-data-privacy.svg"
+                alt="Dynamic data privacy visualization"
                 className="w-full h-auto object-cover"
               />
               
               {/* Floating card element */}
               <div className="absolute -bottom-6 -right-6 bg-white rounded-xl shadow-lg p-4 max-w-[200px]">
                 <div className="flex items-center mb-2">
-                  <div className="size-8 rounded-full bg-green-100 flex items-center justify-center mr-3">
-                    <Shield className="size-4 text-green-600" />
+                  <div className="size-8 rounded-full bg-[#e0f0ff] flex items-center justify-center mr-3">
+                    <Shield className="size-4 text-[#0a2c5a]" />
                   </div>
-                  <span className="font-semibold text-sm">Privacy Score</span>
+                  <span className="font-semibold text-sm text-[#0a2c5a]">Privacy Score</span>
                 </div>
                 <div className="h-2 bg-gray-100 rounded-full overflow-hidden">
-                  <div className="h-full bg-gradient-to-r from-green-400 to-primary rounded-full w-[90%]"></div>
+                  <div className="h-full bg-gradient-to-r from-[#4361ee] to-[#0a2c5a] rounded-full w-[90%]"></div>
                 </div>
-                <div className="mt-2 text-xs text-right text-gray-500">90% protected</div>
+                <div className="mt-2 text-xs text-right text-[#0a2c5a]">90% protected</div>
               </div>
             </div>
           </motion.div>
