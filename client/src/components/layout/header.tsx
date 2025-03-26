@@ -139,13 +139,13 @@ const Header = () => {
                 <DropdownMenuItem asChild>
                   <Link href="#" className="flex flex-col gap-1 cursor-pointer">
                     <div className="font-medium text-primary">GDPR Compliance</div>
-                    <div className="text-xs text-muted-foreground">Meet European data protection requirements</div>
+                    <div className="text-xs text-muted-foreground">Comprehensive solutions to meet European data protection requirements including data subject rights, processing records, and impact assessments</div>
                   </Link>
                 </DropdownMenuItem>
                 <DropdownMenuItem asChild>
                   <Link href="#" className="flex flex-col gap-1 cursor-pointer">
                     <div className="font-medium text-primary">Cross-Border Data Flows</div>
-                    <div className="text-xs text-muted-foreground">Enable compliant global data movement with advanced encryption and privacy controls</div>
+                    <div className="text-xs text-muted-foreground">Seamlessly transfer data across international borders while maintaining regulatory compliance with regional privacy laws such as GDPR, CCPA, and PIPL through our advanced data residency solutions</div>
                   </Link>
                 </DropdownMenuItem>
               </DropdownMenuContent>
@@ -268,9 +268,11 @@ const Header = () => {
                 <div className="px-1 py-1 mt-2 text-sm font-medium text-primary">By Use Case</div>
                 <Link href="#" onClick={() => setMenuOpen(false)}>
                   <div className="py-2">GDPR Compliance</div>
+                  <div className="text-xs text-muted-foreground pb-2">Comprehensive solutions for European data protection requirements</div>
                 </Link>
                 <Link href="#" onClick={() => setMenuOpen(false)}>
                   <div className="py-2">Cross-Border Data Flows</div>
+                  <div className="text-xs text-muted-foreground pb-2">Seamlessly transfer data across international borders while maintaining compliance</div>
                 </Link>
               </div>
 
