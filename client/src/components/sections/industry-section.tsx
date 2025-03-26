@@ -4,31 +4,31 @@ const industries = [
   {
     title: "Healthcare",
     description: "HIPAA-compliant solutions for healthcare providers.",
-    image: "attached_assets/image_1742876221155.png",
+    image: "/images/healthcare-privacy.svg",
     delay: 0
   },
   {
     title: "Finance",
     description: "Secure financial data handling with regulatory compliance.",
-    image: "attached_assets/image_1742542333688.png",
+    image: "/images/finance-privacy.svg",
     delay: 0.1
   },
   {
     title: "Technology",
     description: "AI-driven tech solutions for software companies.",
-    image: "attached_assets/image_1742539987120.png",
+    image: "/images/technology-privacy.svg",
     delay: 0.2
   },
   {
     title: "Retail",
     description: "Protect customer data and maintain privacy compliance.",
-    image: "attached_assets/image_1742542749548.png",
+    image: "/images/retail-privacy.svg",
     delay: 0.3
   },
   {
     title: "Automobile",
     description: "Secure customer and inventory data management.",
-    image: "attached_assets/image_1742539120311.png",
+    image: "/images/automobile-privacy.svg",
     delay: 0.4
   }
 ];

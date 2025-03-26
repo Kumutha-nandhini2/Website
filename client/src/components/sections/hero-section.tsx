@@ -89,7 +89,7 @@ const HeroSection = () => {
             <div className="relative rounded-2xl overflow-hidden shadow-2xl">
               <div className="absolute inset-0 bg-gradient-to-tr from-primary/20 to-transparent mix-blend-overlay z-10"></div>
               <img
-                src="attached_assets/image_1742876221155.png"
+                src="/images/data-privacy-visualization.svg"
                 alt="Data privacy visualization"
                 className="w-full h-auto object-cover"
               />

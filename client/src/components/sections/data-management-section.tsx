@@ -54,9 +54,9 @@ const DataManagementSection = () => {
           viewport={{ once: true }}
           transition={{ duration: 0.7 }}
         >
-          <div className="rounded-xl overflow-hidden shadow-lg">
+          <div className="rounded-xl overflow-hidden shadow-lg bg-white">
             <img 
-              src="attached_assets/image_1742876221155.png" 
+              src="/images/data-privacy-visualization.svg" 
               alt="Data privacy visualization" 
               className="w-full h-auto"
             />
