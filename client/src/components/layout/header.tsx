@@ -186,7 +186,7 @@ const Header = () => {
               <DropdownMenuTrigger asChild>
                 <Button 
                   variant="default" 
-                  className="bg-primary hover:bg-primary/80 text-white font-medium rounded-md transition-colors"
+                  className="bg-primary hover:bg-primary/80 text-[#f8fafc] font-medium rounded-md transition-colors"
                 >
                   Account
                 </Button>
@@ -206,7 +206,7 @@ const Header = () => {
             <Link href="/auth">
               <Button 
                 variant="default" 
-                className="bg-primary hover:bg-primary/80 text-white font-medium rounded-md transition-colors"
+                className="bg-primary hover:bg-primary/80 text-[#f8fafc] font-medium rounded-md transition-colors"
               >
                 Login
               </Button>
@@ -299,7 +299,7 @@ const Header = () => {
                       <Link href="/admin" onClick={() => setMenuOpen(false)}>
                         <Button 
                           variant="default" 
-                          className="w-full bg-primary hover:bg-primary/80 text-white font-medium rounded-md transition-colors"
+                          className="w-full bg-primary hover:bg-primary/80 text-[#f8fafc] font-medium rounded-md transition-colors"
                         >
                           Admin Dashboard
                         </Button>
@@ -307,7 +307,7 @@ const Header = () => {
                     )}
                     <Button 
                       variant="default" 
-                      className="w-full bg-primary hover:bg-primary/80 text-white font-medium rounded-md transition-colors"
+                      className="w-full bg-primary hover:bg-primary/80 text-[#f8fafc] font-medium rounded-md transition-colors"
                       onClick={() => {
                         handleLogout();
                         setMenuOpen(false);
@@ -320,7 +320,7 @@ const Header = () => {
                   <Link href="/auth" onClick={() => setMenuOpen(false)}>
                     <Button 
                       variant="default" 
-                      className="w-full bg-primary hover:bg-primary/80 text-white font-medium rounded-md transition-colors"
+                      className="w-full bg-primary hover:bg-primary/80 text-[#f8fafc] font-medium rounded-md transition-colors"
                     >
                       Login
                     </Button>

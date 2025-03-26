@@ -84,17 +84,17 @@ const Footer = () => {
         </div>
         
         <div className="relative my-12">
-          <div className="absolute left-0 right-0 h-px bg-white/20"></div>
+          <div className="absolute left-0 right-0 h-px bg-[#0a2c5a]/20"></div>
         </div>
         
         <div className="flex flex-col md:flex-row justify-between items-center">
           <div className="mb-6 md:mb-0">
-            <p className="text-white/70 text-sm font-light">© 2025 PrivacyWeave. All rights reserved.</p>
+            <p className="text-[#0a2c5a]/70 text-sm font-light">© 2025 PrivacyWeave. All rights reserved.</p>
           </div>
           <div className="flex flex-wrap justify-center gap-x-8 gap-y-2">
-            <a href="#" className="text-white/70 text-sm hover:text-white transition-all">Privacy Policy</a>
-            <a href="#" className="text-white/70 text-sm hover:text-white transition-all">Terms of Service</a>
-            <a href="#" className="text-white/70 text-sm hover:text-white transition-all">Cookie Policy</a>
+            <a href="#" className="text-[#0a2c5a]/70 text-sm hover:text-[#0a2c5a] transition-all">Privacy Policy</a>
+            <a href="#" className="text-[#0a2c5a]/70 text-sm hover:text-[#0a2c5a] transition-all">Terms of Service</a>
+            <a href="#" className="text-[#0a2c5a]/70 text-sm hover:text-[#0a2c5a] transition-all">Cookie Policy</a>
           </div>
         </div>
       </div>
