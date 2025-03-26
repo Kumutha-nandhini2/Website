@@ -16,7 +16,7 @@ const industries = [
   {
     title: "Technology",
     description: "AI-driven cloud and tech solutions for software companies.",
-    image: "/images/cloud-computing.jpg",
+    image: "/cloud-computing.jpg",
     delay: 0.2
   },
   {
