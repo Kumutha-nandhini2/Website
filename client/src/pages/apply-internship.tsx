@@ -79,7 +79,7 @@ export default function ApplyInternshipPage() {
         formData.append('resumeFile', data.resumeFile);
       }
       
-      const response = await apiRequest<any>('/api/job-applications', {
+      const response = await apiRequest('/api/job-applications', {
         method: 'POST',
         body: formData,
         // Don't set Content-Type header, it will be set automatically for FormData
@@ -346,6 +346,7 @@ export default function ApplyInternshipPage() {
                         <Textarea 
                           placeholder="Tell us why you're interested in this position and what you hope to learn..." 
                           {...field} 
+                          value={field.value || ''}
                           rows={5}
                           className="border-gray-300 resize-none"
                         />

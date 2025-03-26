@@ -73,6 +73,13 @@ const CareersPage = () => {
             <p className="text-lg text-[#0a2c5a]/80 max-w-3xl mx-auto font-light">
               Our internship program is designed to nurture fresh talent and provide real-world experience in data privacy and security technologies.
             </p>
+            <div className="mt-8">
+              <Link href="/careers/apply-internship">
+                <Button size="lg" className="bg-[#0a2c5a] hover:bg-[#0a2c5a]/90 text-[#f8fafc] px-8 rounded-md font-medium">
+                  Apply for Internship
+                </Button>
+              </Link>
+            </div>
           </motion.div>
           
           <div className="grid grid-cols-1 md:grid-cols-3 gap-8 max-w-5xl mx-auto">
@@ -166,10 +173,15 @@ const CareersPage = () => {
               </li>
             </ul>
             
-            <div className="mt-6 pt-6 border-t border-gray-100">
+            <div className="mt-6 pt-6 border-t border-gray-100 flex flex-col sm:flex-row justify-between items-center gap-4">
               <p className="text-[#0a2c5a] font-medium">
-                At PrivacyWeave, we're committed to finding passionate individuals who demonstrate potential, regardless of experience level. Our internship program serves as a pathway to identify and nurture talent that could grow into valuable full-time team members.
+                At PrivacyWeave, we're committed to finding passionate individuals who demonstrate potential, regardless of experience level.
               </p>
+              <Link href="/careers/apply-internship">
+                <Button className="bg-[#0a2c5a] hover:bg-[#0a2c5a]/90 text-[#f8fafc] px-6 rounded-md font-medium">
+                  Apply Now <ArrowRight className="ml-2 h-4 w-4" />
+                </Button>
+              </Link>
             </div>
           </motion.div>
         </div>
