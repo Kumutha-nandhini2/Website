@@ -73,7 +73,7 @@ const features = [
   },
   {
     icon: <FileSpreadsheet className="text-[#2A5485] text-xl" />,
-    title: "Management & Reporting",
+    title: "Breach Management & Reporting",
     description: "Generate comprehensive reports for regulatory compliance and internal stakeholders with automated tools.",
     link: "#",
     color: "dark-blue",

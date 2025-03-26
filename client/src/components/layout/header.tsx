@@ -138,8 +138,8 @@ const Header = () => {
                 </div>
                 <DropdownMenuItem asChild>
                   <Link href="#" className="flex flex-col gap-1 cursor-pointer">
-                    <div className="font-medium text-primary">GDPR Compliance</div>
-                    <div className="text-xs text-muted-foreground">Comprehensive solutions to meet European data protection requirements including data subject rights, processing records, and impact assessments</div>
+                    <div className="font-medium text-primary">Regulatory Compliance</div>
+                    <div className="text-xs text-muted-foreground">Comprehensive solutions to meet GDPR, DPDP Act 2023, HIPAA, and other regulatory requirements including data subject rights, processing records, and impact assessments</div>
                   </Link>
                 </DropdownMenuItem>
                 <DropdownMenuItem asChild>
@@ -239,7 +239,7 @@ const Header = () => {
                   <div className="py-2">Data & AI Governance</div>
                 </Link>
                 <Link href="#" onClick={() => setMenuOpen(false)}>
-                  <div className="py-2">Breach Management & Compliance</div>
+                  <div className="py-2">Breach Management & Reporting</div>
                 </Link>
                 <div className="px-1 py-1 mt-2 text-sm font-medium text-primary">Advanced Privacy Technologies</div>
                 <Link href="#" onClick={() => setMenuOpen(false)}>
@@ -267,8 +267,8 @@ const Header = () => {
                 </Link>
                 <div className="px-1 py-1 mt-2 text-sm font-medium text-primary">By Use Case</div>
                 <Link href="#" onClick={() => setMenuOpen(false)}>
-                  <div className="py-2">GDPR Compliance</div>
-                  <div className="text-xs text-muted-foreground pb-2">Comprehensive solutions for European data protection requirements</div>
+                  <div className="py-2">Regulatory Compliance</div>
+                  <div className="text-xs text-muted-foreground pb-2">Comprehensive solutions for GDPR, DPDP Act 2023, HIPAA and other regulatory requirements</div>
                 </Link>
                 <Link href="#" onClick={() => setMenuOpen(false)}>
                   <div className="py-2">Cross-Border Data Flows</div>
