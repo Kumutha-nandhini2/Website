@@ -127,15 +127,13 @@ export function ChatInterface({ minimized = false, onMinimize }: ChatInterfacePr
         formData.append('attachment', attachment);
       }
       
-      const response = await fetch(`/api/chat/conversations/${conversationId}/messages`, {
+      const response = await apiRequest(`/api/chat/conversations/${conversationId}/messages`, {
         method: 'POST',
         body: formData
       });
       
-      if (!response.ok) {
-        throw new Error('Failed to send message');
-      }
-      
+      // Server returns both the user message and bot response in one object
+      // We'll return this combined response to be handled in onSuccess
       return await response.json();
     },
     onSuccess: (data) => {
@@ -276,17 +274,14 @@ export function ChatInterface({ minimized = false, onMinimize }: ChatInterfacePr
     
     try {
       // Submit the application message
-      const response = await fetch(`/api/chat/conversations/${conversationId}/messages`, {
+      const response = await apiRequest(`/api/chat/conversations/${conversationId}/messages`, {
         method: 'POST',
         body: apiFormData
       });
       
-      if (!response.ok) {
-        throw new Error('Failed to submit application');
-      }
-      
-      // Wait for the response to ensure the bot message is processed
-      await response.json();
+      // Server returns both the user message and bot response in one object
+      const data = await response.json();
+      console.log('Job application submission response:', data);
       
       // Update userInfo if it wasn't set before
       if (!userInfo.name || !userInfo.email) {
