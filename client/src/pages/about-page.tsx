@@ -9,14 +9,26 @@ const AboutPage = () => {
       {/* Hero Section */}
       <section className="py-16 bg-dark-blue text-white">
         <div className="container mx-auto px-4">
-          <div className="max-w-3xl">
-            <h1 className="text-3xl md:text-4xl font-bold mb-4">About PrivacyWeave</h1>
-            <p className="text-lg md:text-xl mb-5">
-              We're building the future of data privacy with AI-driven automation and cutting-edge encryption technologies.
-            </p>
-            <p className="text-base md:text-lg opacity-90">
-              Founded with a vision to make privacy protection accessible and comprehensive for organizations of all sizes.
-            </p>
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-10 items-center">
+            <div className="max-w-3xl">
+              <h1 className="text-3xl md:text-4xl font-bold mb-4">About PrivacyWeave</h1>
+              <p className="text-lg md:text-xl mb-5">
+                We're building the future of data privacy with AI-driven automation and cutting-edge encryption technologies.
+              </p>
+              <p className="text-base md:text-lg opacity-90">
+                Founded with a vision to make privacy protection accessible and comprehensive for organizations of all sizes.
+              </p>
+            </div>
+            <div className="flex justify-center items-center">
+              <div className="relative">
+                <img 
+                  src="/images/privacy-weave-logo.png" 
+                  alt="PrivacyWeave Logo" 
+                  className="w-64 h-64 mix-blend-luminosity" 
+                  style={{ filter: 'brightness(1.8) contrast(0.9)' }}
+                />
+              </div>
+            </div>
           </div>
         </div>
       </section>

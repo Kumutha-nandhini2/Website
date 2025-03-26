@@ -86,26 +86,13 @@ const HeroSection = () => {
           >
             <div className="absolute inset-0 bg-gradient-to-r from-[#0a2c5a]/10 to-[#3a86ff]/10 blur-3xl opacity-30 -z-10 rounded-full transform translate-x-10"></div>
             
-            <div className="relative rounded-2xl overflow-hidden shadow-2xl">
+            <div className="relative rounded-2xl overflow-hidden shadow-2xl scale-110 transform">
               <img
-                src="/images/dynamic-data-privacy.svg"
-                alt="Dynamic data privacy visualization"
-                className="w-full h-auto object-cover"
+                src="/images/privacy-weave-logo.png"
+                alt="PrivacyWeave Logo"
+                className="w-full h-auto object-cover mix-blend-multiply"
+                style={{ filter: 'brightness(1.05) contrast(1.05)' }}
               />
-              
-              {/* Floating card element */}
-              <div className="absolute -bottom-6 -right-6 bg-white rounded-xl shadow-lg p-4 max-w-[200px]">
-                <div className="flex items-center mb-2">
-                  <div className="size-8 rounded-full bg-[#e0f0ff] flex items-center justify-center mr-3">
-                    <Shield className="size-4 text-[#0a2c5a]" />
-                  </div>
-                  <span className="font-semibold text-sm text-[#0a2c5a]">Privacy Score</span>
-                </div>
-                <div className="h-2 bg-gray-100 rounded-full overflow-hidden">
-                  <div className="h-full bg-gradient-to-r from-[#4361ee] to-[#0a2c5a] rounded-full w-[90%]"></div>
-                </div>
-                <div className="mt-2 text-xs text-right text-[#0a2c5a]">90% protected</div>
-              </div>
             </div>
           </motion.div>
         </div>
