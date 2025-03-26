@@ -99,6 +99,26 @@ export async function registerRoutes(app: Express): Promise<Server> {
     res.json(getEmailConfig());
   });
   
+  // WhatsApp configuration status route (admin-only)
+  app.get('/api/admin/whatsapp-config', isAdmin, (req, res) => {
+    const requiredEnvVars = [
+      'TWILIO_ACCOUNT_SID',
+      'TWILIO_AUTH_TOKEN',
+      'TWILIO_PHONE_NUMBER',
+      'WHATSAPP_RECIPIENT_NUMBER'
+    ];
+    
+    const missingVars = requiredEnvVars.filter(varName => !process.env[varName]);
+    
+    res.json({
+      configured: isWhatsAppConfigured(),
+      accountSid: process.env.TWILIO_ACCOUNT_SID || '',
+      phoneNumber: process.env.TWILIO_PHONE_NUMBER || '',
+      recipientNumber: process.env.WHATSAPP_RECIPIENT_NUMBER || '',
+      missingVariables: missingVars
+    });
+  });
+  
   // WhatsApp test route (admin-only)
   app.post('/api/admin/test-whatsapp', isAdmin, async (req, res, next) => {
     try {

@@ -5,7 +5,7 @@ import { Redirect } from "wouter";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardDescription, CardFooter, CardHeader, CardTitle } from "@/components/ui/card";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
-import { AlertCircle, CheckCircle, Mail, Settings, User, Users, FileText } from "lucide-react";
+import { AlertCircle, CheckCircle, Mail, Settings, User, Users, FileText, MessageSquare, Smartphone } from "lucide-react";
 import { apiRequest } from "@/lib/queryClient";
 import { useQuery, useMutation } from "@tanstack/react-query";
 
@@ -390,6 +390,149 @@ function EmailSettings() {
           </ul>
           <p className="text-sm mt-4">
             For detailed setup instructions, please refer to the EMAIL_SETUP.md file in the project root.
+          </p>
+        </CardContent>
+      </Card>
+    </div>
+  );
+}
+
+function WhatsAppSettings() {
+  const { toast } = useToast();
+  
+  // Fetch WhatsApp configuration
+  const { data: config, isLoading, error, refetch } = useQuery<WhatsAppConfig>({
+    queryKey: ['/api/admin/whatsapp-config'],
+    queryFn: async () => {
+      const res = await apiRequest('GET', '/api/admin/whatsapp-config');
+      return res.json();
+    }
+  });
+  
+  // Test WhatsApp message mutation
+  const testWhatsAppMutation = useMutation({
+    mutationFn: async () => {
+      const res = await apiRequest('POST', '/api/admin/test-whatsapp');
+      return res.json();
+    },
+    onSuccess: (data) => {
+      if (data.success) {
+        toast({
+          title: "WhatsApp Message Sent",
+          description: "Test WhatsApp message was sent successfully.",
+          variant: "default",
+        });
+      } else {
+        toast({
+          title: "Failed to Send",
+          description: data.message || "Could not send test WhatsApp message. Check server logs.",
+          variant: "destructive",
+        });
+      }
+    },
+    onError: (error) => {
+      toast({
+        title: "Error",
+        description: `Failed to send test WhatsApp message: ${(error as Error).message}`,
+        variant: "destructive",
+      });
+    }
+  });
+  
+  const sendTestWhatsApp = async () => {
+    testWhatsAppMutation.mutate();
+  };
+  
+  if (isLoading) return <p>Loading WhatsApp configuration...</p>;
+  if (error) return <p>Error loading WhatsApp config: {(error as Error).message}</p>;
+  
+  return (
+    <div>
+      <h2 className="text-2xl font-bold mb-4">WhatsApp Notification Settings</h2>
+      
+      <Card className="mb-6">
+        <CardHeader>
+          <CardTitle>WhatsApp Configuration</CardTitle>
+          <CardDescription>WhatsApp notification status and settings</CardDescription>
+        </CardHeader>
+        <CardContent>
+          <div className="space-y-4">
+            <div className="flex items-center">
+              <span className="font-semibold mr-2">Status:</span>
+              {config?.configured ? (
+                <span className="flex items-center text-green-500">
+                  <CheckCircle className="w-4 h-4 mr-1" />
+                  Configured
+                </span>
+              ) : (
+                <span className="flex items-center text-red-500">
+                  <AlertCircle className="w-4 h-4 mr-1" />
+                  Not Configured
+                </span>
+              )}
+            </div>
+            
+            <div>
+              <span className="font-semibold">Twilio Account SID:</span> {config?.accountSid ? config.accountSid.substring(0, 5) + '...' : 'Not configured'}
+            </div>
+            
+            <div>
+              <span className="font-semibold">WhatsApp Phone Number:</span> {config?.phoneNumber || 'Not configured'}
+            </div>
+            
+            <div>
+              <span className="font-semibold">Recipient Number:</span> {config?.recipientNumber || 'Not configured'}
+            </div>
+            
+            {!config?.configured && config?.missingVariables && config.missingVariables.length > 0 && (
+              <div className="mt-4">
+                <span className="font-semibold text-red-500">Missing Environment Variables:</span>
+                <ul className="list-disc list-inside ml-4">
+                  {config.missingVariables.map((variable, index) => (
+                    <li key={index} className="text-sm text-red-500">{variable}</li>
+                  ))}
+                </ul>
+              </div>
+            )}
+          </div>
+        </CardContent>
+        <CardFooter className="flex flex-col items-start space-y-2 sm:flex-row sm:space-y-0 sm:space-x-2">
+          <Button
+            onClick={sendTestWhatsApp}
+            disabled={!config?.configured || testWhatsAppMutation.isPending}
+            variant="outline"
+          >
+            <Smartphone className="w-4 h-4 mr-2" />
+            Send Test WhatsApp Message
+          </Button>
+          <Button 
+            onClick={() => refetch()} 
+            variant="ghost"
+          >
+            Refresh Status
+          </Button>
+        </CardFooter>
+      </Card>
+      
+      <Card>
+        <CardHeader>
+          <CardTitle>WhatsApp Setup Instructions</CardTitle>
+        </CardHeader>
+        <CardContent>
+          <p className="text-sm mb-4">
+            To configure WhatsApp notifications, you need to set the following environment variables:
+          </p>
+          <ul className="list-disc list-inside space-y-1 ml-4">
+            <li className="text-sm"><strong>TWILIO_ACCOUNT_SID</strong> - Your Twilio account SID</li>
+            <li className="text-sm"><strong>TWILIO_AUTH_TOKEN</strong> - Your Twilio auth token</li>
+            <li className="text-sm"><strong>TWILIO_PHONE_NUMBER</strong> - Your Twilio WhatsApp-enabled phone number</li>
+            <li className="text-sm"><strong>WHATSAPP_RECIPIENT_NUMBER</strong> - The WhatsApp number to receive notifications</li>
+          </ul>
+          <p className="text-sm mt-4">
+            You can obtain these credentials by signing up for a Twilio account at <a href="https://www.twilio.com" target="_blank" rel="noopener noreferrer" className="text-blue-500 hover:underline">www.twilio.com</a>.
+          </p>
+          <p className="text-sm mt-2">
+            For WhatsApp notifications, make sure to set up WhatsApp in your Twilio console and add your recipient number to the verified numbers.
           </p>
         </CardContent>
       </Card>
