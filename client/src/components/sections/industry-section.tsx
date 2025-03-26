@@ -15,8 +15,8 @@ const industries = [
   },
   {
     title: "Technology",
-    description: "AI-driven tech solutions for software companies.",
-    image: "/images/technology-privacy.svg",
+    description: "AI-driven cloud and tech solutions for software companies.",
+    image: "/images/cloud-computing.jpg",
     delay: 0.2
   },
   {
