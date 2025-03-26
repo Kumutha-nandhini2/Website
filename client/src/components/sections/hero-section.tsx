@@ -86,8 +86,11 @@ const HeroSection = () => {
           >
             <div className="absolute inset-0 bg-gradient-to-r from-[#0a2c5a]/10 to-[#3a86ff]/10 blur-3xl opacity-30 -z-10 rounded-full transform translate-x-10"></div>
             
-            <div className="relative rounded-2xl overflow-hidden shadow-2xl scale-110 transform h-96 flex items-center justify-center bg-gradient-to-br from-[#f8fafc] to-[#eef2ff]">
-              {/* Image has been removed as requested */}
+            {/* Container with decorative elements */}
+            <div className="h-96 relative flex items-center justify-center">
+              <div className="absolute -right-20 -top-20 w-64 h-64 rounded-full bg-blue-100/30 mix-blend-multiply"></div>
+              <div className="absolute -left-10 bottom-0 w-40 h-40 rounded-full bg-primary/5 mix-blend-multiply"></div>
+              <div className="absolute right-1/4 bottom-1/4 w-20 h-20 rounded-full border border-primary/10"></div>
             </div>
           </motion.div>
         </div>
