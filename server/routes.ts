@@ -475,8 +475,22 @@ export async function registerRoutes(app: Express): Promise<Server> {
     // Convert message to lowercase for easier matching
     const lowerMessage = message.toLowerCase();
     
-    // Check for career-related questions
-    if (lowerMessage.includes('job') || 
+    // Check specifically for internship-related questions
+    if (lowerMessage.includes('internship') || 
+        lowerMessage.includes('intern') || 
+        lowerMessage.includes('student position') ||
+        lowerMessage.includes('summer job')) {
+      
+      return "We offer exciting internship opportunities for students and recent graduates! Our internship program provides hands-on experience in data privacy, AI development, and cybersecurity. Internships typically run for 3-6 months, with both summer and year-round opportunities available.\n\n" +
+             "Current internship openings include:\n" +
+             "- Privacy Engineering Intern\n" +
+             "- Data Science Intern\n" +
+             "- Marketing & Communications Intern\n\n" +
+             "Would you like to apply for an internship position? I can help you submit your application right away!";
+    }
+    
+    // Check for general career-related questions
+    else if (lowerMessage.includes('job') || 
         lowerMessage.includes('career') || 
         lowerMessage.includes('position') || 
         lowerMessage.includes('work') ||
