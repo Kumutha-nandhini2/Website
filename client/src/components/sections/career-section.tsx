@@ -42,7 +42,7 @@ const CareerSection = () => {
                 transition={{ duration: 0.6, delay: index * 0.2 }}
               >
                 <h3 className="text-xl font-bold mb-4 text-[#0a2c5a]">
-                  {index === 0 ? "Encryption and Cybersecurity Specialist" : "Full Stack Developer (0-1 Year Experience)"}
+                  {index === 0 ? "Encryption and Cybersecurity Specialist (0-1 Year Experience)" : "Full Stack Developer (0-1 Year Experience)"}
                 </h3>
                 <p className="mb-6 text-[#578FCA]">
                   {job.description}
@@ -50,9 +50,7 @@ const CareerSection = () => {
                 <div className="flex flex-wrap gap-2 mb-6">
                   <span className="px-3 py-1 rounded-full bg-[#578FCA]/20 text-[#578FCA] text-sm">Full-time</span>
                   <span className="px-3 py-1 rounded-full bg-[#578FCA]/20 text-[#578FCA] text-sm">Remote</span>
-                  <span className="px-3 py-1 rounded-full bg-[#578FCA]/20 text-[#578FCA] text-sm">
-                    {index === 0 ? "3+ years" : "0-1 year"}
-                  </span>
+                  <span className="px-3 py-1 rounded-full bg-[#578FCA]/20 text-[#578FCA] text-sm">0-1 year</span>
                 </div>
                 <Link href={`/careers/apply/${job.id}`} className="text-[#578FCA] inline-flex items-center font-medium">
                   Apply Now
