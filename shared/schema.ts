@@ -51,6 +51,11 @@ export const jobApplications = pgTable("job_applications", {
   experience: text("experience").notNull(),
   message: text("message"),
   resumePath: text("resume_path"),
+  applicationType: text("application_type").default("job"), // 'job' or 'internship'
+  education: text("education"),
+  university: text("university"),
+  graduationYear: text("graduation_year"),
+  availabilityDate: text("availability_date"),
   createdAt: timestamp("created_at").defaultNow().notNull(),
 });
 
@@ -61,6 +66,11 @@ export const insertJobApplicationSchema = createInsertSchema(jobApplications).pi
   position: true,
   experience: true,
   message: true,
+  applicationType: true,
+  education: true,
+  university: true,
+  graduationYear: true,
+  availabilityDate: true,
 });
 
 // Extend the job application schema to ensure required fields
@@ -71,16 +81,26 @@ export const jobApplicationWithResumeSchema = insertJobApplicationSchema.extend(
   resumeFile: z.instanceof(File, { message: "Resume is required" }),
 });
 
+// Internship Application schema extends job application
+export const internshipApplicationWithResumeSchema = jobApplicationWithResumeSchema.extend({
+  applicationType: z.literal("internship").default("internship"),
+  education: z.string().min(1, "Education field is required"),
+  university: z.string().min(1, "University/College is required"),
+  graduationYear: z.string().min(1, "Expected graduation year is required"),
+  availabilityDate: z.string().min(1, "Availability date is required"),
+});
+
 // Job Listings
 export const jobListings = pgTable("job_listings", {
   id: serial("id").primaryKey(),
   title: text("title").notNull(),
   description: text("description").notNull(),
   requirements: text("requirements").notNull(),
-  type: text("type").notNull(), // Full-time, Part-time, Contract
+  type: text("type").notNull(), // Full-time, Part-time, Contract, Internship
   location: text("location").notNull(),
   experience: text("experience").notNull(),
   isActive: boolean("is_active").default(true).notNull(),
+  listingCategory: text("listing_category").default("job"), // 'job' or 'internship'
   createdAt: timestamp("created_at").defaultNow().notNull(),
 });
 
@@ -92,6 +112,7 @@ export const insertJobListingSchema = createInsertSchema(jobListings).pick({
   location: true,
   experience: true,
   isActive: true,
+  listingCategory: true,
 });
 
 // Chat Conversation schema
@@ -146,6 +167,7 @@ export type InsertInquiry = z.infer<typeof insertInquirySchema>;
 export type JobApplication = typeof jobApplications.$inferSelect;
 export type InsertJobApplication = z.infer<typeof insertJobApplicationSchema>;
 export type JobApplicationWithResume = z.infer<typeof jobApplicationWithResumeSchema>;
+export type InternshipApplicationWithResume = z.infer<typeof internshipApplicationWithResumeSchema>;
 
 export type JobListing = typeof jobListings.$inferSelect;
 export type InsertJobListing = z.infer<typeof insertJobListingSchema>;

@@ -8,6 +8,7 @@ import AuthPage from "@/pages/auth-page";
 import ContactPage from "@/pages/contact-page";
 import CareersPage from "@/pages/careers-page";
 import ApplyJobPage from "@/pages/apply-job";
+import ApplyInternshipPage from "@/pages/apply-internship";
 import AboutPage from "@/pages/about-page";
 import AdminDashboard from "@/pages/admin-dashboard";
 import { AuthProvider } from "@/hooks/use-auth";
@@ -23,6 +24,7 @@ function Router() {
       <Route path="/contact" component={ContactPage} />
       <Route path="/careers" component={CareersPage} />
       <Route path="/careers/apply/:id" component={ApplyJobPage} />
+      <Route path="/careers/apply-internship" component={ApplyInternshipPage} />
       <Route path="/about" component={AboutPage} />
       <Route path="/auth" component={AuthPage} />
       <ProtectedRoute path="/admin" component={AdminDashboard} />
