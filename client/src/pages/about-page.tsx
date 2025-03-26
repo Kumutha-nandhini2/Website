@@ -2,35 +2,21 @@ import { motion } from "framer-motion";
 import { Link } from "wouter";
 import { Button } from "@/components/ui/button";
 import { ShieldCheck, Lock, CheckCircle, Award, Users, Building } from "lucide-react";
-import Logo from "@/components/logo";
 
 const AboutPage = () => {
-  // Soft beige color
-  const softBeige = "#f5f2e8";
-  
   return (
     <>
       {/* Hero Section */}
       <section className="py-16 bg-dark-blue text-white">
         <div className="container mx-auto px-4">
-          <div className="flex flex-col md:flex-row items-center gap-8 mb-10">
-            <div className="md:w-1/3 flex justify-center mb-6 md:mb-0">
-              <div 
-                className="rounded-xl p-6 shadow-lg" 
-                style={{ backgroundColor: softBeige }}
-              >
-                <Logo width={300} height={120} className="w-full h-auto" />
-              </div>
-            </div>
-            <div className="md:w-2/3">
-              <h1 className="text-3xl md:text-4xl font-bold mb-4">About PrivacyWeave</h1>
-              <p className="text-lg md:text-xl mb-5">
-                We're building the future of data privacy with AI-driven automation and cutting-edge encryption technologies.
-              </p>
-              <p className="text-base md:text-lg opacity-90">
-                Founded with a vision to make privacy protection accessible and comprehensive for organizations of all sizes.
-              </p>
-            </div>
+          <div className="max-w-3xl">
+            <h1 className="text-3xl md:text-4xl font-bold mb-4">About PrivacyWeave</h1>
+            <p className="text-lg md:text-xl mb-5">
+              We're building the future of data privacy with AI-driven automation and cutting-edge encryption technologies.
+            </p>
+            <p className="text-base md:text-lg opacity-90">
+              Founded with a vision to make privacy protection accessible and comprehensive for organizations of all sizes.
+            </p>
           </div>
         </div>
       </section>

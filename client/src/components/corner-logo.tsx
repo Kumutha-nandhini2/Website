@@ -6,9 +6,6 @@ const CornerLogo = () => {
   const [location] = useLocation();
   const [isVisible, setIsVisible] = useState(true);
   const [showLogo, setShowLogo] = useState(true);
-  
-  // Soft beige background color
-  const softBeige = "#f5f2e8";
 
   useEffect(() => {
     // Only show on homepage
@@ -28,8 +25,7 @@ const CornerLogo = () => {
 
   return (
     <motion.div 
-      className="absolute top-20 right-8 z-40 md:top-24 md:right-12 lg:top-28 lg:right-16 rounded-2xl p-4"
-      style={{ backgroundColor: softBeige }}
+      className="absolute top-20 right-8 z-40 md:top-24 md:right-12 lg:top-28 lg:right-16"
       initial={{ opacity: 0, scale: 0.8 }}
       animate={{ opacity: 1, scale: 1 }}
       transition={{ duration: 0.5 }}
@@ -37,7 +33,7 @@ const CornerLogo = () => {
       <img 
         src="/images/privacy-weave-logo.png" 
         alt="PrivacyWeave Logo" 
-        className="w-40 h-40 md:w-52 md:h-52 lg:w-64 lg:h-64 mix-blend-multiply" 
+        className="w-32 h-32 md:w-44 md:h-44 lg:w-52 lg:h-52 mix-blend-multiply" 
         style={{ filter: 'brightness(1.05) contrast(1.05)' }}
       />
     </motion.div>
