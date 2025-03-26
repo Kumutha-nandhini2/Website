@@ -27,7 +27,7 @@
   }
 
   body {
-    @apply font-sans antialiased bg-[#FDFAF6] text-[#333333];
+    @apply font-sans antialiased bg-[#FDFAF6] text-[#578FCA];
     font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
     letter-spacing: -0.01em;
   }
@@ -53,7 +53,7 @@
   }
   
   p {
-    @apply text-[#333333] text-opacity-90;
+    @apply text-[#578FCA] text-opacity-90;
     line-height: 1.6;
   }
 
