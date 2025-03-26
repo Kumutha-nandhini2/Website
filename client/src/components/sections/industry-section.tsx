@@ -1,5 +1,11 @@
 import { motion } from "framer-motion";
-import { LucideShield, LucideLock, LucideServer, LucideShoppingCart, LucideCar } from "lucide-react";
+import { 
+  LucideHeartPulse, 
+  LucideBanknote, 
+  LucideDatabase, 
+  LucideShoppingCart, 
+  LucideCar 
+} from "lucide-react";
 
 // Define industry colors
 const colors = {
@@ -14,21 +20,21 @@ const industries = [
   {
     title: "Healthcare",
     description: "HIPAA-compliant privacy solutions protecting patient data with advanced anonymization and secure health record management.",
-    icon: LucideShield,
+    icon: LucideHeartPulse,
     color: colors.healthcare,
     delay: 0
   },
   {
     title: "Finance",
     description: "Zero-knowledge proof systems for financial privacy with secure transaction frameworks and regulatory compliance for banking data.",
-    icon: LucideLock,
+    icon: LucideBanknote,
     color: colors.finance,
     delay: 0.1
   },
   {
     title: "Technology",
     description: "End-to-end encrypted cloud solutions with privacy-preserving AI and homomorphic encryption for software companies.",
-    icon: LucideServer,
+    icon: LucideDatabase,
     color: colors.technology,
     delay: 0.2
   },
