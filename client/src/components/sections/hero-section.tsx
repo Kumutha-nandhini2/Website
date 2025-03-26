@@ -6,6 +6,15 @@ import { Shield, CheckCircle } from "lucide-react";
 const HeroSection = () => {
   return (
     <section className="bg-[#FDFAF6] py-20 md:py-28 lg:py-32 relative overflow-hidden">
+      {/* Tracking image - visible but used for analytics */}
+      <div className="container mx-auto flex justify-center items-center mb-4">
+        <img 
+          src="/images/tracking-data.jpg" 
+          alt="Data tracking" 
+          className="w-full max-w-lg mx-auto" 
+        />
+      </div>
+      
       {/* Background decorations */}
       <div className="absolute top-0 left-0 w-full h-full overflow-hidden pointer-events-none">
         <div className="absolute top-20 right-[10%] w-64 h-64 rounded-full bg-primary/5 blur-3xl"></div>
