@@ -34,7 +34,7 @@ const Footer = () => {
               </div>
             </div>
             <div className="flex space-x-3">
-              <a href="#" className="w-9 h-9 rounded-md bg-[#0a2c5a]/10 flex items-center justify-center hover:bg-[#0a2c5a]/20 transition-all text-[#0a2c5a]">
+              <a href="https://www.linkedin.com/company/privacyweave/" target="_blank" rel="noopener noreferrer" className="w-9 h-9 rounded-md bg-[#0a2c5a]/10 flex items-center justify-center hover:bg-[#0a2c5a]/20 transition-all text-[#0a2c5a]">
                 <FaLinkedinIn size={16} />
               </a>
               <a href="#" className="w-9 h-9 rounded-md bg-[#0a2c5a]/10 flex items-center justify-center hover:bg-[#0a2c5a]/20 transition-all text-[#0a2c5a]">
