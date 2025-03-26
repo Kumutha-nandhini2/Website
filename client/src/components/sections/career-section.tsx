@@ -42,7 +42,7 @@ const CareerSection = () => {
                 transition={{ duration: 0.6, delay: index * 0.2 }}
               >
                 <h3 className="text-xl font-bold mb-4">{job.title}</h3>
-                <p className="mb-6 text-white text-opacity-90">
+                <p className="mb-6 text-blue-400">
                   {job.description}
                 </p>
                 <div className="flex flex-wrap gap-2 mb-6">
