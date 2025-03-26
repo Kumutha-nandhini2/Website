@@ -126,6 +126,10 @@ export function ChatInterface({ minimized = false, onMinimize }: ChatInterfacePr
         body: formData
       });
       
+      if (!response.ok) {
+        throw new Error('Failed to send message');
+      }
+      
       return await response.json();
     },
     onSuccess: (data) => {
@@ -274,6 +278,9 @@ export function ChatInterface({ minimized = false, onMinimize }: ChatInterfacePr
       if (!response.ok) {
         throw new Error('Failed to submit application');
       }
+      
+      // Wait for the response to ensure the bot message is processed
+      await response.json();
       
       // Update userInfo if it wasn't set before
       if (!userInfo.name || !userInfo.email) {
