@@ -36,28 +36,31 @@ const industries = [
 const IndustryCard = ({ industry }: { industry: typeof industries[0] }) => {
   return (
     <motion.div 
-      className="group rounded-xl overflow-hidden shadow-md relative hover:bg-[#ECEBDE] transition-all duration-300"
+      className="bg-white rounded-lg overflow-hidden shadow-md hover:shadow-lg transition-all duration-300"
       initial={{ opacity: 0, y: 10 }}
       whileInView={{ opacity: 1, y: 0 }}
       viewport={{ once: true }}
       transition={{ duration: 0.5, delay: industry.delay }}
     >
-      <img
-        src={industry.image}
-        alt={`${industry.title} privacy solutions`}
-        className="w-full h-52 object-cover transition-transform duration-700 group-hover:scale-110"
-      />
+      <div className="h-48 overflow-hidden">
+        <img
+          src={industry.image}
+          alt={`${industry.title} privacy solutions`}
+          className="w-full h-full object-cover hover:scale-105 transition-transform duration-500"
+        />
+      </div>
       
-      <div className="absolute inset-0 bg-gradient-to-b from-transparent via-transparent to-[rgba(10,44,90,0.7)] opacity-70 z-10 group-hover:from-[#ECEBDE/10] group-hover:via-[#ECEBDE/50] group-hover:to-[#ECEBDE/90]"></div>
-      
-      <div className="absolute bottom-0 left-0 right-0 p-4 z-20">
-        <h3 className="text-lg font-bold text-white group-hover:text-[#0a2c5a] mb-2 transition-colors duration-300">{industry.title}</h3>
-        <p className="text-white group-hover:text-[#0a2c5a] text-opacity-90 text-sm mb-3 line-clamp-3 transition-colors duration-300">
+      <div className="p-4 bg-white">
+        <h3 className="text-lg font-bold text-[#0a2c5a] mb-2">{industry.title}</h3>
+        <p className="text-[#0a2c5a] text-sm mb-3">
           {industry.description}
         </p>
-        <a href="#" className="text-white group-hover:text-[#0a2c5a] text-xs inline-flex items-center font-medium transition-all duration-300 hover:text-[#578FCA] hover:translate-x-1">
+        <a 
+          href="#" 
+          className="text-[#0a2c5a] text-sm inline-flex items-center font-medium hover:text-[#578FCA] hover:translate-x-1 transition-all duration-300"
+        >
           Learn more
-          <svg xmlns="http://www.w3.org/2000/svg" className="h-3 w-3 ml-1 transition-transform" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+          <svg xmlns="http://www.w3.org/2000/svg" className="h-3 w-3 ml-1" fill="none" viewBox="0 0 24 24" stroke="currentColor">
             <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
           </svg>
         </a>
