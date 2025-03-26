@@ -42,13 +42,13 @@ const IndustryCard = ({ industry }: { industry: typeof industries[0] }) => {
       viewport={{ once: true }}
       transition={{ duration: 0.5, delay: industry.delay }}
     >
-      <div className="absolute inset-0 bg-gradient-to-b from-transparent via-transparent to-[rgba(10,44,90,0.8)] opacity-90 z-10 group-hover:from-[#ECEBDE/10] group-hover:via-[#ECEBDE/70] group-hover:to-[#ECEBDE]"></div>
-      
       <img
         src={industry.image}
         alt={`${industry.title} privacy solutions`}
         className="w-full h-52 object-cover transition-transform duration-700 group-hover:scale-110"
       />
+      
+      <div className="absolute inset-0 bg-gradient-to-b from-transparent via-transparent to-[rgba(10,44,90,0.7)] opacity-70 z-10 group-hover:from-[#ECEBDE/10] group-hover:via-[#ECEBDE/50] group-hover:to-[#ECEBDE/90]"></div>
       
       <div className="absolute bottom-0 left-0 right-0 p-4 z-20">
         <h3 className="text-lg font-bold text-white group-hover:text-[#0a2c5a] mb-2 transition-colors duration-300">{industry.title}</h3>
@@ -84,7 +84,7 @@ const IndustrySection = () => {
           </p>
         </motion.div>
         
-        <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-5 gap-4">
+        <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-6">
           {industries.map((industry, index) => (
             <IndustryCard key={index} industry={industry} />
           ))}
