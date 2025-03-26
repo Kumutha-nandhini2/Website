@@ -5,7 +5,7 @@ import { Shield, CheckCircle } from "lucide-react";
 
 const HeroSection = () => {
   return (
-    <section className="bg-[#F2EFE7] py-20 md:py-28 lg:py-32 relative overflow-hidden">
+    <section className="bg-[#F6F4F0] py-20 md:py-28 lg:py-32 relative overflow-hidden">
       {/* Background decorations */}
       <div className="absolute top-0 left-0 w-full h-full overflow-hidden pointer-events-none">
         <div className="absolute top-20 right-[10%] w-64 h-64 rounded-full bg-primary/5 blur-3xl"></div>
@@ -86,13 +86,12 @@ const HeroSection = () => {
           >
             <div className="absolute inset-0 bg-gradient-to-r from-[#0a2c5a]/10 to-[#3a86ff]/10 blur-3xl opacity-30 -z-10 rounded-full transform translate-x-10"></div>
             
-            {/* Container with decorative elements matching #F2EFE7 background */}
+            {/* Container with decorative elements matching #F6F4F0 background */}
             <div className="h-96 relative flex items-center justify-center">
-              <div className="absolute -right-20 -top-20 w-72 h-72 rounded-full bg-[#DDD9CE]/60 mix-blend-multiply"></div>
-              <div className="absolute -left-12 bottom-0 w-44 h-44 rounded-full bg-primary/5 mix-blend-multiply"></div>
-              <div className="absolute right-1/4 bottom-1/4 w-28 h-28 rounded-full border-2 border-[#0a2c5a]/10"></div>
-              <div className="absolute left-1/3 top-1/3 w-20 h-20 rounded-full bg-[#FFFFFF]/30 mix-blend-overlay"></div>
-              <div className="absolute right-1/3 top-10 w-14 h-14 rounded-full bg-[#0a2c5a]/5 mix-blend-multiply"></div>
+              <div className="absolute -right-20 -top-20 w-64 h-64 rounded-full bg-[#E6E1D9]/50 mix-blend-multiply"></div>
+              <div className="absolute -left-10 bottom-0 w-40 h-40 rounded-full bg-primary/5 mix-blend-multiply"></div>
+              <div className="absolute right-1/4 bottom-1/4 w-24 h-24 rounded-full border-2 border-[#0a2c5a]/10"></div>
+              <div className="absolute left-1/3 top-1/3 w-16 h-16 rounded-full bg-[#FFFFFF]/40 mix-blend-overlay"></div>
             </div>
           </motion.div>
         </div>
