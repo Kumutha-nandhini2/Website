@@ -86,13 +86,8 @@ const HeroSection = () => {
           >
             <div className="absolute inset-0 bg-gradient-to-r from-[#0a2c5a]/10 to-[#3a86ff]/10 blur-3xl opacity-30 -z-10 rounded-full transform translate-x-10"></div>
             
-            <div className="relative rounded-2xl overflow-hidden shadow-2xl scale-110 transform">
-              <img
-                src="/images/privacy-weave-logo.png"
-                alt="PrivacyWeave Logo"
-                className="w-full h-auto object-cover mix-blend-multiply"
-                style={{ filter: 'brightness(1.05) contrast(1.05)' }}
-              />
+            <div className="relative rounded-2xl overflow-hidden shadow-2xl scale-110 transform h-96 flex items-center justify-center bg-gradient-to-br from-[#f8fafc] to-[#eef2ff]">
+              {/* Image has been removed as requested */}
             </div>
           </motion.div>
         </div>
