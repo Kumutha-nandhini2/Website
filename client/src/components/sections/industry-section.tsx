@@ -36,13 +36,13 @@ const industries = [
 const IndustryCard = ({ industry }: { industry: typeof industries[0] }) => {
   return (
     <motion.div 
-      className="group rounded-lg overflow-hidden shadow-sm relative"
+      className="group rounded-lg overflow-hidden shadow-sm relative hover:bg-[#ECEBDE] transition-all duration-300"
       initial={{ opacity: 0, y: 10 }}
       whileInView={{ opacity: 1, y: 0 }}
       viewport={{ once: true }}
       transition={{ duration: 0.5, delay: industry.delay }}
     >
-      <div className="absolute inset-0 bg-gradient-to-b from-transparent to-[#FFFFFF] opacity-80 z-10"></div>
+      <div className="absolute inset-0 bg-gradient-to-b from-transparent to-[#FFFFFF] opacity-80 z-10 group-hover:from-[#ECEBDE] group-hover:to-[#ECEBDE]"></div>
       <img
         src={industry.image}
         alt={`${industry.title} privacy solutions`}
@@ -53,9 +53,9 @@ const IndustryCard = ({ industry }: { industry: typeof industries[0] }) => {
         <p className="text-[#0a2c5a] text-opacity-90 text-xs mb-2">
           {industry.description}
         </p>
-        <a href="#" className="text-[#0a2c5a] text-xs inline-flex items-center font-medium">
+        <a href="#" className="text-[#0a2c5a] text-xs inline-flex items-center font-medium transition-all duration-300 hover:text-primary hover:translate-x-1">
           Learn more
-          <svg xmlns="http://www.w3.org/2000/svg" className="h-3 w-3 ml-1" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+          <svg xmlns="http://www.w3.org/2000/svg" className="h-3 w-3 ml-1 transition-transform" fill="none" viewBox="0 0 24 24" stroke="currentColor">
             <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
           </svg>
         </a>
