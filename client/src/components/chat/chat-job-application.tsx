@@ -145,7 +145,8 @@ export function ChatJobApplication({
     
     if (validateForm()) {
       onApplicationSubmit(formData);
-      onOpenChange(false);
+      // Removed duplicate close - Dialog will be closed by the onOpenChange prop
+      // No need to call onOpenChange(false) here as it causes double close
     }
   };
 
