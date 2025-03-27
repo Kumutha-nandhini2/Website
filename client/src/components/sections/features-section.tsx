@@ -72,9 +72,9 @@ const features = [
     delay: 0.6
   },
   {
-    icon: <FileSpreadsheet className="text-[#2A5485] text-xl" />,
-    title: "Breach Management & Reporting",
-    description: "Generate comprehensive reports for regulatory compliance and internal stakeholders with automated tools.",
+    icon: <Users className="text-[#2A5485] text-xl" />,
+    title: "Third-Party Management",
+    description: "AI-powered solution for risk assessment of vendors, ensuring they adhere to privacy standards with automated monitoring and compliance verification.",
     link: "#",
     color: "dark-blue",
     delay: 0.7
