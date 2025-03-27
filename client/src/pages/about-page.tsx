@@ -33,6 +33,29 @@ const AboutPage = () => {
         </div>
       </section>
 
+      {/* Our Story Section */}
+      <section className="py-16 bg-white">
+        <div className="container mx-auto px-4">
+          <motion.div
+            className="max-w-4xl mx-auto"
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.6 }}
+          >
+            <h2 className="text-2xl md:text-3xl font-bold text-deep-blue mb-6 text-center">Our Story</h2>
+            <div className="space-y-4 text-dark-gray">
+              <p className="text-base leading-relaxed">
+                As businesses increasingly rely on data, the challenge of balancing privacy and usability has grown. Privacy Weave was founded to bridge this gap by providing privacy-first solutions that empower both users and organizations. We saw a growing need for secure, AI-driven privacy tools, and we are committed to shaping the future of data protection.
+              </p>
+              <p className="text-base leading-relaxed">
+                Our team brings together expertise in encryption, machine learning, and compliance to create integrated solutions that not only protect data but make privacy management more efficient and effective for organizations of all sizes.
+              </p>
+            </div>
+          </motion.div>
+        </div>
+      </section>
+
 
 
       {/* Mission & Values Section */}
