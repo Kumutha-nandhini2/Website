@@ -61,7 +61,7 @@ const Header = () => {
                 </div>
                 
                 <div className="grid p-2 gap-1">
-                  <DropdownMenuItem asChild className="rounded-md p-2 hover:bg-[#f0f7ff]">
+                  <DropdownMenuItem asChild className="rounded-md p-2 hover:bg-[#FEF9F2]">
                     <Link href="#" className="flex items-start gap-3 cursor-pointer">
                       <div className="mt-0.5 bg-primary/10 p-1.5 rounded-md text-primary">
                         <Database size={18} />
@@ -73,7 +73,7 @@ const Header = () => {
                     </Link>
                   </DropdownMenuItem>
                   
-                  <DropdownMenuItem asChild className="rounded-md p-2 hover:bg-[#f0f7ff]">
+                  <DropdownMenuItem asChild className="rounded-md p-2 hover:bg-[#FEF9F2]">
                     <Link href="#" className="flex items-start gap-3 cursor-pointer">
                       <div className="mt-0.5 bg-primary/10 p-1.5 rounded-md text-primary">
                         <ClipboardCheck size={18} />
@@ -85,7 +85,7 @@ const Header = () => {
                     </Link>
                   </DropdownMenuItem>
                   
-                  <DropdownMenuItem asChild className="rounded-md p-2 hover:bg-[#f0f7ff]">
+                  <DropdownMenuItem asChild className="rounded-md p-2 hover:bg-[#FEF9F2]">
                     <Link href="#" className="flex items-start gap-3 cursor-pointer">
                       <div className="mt-0.5 bg-primary/10 p-1.5 rounded-md text-primary">
                         <BarChart size={18} />
@@ -97,7 +97,7 @@ const Header = () => {
                     </Link>
                   </DropdownMenuItem>
                   
-                  <DropdownMenuItem asChild className="rounded-md p-2 hover:bg-[#f0f7ff]">
+                  <DropdownMenuItem asChild className="rounded-md p-2 hover:bg-[#FEF9F2]">
                     <Link href="#" className="flex items-start gap-3 cursor-pointer">
                       <div className="mt-0.5 bg-primary/10 p-1.5 rounded-md text-primary">
                         <ShieldAlert size={18} />
@@ -115,7 +115,7 @@ const Header = () => {
                 </div>
                 
                 <div className="grid p-2 gap-1">
-                  <DropdownMenuItem asChild className="rounded-md p-2 hover:bg-[#f0f7ff]">
+                  <DropdownMenuItem asChild className="rounded-md p-2 hover:bg-[#FEF9F2]">
                     <Link href="#" className="flex items-start gap-3 cursor-pointer">
                       <div className="mt-0.5 bg-primary/10 p-1.5 rounded-md text-primary">
                         <Key size={18} />
@@ -127,7 +127,7 @@ const Header = () => {
                     </Link>
                   </DropdownMenuItem>
                   
-                  <DropdownMenuItem asChild className="rounded-md p-2 hover:bg-[#f0f7ff]">
+                  <DropdownMenuItem asChild className="rounded-md p-2 hover:bg-[#FEF9F2]">
                     <Link href="#" className="flex items-start gap-3 cursor-pointer">
                       <div className="mt-0.5 bg-primary/10 p-1.5 rounded-md text-primary">
                         <Lock size={18} />
@@ -158,7 +158,7 @@ const Header = () => {
                 </div>
                 
                 <div className="grid p-2 gap-1">
-                  <DropdownMenuItem asChild className="rounded-md p-2 hover:bg-[#f0f7ff]">
+                  <DropdownMenuItem asChild className="rounded-md p-2 hover:bg-[#FEF9F2]">
                     <Link href="#" className="flex items-start gap-3 cursor-pointer">
                       <div className="mt-0.5 bg-primary/10 p-1.5 rounded-md text-primary">
                         <Building size={18} />
@@ -170,7 +170,7 @@ const Header = () => {
                     </Link>
                   </DropdownMenuItem>
                   
-                  <DropdownMenuItem asChild className="rounded-md p-2 hover:bg-[#f0f7ff]">
+                  <DropdownMenuItem asChild className="rounded-md p-2 hover:bg-[#FEF9F2]">
                     <Link href="#" className="flex items-start gap-3 cursor-pointer">
                       <div className="mt-0.5 bg-primary/10 p-1.5 rounded-md text-primary">
                         <Building size={18} />
@@ -182,7 +182,7 @@ const Header = () => {
                     </Link>
                   </DropdownMenuItem>
                   
-                  <DropdownMenuItem asChild className="rounded-md p-2 hover:bg-[#f0f7ff]">
+                  <DropdownMenuItem asChild className="rounded-md p-2 hover:bg-[#FEF9F2]">
                     <Link href="#" className="flex items-start gap-3 cursor-pointer">
                       <div className="mt-0.5 bg-primary/10 p-1.5 rounded-md text-primary">
                         <Building size={18} />
@@ -194,7 +194,7 @@ const Header = () => {
                     </Link>
                   </DropdownMenuItem>
                   
-                  <DropdownMenuItem asChild className="rounded-md p-2 hover:bg-[#f0f7ff]">
+                  <DropdownMenuItem asChild className="rounded-md p-2 hover:bg-[#FEF9F2]">
                     <Link href="#" className="flex items-start gap-3 cursor-pointer">
                       <div className="mt-0.5 bg-primary/10 p-1.5 rounded-md text-primary">
                         <Building size={18} />
@@ -212,7 +212,7 @@ const Header = () => {
                 </div>
                 
                 <div className="grid p-2 gap-1">
-                  <DropdownMenuItem asChild className="rounded-md p-2 hover:bg-[#f0f7ff]">
+                  <DropdownMenuItem asChild className="rounded-md p-2 hover:bg-[#FEF9F2]">
                     <Link href="#" className="flex items-start gap-3 cursor-pointer">
                       <div className="mt-0.5 bg-primary/10 p-1.5 rounded-md text-primary">
                         <Briefcase size={18} />
@@ -224,7 +224,7 @@ const Header = () => {
                     </Link>
                   </DropdownMenuItem>
                   
-                  <DropdownMenuItem asChild className="rounded-md p-2 hover:bg-[#f0f7ff]">
+                  <DropdownMenuItem asChild className="rounded-md p-2 hover:bg-[#FEF9F2]">
                     <Link href="#" className="flex items-start gap-3 cursor-pointer">
                       <div className="mt-0.5 bg-primary/10 p-1.5 rounded-md text-primary">
                         <GraduationCap size={18} />
@@ -286,7 +286,7 @@ const Header = () => {
                 
                 <div className="grid p-2 gap-1">
                   {user.role === 'admin' && (
-                    <DropdownMenuItem asChild className="rounded-md p-2 hover:bg-[#f0f7ff]">
+                    <DropdownMenuItem asChild className="rounded-md p-2 hover:bg-[#FEF9F2]">
                       <Link href="/admin" className="flex items-center gap-2 cursor-pointer">
                         <div className="text-primary">
                           <Briefcase size={16} />
@@ -298,7 +298,7 @@ const Header = () => {
                   
                   <DropdownMenuItem 
                     onClick={handleLogout} 
-                    className="rounded-md p-2 hover:bg-[#f0f7ff] flex items-center gap-2 cursor-pointer"
+                    className="rounded-md p-2 hover:bg-[#FEF9F2] flex items-center gap-2 cursor-pointer"
                   >
                     <div className="text-primary">
                       <Lock size={16} />
