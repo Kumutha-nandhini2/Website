@@ -56,7 +56,36 @@ const AboutPage = () => {
         </div>
       </section>
 
-
+      {/* About Privacy Weave Section */}
+      <section className="py-16 bg-[#F8F6F2]">
+        <div className="container mx-auto px-4">
+          <motion.div
+            className="max-w-4xl mx-auto"
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.6 }}
+          >
+            <h2 className="text-2xl md:text-3xl font-bold text-deep-blue mb-6 text-center">About Privacy Weave</h2>
+            <div className="bg-white rounded-lg p-8 shadow-sm">
+              <div className="flex items-start mb-6">
+                <div className="w-12 h-12 bg-blue/10 flex items-center justify-center rounded-lg mr-4">
+                  <Building className="h-6 w-6 text-blue" />
+                </div>
+                <div>
+                  <h3 className="text-xl font-bold text-deep-blue mb-2">Our Focus</h3>
+                  <p className="text-dark-gray leading-relaxed">
+                    At Privacy Weave, we are dedicated to catering specifically to small, medium, and micro enterprises, helping them comply with complex data privacy regulations without overwhelming their resources. We understand the unique challenges these businesses face and provide accessible, scalable solutions that grow with their needs.
+                  </p>
+                </div>
+              </div>
+              <p className="text-dark-gray leading-relaxed">
+                Our platform delivers comprehensive yet affordable privacy management tools that empower smaller organizations to achieve the same level of data protection as larger corporations. We believe that robust privacy practices should be accessible to all businesses, regardless of their size or technical expertise.
+              </p>
+            </div>
+          </motion.div>
+        </div>
+      </section>
 
       {/* Mission & Values Section */}
       <section className="py-16 bg-[#F6F4F0]">
