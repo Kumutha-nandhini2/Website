@@ -382,12 +382,15 @@ const Header = () => {
                 </Link>
               </div>
 
-              <Link href="/about" onClick={() => setMenuOpen(false)}>
-                <div className="py-2 font-medium">About</div>
-              </Link>
-              <Link href="/careers" onClick={() => setMenuOpen(false)}>
-                <div className="py-2 font-medium">Careers</div>
-              </Link>
+              <div className="space-y-3">
+                <div className="font-bold text-lg mb-2">Company</div>
+                <Link href="/about" onClick={() => setMenuOpen(false)}>
+                  <div className="py-2 font-medium">About</div>
+                </Link>
+                <Link href="/careers" onClick={() => setMenuOpen(false)}>
+                  <div className="py-2 font-medium">Careers</div>
+                </Link>
+              </div>
 
               <div className="pt-4 space-y-3">
                 <Link href="/contact" onClick={() => setMenuOpen(false)}>
