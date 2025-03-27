@@ -13,7 +13,7 @@ import {
   DropdownMenuTrigger,
 } from "@/components/ui/dropdown-menu";
 import { Button } from "@/components/ui/button";
-import { Menu, ChevronDown } from "lucide-react";
+import { Menu, ChevronDown, Shield, Database, ClipboardCheck, FileSpreadsheet, BarChart, Key, Lock, Building, Briefcase, GraduationCap, ShieldAlert } from "lucide-react";
 import Logo from "@/components/logo";
 
 const Header = () => {
@@ -55,49 +55,90 @@ const Header = () => {
                   <ChevronDown size={16} />
                 </Button>
               </DropdownMenuTrigger>
-              <DropdownMenuContent align="start" className="w-72 bg-white/95 backdrop-blur-sm border border-primary/10 shadow-sm">
-                <div className="px-4 py-2 border-b border-primary/10">
-                  <span className="text-sm font-semibold text-primary">Privacy Platform</span>
+              <DropdownMenuContent align="start" className="w-80 p-0 bg-white border border-primary/10 shadow-md rounded-md overflow-hidden">
+                <div className="bg-[#f9f9fd] px-4 py-3 border-b border-primary/10">
+                  <span className="text-sm font-semibold text-primary uppercase tracking-wide">Privacy Platform</span>
                 </div>
-                <DropdownMenuItem asChild>
-                  <Link href="#" className="flex flex-col gap-1 cursor-pointer">
-                    <div className="font-medium text-primary">Data Classification</div>
-                    <div className="text-xs text-muted-foreground">Secure sensitive data through smart discovery and classification</div>
-                  </Link>
-                </DropdownMenuItem>
-                <DropdownMenuItem asChild>
-                  <Link href="#" className="flex flex-col gap-1 cursor-pointer">
-                    <div className="font-medium text-primary">Consent Management</div>
-                    <div className="text-xs text-muted-foreground">Smart, automated consent handling for seamless compliance</div>
-                  </Link>
-                </DropdownMenuItem>
-                <DropdownMenuItem asChild>
-                  <Link href="#" className="flex flex-col gap-1 cursor-pointer">
-                    <div className="font-medium text-primary">Data & AI Governance</div>
-                    <div className="text-xs text-muted-foreground">Unified governance across data landscapes and AI models</div>
-                  </Link>
-                </DropdownMenuItem>
-                <DropdownMenuItem asChild>
-                  <Link href="#" className="flex flex-col gap-1 cursor-pointer">
-                    <div className="font-medium text-primary">Breach Management & Compliance</div>
-                    <div className="text-xs text-muted-foreground">Identify, mitigate and report threats with AI-driven tools</div>
-                  </Link>
-                </DropdownMenuItem>
-                <div className="px-4 py-2 border-b border-t border-primary/10 mt-2">
-                  <span className="text-sm font-semibold text-primary">Advanced Privacy Technologies</span>
+                
+                <div className="grid p-2 gap-1">
+                  <DropdownMenuItem asChild className="rounded-md p-2 hover:bg-[#f0f7ff]">
+                    <Link href="#" className="flex items-start gap-3 cursor-pointer">
+                      <div className="mt-0.5 bg-primary/10 p-1.5 rounded-md text-primary">
+                        <Database size={18} />
+                      </div>
+                      <div>
+                        <div className="font-medium text-primary">Data Classification</div>
+                        <div className="text-xs text-muted-foreground mt-0.5">Secure sensitive data through smart discovery and classification</div>
+                      </div>
+                    </Link>
+                  </DropdownMenuItem>
+                  
+                  <DropdownMenuItem asChild className="rounded-md p-2 hover:bg-[#f0f7ff]">
+                    <Link href="#" className="flex items-start gap-3 cursor-pointer">
+                      <div className="mt-0.5 bg-primary/10 p-1.5 rounded-md text-primary">
+                        <ClipboardCheck size={18} />
+                      </div>
+                      <div>
+                        <div className="font-medium text-primary">Consent Management</div>
+                        <div className="text-xs text-muted-foreground mt-0.5">Smart, automated consent handling for seamless compliance</div>
+                      </div>
+                    </Link>
+                  </DropdownMenuItem>
+                  
+                  <DropdownMenuItem asChild className="rounded-md p-2 hover:bg-[#f0f7ff]">
+                    <Link href="#" className="flex items-start gap-3 cursor-pointer">
+                      <div className="mt-0.5 bg-primary/10 p-1.5 rounded-md text-primary">
+                        <BarChart size={18} />
+                      </div>
+                      <div>
+                        <div className="font-medium text-primary">Data & AI Governance</div>
+                        <div className="text-xs text-muted-foreground mt-0.5">Unified governance across data landscapes and AI models</div>
+                      </div>
+                    </Link>
+                  </DropdownMenuItem>
+                  
+                  <DropdownMenuItem asChild className="rounded-md p-2 hover:bg-[#f0f7ff]">
+                    <Link href="#" className="flex items-start gap-3 cursor-pointer">
+                      <div className="mt-0.5 bg-primary/10 p-1.5 rounded-md text-primary">
+                        <ShieldAlert size={18} />
+                      </div>
+                      <div>
+                        <div className="font-medium text-primary">Breach Management & Reporting</div>
+                        <div className="text-xs text-muted-foreground mt-0.5">Identify, mitigate and report threats with AI-driven tools</div>
+                      </div>
+                    </Link>
+                  </DropdownMenuItem>
                 </div>
-                <DropdownMenuItem asChild>
-                  <Link href="#" className="flex flex-col gap-1 cursor-pointer">
-                    <div className="font-medium text-primary">Tokenization</div>
-                    <div className="text-xs text-muted-foreground">Replace sensitive data with non-sensitive equivalents</div>
-                  </Link>
-                </DropdownMenuItem>
-                <DropdownMenuItem asChild>
-                  <Link href="#" className="flex flex-col gap-1 cursor-pointer">
-                    <div className="font-medium text-primary">Zero-Knowledge Proofs</div>
-                    <div className="text-xs text-muted-foreground">Verify data without revealing underlying information</div>
-                  </Link>
-                </DropdownMenuItem>
+                
+                <div className="bg-[#f9f9fd] px-4 py-3 border-b border-t border-primary/10">
+                  <span className="text-sm font-semibold text-primary uppercase tracking-wide">Advanced Privacy Technologies</span>
+                </div>
+                
+                <div className="grid p-2 gap-1">
+                  <DropdownMenuItem asChild className="rounded-md p-2 hover:bg-[#f0f7ff]">
+                    <Link href="#" className="flex items-start gap-3 cursor-pointer">
+                      <div className="mt-0.5 bg-primary/10 p-1.5 rounded-md text-primary">
+                        <Key size={18} />
+                      </div>
+                      <div>
+                        <div className="font-medium text-primary">Tokenization</div>
+                        <div className="text-xs text-muted-foreground mt-0.5">Replace sensitive data with non-sensitive equivalents</div>
+                      </div>
+                    </Link>
+                  </DropdownMenuItem>
+                  
+                  <DropdownMenuItem asChild className="rounded-md p-2 hover:bg-[#f0f7ff]">
+                    <Link href="#" className="flex items-start gap-3 cursor-pointer">
+                      <div className="mt-0.5 bg-primary/10 p-1.5 rounded-md text-primary">
+                        <Lock size={18} />
+                      </div>
+                      <div>
+                        <div className="font-medium text-primary">Zero-Knowledge Proofs</div>
+                        <div className="text-xs text-muted-foreground mt-0.5">Verify data without revealing underlying information</div>
+                      </div>
+                    </Link>
+                  </DropdownMenuItem>
+                </div>
               </DropdownMenuContent>
             </DropdownMenu>
           </div>
@@ -111,49 +152,90 @@ const Header = () => {
                   <ChevronDown size={16} />
                 </Button>
               </DropdownMenuTrigger>
-              <DropdownMenuContent align="start" className="w-72 bg-white/95 backdrop-blur-sm border border-primary/10 shadow-sm">
-                <div className="px-4 py-2 border-b border-primary/10">
-                  <span className="text-sm font-semibold text-primary">By Industry</span>
+              <DropdownMenuContent align="start" className="w-80 p-0 bg-white border border-primary/10 shadow-md rounded-md overflow-hidden">
+                <div className="bg-[#f9f9fd] px-4 py-3 border-b border-primary/10">
+                  <span className="text-sm font-semibold text-primary uppercase tracking-wide">By Industry</span>
                 </div>
-                <DropdownMenuItem asChild>
-                  <Link href="#" className="flex flex-col gap-1 cursor-pointer">
-                    <div className="font-medium text-primary">Healthcare</div>
-                    <div className="text-xs text-muted-foreground">HIPAA-compliant privacy solutions for patient data</div>
-                  </Link>
-                </DropdownMenuItem>
-                <DropdownMenuItem asChild>
-                  <Link href="#" className="flex flex-col gap-1 cursor-pointer">
-                    <div className="font-medium text-primary">Financial Services</div>
-                    <div className="text-xs text-muted-foreground">PCI-DSS compliant solutions for financial institutions</div>
-                  </Link>
-                </DropdownMenuItem>
-                <DropdownMenuItem asChild>
-                  <Link href="#" className="flex flex-col gap-1 cursor-pointer">
-                    <div className="font-medium text-primary">Retail & eCommerce</div>
-                    <div className="text-xs text-muted-foreground">Protect customer data while enabling personalization</div>
-                  </Link>
-                </DropdownMenuItem>
-                <DropdownMenuItem asChild>
-                  <Link href="#" className="flex flex-col gap-1 cursor-pointer">
-                    <div className="font-medium text-primary">Automobile</div>
-                    <div className="text-xs text-muted-foreground">Safeguard connected vehicle and customer information</div>
-                  </Link>
-                </DropdownMenuItem>
-                <div className="px-4 py-2 border-b border-t border-primary/10 mt-2">
-                  <span className="text-sm font-semibold text-primary">By Use Case</span>
+                
+                <div className="grid p-2 gap-1">
+                  <DropdownMenuItem asChild className="rounded-md p-2 hover:bg-[#f0f7ff]">
+                    <Link href="#" className="flex items-start gap-3 cursor-pointer">
+                      <div className="mt-0.5 bg-primary/10 p-1.5 rounded-md text-primary">
+                        <Building size={18} />
+                      </div>
+                      <div>
+                        <div className="font-medium text-primary">Healthcare</div>
+                        <div className="text-xs text-muted-foreground mt-0.5">HIPAA-compliant privacy solutions for patient data</div>
+                      </div>
+                    </Link>
+                  </DropdownMenuItem>
+                  
+                  <DropdownMenuItem asChild className="rounded-md p-2 hover:bg-[#f0f7ff]">
+                    <Link href="#" className="flex items-start gap-3 cursor-pointer">
+                      <div className="mt-0.5 bg-primary/10 p-1.5 rounded-md text-primary">
+                        <Building size={18} />
+                      </div>
+                      <div>
+                        <div className="font-medium text-primary">Financial Services</div>
+                        <div className="text-xs text-muted-foreground mt-0.5">PCI-DSS compliant solutions for financial institutions</div>
+                      </div>
+                    </Link>
+                  </DropdownMenuItem>
+                  
+                  <DropdownMenuItem asChild className="rounded-md p-2 hover:bg-[#f0f7ff]">
+                    <Link href="#" className="flex items-start gap-3 cursor-pointer">
+                      <div className="mt-0.5 bg-primary/10 p-1.5 rounded-md text-primary">
+                        <Building size={18} />
+                      </div>
+                      <div>
+                        <div className="font-medium text-primary">Retail & eCommerce</div>
+                        <div className="text-xs text-muted-foreground mt-0.5">Protect customer data while enabling personalization</div>
+                      </div>
+                    </Link>
+                  </DropdownMenuItem>
+                  
+                  <DropdownMenuItem asChild className="rounded-md p-2 hover:bg-[#f0f7ff]">
+                    <Link href="#" className="flex items-start gap-3 cursor-pointer">
+                      <div className="mt-0.5 bg-primary/10 p-1.5 rounded-md text-primary">
+                        <Building size={18} />
+                      </div>
+                      <div>
+                        <div className="font-medium text-primary">Automobile</div>
+                        <div className="text-xs text-muted-foreground mt-0.5">Safeguard connected vehicle and customer information</div>
+                      </div>
+                    </Link>
+                  </DropdownMenuItem>
                 </div>
-                <DropdownMenuItem asChild>
-                  <Link href="#" className="flex flex-col gap-1 cursor-pointer">
-                    <div className="font-medium text-primary">Regulatory Compliance</div>
-                    <div className="text-xs text-muted-foreground">Comprehensive solutions to meet GDPR, DPDP Act 2023, HIPAA, and other regulatory requirements including data subject rights, processing records, and impact assessments</div>
-                  </Link>
-                </DropdownMenuItem>
-                <DropdownMenuItem asChild>
-                  <Link href="#" className="flex flex-col gap-1 cursor-pointer">
-                    <div className="font-medium text-primary">Cross-Border Data Flows</div>
-                    <div className="text-xs text-muted-foreground">Seamlessly transfer data across international borders while maintaining regulatory compliance with regional privacy laws such as GDPR, CCPA, and PIPL through our advanced data residency solutions</div>
-                  </Link>
-                </DropdownMenuItem>
+                
+                <div className="bg-[#f9f9fd] px-4 py-3 border-b border-t border-primary/10">
+                  <span className="text-sm font-semibold text-primary uppercase tracking-wide">By Use Case</span>
+                </div>
+                
+                <div className="grid p-2 gap-1">
+                  <DropdownMenuItem asChild className="rounded-md p-2 hover:bg-[#f0f7ff]">
+                    <Link href="#" className="flex items-start gap-3 cursor-pointer">
+                      <div className="mt-0.5 bg-primary/10 p-1.5 rounded-md text-primary">
+                        <Briefcase size={18} />
+                      </div>
+                      <div>
+                        <div className="font-medium text-primary">Regulatory Compliance</div>
+                        <div className="text-xs text-muted-foreground mt-0.5">Comprehensive solutions for GDPR, DPDP Act 2023, HIPAA, and other regulations</div>
+                      </div>
+                    </Link>
+                  </DropdownMenuItem>
+                  
+                  <DropdownMenuItem asChild className="rounded-md p-2 hover:bg-[#f0f7ff]">
+                    <Link href="#" className="flex items-start gap-3 cursor-pointer">
+                      <div className="mt-0.5 bg-primary/10 p-1.5 rounded-md text-primary">
+                        <GraduationCap size={18} />
+                      </div>
+                      <div>
+                        <div className="font-medium text-primary">Cross-Border Data Flows</div>
+                        <div className="text-xs text-muted-foreground mt-0.5">Seamlessly transfer data across borders while maintaining compliance</div>
+                      </div>
+                    </Link>
+                  </DropdownMenuItem>
+                </div>
               </DropdownMenuContent>
             </DropdownMenu>
           </div>
@@ -197,15 +279,33 @@ const Header = () => {
                   Account
                 </Button>
               </DropdownMenuTrigger>
-              <DropdownMenuContent className="bg-white/95 backdrop-blur-sm border border-primary/10 shadow-sm">
-                {user.role === 'admin' && (
-                  <DropdownMenuItem asChild>
-                    <Link href="/admin" className="cursor-pointer">Admin Dashboard</Link>
+              <DropdownMenuContent className="p-0 bg-white border border-primary/10 shadow-md rounded-md overflow-hidden">
+                <div className="bg-[#f9f9fd] px-4 py-3 border-b border-primary/10">
+                  <span className="text-sm font-semibold text-primary uppercase tracking-wide">Account</span>
+                </div>
+                
+                <div className="grid p-2 gap-1">
+                  {user.role === 'admin' && (
+                    <DropdownMenuItem asChild className="rounded-md p-2 hover:bg-[#f0f7ff]">
+                      <Link href="/admin" className="flex items-center gap-2 cursor-pointer">
+                        <div className="text-primary">
+                          <Briefcase size={16} />
+                        </div>
+                        <div className="font-medium">Admin Dashboard</div>
+                      </Link>
+                    </DropdownMenuItem>
+                  )}
+                  
+                  <DropdownMenuItem 
+                    onClick={handleLogout} 
+                    className="rounded-md p-2 hover:bg-[#f0f7ff] flex items-center gap-2 cursor-pointer"
+                  >
+                    <div className="text-primary">
+                      <Lock size={16} />
+                    </div>
+                    <div className="font-medium">Logout</div>
                   </DropdownMenuItem>
-                )}
-                <DropdownMenuItem onClick={handleLogout} className="cursor-pointer">
-                  Logout
-                </DropdownMenuItem>
+                </div>
               </DropdownMenuContent>
             </DropdownMenu>
           ) : (
