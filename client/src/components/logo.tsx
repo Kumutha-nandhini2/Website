@@ -19,7 +19,7 @@ const Logo: React.FC<LogoProps> = ({ className = '', width = 240, height = 90 })
         className="text-4xl font-bold tracking-tight"
         style={{ color: primaryDeepBlue }}
       >
-        Privacy<span className="text-primary">Weave</span>
+        Privacy<span className="text-primary ml-1">Weave</span>
       </span>
     </div>
   );
