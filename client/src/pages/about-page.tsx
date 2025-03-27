@@ -7,18 +7,18 @@ const AboutPage = () => {
   return (
     <>
       {/* Hero Section */}
-      <section className="py-16 bg-[#578FCA] text-white">
+      <section className="py-16 bg-[#578FCA]">
         <div className="container mx-auto px-4">
           <div className="grid grid-cols-1 md:grid-cols-2 gap-10 items-center">
             <div className="max-w-3xl">
-              <h1 className="text-3xl md:text-4xl font-bold mb-4">About PrivacyWeave</h1>
-              <p className="text-lg md:text-xl mb-5">
+              <h1 className="text-3xl md:text-4xl font-bold mb-4 text-white">About PrivacyWeave</h1>
+              <p className="text-lg md:text-xl mb-5 text-white">
                 We're building the future of data privacy with AI-driven automation and cutting-edge encryption technologies.
               </p>
-              <p className="text-base md:text-lg opacity-90">
+              <p className="text-base md:text-lg text-white font-medium">
                 At PrivacyWeave, we are dedicated to catering specifically to small, medium, and micro enterprises, helping them comply with complex data privacy regulations without overwhelming their resources.
               </p>
-              <p className="text-base md:text-lg opacity-90 mt-4">
+              <p className="text-base md:text-lg text-white font-medium mt-4">
                 We understand the unique challenges these businesses face and provide accessible, scalable solutions that grow with their needs.
               </p>
             </div>
