@@ -103,7 +103,7 @@
   <text x="300" y="85" font-family="Arial" font-size="12" text-anchor="middle" fill="#1e40af">GDPR</text>
   
   <circle cx="380" cy="80" r="25" fill="#dbeafe" stroke="#3b82f6" stroke-width="2" />
-  <text x="380" y="85" font-family="Arial" font-size="12" text-anchor="middle" fill="#1e40af">CCPA</text>
+  <text x="380" y="85" font-family="Arial" font-size="12" text-anchor="middle" fill="#1e40af">DPDP</text>
   
   <circle cx="460" cy="80" r="25" fill="#dbeafe" stroke="#3b82f6" stroke-width="2" />
   <text x="460" y="85" font-family="Arial" font-size="12" text-anchor="middle" fill="#1e40af">HIPAA</text>
