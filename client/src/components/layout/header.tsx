@@ -56,8 +56,8 @@ const Header = () => {
                 </Button>
               </DropdownMenuTrigger>
               <DropdownMenuContent align="start" className="w-80 p-0 bg-white border border-primary/10 shadow-md rounded-md overflow-hidden">
-                <div className="bg-[#f9f9fd] px-4 py-3 border-b border-primary/10">
-                  <span className="text-sm font-semibold text-primary uppercase tracking-wide">Privacy Platform</span>
+                <div className="bg-[#789DBC] px-4 py-3 border-b border-primary/10">
+                  <span className="text-sm font-semibold text-white uppercase tracking-wide">Privacy Platform</span>
                 </div>
                 
                 <div className="grid p-2 gap-1">
@@ -110,8 +110,8 @@ const Header = () => {
                   </DropdownMenuItem>
                 </div>
                 
-                <div className="bg-[#f9f9fd] px-4 py-3 border-b border-t border-primary/10">
-                  <span className="text-sm font-semibold text-primary uppercase tracking-wide">Advanced Privacy Technologies</span>
+                <div className="bg-[#789DBC] px-4 py-3 border-b border-t border-primary/10">
+                  <span className="text-sm font-semibold text-white uppercase tracking-wide">Advanced Privacy Technologies</span>
                 </div>
                 
                 <div className="grid p-2 gap-1">
@@ -153,8 +153,8 @@ const Header = () => {
                 </Button>
               </DropdownMenuTrigger>
               <DropdownMenuContent align="start" className="w-80 p-0 bg-white border border-primary/10 shadow-md rounded-md overflow-hidden">
-                <div className="bg-[#f9f9fd] px-4 py-3 border-b border-primary/10">
-                  <span className="text-sm font-semibold text-primary uppercase tracking-wide">By Industry</span>
+                <div className="bg-[#789DBC] px-4 py-3 border-b border-primary/10">
+                  <span className="text-sm font-semibold text-white uppercase tracking-wide">By Industry</span>
                 </div>
                 
                 <div className="grid p-2 gap-1">
@@ -207,8 +207,8 @@ const Header = () => {
                   </DropdownMenuItem>
                 </div>
                 
-                <div className="bg-[#f9f9fd] px-4 py-3 border-b border-t border-primary/10">
-                  <span className="text-sm font-semibold text-primary uppercase tracking-wide">By Use Case</span>
+                <div className="bg-[#789DBC] px-4 py-3 border-b border-t border-primary/10">
+                  <span className="text-sm font-semibold text-white uppercase tracking-wide">By Use Case</span>
                 </div>
                 
                 <div className="grid p-2 gap-1">
@@ -280,8 +280,8 @@ const Header = () => {
                 </Button>
               </DropdownMenuTrigger>
               <DropdownMenuContent className="p-0 bg-white border border-primary/10 shadow-md rounded-md overflow-hidden">
-                <div className="bg-[#f9f9fd] px-4 py-3 border-b border-primary/10">
-                  <span className="text-sm font-semibold text-primary uppercase tracking-wide">Account</span>
+                <div className="bg-[#789DBC] px-4 py-3 border-b border-primary/10">
+                  <span className="text-sm font-semibold text-white uppercase tracking-wide">Account</span>
                 </div>
                 
                 <div className="grid p-2 gap-1">
