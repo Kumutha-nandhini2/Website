@@ -78,6 +78,14 @@ const features = [
     link: "#",
     color: "dark-blue",
     delay: 0.7
+  },
+  {
+    icon: <FileSpreadsheet className="text-[#578FCA] text-xl" />,
+    title: "Breach Management & Reporting",
+    description: "Comprehensive incident response system with automated reporting tools for regulatory compliance and stakeholder communication during privacy breaches.",
+    link: "#",
+    color: "blue",
+    delay: 0.8
   }
 ];
 
@@ -127,7 +135,7 @@ const FeaturesSection = () => {
           </p>
         </motion.div>
         
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-5">
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
           {features.map((feature, index) => (
             <FeatureCard key={index} feature={feature} />
           ))}
