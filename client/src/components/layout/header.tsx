@@ -327,69 +327,158 @@ const Header = () => {
               <Menu />
             </Button>
           </SheetTrigger>
-          <SheetContent side="right">
+          <SheetContent side="right" className="overflow-y-auto">
             <div className="flex justify-center mb-6 mt-4">
               <Logo width={180} height={60} />
             </div>
             <div className="flex flex-col gap-6">
-              <div className="space-y-3">
-                <div className="font-bold text-lg mb-2">Products</div>
-                <div className="px-1 py-1 text-sm font-medium text-primary">Privacy Platform</div>
-                <Link href="#" onClick={() => setMenuOpen(false)}>
-                  <div className="py-2">Data Classification</div>
-                </Link>
-                <Link href="#" onClick={() => setMenuOpen(false)}>
-                  <div className="py-2">Consent Management</div>
-                </Link>
-                <Link href="#" onClick={() => setMenuOpen(false)}>
-                  <div className="py-2">Data & AI Governance</div>
-                </Link>
-                <Link href="#" onClick={() => setMenuOpen(false)}>
-                  <div className="py-2">Breach Management & Reporting</div>
-                </Link>
-                <div className="px-1 py-1 mt-2 text-sm font-medium text-primary">Advanced Privacy Technologies</div>
-                <Link href="#" onClick={() => setMenuOpen(false)}>
-                  <div className="py-2">Tokenization</div>
-                </Link>
-                <Link href="#" onClick={() => setMenuOpen(false)}>
-                  <div className="py-2">Zero-Knowledge Proofs</div>
-                </Link>
+              {/* Products Section - Styled like desktop dropdown */}
+              <div className="space-y-3 border rounded-md overflow-hidden">
+                <div className="bg-[#789DBC] px-4 py-3 border-b border-primary/10">
+                  <span className="text-sm font-semibold text-white uppercase tracking-wide">Products</span>
+                </div>
+                
+                <div className="p-3">
+                  <div className="px-1 py-1 text-sm font-medium text-primary">Privacy Platform</div>
+                  
+                  <Link href="#" onClick={() => setMenuOpen(false)} className="flex items-start gap-3 cursor-pointer p-2 rounded-md hover:bg-[#FEF9F2] mt-1">
+                    <div className="mt-0.5 bg-primary/10 p-1.5 rounded-md text-primary">
+                      <Database size={18} />
+                    </div>
+                    <div>
+                      <div className="font-medium text-primary">Data Classification</div>
+                      <div className="text-xs text-muted-foreground mt-0.5">Secure sensitive data through smart discovery</div>
+                    </div>
+                  </Link>
+                  
+                  <Link href="#" onClick={() => setMenuOpen(false)} className="flex items-start gap-3 cursor-pointer p-2 rounded-md hover:bg-[#FEF9F2] mt-1">
+                    <div className="mt-0.5 bg-primary/10 p-1.5 rounded-md text-primary">
+                      <ClipboardCheck size={18} />
+                    </div>
+                    <div>
+                      <div className="font-medium text-primary">Consent Management</div>
+                      <div className="text-xs text-muted-foreground mt-0.5">Smart, automated consent handling</div>
+                    </div>
+                  </Link>
+                  
+                  <Link href="#" onClick={() => setMenuOpen(false)} className="flex items-start gap-3 cursor-pointer p-2 rounded-md hover:bg-[#FEF9F2] mt-1">
+                    <div className="mt-0.5 bg-primary/10 p-1.5 rounded-md text-primary">
+                      <BarChart size={18} />
+                    </div>
+                    <div>
+                      <div className="font-medium text-primary">Data & AI Governance</div>
+                      <div className="text-xs text-muted-foreground mt-0.5">Unified governance across data landscapes</div>
+                    </div>
+                  </Link>
+                  
+                  <Link href="#" onClick={() => setMenuOpen(false)} className="flex items-start gap-3 cursor-pointer p-2 rounded-md hover:bg-[#FEF9F2] mt-1">
+                    <div className="mt-0.5 bg-primary/10 p-1.5 rounded-md text-primary">
+                      <ShieldAlert size={18} />
+                    </div>
+                    <div>
+                      <div className="font-medium text-primary">Breach Management</div>
+                      <div className="text-xs text-muted-foreground mt-0.5">Identify, mitigate and report threats</div>
+                    </div>
+                  </Link>
+                  
+                  <div className="px-1 py-1 mt-3 text-sm font-medium text-primary">Advanced Privacy Technologies</div>
+                  
+                  <Link href="#" onClick={() => setMenuOpen(false)} className="flex items-start gap-3 cursor-pointer p-2 rounded-md hover:bg-[#FEF9F2] mt-1">
+                    <div className="mt-0.5 bg-primary/10 p-1.5 rounded-md text-primary">
+                      <Key size={18} />
+                    </div>
+                    <div>
+                      <div className="font-medium text-primary">Tokenization</div>
+                      <div className="text-xs text-muted-foreground mt-0.5">Replace sensitive data with non-sensitive equivalents</div>
+                    </div>
+                  </Link>
+                  
+                  <Link href="#" onClick={() => setMenuOpen(false)} className="flex items-start gap-3 cursor-pointer p-2 rounded-md hover:bg-[#FEF9F2] mt-1">
+                    <div className="mt-0.5 bg-primary/10 p-1.5 rounded-md text-primary">
+                      <Lock size={18} />
+                    </div>
+                    <div>
+                      <div className="font-medium text-primary">Zero-Knowledge Proofs</div>
+                      <div className="text-xs text-muted-foreground mt-0.5">Verify without revealing information</div>
+                    </div>
+                  </Link>
+                </div>
               </div>
 
-              <div className="space-y-3">
-                <div className="font-bold text-lg mb-2">Solutions</div>
-                <div className="px-1 py-1 text-sm font-medium text-primary">By Industry</div>
-                <Link href="#" onClick={() => setMenuOpen(false)}>
-                  <div className="py-2">Healthcare</div>
-                </Link>
-                <Link href="#" onClick={() => setMenuOpen(false)}>
-                  <div className="py-2">Financial Services</div>
-                </Link>
-                <Link href="#" onClick={() => setMenuOpen(false)}>
-                  <div className="py-2">Retail & eCommerce</div>
-                </Link>
-                <Link href="#" onClick={() => setMenuOpen(false)}>
-                  <div className="py-2">Automobile</div>
-                </Link>
-                <div className="px-1 py-1 mt-2 text-sm font-medium text-primary">By Use Case</div>
-                <Link href="#" onClick={() => setMenuOpen(false)}>
-                  <div className="py-2">Regulatory Compliance</div>
-                  <div className="text-xs text-muted-foreground pb-2">Comprehensive solutions for GDPR, DPDP Act 2023, HIPAA and other regulatory requirements</div>
-                </Link>
-                <Link href="#" onClick={() => setMenuOpen(false)}>
-                  <div className="py-2">Cross-Border Data Flows</div>
-                  <div className="text-xs text-muted-foreground pb-2">Seamlessly transfer data across international borders while maintaining compliance</div>
-                </Link>
+              {/* Solutions Section - Styled like desktop dropdown */}
+              <div className="space-y-3 border rounded-md overflow-hidden">
+                <div className="bg-[#789DBC] px-4 py-3 border-b border-primary/10">
+                  <span className="text-sm font-semibold text-white uppercase tracking-wide">Solutions</span>
+                </div>
+                
+                <div className="p-3">
+                  <div className="px-1 py-1 text-sm font-medium text-primary">By Industry</div>
+                  
+                  <Link href="#" onClick={() => setMenuOpen(false)} className="flex items-start gap-3 cursor-pointer p-2 rounded-md hover:bg-[#FEF9F2] mt-1">
+                    <div className="mt-0.5 bg-primary/10 p-1.5 rounded-md text-primary">
+                      <Building size={18} />
+                    </div>
+                    <div>
+                      <div className="font-medium text-primary">Healthcare</div>
+                      <div className="text-xs text-muted-foreground mt-0.5">HIPAA-compliant privacy solutions</div>
+                    </div>
+                  </Link>
+                  
+                  <Link href="#" onClick={() => setMenuOpen(false)} className="flex items-start gap-3 cursor-pointer p-2 rounded-md hover:bg-[#FEF9F2] mt-1">
+                    <div className="mt-0.5 bg-primary/10 p-1.5 rounded-md text-primary">
+                      <Building size={18} />
+                    </div>
+                    <div>
+                      <div className="font-medium text-primary">Financial Services</div>
+                      <div className="text-xs text-muted-foreground mt-0.5">PCI-DSS compliant solutions</div>
+                    </div>
+                  </Link>
+                  
+                  <Link href="#" onClick={() => setMenuOpen(false)} className="flex items-start gap-3 cursor-pointer p-2 rounded-md hover:bg-[#FEF9F2] mt-1">
+                    <div className="mt-0.5 bg-primary/10 p-1.5 rounded-md text-primary">
+                      <Building size={18} />
+                    </div>
+                    <div>
+                      <div className="font-medium text-primary">Retail & eCommerce</div>
+                      <div className="text-xs text-muted-foreground mt-0.5">Protect customer data</div>
+                    </div>
+                  </Link>
+                  
+                  <div className="px-1 py-1 mt-3 text-sm font-medium text-primary">By Use Case</div>
+                  
+                  <Link href="#" onClick={() => setMenuOpen(false)} className="flex items-start gap-3 cursor-pointer p-2 rounded-md hover:bg-[#FEF9F2] mt-1">
+                    <div className="mt-0.5 bg-primary/10 p-1.5 rounded-md text-primary">
+                      <Briefcase size={18} />
+                    </div>
+                    <div>
+                      <div className="font-medium text-primary">Regulatory Compliance</div>
+                      <div className="text-xs text-muted-foreground mt-0.5">Solutions for GDPR, DPDP Act, HIPAA</div>
+                    </div>
+                  </Link>
+                </div>
               </div>
 
-              <div className="space-y-3">
-                <div className="font-bold text-lg mb-2">Company</div>
-                <Link href="/about" onClick={() => setMenuOpen(false)}>
-                  <div className="py-2 font-medium">About</div>
-                </Link>
-                <Link href="/careers" onClick={() => setMenuOpen(false)}>
-                  <div className="py-2 font-medium">Careers</div>
-                </Link>
+              {/* Company Section - Styled like desktop dropdown */}
+              <div className="space-y-3 border rounded-md overflow-hidden">
+                <div className="bg-[#789DBC] px-4 py-3 border-b border-primary/10">
+                  <span className="text-sm font-semibold text-white uppercase tracking-wide">Company</span>
+                </div>
+                
+                <div className="p-3">
+                  <Link href="/about" onClick={() => setMenuOpen(false)} className="flex items-center gap-3 cursor-pointer p-2 rounded-md hover:bg-[#FEF9F2]">
+                    <div className="bg-primary/10 p-1.5 rounded-md text-primary">
+                      <Building size={18} />
+                    </div>
+                    <div className="font-medium text-primary">About Us</div>
+                  </Link>
+                  
+                  <Link href="/careers" onClick={() => setMenuOpen(false)} className="flex items-center gap-3 cursor-pointer p-2 rounded-md hover:bg-[#FEF9F2] mt-1">
+                    <div className="bg-primary/10 p-1.5 rounded-md text-primary">
+                      <Briefcase size={18} />
+                    </div>
+                    <div className="font-medium text-primary">Careers</div>
+                  </Link>
+                </div>
               </div>
 
               <div className="pt-4 space-y-3">
