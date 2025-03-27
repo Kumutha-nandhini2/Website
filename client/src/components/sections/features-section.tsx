@@ -1,4 +1,3 @@
-import { motion } from "framer-motion";
 import {
   Shield,
   Lock,
@@ -8,9 +7,7 @@ import {
   Users,
   Database,
   FileSearch,
-  AlertTriangle,
   FileSpreadsheet,
-  Bell,
   ShieldAlert
 } from "lucide-react";
 
@@ -48,7 +45,7 @@ const features = [
     delay: 0.3
   },
   {
-    icon: <AlertTriangle className="text-[#578FCA] text-xl" />,
+    icon: <Shield className="text-[#578FCA] text-xl" />,
     title: "Anomaly Detection",
     description: "Use AI-powered algorithms to identify unusual data access patterns and potential privacy risks in real-time.",
     link: "#",
@@ -91,13 +88,7 @@ const features = [
 
 const FeatureCard = ({ feature }: { feature: typeof features[0] }) => {
   return (
-    <motion.div 
-      className="bg-white rounded-lg p-6 shadow-sm hover:shadow-md transition-shadow"
-      initial={{ opacity: 0, y: 15 }}
-      whileInView={{ opacity: 1, y: 0 }}
-      viewport={{ once: true }}
-      transition={{ duration: 0.5, delay: feature.delay }}
-    >
+    <div className="bg-white rounded-lg p-6 shadow-sm hover:shadow-md transition-shadow">
       <div className={`w-12 h-12 rounded-md bg-${feature.color === 'blue' ? '[#578FCA]' : '[#2A5485]'}/10 flex items-center justify-center mb-4`}>
         {feature.icon}
       </div>
@@ -114,7 +105,7 @@ const FeatureCard = ({ feature }: { feature: typeof features[0] }) => {
           <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
         </svg>
       </a>
-    </motion.div>
+    </div>
   );
 };
 
@@ -122,18 +113,12 @@ const FeaturesSection = () => {
   return (
     <section className="py-16 bg-[#FDFAF6]">
       <div className="container mx-auto px-4">
-        <motion.div 
-          className="text-center mb-12"
-          initial={{ opacity: 0, y: 20 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
-          transition={{ duration: 0.6 }}
-        >
+        <div className="text-center mb-12">
           <h2 className="text-2xl md:text-3xl font-bold text-deep-blue mb-4">Privacy Solutions Platform</h2>
           <p className="text-base text-dark-gray max-w-2xl mx-auto">
             PrivacyWeave's comprehensive platform helps organizations automate privacy compliance and enhance data security with AI-driven tools.
           </p>
-        </motion.div>
+        </div>
         
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
           {features.map((feature, index) => (
