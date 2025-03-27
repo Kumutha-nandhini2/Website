@@ -64,9 +64,9 @@ const features = [
     delay: 0.5
   },
   {
-    icon: <Users className="text-[#578FCA] text-xl" />,
-    title: "AI Vendor Risk Management",
-    description: "Assess and monitor third-party vendors to ensure they meet your privacy and security requirements with AI assistance.",
+    icon: <BarChart className="text-[#578FCA] text-xl" />,
+    title: "Data and AI Governance",
+    description: "Implement robust governance frameworks that ensure responsible AI use, ethical data practices, and continuous monitoring of data flows across your organization.",
     link: "#",
     color: "blue",
     delay: 0.6
