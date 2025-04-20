@@ -23,6 +23,7 @@ export interface IStorage {
   
   // Job application operations
   createJobApplication(application: InsertJobApplication): Promise<JobApplication>;
+  updateJobApplication(id: number, updates: Partial<JobApplication>): Promise<JobApplication | undefined>;
   getJobApplications(): Promise<JobApplication[]>;
   getJobApplication(id: number): Promise<JobApplication | undefined>;
   
@@ -135,6 +136,15 @@ export class DatabaseStorage implements IStorage {
       .from(jobApplications)
       .where(eq(jobApplications.id, id));
     return application;
+  }
+  
+  async updateJobApplication(id: number, updates: Partial<JobApplication>): Promise<JobApplication | undefined> {
+    const [updatedApplication] = await db
+      .update(jobApplications)
+      .set(updates)
+      .where(eq(jobApplications.id, id))
+      .returning();
+    return updatedApplication;
   }
   
   // Job listings operations
@@ -359,6 +369,11 @@ export class MemStorage implements IStorage {
       id, 
       resumePath: null,
       message: insertApplication.message || null,
+      applicationType: insertApplication.applicationType || 'job',
+      education: insertApplication.education || null,
+      university: insertApplication.university || null,
+      graduationYear: insertApplication.graduationYear || null,
+      availabilityDate: insertApplication.availabilityDate || null,
       createdAt: new Date() 
     };
     this.jobApplications.set(id, application);
@@ -373,6 +388,15 @@ export class MemStorage implements IStorage {
   
   async getJobApplication(id: number): Promise<JobApplication | undefined> {
     return this.jobApplications.get(id);
+  }
+  
+  async updateJobApplication(id: number, updates: Partial<JobApplication>): Promise<JobApplication | undefined> {
+    const application = this.jobApplications.get(id);
+    if (!application) return undefined;
+    
+    const updatedApplication = { ...application, ...updates };
+    this.jobApplications.set(id, updatedApplication);
+    return updatedApplication;
   }
   
   async createJobListing(insertListing: InsertJobListing): Promise<JobListing> {

@@ -191,10 +191,15 @@ export async function registerRoutes(app: Express): Promise<Server> {
       
       // Update resume path if a file was uploaded
       if (req.file) {
-        jobApplication.resumePath = req.file.path;
+        // Update the job application in the database with the resume path
+        const updatedApplication = await storage.updateJobApplication(jobApplication.id, {
+          resumePath: req.file.path
+        });
         
-        // Save the updated resume path to the database
-        // This would typically need an update method in storage
+        // Use the updated application if it exists
+        if (updatedApplication) {
+          Object.assign(jobApplication, updatedApplication);
+        }
       }
       
       // Send email notification
