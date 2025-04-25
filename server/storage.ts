@@ -240,7 +240,7 @@ export class DatabaseStorage implements IStorage {
   async seedJobListings() {
     // Check if we have any job listings
     const existingListings = await db.select().from(jobListings);
-    
+
     // If no listings exist, create them
     if (existingListings.length === 0) {
       const listings: InsertJobListing[] = [
@@ -251,7 +251,8 @@ export class DatabaseStorage implements IStorage {
           type: "Full-time",
           location: "Coimbatore",
           experience: "Entry Level (0-1 Year)",
-          isActive: true
+          isActive: true,
+          listingCategory: "Technology", // Add a valid value for listing_category
         },
         {
           title: "Full Stack Developer (0-1 Year Experience)",
@@ -260,7 +261,8 @@ export class DatabaseStorage implements IStorage {
           type: "Full-time",
           location: "Coimbatore",
           experience: "Entry Level (0-1 Year)",
-          isActive: true
+          isActive: true,
+          listingCategory: "Development", // Add a valid value for listing_category
         },
         {
           title: "Cybersecurity & Encryption Specialist (0-1 Year Experience)",
@@ -269,10 +271,11 @@ export class DatabaseStorage implements IStorage {
           type: "Full-time",
           location: "Coimbatore",
           experience: "Entry Level (0-1 Year)",
-          isActive: true
-        }
+          isActive: true,
+          listingCategory: "Cybersecurity", // Add a valid value for listing_category
+        },
       ];
-      
+
       for (const listing of listings) {
         await this.createJobListing(listing);
       }
