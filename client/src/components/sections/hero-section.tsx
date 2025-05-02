@@ -56,24 +56,21 @@ const HeroSection = () => {
                   <CheckCircle className="size-4" />
                 </div>
                 <span className="text-[#0a2c5a] group-hover:text-[#1e5285] transition-all">
-                  Empower all forms of businesses with AI-driven, automated privacy solutions that ensure compliance and data security
-                </span>
+                Empowering businesses of all sizes with AI-powered, automated privacy solutions that simplify compliance and strengthen data security.                </span>
               </div>
               <div className="flex items-center gap-3 group">
                 <div className="flex-shrink-0 size-6 rounded-full bg-[#0a2c5a]/10 flex items-center justify-center text-[#0a2c5a] group-hover:bg-[#0a2c5a]/20 transition-all">
                   <CheckCircle className="size-4" />
                 </div>
                 <span className="text-[#0a2c5a] group-hover:text-[#1e5285] transition-all">
-                  Enable organizations to handle sensitive data with advanced encryption, tokenization, and zero-trust architectures
-                </span>
+                Helping organizations manage sensitive data through adaptive context tokenization, polymorphic  encryption, and access control.                </span>
               </div>
               <div className="flex items-center gap-3 group">
                 <div className="flex-shrink-0 size-6 rounded-full bg-[#0a2c5a]/10 flex items-center justify-center text-[#0a2c5a] group-hover:bg-[#0a2c5a]/20 transition-all">
                   <CheckCircle className="size-4" />
                 </div>
                 <span className="text-[#0a2c5a] group-hover:text-[#1e5285] transition-all">
-                  Developing cutting-edge solutions like ZKP, SMPC, and Federated Learning to redefine data privacy and security
-                </span>
+                Building next-gen privacy technologies   Secure Multi-Party Computation,ZKPs and Federated Learning to transform data privacy.                </span>
               </div>
             </div>
           </motion.div>

@@ -12,21 +12,6 @@ const DataManagementSection = () => {
     { name: "ERP", id: "erp" }
   ];
 
-  const managementItems = [
-    { name: "Privacy Automation", id: "privacy" },
-    { name: "Consent & Preferences", id: "consent" },
-    { name: "Data & AI Governance", id: "governance" },
-    { name: "Tech Risk & Compliance", id: "risk" },
-    { name: "Third-Party Management", id: "third-party" }
-  ];
-
-  const actionItems = [
-    { name: "Mitigate", description: "risks", position: "top-12 right-10" },
-    { name: "Collect", description: "data", position: "top-32 right-5" },
-    { name: "Consent", description: "manage", position: "bottom-32 right-5" },
-    { name: "Monitor", description: "compliance", position: "bottom-12 right-10" }
-  ];
-
   return (
     <section id="data-management" className="py-20 bg-neutral-light">
       <div className="container mx-auto px-4">
@@ -66,46 +51,7 @@ const DataManagementSection = () => {
         {/* Interactive Visualization Area */}
         <div className="relative mx-auto w-full max-w-6xl h-[400px] md:h-[500px] mb-16">
           
-          {/* Data Source - Left Side */}
-          <motion.div 
-            className="absolute left-0 top-1/2 transform -translate-y-1/2 md:left-10 lg:left-24"
-            initial={{ opacity: 0, x: -50 }}
-            whileInView={{ opacity: 1, x: 0 }}
-            viewport={{ once: true }}
-            transition={{ duration: 0.7 }}
-          >
-            <motion.div
-              className="bg-white rounded-full w-60 h-60 md:w-72 md:h-72 flex flex-col items-center justify-center shadow-md"
-              animate={{ 
-                scale: [1, 1.03, 1],
-                transition: { 
-                  duration: 2,
-                  repeat: Infinity,
-                  repeatType: "reverse" 
-                }
-              }}
-            >
-              <h3 className="text-lg font-semibold text-primary-dark mb-2">Data</h3>
-              <p className="text-xs text-gray-500 mb-4">Structured | Semi-Structured | Unstructured</p>
-              
-              <div className="grid grid-cols-2 gap-4">
-                {categories.map((category) => (
-                  <motion.div
-                    key={category.id}
-                    className="bg-gray-100 rounded-full w-20 h-20 flex items-center justify-center cursor-pointer"
-                    whileHover={{ scale: 1.1, backgroundColor: "#f0f9ff" }}
-                    initial={{ opacity: 0, scale: 0.9 }}
-                    whileInView={{ opacity: 1, scale: 1 }}
-                    viewport={{ once: true }}
-                    transition={{ duration: 0.4 }}
-                  >
-                    <span className="font-medium text-sm">{category.name}</span>
-                  </motion.div>
-                ))}
-              </div>
-            </motion.div>
-          </motion.div>
-
+          
           {/* AI at center */}
           <motion.div
             className="absolute left-1/2 top-1/2 transform -translate-x-1/2 -translate-y-1/2 z-10"
@@ -114,25 +60,7 @@ const DataManagementSection = () => {
             viewport={{ once: true }}
             transition={{ duration: 0.8, delay: 0.5 }}
           >
-            <motion.div
-              className="bg-primary-light rounded-full w-24 h-24 flex items-center justify-center shadow-lg"
-              whileHover={{ scale: 1.1, backgroundColor: "#f8f3e5" }}
-              animate={{
-                boxShadow: [
-                  "0 0 0 rgba(140, 100, 60, 0.4)",
-                  "0 0 20px rgba(140, 100, 60, 0.6)",
-                  "0 0 0 rgba(140, 100, 60, 0.4)"
-                ],
-                transition: {
-                  duration: 3,
-                  repeat: Infinity,
-                  repeatType: "loop"
-                }
-              }}
-            >
-              <span className="text-2xl font-bold text-primary-dark">AI</span>
-            </motion.div>
-            
+          
             {/* Connection paths */}
             <svg className="absolute top-0 left-0 w-full h-full -z-10" viewBox="-150 -150 300 300" overflow="visible">
               {/* Main data paths */}
@@ -652,52 +580,8 @@ const DataManagementSection = () => {
                 staggerChildren: 0.2 
               }}
             >
-              {managementItems.map((item, index) => (
-                <motion.div
-                  key={item.id}
-                  className="bg-white rounded-md py-3 px-4 shadow-sm cursor-pointer"
-                  initial={{ opacity: 0, scale: 0.9 }}
-                  whileInView={{ opacity: 1, scale: 1 }}
-                  viewport={{ once: true }}
-                  transition={{ duration: 0.4, delay: index * 0.1 }}
-                  whileHover={{ 
-                    scale: 1.05, 
-                    boxShadow: "0 4px 8px rgba(0,0,0,0.1)",
-                    transition: { duration: 0.2 } 
-                  }}
-                  onHoverStart={() => setIsHovered(item.id)}
-                  onHoverEnd={() => setIsHovered(null)}
-                >
-                  <h4 className="text-sm font-medium text-center text-primary-dark">{item.name}</h4>
-                </motion.div>
-              ))}
+              
             </motion.div>
-
-            {/* Floating action circles */}
-            {actionItems.map((item, index) => (
-              <motion.div
-                key={index}
-                className={`absolute ${item.position} w-16 h-16 rounded-full bg-white shadow-sm flex items-center justify-center`}
-                initial={{ opacity: 0, scale: 0.8 }}
-                whileInView={{ opacity: 1, scale: 1 }}
-                viewport={{ once: true }}
-                transition={{ duration: 0.5, delay: 0.7 + (index * 0.1) }}
-                animate={{ 
-                  scale: [1, 1.03, 1],
-                  transition: { 
-                    duration: 2, 
-                    repeat: Infinity, 
-                    repeatType: "reverse" 
-                  }
-                }}
-                whileHover={{ scale: 1.1 }}
-              >
-                <div className="text-center">
-                  <p className="text-xs font-semibold">{item.name}</p>
-                  <p className="text-[10px] text-gray-500">{item.description}</p>
-                </div>
-              </motion.div>
-            ))}
           </motion.div>
         </div>
 

@@ -13,7 +13,7 @@ import {
   DropdownMenuTrigger,
 } from "@/components/ui/dropdown-menu";
 import { Button } from "@/components/ui/button";
-import { Menu, ChevronDown, Shield, Database, ClipboardCheck, FileSpreadsheet, BarChart, Key, Lock, Building, Briefcase, GraduationCap, ShieldAlert } from "lucide-react";
+import { Menu, ChevronDown, Shield, Database, ClipboardCheck, FileSpreadsheet, BarChart, Key, Lock, Building, Briefcase, GraduationCap, ShieldAlert, Brain } from "lucide-react";
 import Logo from "@/components/logo";
 
 const Header = () => {
@@ -121,8 +121,8 @@ const Header = () => {
                         <Key size={18} />
                       </div>
                       <div>
-                        <div className="font-medium text-primary">Tokenization</div>
-                        <div className="text-xs text-muted-foreground mt-0.5">Replace sensitive data with non-sensitive equivalents</div>
+                        <div className="font-medium text-primary">Adaptive Context Token</div>
+                        <div className="text-xs text-muted-foreground mt-0.5">Context-aware sensitive data masking</div>
                       </div>
                     </Link>
                   </DropdownMenuItem>
@@ -133,8 +133,20 @@ const Header = () => {
                         <Lock size={18} />
                       </div>
                       <div>
-                        <div className="font-medium text-primary">Zero-Knowledge Proofs</div>
-                        <div className="text-xs text-muted-foreground mt-0.5">Verify data without revealing underlying information</div>
+                        <div className="font-medium text-primary">Polymorphic Encryption</div>
+                        <div className="text-xs text-muted-foreground mt-0.5">Encrypted data verification without exposure</div>
+                      </div>
+                    </Link>
+                  </DropdownMenuItem>
+
+                  <DropdownMenuItem asChild className="rounded-md p-2 hover:bg-[#FEF9F2]">
+                    <Link href="#" className="flex items-start gap-3 cursor-pointer">
+                      <div className="mt-0.5 bg-primary/10 p-1.5 rounded-md text-primary">
+                        <Brain size={18} />
+                      </div>
+                      <div>
+                        <div className="font-medium text-primary">Federated Learning</div>
+                        <div className="text-xs text-muted-foreground mt-0.5">Decentralized model training without data</div>
                       </div>
                     </Link>
                   </DropdownMenuItem>

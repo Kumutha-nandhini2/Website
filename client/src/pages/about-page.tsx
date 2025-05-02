@@ -240,26 +240,26 @@ const AboutPage = () => {
                     <path d="M9 21V9"></path>
                   </svg>
                 </div>
-                Encryption Systems
+                Machine Learning (ML) Capabilities
               </h3>
               <ul className="space-y-3">
                 <li className="flex items-start">
                   <svg xmlns="http://www.w3.org/2000/svg" className="h-5 w-5 text-dark-blue mr-2 mt-0.5" viewBox="0 0 20 20" fill="currentColor">
                     <path fillRule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clipRule="evenodd" />
                   </svg>
-                  <span className="text-sm text-dark-gray">End-to-end encryption with 256-bit standards</span>
+                  <span className="text-sm text-dark-gray">Federated learning for privacy-preserving model training across decentralized data</span>
                 </li>
                 <li className="flex items-start">
                   <svg xmlns="http://www.w3.org/2000/svg" className="h-5 w-5 text-dark-blue mr-2 mt-0.5" viewBox="0 0 20 20" fill="currentColor">
                     <path fillRule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clipRule="evenodd" />
                   </svg>
-                  <span className="text-sm text-dark-gray">Homomorphic encryption for secure data processing</span>
+                  <span className="text-sm text-dark-gray">Explainable AI (XAI) for transparent and interpretable decision-making</span>
                 </li>
                 <li className="flex items-start">
                   <svg xmlns="http://www.w3.org/2000/svg" className="h-5 w-5 text-dark-blue mr-2 mt-0.5" viewBox="0 0 20 20" fill="currentColor">
                     <path fillRule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clipRule="evenodd" />
                   </svg>
-                  <span className="text-sm text-dark-gray">Zero-knowledge protocols for ultimate privacy</span>
+                  <span className="text-sm text-dark-gray">Adaptive models for dynamic threat intelligence and behavioral analytics</span>
                 </li>
               </ul>
             </motion.div>

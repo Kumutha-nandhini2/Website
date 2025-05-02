@@ -13,13 +13,18 @@ const privacyFeatures = [
     delay: 0.1
   },
   {
-    title: "Access Control",
-    description: "Fine-grained permission systems with role-based access controls",
+    title: "Adaptive Context Tokenization",
+    description: "Replaces sensitive data with context-aware tokens, preserving utility while enhancing privacy.",
     delay: 0.2
   },
   {
     title: "Data Minimization",
     description: "Smart technologies to reduce sensitive data exposure and storage",
+    delay: 0.3
+  },
+  {
+    title: "Polymorphic Encryption",
+    description: "Dynamic encryption keys that change based on data context and access patterns",
     delay: 0.3
   }
 ];
@@ -41,7 +46,7 @@ const ClientsSection = () => {
           </p>
         </motion.div>
         
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-5">
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-5 gap-5">
           {privacyFeatures.map((feature, index) => (
             <motion.div
               key={index}
