@@ -121,7 +121,7 @@ const Header = () => {
                         <Key size={18} />
                       </div>
                       <div>
-                        <div className="font-medium text-primary">Adaptive Context Token</div>
+                        <div className="font-medium text-primary">Adaptive Context Tokenization</div>
                         <div className="text-xs text-muted-foreground mt-0.5">Context-aware sensitive data masking</div>
                       </div>
                     </Link>
