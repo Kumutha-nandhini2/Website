@@ -400,8 +400,8 @@ const Header = () => {
                       <Key size={18} />
                     </div>
                     <div>
-                      <div className="font-medium text-primary">Tokenization</div>
-                      <div className="text-xs text-muted-foreground mt-0.5">Replace sensitive data with non-sensitive equivalents</div>
+                      <div className="font-medium text-primary">Adaptive context Tokenization</div>
+                      <div className="text-xs text-muted-foreground mt-0.5">Context-aware sensitive data masking</div>
                     </div>
                   </Link>
                   
@@ -410,8 +410,18 @@ const Header = () => {
                       <Lock size={18} />
                     </div>
                     <div>
-                      <div className="font-medium text-primary">Zero-Knowledge Proofs</div>
-                      <div className="text-xs text-muted-foreground mt-0.5">Verify without revealing information</div>
+                      <div className="font-medium text-primary">Polymorphic Encryption</div>
+                      <div className="text-xs text-muted-foreground mt-0.5">Encrypted data verification without exposure</div>
+                    </div>
+                  </Link>
+
+                  <Link href="#" onClick={() => setMenuOpen(false)} className="flex items-start gap-3 cursor-pointer p-2 rounded-md hover:bg-[#FEF9F2] mt-1">
+                    <div className="mt-0.5 bg-primary/10 p-1.5 rounded-md text-primary">
+                      <Brain size={18} />
+                    </div>
+                    <div>
+                      <div className="font-medium text-primary">Federated Learning</div>
+                      <div className="text-xs text-muted-foreground mt-0.5">Decentralized model training without data</div>
                     </div>
                   </Link>
                 </div>
