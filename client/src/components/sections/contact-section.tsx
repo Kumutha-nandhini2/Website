@@ -56,7 +56,7 @@ const ContactSection = () => {
       // Remove consent field as it's not part of the backend schema
       const { consent, ...inquiryData } = data;
       
-      await apiRequest("POST", "/api/inquiries", inquiryData);
+      await apiRequest("/api/inquiries", { method: "POST", body: JSON.stringify(inquiryData), headers: { "Content-Type": "application/json" }, credentials: "include" }); // ✅ 2 arguments
       
       toast({
         title: "Request submitted",
