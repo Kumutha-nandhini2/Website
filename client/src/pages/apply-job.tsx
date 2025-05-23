@@ -14,10 +14,9 @@ import {
   FormMessage,
 } from "@/components/ui/form";
 import { Input } from "@/components/ui/input";
-import { Textarea } from "@/components/ui/textarea";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
-import { Loader2, FileUp } from "lucide-react";
+import { Loader2 } from "lucide-react";
 import { useToast } from "@/hooks/use-toast";
 
 type ApplyFormValues = z.infer<typeof jobApplicationWithResumeSchema>;
@@ -27,8 +26,8 @@ const ApplyJobPage = () => {
   const [location, navigate] = useLocation();
   const { toast } = useToast();
   const [isSubmitting, setIsSubmitting] = useState(false);
-  
-  // Get job details
+
+  // Fetch job details
   const { data: job, isLoading } = useQuery<JobListing>({
     queryKey: [match ? `/api/job-listings/${params.id}` : null],
     enabled: !!match,
@@ -43,6 +42,7 @@ const ApplyJobPage = () => {
       position: job?.title || "",
       experience: "",
       message: "",
+      resumeLink: "",
     },
   });
 
@@ -55,40 +55,29 @@ const ApplyJobPage = () => {
 
   const onSubmit = async (data: ApplyFormValues) => {
     if (!match || !job) return;
-    
+  
     setIsSubmitting(true);
-    
+  
     try {
-      const formData = new FormData();
-      
-      // Add form fields to FormData
-      Object.entries(data).forEach(([key, value]) => {
-        if (key !== 'resumeFile') {
-          formData.append(key, value as string);
-        }
+      // Map resumeLink to resumePath before sending
+      const payload = {
+        ...data,
+        resumePath: data.resumeLink,  // <-- Map here
+      };
+  
+      const response = await fetch("/api/job-applications", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify(payload),
       });
-      
-      // Add resume file if provided
-      if (data.resumeFile) {
-        formData.append('resumeFile', data.resumeFile);
-      }
-      
-      // Submit application
-      const response = await fetch('/api/job-applications', {
-        method: 'POST',
-        body: formData,
-      });
-      
-      if (!response.ok) {
-        throw new Error('Failed to submit application');
-      }
-      
+  
+      if (!response.ok) throw new Error("Failed to submit application");
+  
       toast({
         title: "Application submitted successfully!",
         description: "We'll review your application and get back to you soon.",
       });
-      
-      // Redirect to careers page
+  
       navigate("/careers");
     } catch (error) {
       toast({
@@ -100,6 +89,7 @@ const ApplyJobPage = () => {
       setIsSubmitting(false);
     }
   };
+  
 
   if (!match) {
     navigate("/careers");
@@ -130,23 +120,7 @@ const ApplyJobPage = () => {
     <div className="container mx-auto px-4 py-12">
       <div className="max-w-3xl mx-auto">
         <h1 className="text-3xl font-bold mb-8">Apply for: {job.title}</h1>
-        
-        <div className="mb-8">
-          <h2 className="text-xl font-bold mb-2">Job Details</h2>
-          <div className="bg-neutral-light p-6 rounded-lg">
-            <div className="flex flex-wrap gap-2 mb-4">
-              <span className="px-3 py-1 rounded-full bg-primary bg-opacity-10 text-primary text-sm">{job.type}</span>
-              <span className="px-3 py-1 rounded-full bg-secondary bg-opacity-10 text-secondary text-sm">{job.location}</span>
-              <span className="px-3 py-1 rounded-full bg-neutral-200 text-neutral-dark text-sm">{job.experience}</span>
-            </div>
-            <p className="mb-4">{job.description}</p>
-            <div>
-              <h3 className="font-bold mb-2">Requirements:</h3>
-              <p>{job.requirements}</p>
-            </div>
-          </div>
-        </div>
-        
+
         <Card>
           <CardHeader>
             <CardTitle>Submit Your Application</CardTitle>
@@ -167,7 +141,7 @@ const ApplyJobPage = () => {
                     </FormItem>
                   )}
                 />
-                
+
                 <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
                   <FormField
                     control={form.control}
@@ -182,7 +156,7 @@ const ApplyJobPage = () => {
                       </FormItem>
                     )}
                   />
-                  
+
                   <FormField
                     control={form.control}
                     name="phone"
@@ -197,7 +171,7 @@ const ApplyJobPage = () => {
                     )}
                   />
                 </div>
-                
+
                 <FormField
                   control={form.control}
                   name="position"
@@ -211,7 +185,7 @@ const ApplyJobPage = () => {
                     </FormItem>
                   )}
                 />
-                
+
                 <FormField
                   control={form.control}
                   name="experience"
@@ -225,17 +199,16 @@ const ApplyJobPage = () => {
                     </FormItem>
                   )}
                 />
-                
+
                 <FormField
                   control={form.control}
-                  name="message"
+                  name="resumeLink"
                   render={({ field }) => (
                     <FormItem>
-                      <FormLabel>Cover Letter / Additional Information</FormLabel>
+                      <FormLabel>Resume Link (Google Drive or other)*</FormLabel>
                       <FormControl>
-                        <Textarea
-                          placeholder="Tell us why you're interested in this position and why you'd be a good fit"
-                          rows={5}
+                        <Input
+                          placeholder="Paste your resume link here"
                           {...field}
                         />
                       </FormControl>
@@ -243,47 +216,7 @@ const ApplyJobPage = () => {
                     </FormItem>
                   )}
                 />
-                
-                <FormField
-                  control={form.control}
-                  name="resumeFile"
-                  render={({ field: { value, onChange, ...fieldProps } }) => (
-                    <FormItem>
-                      <FormLabel>Resume (PDF or DOC)*</FormLabel>
-                      <FormControl>
-                        <div className="flex items-center gap-4">
-                          <label
-                            htmlFor="resumeUpload"
-                            className="flex items-center gap-2 px-4 py-2 border border-input rounded-md bg-background hover:bg-neutral-100 cursor-pointer"
-                          >
-                            <FileUp className="h-5 w-5" />
-                            {value ? 'Change file' : 'Select file'}
-                          </label>
-                          <input
-                            id="resumeUpload"
-                            type="file"
-                            accept=".pdf,.doc,.docx"
-                            className="hidden"
-                            onChange={(e) => {
-                              const file = e.target.files?.[0];
-                              if (file) {
-                                onChange(file);
-                              }
-                            }}
-                            {...fieldProps}
-                          />
-                          {value && (
-                            <span className="text-sm text-neutral-dark">
-                              {typeof value === 'object' ? value.name : value}
-                            </span>
-                          )}
-                        </div>
-                      </FormControl>
-                      <FormMessage />
-                    </FormItem>
-                  )}
-                />
-                
+
                 <Button
                   type="submit"
                   className="w-full"

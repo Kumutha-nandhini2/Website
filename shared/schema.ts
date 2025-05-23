@@ -60,26 +60,25 @@ export const jobApplications = pgTable("job_applications", {
   createdAt: timestamp("created_at").defaultNow().notNull(),
 });
 
-export const insertJobApplicationSchema = createInsertSchema(jobApplications).pick({
-  fullName: true,
-  email: true,
-  phone: true,
-  position: true,
-  experience: true,
-  message: true,
-  applicationType: true,
-  education: true,
-  university: true,
-  graduationYear: true,
-  availabilityDate: true,
+export const insertJobApplicationSchema = z.object({
+  fullName: z.string().min(1, "Full name is required"),
+  email: z.string().email("Invalid email address"),
+  phone: z.string().min(1, "Phone number is required"),
+  position: z.string().min(1, "Position is required"),
+  experience: z.string().min(1, "Experience is required"),
+  message: z.string().optional(),
+  resumePath: z.string().url("Invalid URL").optional(), // Use resumeLink as resumePath
+  applicationType: z.string().default("job"), // Default to 'job'
 });
 
-// Extend the job application schema to ensure required fields
-export const jobApplicationWithResumeSchema = insertJobApplicationSchema.extend({
-  fullName: z.string().min(1, "Name is required"),
-  email: z.string().min(1, "Email is required").email("Invalid email format"),
-  experience: z.string().min(1, "Years of experience is required"),
-  resumeFile: z.instanceof(File, { message: "Resume is required" }),
+export const jobApplicationWithResumeSchema = z.object({
+  fullName: z.string().min(1, "Full name is required"),
+  email: z.string().email("Invalid email address"),
+  phone: z.string().min(1, "Phone number is required"),
+  position: z.string().min(1, "Position is required"),
+  experience: z.string().min(1, "Experience is required"),
+  message: z.string().optional(),
+  resumeLink: z.string().url("Invalid URL").min(1, "Resume link is required"), // Only keep resumeLink
 });
 
 // Internship Application schema extends job application

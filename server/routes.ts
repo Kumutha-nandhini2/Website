@@ -176,72 +176,57 @@ export async function registerRoutes(app: Express): Promise<Server> {
   });
 
   // Job Application Endpoints
-  app.post('/api/job-applications', upload.single('resumeFile'), async (req, res, next) => {
+  app.post('/api/job-applications', async (req, res, next) => {
     try {
-      // Add the resume path if a file was uploaded
+      // Prepare application data. Frontend already sends 'resumePath'.
       const applicationData = {
-        ...req.body,
+        fullName: req.body.fullName,
+        email: req.body.email,
+        phone: req.body.phone,
+        position: req.body.position,
+        experience: req.body.experience,
+        message: req.body.message,
+        resumePath: req.body.resumePath, // <--- CORRECTED: Use resumePath from request body
+        applicationType: req.body.applicationType || 'job', // Default to 'job'
       };
-      
-      // Validate request body
+  
+      // Validate the data using your Zod schema (insertJobApplicationSchema expects 'resumePath')
       const validatedData = insertJobApplicationSchema.parse(applicationData);
-      
-      // Create job application
+  
+      // Save the validated data in DB using your storage abstraction
       const jobApplication = await storage.createJobApplication(validatedData);
-      
-      // Update resume path if a file was uploaded
-      if (req.file) {
-        // Update the job application in the database with the resume path
-        const updatedApplication = await storage.updateJobApplication(jobApplication.id, {
-          resumePath: req.file.path
-        });
-        
-        // Use the updated application if it exists
-        if (updatedApplication) {
-          Object.assign(jobApplication, updatedApplication);
-        }
-      }
-      
-      // Send email notification
+  
+      // Send email notification - catch errors but don't fail the request
       let emailSent = false;
       try {
+        // Pass jobApplication which includes the resumePath to the email service
         emailSent = await sendJobApplicationEmail(jobApplication);
       } catch (emailError) {
         console.error('Failed to send job application email notification:', emailError);
-        // Continue with the response even if email fails
       }
-      
-      // Send WhatsApp notification
+  
+      // Send WhatsApp notification - catch errors similarly
       let whatsappSent = false;
       try {
-        // Create a resume URL if a file was uploaded
-        const resumeUrl = req.file ? 
-          `${req.protocol}://${req.get('host')}/api/admin/job-applications/${jobApplication.id}/resume` : 
-          undefined;
-        
-        whatsappSent = await sendJobApplicationWhatsAppNotification(jobApplication, resumeUrl);
+        // Pass jobApplication.resumePath (which is the link) to WhatsApp notification
+        whatsappSent = await sendJobApplicationWhatsAppNotification(jobApplication, jobApplication.resumePath || "No resume link provided");
       } catch (whatsappError) {
         console.error('Failed to send WhatsApp notification for job application:', whatsappError);
-        // Continue with the response even if WhatsApp fails
       }
-      
-      // Add the notification statuses to the response
+  
+      // Respond with saved data + notification statuses
       res.status(201).json({
         ...jobApplication,
         _meta: {
           emailNotificationSent: emailSent,
-          whatsappNotificationSent: whatsappSent
-        }
+          whatsappNotificationSent: whatsappSent,
+        },
       });
     } catch (error) {
-      // If there's an error, remove the uploaded file if it exists
-      if (req.file) {
-        fs.unlink(req.file.path, () => {});
-      }
-      next(error);
+      next(error); // Pass errors to your error handling middleware
     }
   });
-
+  
   // Job Listings Endpoints
   app.get('/api/job-listings', async (req, res, next) => {
     try {
@@ -292,10 +277,21 @@ export async function registerRoutes(app: Express): Promise<Server> {
       const id = parseInt(req.params.id);
       const application = await storage.getJobApplication(id);
       
+      // Note: If resumePath is a URL, res.download() might not work as expected
+      // for external URLs. It's typically for local file paths.
+      // If it's an external link, you might want to redirect or just provide the link.
       if (!application || !application.resumePath) {
-        return res.status(404).json({ message: 'Resume not found' });
+        return res.status(404).json({ message: 'Resume not found or is an external link not directly downloadable this way' });
       }
       
+      // Assuming resumePath could be a local path for resumes uploaded via chatbot,
+      // but for links, this needs careful handling.
+      // If it's always an external URL from the form, perhaps return the URL:
+      // return res.json({ resumeUrl: application.resumePath });
+      // Or redirect:
+      // return res.redirect(application.resumePath);
+
+      // For now, keeping res.download if it's intended for future local file path storage
       res.download(application.resumePath);
     } catch (error) {
       next(error);
@@ -376,7 +372,7 @@ export async function registerRoutes(app: Express): Promise<Server> {
       
       // If a file was uploaded, add its details
       if (req.file) {
-        messageData.attachmentUrl = req.file.path;
+        messageData.attachmentUrl = req.file.path; // This will be a local file path
         messageData.attachmentType = req.file.mimetype;
       }
       
@@ -397,7 +393,7 @@ export async function registerRoutes(app: Express): Promise<Server> {
           position: metadata.position || 'Position via chatbot',
           experience: metadata.experience || 'Not specified',
           message: message.content,
-          resumePath: message.attachmentUrl || null,
+          resumePath: message.attachmentUrl || null, // This will be the local file path if uploaded
         };
         
         // Create the job application
@@ -406,7 +402,7 @@ export async function registerRoutes(app: Express): Promise<Server> {
           
           // Send email notification
           try {
-            await sendJobApplicationEmail(jobApplication);
+            await sendJobApplicationEmail(jobApplication); // jobApplication.resumePath will be the local path
           } catch (emailError) {
             console.error('Failed to send job application email from chatbot:', emailError);
           }
@@ -456,7 +452,9 @@ export async function registerRoutes(app: Express): Promise<Server> {
     } catch (error) {
       // If there was an upload and an error occurred, clean up
       if (req.file) {
-        fs.unlink(req.file.path, () => {});
+        fs.unlink(req.file.path, (err) => {
+          if (err) console.error("Error deleting uploaded file after error:", err);
+        });
       }
       next(error);
     }
@@ -465,9 +463,8 @@ export async function registerRoutes(app: Express): Promise<Server> {
   // Admin route to view all chat conversations
   app.get('/api/admin/chat/conversations', isAdmin, async (req, res, next) => {
     try {
-      // This would need to be implemented in storage
-      // Since we don't have a method to get all conversations, we'll return an empty array for now
-      res.json([]);
+      const conversations = await storage.getChatConversations(); // Assuming this method exists or will be added
+      res.json(conversations);
     } catch (error) {
       next(error);
     }
@@ -476,9 +473,9 @@ export async function registerRoutes(app: Express): Promise<Server> {
   const httpServer = createServer(app);
   
   // Simple chatbot response generator
-  async function generateBotResponse(message: string, conversation: any) {
+  async function generateBotResponse(messageText: string, conversation: any) {
     // Convert message to lowercase for easier matching
-    const lowerMessage = message.toLowerCase();
+    const lowerMessage = messageText.toLowerCase();
     
     // Check specifically for internship-related questions
     if (lowerMessage.includes('internship') || 
@@ -564,3 +561,4 @@ export async function registerRoutes(app: Express): Promise<Server> {
 
   return httpServer;
 }
+

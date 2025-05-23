@@ -111,17 +111,19 @@ export class DatabaseStorage implements IStorage {
   }
   
   // Job application operations
+  // Job application operations
   async createJobApplication(insertApplication: InsertJobApplication): Promise<JobApplication> {
     const [application] = await db
       .insert(jobApplications)
       .values({
         ...insertApplication,
-        resumePath: null,
+        resumePath: insertApplication.resumePath ?? null, // Use actual resumePath if provided
         message: insertApplication.message || null,
       })
       .returning();
     return application;
   }
+
   
   async getJobApplications(): Promise<JobApplication[]> {
     return await db
@@ -370,7 +372,7 @@ export class MemStorage implements IStorage {
     const application: JobApplication = { 
       ...insertApplication, 
       id, 
-      resumePath: null,
+      resumePath: insertApplication.resumePath || null, // ← FIXED HERE
       message: insertApplication.message || null,
       applicationType: insertApplication.applicationType || 'job',
       education: insertApplication.education || null,
