@@ -5,17 +5,18 @@ import { useForm } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { useMutation } from "@tanstack/react-query";
 import { z } from "zod";
-import { apiRequest } from "@/lib/queryClient";
+// import { apiRequest } from "@/lib/queryClient"; // Not used, can remove
 import { FormField, FormItem, FormLabel, FormControl, FormMessage, Form } from "@/components/ui/form";
 import { Input } from "@/components/ui/input";
 import { Button } from "@/components/ui/button";
 import { Textarea } from "@/components/ui/textarea";
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select";
-import { Loader2, Upload, CheckCircle, AlertCircle } from "lucide-react";
-import { jobApplicationWithResumeSchema } from "@shared/schema";
+import { Loader2, CheckCircle, AlertCircle } from "lucide-react";
+import { jobApplicationWithResumeSchema } from "@shared/schema"; // We'll use a more specific one
 
-// Extend the job application schema for internship
-const internshipApplicationSchema = jobApplicationWithResumeSchema.extend({
+// Define the frontend schema for internship application form
+// This schema expects 'resumeLink' as it's more user-friendly for a link input
+const internshipApplicationFrontendSchema = jobApplicationWithResumeSchema.extend({
   applicationType: z.literal("internship").default("internship"),
   education: z.string().min(1, "Education field is required"),
   university: z.string().min(1, "University/College is required"),
@@ -36,24 +37,23 @@ const educationLevelOptions = [
   { value: "Other", label: "Other" }
 ];
 
-type ApplyInternshipFormValues = z.infer<typeof internshipApplicationSchema>;
+type ApplyInternshipFormValues = z.infer<typeof internshipApplicationFrontendSchema>;
 
 export default function ApplyInternshipPage() {
   const [, setLocation] = useLocation();
-  const params = useParams<{ id?: string }>();
-  const [fileName, setFileName] = useState<string | null>(null);
+  // const params = useParams<{ id?: string }>(); // Not used, can remove if not needed
   const [submitted, setSubmitted] = useState(false);
   
-  // Form setup
   const form = useForm<ApplyInternshipFormValues>({
-    resolver: zodResolver(internshipApplicationSchema),
+    resolver: zodResolver(internshipApplicationFrontendSchema),
     defaultValues: {
       fullName: "",
       email: "",
       phone: "",
-      position: "Internship Position",
-      experience: "",
+      position: "Internship Position", // Default position for internships
+      experience: "", // Can be optional or specific e.g. "No prior professional experience"
       message: "",
+      resumeLink: "", // Changed from resumeFile
       education: "",
       university: "",
       graduationYear: "",
@@ -62,32 +62,45 @@ export default function ApplyInternshipPage() {
     }
   });
   
-  // Mutation setup
   const mutation = useMutation({
     mutationFn: async (data: ApplyInternshipFormValues) => {
-      const formData = new FormData();
-      
-      // Append form fields to FormData
-      Object.entries(data).forEach(([key, value]) => {
-        if (key !== 'resumeFile') {
-          formData.append(key, value as string);
-        }
-      });
-      
-      // Append resume file
-      if (data.resumeFile) {
-        formData.append('resumeFile', data.resumeFile);
-      }
-      
+      // Prepare payload for the backend
+      // The backend expects 'resumePath'
+      const payload = {
+        ...data,
+        resumePath: data.resumeLink, // Map resumeLink to resumePath
+      };
+      // Remove resumeLink as it's now mapped to resumePath
+      // delete (payload as any).resumeLink; // Or create a new object without it
+
+      // More explicit payload construction:
+      const backendPayload = {
+        fullName: data.fullName,
+        email: data.email,
+        phone: data.phone,
+        position: data.position,
+        experience: data.experience,
+        message: data.message,
+        resumePath: data.resumeLink, // Key change for backend
+        applicationType: data.applicationType,
+        education: data.education,
+        university: data.university,
+        graduationYear: data.graduationYear,
+        availabilityDate: data.availabilityDate,
+      };
+
       const response = await fetch('/api/job-applications', {
         method: 'POST',
-        body: formData,
-        credentials: 'include'
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify(backendPayload), // Send JSON
+        // credentials: 'include' // Only if your API requires cookies for auth and is on a different domain/subdomain
       });
       
       if (!response.ok) {
-        const text = await response.text();
-        throw new Error(`${response.status}: ${text || response.statusText}`);
+        const errorData = await response.json().catch(() => ({ message: response.statusText }));
+        throw new Error(errorData.message || `${response.status}: Failed to submit application`);
       }
       
       return await response.json();
@@ -95,27 +108,22 @@ export default function ApplyInternshipPage() {
     onSuccess: () => {
       setSubmitted(true);
       form.reset();
-      setFileName(null);
       window.scrollTo(0, 0);
+    },
+    onError: (error: Error) => {
+        // You might want to use a toast notification here
+        console.error('Error submitting internship application:', error);
+        alert(`Submission failed: ${error.message}`); // Simple alert for now
     }
   });
   
-  const onSubmit = async (data: ApplyInternshipFormValues) => {
-    try {
-      await mutation.mutateAsync(data);
-    } catch (error) {
-      console.error('Error submitting internship application:', error);
-    }
+  // RHF's handleSubmit will prevent default and call this with validated data
+  const onSubmit = (data: ApplyInternshipFormValues) => {
+    // mutation.mutate(data) is asynchronous but we don't need to await it here
+    // as useMutation handles the async flow and updates state (isPending, isError, etc.)
+    mutation.mutate(data);
   };
-  
-  const handleFileChange = (e: React.ChangeEvent<HTMLInputElement>) => {
-    const file = e.target.files?.[0];
-    if (file) {
-      form.setValue('resumeFile', file);
-      setFileName(file.name);
-    }
-  };
-  
+    
   if (submitted) {
     return (
       <div className="min-h-screen bg-gray-50 pt-16 pb-12">
@@ -189,6 +197,12 @@ export default function ApplyInternshipPage() {
             </p>
             
             <Form {...form}>
+              {/*
+                The form.handleSubmit(onSubmit) correctly calls your onSubmit function.
+                The issue with the button not working was likely due to how mutation.mutateAsync
+                was handled or if there were unhandled errors stopping the process.
+                Using mutation.mutate() is often simpler for form submissions.
+              */}
               <form onSubmit={form.handleSubmit(onSubmit)} className="space-y-6">
                 <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
                   {/* Full Name */}
@@ -244,7 +258,7 @@ export default function ApplyInternshipPage() {
                       <FormItem>
                         <FormLabel className="text-[#0a2c5a]">Relevant Experience *</FormLabel>
                         <FormControl>
-                          <Input placeholder="E.g., 1 year, academic projects" {...field} className="border-gray-300" />
+                          <Input placeholder="E.g., academic projects, any skills" {...field} className="border-gray-300" />
                         </FormControl>
                         <FormMessage />
                       </FormItem>
@@ -260,7 +274,7 @@ export default function ApplyInternshipPage() {
                         <FormLabel className="text-[#0a2c5a]">Education Level *</FormLabel>
                         <Select 
                           onValueChange={field.onChange}
-                          defaultValue={field.value}
+                          defaultValue={field.value} // Or value={field.value} if controlled
                         >
                           <FormControl>
                             <SelectTrigger className="border-gray-300">
@@ -304,7 +318,7 @@ export default function ApplyInternshipPage() {
                         <FormLabel className="text-[#0a2c5a]">Expected Graduation Year *</FormLabel>
                         <Select 
                           onValueChange={field.onChange}
-                          defaultValue={field.value}
+                          defaultValue={field.value} // Or value={field.value} if controlled
                         >
                           <FormControl>
                             <SelectTrigger className="border-gray-300">
@@ -349,9 +363,9 @@ export default function ApplyInternshipPage() {
                       <FormLabel className="text-[#0a2c5a]">Why are you interested in this internship?</FormLabel>
                       <FormControl>
                         <Textarea 
-                          placeholder="Tell us why you're interested in this position and what you hope to learn..." 
+                          placeholder="Tell us why you're interested and what you hope to learn..." 
                           {...field} 
-                          value={field.value || ''}
+                          value={field.value || ''} // Ensure value is controlled
                           rows={5}
                           className="border-gray-300 resize-none"
                         />
@@ -361,39 +375,19 @@ export default function ApplyInternshipPage() {
                   )}
                 />
                 
-                {/* Resume */}
+                {/* Resume Link - Changed from File Upload */}
                 <FormField
                   control={form.control}
-                  name="resumeFile"
-                  render={({ field: { value, onChange, ...fieldProps } }) => (
+                  name="resumeLink" 
+                  render={({ field }) => (
                     <FormItem>
-                      <FormLabel className="text-[#0a2c5a]">Resume/CV *</FormLabel>
+                      <FormLabel className="text-[#0a2c5a]">Resume Link (Google Drive, Dropbox, etc.) *</FormLabel>
                       <FormControl>
-                        <div className="border-2 border-dashed border-gray-300 rounded-md p-6 text-center">
-                          <input
-                            type="file"
-                            id="resumeFile"
-                            accept=".pdf,.doc,.docx"
-                            className="hidden"
-                            onChange={handleFileChange}
-                          />
-                          <label htmlFor="resumeFile" className="cursor-pointer">
-                            {!fileName ? (
-                              <div className="space-y-3">
-                                <Upload className="size-8 mx-auto text-gray-400" />
-                                <div className="text-[#0a2c5a]">
-                                  <span className="text-[#0a2c5a] font-medium hover:text-[#1e5285]">Click to upload</span> or drag and drop
-                                </div>
-                                <p className="text-xs text-gray-500">PDF, DOC, or DOCX (max 5MB)</p>
-                              </div>
-                            ) : (
-                              <div className="text-[#0a2c5a] flex items-center justify-center gap-2">
-                                <CheckCircle className="text-green-600" />
-                                <span>{fileName}</span> - <span className="text-[#0a2c5a] underline cursor-pointer">Change file</span>
-                              </div>
-                            )}
-                          </label>
-                        </div>
+                        <Input 
+                          placeholder="https://your-resume-link.com" 
+                          {...field} 
+                          className="border-gray-300"
+                        />
                       </FormControl>
                       <FormMessage />
                     </FormItem>
@@ -411,7 +405,7 @@ export default function ApplyInternshipPage() {
                 <Button 
                   type="submit" 
                   className="w-full md:w-auto bg-[#0a2c5a] hover:bg-[#0a2c5a]/90 text-white"
-                  disabled={mutation.isPending}
+                  disabled={mutation.isPending} // Correctly use isPending from useMutation
                 >
                   {mutation.isPending ? (
                     <>

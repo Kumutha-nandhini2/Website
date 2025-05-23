@@ -1,7 +1,7 @@
 import { pgTable, text, serial, integer, boolean, timestamp, jsonb } from "drizzle-orm/pg-core";
 import { createInsertSchema } from "drizzle-zod";
 import { z } from "zod";
-import { File } from 'formdata-node';
+// import { File } from 'formdata-node'; // Not used
 
 // User schema for authentication
 export const users = pgTable("users", {
@@ -42,24 +42,26 @@ export const insertInquirySchema = createInsertSchema(inquiries).pick({
   message: true,
 });
 
-// Job Application schema
+// Job Application schema (Drizzle Table) - THIS IS CORRECT
 export const jobApplications = pgTable("job_applications", {
   id: serial("id").primaryKey(),
   fullName: text("full_name").notNull(),
   email: text("email").notNull(),
-  phone: text("phone").notNull(), 
+  phone: text("phone").notNull(),
   position: text("position").notNull(),
   experience: text("experience").notNull(),
   message: text("message"),
-  resumePath: text("resume_path"),
+  resumePath: text("resume_path"), // Stores the link or path to the resume
   applicationType: text("application_type").default("job"), // 'job' or 'internship'
-  education: text("education"),
-  university: text("university"),
-  graduationYear: text("graduation_year"),
-  availabilityDate: text("availability_date"),
+  education: text("education"), // Optional: For internships
+  university: text("university"), // Optional: For internships
+  graduationYear: text("graduation_year"), // Optional: For internships
+  availabilityDate: text("availability_date"), // Optional: For internships
   createdAt: timestamp("created_at").defaultNow().notNull(),
 });
 
+// Zod schema for INSERTING job applications (used by backend)
+// THIS IS THE SCHEMA THAT NEEDS TO ACCOMMODATE INTERNSHIP FIELDS AS OPTIONAL
 export const insertJobApplicationSchema = z.object({
   fullName: z.string().min(1, "Full name is required"),
   email: z.string().email("Invalid email address"),
@@ -67,10 +69,17 @@ export const insertJobApplicationSchema = z.object({
   position: z.string().min(1, "Position is required"),
   experience: z.string().min(1, "Experience is required"),
   message: z.string().optional(),
-  resumePath: z.string().url("Invalid URL").optional(), // Use resumeLink as resumePath
-  applicationType: z.string().default("job"), // Default to 'job'
+  resumePath: z.string().url("Invalid URL for resume path").optional(), // Backend expects resumePath
+  applicationType: z.string().default("job"), // 'job' or 'internship'
+  // Internship-specific fields, optional for general job applications
+  education: z.string().optional(),
+  university: z.string().optional(),
+  graduationYear: z.string().optional(),
+  availabilityDate: z.string().optional(),
 });
 
+// Zod schema for general job application form validation on the FRONTEND (expects resumeLink)
+// This schema is likely used by your ApplyJobPage.tsx
 export const jobApplicationWithResumeSchema = z.object({
   fullName: z.string().min(1, "Full name is required"),
   email: z.string().email("Invalid email address"),
@@ -78,17 +87,28 @@ export const jobApplicationWithResumeSchema = z.object({
   position: z.string().min(1, "Position is required"),
   experience: z.string().min(1, "Experience is required"),
   message: z.string().optional(),
-  resumeLink: z.string().url("Invalid URL").min(1, "Resume link is required"), // Only keep resumeLink
+  resumeLink: z.string().url("Resume link must be a valid URL").min(1, "Resume link is required"), // Frontend form uses resumeLink
+  // It's good practice to include applicationType if the form might handle different types,
+  // or if the backend relies on it from this schema's inference for some reason.
+  // For a dedicated job application form, it might be implicitly "job".
+  // If this schema is ONLY for job applications (not internships), applicationType can be omitted
+  // or set to z.literal("job").default("job") if it needs to be explicit.
+  // To keep it general as per its name, let's assume it might need to specify type:
+  // applicationType: z.string().optional().default("job"), // Or make it more specific if needed
 });
 
-// Internship Application schema extends job application
+// Zod schema for INTERNSHIP application form validation on the FRONTEND
+// This schema is used by ApplyInternshipPage.tsx
+// It extends the base job application but makes internship fields required and uses resumeLink.
 export const internshipApplicationWithResumeSchema = jobApplicationWithResumeSchema.extend({
-  applicationType: z.literal("internship").default("internship"),
+  // resumeLink is inherited from jobApplicationWithResumeSchema
+  applicationType: z.literal("internship").default("internship"), // Explicitly "internship"
   education: z.string().min(1, "Education field is required"),
   university: z.string().min(1, "University/College is required"),
   graduationYear: z.string().min(1, "Expected graduation year is required"),
   availabilityDate: z.string().min(1, "Availability date is required"),
 });
+
 
 // Job Listings
 export const jobListings = pgTable("job_listings", {
@@ -118,13 +138,13 @@ export const insertJobListingSchema = createInsertSchema(jobListings).pick({
 // Chat Conversation schema
 export const chatConversations = pgTable("chat_conversations", {
   id: serial("id").primaryKey(),
-  sessionId: text("session_id").notNull(),
+  sessionId: text("session_id").notNull().unique(),
   userEmail: text("user_email"),
   userName: text("user_name"),
   startedAt: timestamp("started_at").notNull().defaultNow(),
   lastMessageAt: timestamp("last_message_at").notNull().defaultNow(),
-  category: text("category"), // 'career', 'service', 'general'
-  status: text("status").notNull().default('active'), // 'active', 'closed'
+  category: text("category"),
+  status: text("status").notNull().default('active'),
 });
 
 export const insertChatConversationSchema = createInsertSchema(chatConversations).pick({
@@ -138,13 +158,13 @@ export const insertChatConversationSchema = createInsertSchema(chatConversations
 export const chatMessages = pgTable("chat_messages", {
   id: serial("id").primaryKey(),
   conversationId: integer("conversation_id").notNull().references(() => chatConversations.id, { onDelete: 'cascade' }),
-  sender: text("sender").notNull(), // 'user' or 'bot'
+  sender: text("sender").notNull(),
   content: text("content").notNull(),
   timestamp: timestamp("timestamp").notNull().defaultNow(),
   attachmentUrl: text("attachment_url"),
   attachmentType: text("attachment_type"),
   isApplicationRequest: boolean("is_application_request").default(false),
-  metadata: jsonb("metadata"), // additional data like position applied for, skills, etc.
+  metadata: jsonb("metadata"),
 });
 
 export const insertChatMessageSchema = createInsertSchema(chatMessages).pick({
@@ -164,10 +184,12 @@ export type InsertUser = z.infer<typeof insertUserSchema>;
 export type Inquiry = typeof inquiries.$inferSelect;
 export type InsertInquiry = z.infer<typeof insertInquirySchema>;
 
-export type JobApplication = typeof jobApplications.$inferSelect;
-export type InsertJobApplication = z.infer<typeof insertJobApplicationSchema>;
-export type JobApplicationWithResume = z.infer<typeof jobApplicationWithResumeSchema>;
-export type InternshipApplicationWithResume = z.infer<typeof internshipApplicationWithResumeSchema>;
+export type JobApplication = typeof jobApplications.$inferSelect; // DB select type
+export type InsertJobApplication = z.infer<typeof insertJobApplicationSchema>; // Backend insert type
+
+// Frontend form-specific types (inferred from the schemas that will be used by frontend forms)
+export type JobApplicationFormValues = z.infer<typeof jobApplicationWithResumeSchema>;
+export type InternshipApplicationFormValues = z.infer<typeof internshipApplicationWithResumeSchema>;
 
 export type JobListing = typeof jobListings.$inferSelect;
 export type InsertJobListing = z.infer<typeof insertJobListingSchema>;
