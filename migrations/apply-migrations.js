@@ -1,8 +1,10 @@
+import 'dotenv/config'; // Load environment variables from .env file
 import { execSync } from 'child_process';
-import { Pool } from '@neondatabase/serverless';
 import fs from 'fs';
 import path from 'path';
 import { fileURLToPath } from 'url';
+import pkg from 'pg';
+const { Pool } = pkg;
 
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename);
