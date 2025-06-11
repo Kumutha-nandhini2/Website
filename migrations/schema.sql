@@ -49,6 +49,12 @@ CREATE TABLE IF NOT EXISTS job_listings (
   created_at TIMESTAMP WITH TIME ZONE DEFAULT NOW() NOT NULL
 );
 
+-- ...existing code...
+
+ALTER TABLE job_listings
+ADD COLUMN IF NOT EXISTS listing_category TEXT;
+
+-- ...existing code...
 -- Create sessions table for connect-pg-simple
 CREATE TABLE IF NOT EXISTS "session" (
   "sid" varchar NOT NULL COLLATE "default",
