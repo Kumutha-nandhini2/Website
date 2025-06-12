@@ -20,8 +20,8 @@ const Footer = () => {
                 <div className="w-8 h-8 rounded-md bg-[#0a2c5a]/10 flex items-center justify-center mr-3 transition-all group-hover:bg-[#0a2c5a]/20">
                   <Mail className="text-[#0a2c5a]" size={16} />
                 </div>
-                <a href="mailto:mittal21jiya@gmail.com" className="text-[#0a2c5a] text-opacity-90 hover:text-opacity-100 transition-all">
-                  mittal21jiya@gmail.com
+                <a href="mailto:teams@privacyweave.in" className="text-[#0a2c5a] text-opacity-90 hover:text-opacity-100 transition-all">
+                  teams@privacyweave.in
                 </a>
               </div>
               <div className="flex items-center group">
