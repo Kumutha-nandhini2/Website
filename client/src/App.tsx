@@ -17,6 +17,7 @@ import Header from "./components/layout/header";
 import Footer from "./components/layout/footer";
 import { ChatInterface } from "./components/chat/chat-interface";
 import CornerLogo from "./components/corner-logo";
+import Feedback from "./pages/Feedback"; // ✅ Import Feedback component
 
 function Router() {
   return (
@@ -28,6 +29,7 @@ function Router() {
       <Route path="/careers/apply-internship" component={ApplyInternshipPage} />
       <Route path="/about" component={AboutPage} />
       <Route path="/auth" component={AuthPage} />
+      <Route path="/feedback" component={Feedback} /> {/* ✅ New Feedback route */}
       <ProtectedRoute path="/admin" component={AdminDashboard} />
       <Route component={NotFound} />
     </Switch>

@@ -21,7 +21,7 @@ const Header = () => {
   const { user, logoutMutation } = useAuth();
   const [menuOpen, setMenuOpen] = useState(false);
   const [showCornerLogo, setShowCornerLogo] = useState(true);
-  
+
   // Check if we're on the homepage and control the corner logo visibility
   useEffect(() => {
     setShowCornerLogo(location === '/');
@@ -43,7 +43,7 @@ const Header = () => {
             <Logo width={200} height={60} className="lg:w-[220px] lg:h-[65px] w-[200px] h-[55px]" />
           </Link>
         </div>
-        
+
         {/* Desktop Navigation */}
         <nav className="hidden lg:flex items-center space-x-6">
           {/* Products Dropdown */}
@@ -59,7 +59,7 @@ const Header = () => {
                 <div className="bg-[#789DBC] px-4 py-3 border-b border-primary/10">
                   <span className="text-sm font-semibold text-white uppercase tracking-wide">Privacy Platform</span>
                 </div>
-                
+
                 <div className="grid p-2 gap-1">
                   <DropdownMenuItem asChild className="rounded-md p-2 hover:bg-[#FEF9F2]">
                     <Link href="#" className="flex items-start gap-3 cursor-pointer">
@@ -72,7 +72,7 @@ const Header = () => {
                       </div>
                     </Link>
                   </DropdownMenuItem>
-                  
+
                   <DropdownMenuItem asChild className="rounded-md p-2 hover:bg-[#FEF9F2]">
                     <Link href="#" className="flex items-start gap-3 cursor-pointer">
                       <div className="mt-0.5 bg-primary/10 p-1.5 rounded-md text-primary">
@@ -84,7 +84,7 @@ const Header = () => {
                       </div>
                     </Link>
                   </DropdownMenuItem>
-                  
+
                   <DropdownMenuItem asChild className="rounded-md p-2 hover:bg-[#FEF9F2]">
                     <Link href="#" className="flex items-start gap-3 cursor-pointer">
                       <div className="mt-0.5 bg-primary/10 p-1.5 rounded-md text-primary">
@@ -96,7 +96,7 @@ const Header = () => {
                       </div>
                     </Link>
                   </DropdownMenuItem>
-                  
+
                   <DropdownMenuItem asChild className="rounded-md p-2 hover:bg-[#FEF9F2]">
                     <Link href="#" className="flex items-start gap-3 cursor-pointer">
                       <div className="mt-0.5 bg-primary/10 p-1.5 rounded-md text-primary">
@@ -109,11 +109,11 @@ const Header = () => {
                     </Link>
                   </DropdownMenuItem>
                 </div>
-                
+
                 <div className="bg-[#789DBC] px-4 py-3 border-b border-t border-primary/10">
                   <span className="text-sm font-semibold text-white uppercase tracking-wide">Advanced Privacy Technologies</span>
                 </div>
-                
+
                 <div className="grid p-2 gap-1">
                   <DropdownMenuItem asChild className="rounded-md p-2 hover:bg-[#FEF9F2]">
                     <Link href="#" className="flex items-start gap-3 cursor-pointer">
@@ -126,7 +126,7 @@ const Header = () => {
                       </div>
                     </Link>
                   </DropdownMenuItem>
-                  
+
                   <DropdownMenuItem asChild className="rounded-md p-2 hover:bg-[#FEF9F2]">
                     <Link href="#" className="flex items-start gap-3 cursor-pointer">
                       <div className="mt-0.5 bg-primary/10 p-1.5 rounded-md text-primary">
@@ -154,7 +154,7 @@ const Header = () => {
               </DropdownMenuContent>
             </DropdownMenu>
           </div>
-          
+
           {/* Solutions Dropdown */}
           <div className="relative">
             <DropdownMenu>
@@ -168,7 +168,7 @@ const Header = () => {
                 <div className="bg-[#789DBC] px-4 py-3 border-b border-primary/10">
                   <span className="text-sm font-semibold text-white uppercase tracking-wide">By Industry</span>
                 </div>
-                
+
                 <div className="grid p-2 gap-1">
                   <DropdownMenuItem asChild className="rounded-md p-2 hover:bg-[#FEF9F2]">
                     <Link href="#" className="flex items-start gap-3 cursor-pointer">
@@ -181,7 +181,7 @@ const Header = () => {
                       </div>
                     </Link>
                   </DropdownMenuItem>
-                  
+
                   <DropdownMenuItem asChild className="rounded-md p-2 hover:bg-[#FEF9F2]">
                     <Link href="#" className="flex items-start gap-3 cursor-pointer">
                       <div className="mt-0.5 bg-primary/10 p-1.5 rounded-md text-primary">
@@ -193,7 +193,7 @@ const Header = () => {
                       </div>
                     </Link>
                   </DropdownMenuItem>
-                  
+
                   <DropdownMenuItem asChild className="rounded-md p-2 hover:bg-[#FEF9F2]">
                     <Link href="#" className="flex items-start gap-3 cursor-pointer">
                       <div className="mt-0.5 bg-primary/10 p-1.5 rounded-md text-primary">
@@ -205,7 +205,7 @@ const Header = () => {
                       </div>
                     </Link>
                   </DropdownMenuItem>
-                  
+
                   <DropdownMenuItem asChild className="rounded-md p-2 hover:bg-[#FEF9F2]">
                     <Link href="#" className="flex items-start gap-3 cursor-pointer">
                       <div className="mt-0.5 bg-primary/10 p-1.5 rounded-md text-primary">
@@ -218,11 +218,11 @@ const Header = () => {
                     </Link>
                   </DropdownMenuItem>
                 </div>
-                
+
                 <div className="bg-[#789DBC] px-4 py-3 border-b border-t border-primary/10">
                   <span className="text-sm font-semibold text-white uppercase tracking-wide">By Use Case</span>
                 </div>
-                
+
                 <div className="grid p-2 gap-1">
                   <DropdownMenuItem asChild className="rounded-md p-2 hover:bg-[#FEF9F2]">
                     <Link href="#" className="flex items-start gap-3 cursor-pointer">
@@ -235,7 +235,7 @@ const Header = () => {
                       </div>
                     </Link>
                   </DropdownMenuItem>
-                  
+
                   <DropdownMenuItem asChild className="rounded-md p-2 hover:bg-[#FEF9F2]">
                     <Link href="#" className="flex items-start gap-3 cursor-pointer">
                       <div className="mt-0.5 bg-primary/10 p-1.5 rounded-md text-primary">
@@ -251,10 +251,10 @@ const Header = () => {
               </DropdownMenuContent>
             </DropdownMenu>
           </div>
-          
+
           <Link href="/about">
-            <Button 
-              variant="ghost" 
+            <Button
+              variant="ghost"
               className={`font-medium ${isActive("/about") ? "text-primary" : ""}`}
             >
               About
@@ -262,30 +262,40 @@ const Header = () => {
           </Link>
 
           <Link href="/careers">
-            <Button 
-              variant="ghost" 
+            <Button
+              variant="ghost"
               className={`font-medium ${isActive("/careers") ? "text-primary" : ""}`}
             >
               Careers
             </Button>
           </Link>
+
+          <Link href="/feedback">
+            <Button
+              variant="ghost"
+              className={`font-medium ${isActive("/feedback") ? "text-primary" : ""}`}
+            >
+              Feedback
+            </Button>
+          </Link>
+
         </nav>
-        
+
         <div className="hidden lg:flex items-center space-x-4">
           <Link href="/contact">
-            <Button 
-              variant="outline" 
+            <Button
+              variant="outline"
               className="border-primary border-2 text-primary hover:bg-primary/10 hover:text-primary rounded-md font-medium transition-all"
             >
               Request Demo
             </Button>
           </Link>
-          
+
           {user ? (
             <DropdownMenu>
               <DropdownMenuTrigger asChild>
-                <Button 
-                  variant="default" 
+                <Button
+                  variant="default"
                   className="bg-primary hover:bg-primary/80 text-[#f8fafc] font-medium rounded-md transition-colors"
                 >
                   Account
@@ -295,7 +305,7 @@ const Header = () => {
                 <div className="bg-[#789DBC] px-4 py-3 border-b border-primary/10">
                   <span className="text-sm font-semibold text-white uppercase tracking-wide">Account</span>
                 </div>
-                
+
                 <div className="grid p-2 gap-1">
                   {user.role === 'admin' && (
                     <DropdownMenuItem asChild className="rounded-md p-2 hover:bg-[#FEF9F2]">
@@ -307,9 +317,9 @@ const Header = () => {
                       </Link>
                     </DropdownMenuItem>
                   )}
-                  
-                  <DropdownMenuItem 
-                    onClick={handleLogout} 
+
+                  <DropdownMenuItem
+                    onClick={handleLogout}
                     className="rounded-md p-2 hover:bg-[#FEF9F2] flex items-center gap-2 cursor-pointer"
                   >
                     <div className="text-primary">
@@ -322,8 +332,8 @@ const Header = () => {
             </DropdownMenu>
           ) : (
             <Link href="/auth">
-              <Button 
-                variant="default" 
+              <Button
+                variant="default"
                 className="bg-primary hover:bg-primary/80 text-[#f8fafc] font-medium rounded-md transition-colors"
               >
                 Login
@@ -331,7 +341,7 @@ const Header = () => {
             </Link>
           )}
         </div>
-        
+
         {/* Mobile menu button */}
         <Sheet open={menuOpen} onOpenChange={setMenuOpen}>
           <SheetTrigger asChild>
@@ -349,10 +359,10 @@ const Header = () => {
                 <div className="bg-[#789DBC] px-4 py-3 border-b border-primary/10">
                   <span className="text-sm font-semibold text-white uppercase tracking-wide">Products</span>
                 </div>
-                
+
                 <div className="p-3">
                   <div className="px-1 py-1 text-sm font-medium text-primary">Privacy Platform</div>
-                  
+
                   <Link href="#" onClick={() => setMenuOpen(false)} className="flex items-start gap-3 cursor-pointer p-2 rounded-md hover:bg-[#FEF9F2] mt-1">
                     <div className="mt-0.5 bg-primary/10 p-1.5 rounded-md text-primary">
                       <Database size={18} />
@@ -362,7 +372,7 @@ const Header = () => {
                       <div className="text-xs text-muted-foreground mt-0.5">Secure sensitive data through smart discovery</div>
                     </div>
                   </Link>
-                  
+
                   <Link href="#" onClick={() => setMenuOpen(false)} className="flex items-start gap-3 cursor-pointer p-2 rounded-md hover:bg-[#FEF9F2] mt-1">
                     <div className="mt-0.5 bg-primary/10 p-1.5 rounded-md text-primary">
                       <ClipboardCheck size={18} />
@@ -372,7 +382,7 @@ const Header = () => {
                       <div className="text-xs text-muted-foreground mt-0.5">Smart, automated consent handling</div>
                     </div>
                   </Link>
-                  
+
                   <Link href="#" onClick={() => setMenuOpen(false)} className="flex items-start gap-3 cursor-pointer p-2 rounded-md hover:bg-[#FEF9F2] mt-1">
                     <div className="mt-0.5 bg-primary/10 p-1.5 rounded-md text-primary">
                       <BarChart size={18} />
@@ -382,7 +392,7 @@ const Header = () => {
                       <div className="text-xs text-muted-foreground mt-0.5">Unified governance across data landscapes</div>
                     </div>
                   </Link>
-                  
+
                   <Link href="#" onClick={() => setMenuOpen(false)} className="flex items-start gap-3 cursor-pointer p-2 rounded-md hover:bg-[#FEF9F2] mt-1">
                     <div className="mt-0.5 bg-primary/10 p-1.5 rounded-md text-primary">
                       <ShieldAlert size={18} />
@@ -392,9 +402,9 @@ const Header = () => {
                       <div className="text-xs text-muted-foreground mt-0.5">Identify, mitigate and report threats</div>
                     </div>
                   </Link>
-                  
+
                   <div className="px-1 py-1 mt-3 text-sm font-medium text-primary">Advanced Privacy Technologies</div>
-                  
+
                   <Link href="#" onClick={() => setMenuOpen(false)} className="flex items-start gap-3 cursor-pointer p-2 rounded-md hover:bg-[#FEF9F2] mt-1">
                     <div className="mt-0.5 bg-primary/10 p-1.5 rounded-md text-primary">
                       <Key size={18} />
@@ -404,7 +414,7 @@ const Header = () => {
                       <div className="text-xs text-muted-foreground mt-0.5">Context-aware sensitive data masking</div>
                     </div>
                   </Link>
-                  
+
                   <Link href="#" onClick={() => setMenuOpen(false)} className="flex items-start gap-3 cursor-pointer p-2 rounded-md hover:bg-[#FEF9F2] mt-1">
                     <div className="mt-0.5 bg-primary/10 p-1.5 rounded-md text-primary">
                       <Lock size={18} />
@@ -432,10 +442,10 @@ const Header = () => {
                 <div className="bg-[#789DBC] px-4 py-3 border-b border-primary/10">
                   <span className="text-sm font-semibold text-white uppercase tracking-wide">Solutions</span>
                 </div>
-                
+
                 <div className="p-3">
                   <div className="px-1 py-1 text-sm font-medium text-primary">By Industry</div>
-                  
+
                   <Link href="#" onClick={() => setMenuOpen(false)} className="flex items-start gap-3 cursor-pointer p-2 rounded-md hover:bg-[#FEF9F2] mt-1">
                     <div className="mt-0.5 bg-primary/10 p-1.5 rounded-md text-primary">
                       <Building size={18} />
@@ -445,7 +455,7 @@ const Header = () => {
                       <div className="text-xs text-muted-foreground mt-0.5">HIPAA-compliant privacy solutions</div>
                     </div>
                   </Link>
-                  
+
                   <Link href="#" onClick={() => setMenuOpen(false)} className="flex items-start gap-3 cursor-pointer p-2 rounded-md hover:bg-[#FEF9F2] mt-1">
                     <div className="mt-0.5 bg-primary/10 p-1.5 rounded-md text-primary">
                       <Building size={18} />
@@ -455,7 +465,7 @@ const Header = () => {
                       <div className="text-xs text-muted-foreground mt-0.5">PCI-DSS compliant solutions</div>
                     </div>
                   </Link>
-                  
+
                   <Link href="#" onClick={() => setMenuOpen(false)} className="flex items-start gap-3 cursor-pointer p-2 rounded-md hover:bg-[#FEF9F2] mt-1">
                     <div className="mt-0.5 bg-primary/10 p-1.5 rounded-md text-primary">
                       <Building size={18} />
@@ -465,9 +475,9 @@ const Header = () => {
                       <div className="text-xs text-muted-foreground mt-0.5">Protect customer data</div>
                     </div>
                   </Link>
-                  
+
                   <div className="px-1 py-1 mt-3 text-sm font-medium text-primary">By Use Case</div>
-                  
+
                   <Link href="#" onClick={() => setMenuOpen(false)} className="flex items-start gap-3 cursor-pointer p-2 rounded-md hover:bg-[#FEF9F2] mt-1">
                     <div className="mt-0.5 bg-primary/10 p-1.5 rounded-md text-primary">
                       <Briefcase size={18} />
@@ -485,7 +495,7 @@ const Header = () => {
                 <div className="bg-[#789DBC] px-4 py-3 border-b border-primary/10">
                   <span className="text-sm font-semibold text-white uppercase tracking-wide">Company</span>
                 </div>
-                
+
                 <div className="p-3">
                   <Link href="/about" onClick={() => setMenuOpen(false)} className="flex items-center gap-3 cursor-pointer p-2 rounded-md hover:bg-[#FEF9F2]">
                     <div className="bg-primary/10 p-1.5 rounded-md text-primary">
@@ -493,7 +503,7 @@ const Header = () => {
                     </div>
                     <div className="font-medium text-primary">About Us</div>
                   </Link>
-                  
+
                   <Link href="/careers" onClick={() => setMenuOpen(false)} className="flex items-center gap-3 cursor-pointer p-2 rounded-md hover:bg-[#FEF9F2] mt-1">
                     <div className="bg-primary/10 p-1.5 rounded-md text-primary">
                       <Briefcase size={18} />
@@ -505,28 +515,28 @@ const Header = () => {
 
               <div className="pt-4 space-y-3">
                 <Link href="/contact" onClick={() => setMenuOpen(false)}>
-                  <Button 
-                    variant="outline" 
+                  <Button
+                    variant="outline"
                     className="w-full border-primary border-2 text-primary hover:bg-primary/10 hover:text-primary rounded-md font-medium transition-all"
                   >
                     Request Demo
                   </Button>
                 </Link>
-                
+
                 {user ? (
                   <div className="space-y-3">
                     {user.role === 'admin' && (
                       <Link href="/admin" onClick={() => setMenuOpen(false)}>
-                        <Button 
-                          variant="default" 
+                        <Button
+                          variant="default"
                           className="w-full bg-primary hover:bg-primary/80 text-[#f8fafc] font-medium rounded-md transition-colors"
                         >
                           Admin Dashboard
                         </Button>
                       </Link>
                     )}
-                    <Button 
-                      variant="default" 
+                    <Button
+                      variant="default"
                       className="w-full bg-primary hover:bg-primary/80 text-[#f8fafc] font-medium rounded-md transition-colors"
                       onClick={() => {
                         handleLogout();
@@ -538,8 +548,8 @@ const Header = () => {
                   </div>
                 ) : (
                   <Link href="/auth" onClick={() => setMenuOpen(false)}>
-                    <Button 
-                      variant="default" 
+                    <Button
+                      variant="default"
                       className="w-full bg-primary hover:bg-primary/80 text-[#f8fafc] font-medium rounded-md transition-colors"
                     >
                       Login
