@@ -49,6 +49,8 @@ export default function Feedback() {
     return (
         <div className="p-8">
             <h1 className="text-3xl font-bold text-center mb-8">Intern Feedback</h1>
+
+            {/* Feedback Grid */}
             <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
                 {feedbacks.map((fb, idx) => (
                     <motion.div
@@ -96,14 +98,38 @@ export default function Feedback() {
                 ))}
             </div>
 
-            {/* Group Photo Section */}
-            <div className="mt-12 flex justify-center">
-                <img
-                    src="/user_photos/group.jpg"
-                    alt="Intern Group"
-                    className="rounded-2xl shadow-lg w-full max-w-4xl object-cover"
-                />
+            {/* Group Section */}
+            <div className="mt-16 flex flex-col lg:flex-row items-center gap-10">                {/* Group Photo */}
+                <div className="w-full lg:w-1/2 flex justify-center">
+                    <img
+                        src="/user_photos/group.jpg"
+                        alt="Intern Group"
+                        className="rounded-2xl shadow-lg object-contain max-w-full h-auto"
+                        style={{ maxWidth: "750px", maxHeight: "90%", width: "100%" }}
+                    />
+                </div>
+
+                {/* Text Content */}
+                <div className="w-full lg:w-1/2 text-justify">
+                    <h2 className="text-2xl font-semibold mb-4">Internship Overview</h2>
+                    <p className="text-gray-700 leading-7">
+                        We are proud to have successfully hosted 15 talented students from
+                        Sri Ramakrishna Engineering College, Coimbatore, for an enriching
+                        internship at <strong>Privacy Weave</strong>. During their tenure,
+                        the interns gained practical experience in advanced AI technologies and
+                        data privacy solutions, contributing meaningfully to real-world
+                        projects.
+                        <br />
+                        <br />
+                        Upon completion, all interns were awarded{" "}
+                        <strong>Internship Completion Certificates</strong> and{" "}
+                        <strong>Letters of Recommendation</strong> in recognition of their
+                        dedication and performance. We appreciate their enthusiasm and
+                        commendable learning spirit throughout the program.
+                    </p>
+                </div>
             </div>
+
         </div>
     );
 }
