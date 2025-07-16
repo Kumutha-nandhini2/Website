@@ -7,7 +7,7 @@ const AboutPage = () => {
   return (
     <>
       {/* Hero Section */}
-      <section className="py-16 bg-[#578FCA]">
+      <section className="py-16 bg-[#0a2c5a]">
         <div className="container mx-auto px-4">
           <div className="grid grid-cols-1 md:grid-cols-2 gap-10 items-center">
             <div className="max-w-3xl">
@@ -24,10 +24,10 @@ const AboutPage = () => {
             </div>
             <div className="flex justify-center items-center">
               <div className="relative">
-                <img 
-                  src="/images/privacy-weave-logo.png" 
-                  alt="PrivacyWeave Logo" 
-                  className="w-64 h-64 mix-blend-luminosity" 
+                <img
+                  src="/images/privacy-weave-logo.png"
+                  alt="PrivacyWeave Logo"
+                  className="w-64 h-64 mix-blend-luminosity"
                   style={{ filter: 'brightness(1.8) contrast(0.9)' }}
                 />
               </div>
@@ -48,10 +48,10 @@ const AboutPage = () => {
           >
             <h2 className="text-2xl md:text-3xl font-bold text-deep-blue mb-6 text-center">Our Story</h2>
             <div className="space-y-4 text-dark-gray">
-              <p className="text-base leading-relaxed">
+              <p className="text-base leading-relaxed text-deep-blue">
                 As businesses increasingly rely on data, the challenge of balancing privacy and usability has grown. Privacy Weave was founded to bridge this gap by providing privacy-first solutions that empower both users and organizations. We saw a growing need for secure, AI-driven privacy tools, and we are committed to shaping the future of data protection.
               </p>
-              <p className="text-base leading-relaxed">
+              <p className="text-base leading-relaxed text-deep-blue">
                 Our team brings together expertise in encryption, machine learning, and compliance to create integrated solutions that not only protect data but make privacy management more efficient and effective for organizations of all sizes.
               </p>
             </div>
@@ -224,7 +224,7 @@ const AboutPage = () => {
                 </li>
               </ul>
             </motion.div>
-            
+
             <motion.div
               className="bg-white p-6 rounded-lg shadow-sm"
               initial={{ opacity: 0, x: 15 }}

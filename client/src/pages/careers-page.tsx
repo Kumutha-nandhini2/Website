@@ -5,6 +5,7 @@ import { JobListing } from "@shared/schema";
 import { motion } from "framer-motion";
 import { Button } from "@/components/ui/button";
 import { Loader2, MapPin, Clock, Briefcase, ArrowRight, Star, Zap, Users, Heart, GraduationCap, LightbulbIcon, BrainCircuit } from "lucide-react";
+import InternFeedbackSection from "@/components/sections/intern-feedback-section";
 
 const CareersPage = () => {
   const { data: jobs, isLoading } = useQuery<JobListing[]>({
@@ -22,9 +23,9 @@ const CareersPage = () => {
           <div className="absolute top-1/3 left-1/4 w-20 h-20 rounded-full border border-[#0a2c5a]/10"></div>
           <div className="absolute bottom-1/4 right-1/3 w-32 h-32 rounded-full border border-[#0a2c5a]/10"></div>
         </div>
-        
+
         <div className="container mx-auto px-4 relative z-10">
-          <motion.div 
+          <motion.div
             className="max-w-3xl"
             initial={{ opacity: 0, y: 30 }}
             animate={{ opacity: 1, y: 0 }}
@@ -36,17 +37,17 @@ const CareersPage = () => {
               </div>
               <span className="text-[#0a2c5a]">Join our team</span>
             </div>
-            
+
             <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold leading-tight mb-6 text-[#0a2c5a]">
               Careers at PrivacyWeave
             </h1>
-            
+
             <p className="text-xl text-[#0a2c5a]/90 max-w-2xl font-light leading-relaxed mb-10">
               Join our team of passionate professionals dedicated to transforming data privacy through AI and automation. Create meaningful impact in the world of data security.
             </p>
-            
-            <Button 
-              size="lg" 
+
+            <Button
+              size="lg"
               className="bg-[#0a2c5a] text-[#f8fafc] hover:bg-[#0a2c5a]/90 px-8 py-6 rounded-md font-medium"
               onClick={() => {
                 const element = document.getElementById('open-positions');
@@ -58,11 +59,11 @@ const CareersPage = () => {
           </motion.div>
         </div>
       </section>
-      
+
       {/* Internship Program Section */}
       <section className="py-20 bg-[#f0f4f8]">
         <div className="container mx-auto px-4">
-          <motion.div 
+          <motion.div
             className="text-center mb-12"
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
@@ -81,7 +82,7 @@ const CareersPage = () => {
               </Link>
             </div>
           </motion.div>
-          
+
           <div className="grid grid-cols-1 md:grid-cols-3 gap-8 max-w-5xl mx-auto">
             <motion.div
               className="bg-white rounded-xl p-6 shadow-lg border border-gray-100 hover:shadow-xl transition-all"
@@ -98,7 +99,7 @@ const CareersPage = () => {
                 Internships are not automatically converted to full-time positions. We evaluate performance, skills development, and team fit during the internship period to determine full-time opportunities.
               </p>
             </motion.div>
-            
+
             <motion.div
               className="bg-white rounded-xl p-6 shadow-lg border border-gray-100 hover:shadow-xl transition-all"
               initial={{ opacity: 0, y: 20 }}
@@ -114,7 +115,7 @@ const CareersPage = () => {
                 We provide structured mentorship, hands-on projects with real impact, and regular feedback to help interns develop their technical and professional skills.
               </p>
             </motion.div>
-            
+
             <motion.div
               className="bg-white rounded-xl p-6 shadow-lg border border-gray-100 hover:shadow-xl transition-all"
               initial={{ opacity: 0, y: 20 }}
@@ -131,7 +132,7 @@ const CareersPage = () => {
               </p>
             </motion.div>
           </div>
-          
+
           <motion.div
             className="mt-12 max-w-4xl mx-auto bg-white rounded-xl p-8 shadow-lg border border-gray-100"
             initial={{ opacity: 0, y: 20 }}
@@ -172,7 +173,7 @@ const CareersPage = () => {
                 <span><span className="font-medium text-[#0a2c5a]">Application Process:</span> Resume screening, coding/technical assessment, and interview rounds</span>
               </li>
             </ul>
-            
+
             <div className="mt-6 pt-6 border-t border-gray-100 flex flex-col sm:flex-row justify-between items-center gap-4">
               <p className="text-[#0a2c5a] font-medium">
                 At PrivacyWeave, we're committed to finding passionate individuals who demonstrate potential, regardless of experience level.
@@ -186,11 +187,14 @@ const CareersPage = () => {
           </motion.div>
         </div>
       </section>
-      
+
+      {/* Intern Feedback Section */}
+      <InternFeedbackSection />
+
       {/* Open positions section */}
       <section id="open-positions" className="py-24 bg-white">
         <div className="container mx-auto px-4">
-          <motion.div 
+          <motion.div
             className="text-center mb-16"
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
@@ -203,7 +207,7 @@ const CareersPage = () => {
               Explore our current openings below.
             </p>
           </motion.div>
-          
+
           {isLoading ? (
             <div className="flex justify-center py-20">
               <Loader2 className="h-10 w-10 animate-spin text-[#0a2c5a]" />
@@ -238,7 +242,7 @@ const CareersPage = () => {
                       </div>
                       <p className="mb-4 text-[#0a2c5a]/80 line-clamp-2">{job.description}</p>
                     </div>
-                    
+
                     <div className="md:flex-shrink-0">
                       <Link href={`/careers/apply/${job.id}`}>
                         <Button className="bg-[#0a2c5a] hover:bg-[#0a2c5a]/90 text-[#f8fafc] rounded-md font-medium px-8 w-full md:w-auto">
@@ -248,7 +252,7 @@ const CareersPage = () => {
                       </Link>
                     </div>
                   </div>
-                  
+
                   <div className="mt-6 pt-6 border-t border-gray-100">
                     <div className="flex items-start gap-2">
                       <h4 className="font-semibold text-[#0a2c5a]">Requirements:</h4>
@@ -269,7 +273,7 @@ const CareersPage = () => {
           )}
         </div>
       </section>
-      
+
       {/* Why work with us section */}
       <section className="py-24 bg-gradient-to-b from-white to-[#f0f4f8] relative overflow-hidden">
         {/* Background decorations */}
@@ -277,7 +281,7 @@ const CareersPage = () => {
           <div className="absolute top-20 right-[10%] w-64 h-64 rounded-full bg-[#0a2c5a]/5 blur-3xl"></div>
           <div className="absolute bottom-10 left-[5%] w-80 h-80 rounded-full bg-[#0a2c5a]/5 blur-3xl"></div>
         </div>
-        
+
         <div className="container mx-auto px-4 relative z-10">
           <div className="grid grid-cols-1 md:grid-cols-2 gap-12 lg:gap-20 items-center">
             <motion.div
@@ -288,15 +292,15 @@ const CareersPage = () => {
               className="relative"
             >
               <div className="absolute inset-0 bg-gradient-to-r from-[#0a2c5a]/10 to-[#1e5285]/10 blur-3xl opacity-30 -z-10 rounded-full transform translate-x-10"></div>
-              
+
               <div className="relative rounded-2xl overflow-hidden shadow-2xl">
                 <div className="absolute inset-0 bg-gradient-to-tr from-[#0a2c5a]/20 to-transparent mix-blend-overlay z-10"></div>
-                <img 
-                  src="https://images.unsplash.com/photo-1552664730-d307ca884978?auto=format&fit=crop&w=800&q=80" 
-                  alt="Team collaboration" 
+                <img
+                  src="https://images.unsplash.com/photo-1552664730-d307ca884978?auto=format&fit=crop&w=800&q=80"
+                  alt="Team collaboration"
                   className="w-full h-auto object-cover"
                 />
-                
+
                 {/* Floating elements */}
                 <div className="absolute top-6 right-6 bg-white/90 backdrop-blur-sm rounded-xl shadow-lg p-4 z-20">
                   <div className="flex items-center space-x-2">
@@ -310,7 +314,7 @@ const CareersPage = () => {
                 </div>
               </div>
             </motion.div>
-            
+
             <motion.div
               initial={{ opacity: 0, x: 20 }}
               whileInView={{ opacity: 1, x: 0 }}
@@ -330,7 +334,7 @@ const CareersPage = () => {
                     </div>
                   </div>
                 </div>
-                
+
                 <div className="group">
                   <div className="flex items-start gap-5">
                     <div className="w-12 h-12 rounded-xl bg-[#0a2c5a]/10 flex items-center justify-center text-[#0a2c5a] group-hover:bg-[#0a2c5a]/20 transition-all">
@@ -342,7 +346,7 @@ const CareersPage = () => {
                     </div>
                   </div>
                 </div>
-                
+
                 <div className="group">
                   <div className="flex items-start gap-5">
                     <div className="w-12 h-12 rounded-xl bg-[#0a2c5a]/10 flex items-center justify-center text-[#0a2c5a] group-hover:bg-[#0a2c5a]/20 transition-all">
@@ -354,7 +358,7 @@ const CareersPage = () => {
                     </div>
                   </div>
                 </div>
-                
+
                 <div className="group">
                   <div className="flex items-start gap-5">
                     <div className="w-12 h-12 rounded-xl bg-[#0a2c5a]/10 flex items-center justify-center text-[#0a2c5a] group-hover:bg-[#0a2c5a]/20 transition-all">
@@ -367,10 +371,10 @@ const CareersPage = () => {
                   </div>
                 </div>
               </div>
-              
+
               <div className="mt-10">
-                <Button 
-                  size="lg" 
+                <Button
+                  size="lg"
                   className="bg-[#0a2c5a] hover:bg-[#0a2c5a]/90 text-[#f8fafc] px-8 rounded-md font-medium"
                   onClick={() => {
                     const element = document.getElementById('open-positions');

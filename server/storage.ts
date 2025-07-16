@@ -407,11 +407,12 @@ export class MemStorage implements IStorage {
   async createJobListing(insertListing: InsertJobListing): Promise<JobListing> {
     const id = this.jobListingIdCounter++;
     const listing: JobListing = { 
-      ...insertListing, 
-      id,
-      isActive: insertListing.isActive ?? true,
-      createdAt: new Date() 
-    };
+  ...insertListing, 
+  id,
+  isActive: insertListing.isActive ?? true,
+  listingCategory: insertListing.listingCategory ?? null, // Ensure it's never undefined
+  createdAt: new Date() 
+};
     this.jobListings.set(id, listing);
     return listing;
   }

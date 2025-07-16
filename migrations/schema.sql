@@ -54,6 +54,20 @@ CREATE TABLE IF NOT EXISTS job_listings (
 ALTER TABLE job_listings
 ADD COLUMN IF NOT EXISTS listing_category TEXT;
 
+ALTER TABLE job_applications
+ADD COLUMN IF NOT EXISTS application_type TEXT;
+
+ALTER TABLE job_applications
+ADD COLUMN IF NOT EXISTS education TEXT;
+
+ALTER TABLE job_applications
+ADD COLUMN IF NOT EXISTS university TEXT;
+
+ALTER TABLE job_applications
+ADD COLUMN IF NOT EXISTS graduation_year TEXT;
+
+ALTER TABLE job_applications
+ADD COLUMN IF NOT EXISTS availability_date TEXT;
 -- ...existing code...
 -- Create sessions table for connect-pg-simple
 CREATE TABLE IF NOT EXISTS "session" (
