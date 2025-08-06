@@ -13,6 +13,7 @@ import { Textarea } from "@/components/ui/textarea";
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select";
 import { Loader2, CheckCircle, AlertCircle } from "lucide-react";
 import { jobApplicationWithResumeSchema } from "@shared/schema"; // We'll use a more specific one
+import { Checkbox } from "@/components/ui/checkbox";
 
 // Define the frontend schema for internship application form
 // This schema expects 'resumeLink' as it's more user-friendly for a link input
@@ -43,7 +44,8 @@ export default function ApplyInternshipPage() {
   const [, setLocation] = useLocation();
   // const params = useParams<{ id?: string }>(); // Not used, can remove if not needed
   const [submitted, setSubmitted] = useState(false);
-  
+  const [consent, setConsent] = useState(false);
+
   const form = useForm<ApplyInternshipFormValues>({
     resolver: zodResolver(internshipApplicationFrontendSchema),
     defaultValues: {
@@ -61,7 +63,7 @@ export default function ApplyInternshipPage() {
       applicationType: "internship"
     }
   });
-  
+
   const mutation = useMutation({
     mutationFn: async (data: ApplyInternshipFormValues) => {
       // Prepare payload for the backend
@@ -97,12 +99,12 @@ export default function ApplyInternshipPage() {
         body: JSON.stringify(backendPayload), // Send JSON
         // credentials: 'include' // Only if your API requires cookies for auth and is on a different domain/subdomain
       });
-      
+
       if (!response.ok) {
         const errorData = await response.json().catch(() => ({ message: response.statusText }));
         throw new Error(errorData.message || `${response.status}: Failed to submit application`);
       }
-      
+
       return await response.json();
     },
     onSuccess: () => {
@@ -111,24 +113,24 @@ export default function ApplyInternshipPage() {
       window.scrollTo(0, 0);
     },
     onError: (error: Error) => {
-        // You might want to use a toast notification here
-        console.error('Error submitting internship application:', error);
-        alert(`Submission failed: ${error.message}`); // Simple alert for now
+      // You might want to use a toast notification here
+      console.error('Error submitting internship application:', error);
+      alert(`Submission failed: ${error.message}`); // Simple alert for now
     }
   });
-  
+
   // RHF's handleSubmit will prevent default and call this with validated data
   const onSubmit = (data: ApplyInternshipFormValues) => {
     // mutation.mutate(data) is asynchronous but we don't need to await it here
     // as useMutation handles the async flow and updates state (isPending, isError, etc.)
     mutation.mutate(data);
   };
-    
+
   if (submitted) {
     return (
       <div className="min-h-screen bg-gray-50 pt-16 pb-12">
         <div className="container mx-auto px-4">
-          <motion.div 
+          <motion.div
             className="max-w-xl mx-auto text-center bg-white p-8 rounded-xl shadow-lg"
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
@@ -151,13 +153,13 @@ export default function ApplyInternshipPage() {
               </p>
             </div>
             <div className="space-x-4">
-              <Button 
+              <Button
                 onClick={() => setLocation('/')}
                 className="bg-[#0a2c5a] hover:bg-[#0a2c5a]/90 text-white"
               >
                 Return to Home
               </Button>
-              <Button 
+              <Button
                 onClick={() => setLocation('/careers')}
                 variant="outline"
                 className="border-[#0a2c5a] text-[#0a2c5a]"
@@ -170,32 +172,32 @@ export default function ApplyInternshipPage() {
       </div>
     );
   }
-  
+
   return (
     <div className="min-h-screen bg-gray-50 py-16">
       <div className="container mx-auto px-4">
-        <motion.div 
+        <motion.div
           className="max-w-3xl mx-auto"
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.6 }}
         >
           <div className="flex items-center gap-2 mb-6">
-            <Button 
-              variant="ghost" 
-              className="text-[#0a2c5a] hover:bg-[#0a2c5a]/5" 
+            <Button
+              variant="ghost"
+              className="text-[#0a2c5a] hover:bg-[#0a2c5a]/5"
               onClick={() => setLocation('/careers')}
             >
               ← Back to Careers
             </Button>
           </div>
-          
+
           <div className="bg-white rounded-xl shadow-md p-8 md:p-12">
             <h1 className="text-3xl font-bold text-[#0a2c5a] mb-2">Apply for Internship Program</h1>
             <p className="text-[#0a2c5a]/80 mb-8">
               Please complete the form below to apply for our internship program. All fields marked with an asterisk (*) are required.
             </p>
-            
+
             <Form {...form}>
               {/*
                 The form.handleSubmit(onSubmit) correctly calls your onSubmit function.
@@ -219,7 +221,7 @@ export default function ApplyInternshipPage() {
                       </FormItem>
                     )}
                   />
-                  
+
                   {/* Email */}
                   <FormField
                     control={form.control}
@@ -234,7 +236,7 @@ export default function ApplyInternshipPage() {
                       </FormItem>
                     )}
                   />
-                  
+
                   {/* Phone */}
                   <FormField
                     control={form.control}
@@ -249,7 +251,7 @@ export default function ApplyInternshipPage() {
                       </FormItem>
                     )}
                   />
-                  
+
                   {/* Experience */}
                   <FormField
                     control={form.control}
@@ -272,7 +274,7 @@ export default function ApplyInternshipPage() {
                     render={({ field }) => (
                       <FormItem>
                         <FormLabel className="text-[#0a2c5a]">Education Level *</FormLabel>
-                        <Select 
+                        <Select
                           onValueChange={field.onChange}
                           defaultValue={field.value} // Or value={field.value} if controlled
                         >
@@ -316,7 +318,7 @@ export default function ApplyInternshipPage() {
                     render={({ field }) => (
                       <FormItem>
                         <FormLabel className="text-[#0a2c5a]">Expected Graduation Year *</FormLabel>
-                        <Select 
+                        <Select
                           onValueChange={field.onChange}
                           defaultValue={field.value} // Or value={field.value} if controlled
                         >
@@ -353,7 +355,7 @@ export default function ApplyInternshipPage() {
                     )}
                   />
                 </div>
-                
+
                 {/* Message */}
                 <FormField
                   control={form.control}
@@ -362,9 +364,9 @@ export default function ApplyInternshipPage() {
                     <FormItem>
                       <FormLabel className="text-[#0a2c5a]">Why are you interested in this internship?</FormLabel>
                       <FormControl>
-                        <Textarea 
-                          placeholder="Tell us why you're interested and what you hope to learn..." 
-                          {...field} 
+                        <Textarea
+                          placeholder="Tell us why you're interested and what you hope to learn..."
+                          {...field}
                           value={field.value || ''} // Ensure value is controlled
                           rows={5}
                           className="border-gray-300 resize-none"
@@ -374,18 +376,18 @@ export default function ApplyInternshipPage() {
                     </FormItem>
                   )}
                 />
-                
+
                 {/* Resume Link - Changed from File Upload */}
                 <FormField
                   control={form.control}
-                  name="resumeLink" 
+                  name="resumeLink"
                   render={({ field }) => (
                     <FormItem>
                       <FormLabel className="text-[#0a2c5a]">Resume Link (Google Drive, Dropbox, etc.) *</FormLabel>
                       <FormControl>
-                        <Input 
-                          placeholder="https://your-resume-link.com" 
-                          {...field} 
+                        <Input
+                          placeholder="https://your-resume-link.com"
+                          {...field}
                           className="border-gray-300"
                         />
                       </FormControl>
@@ -393,7 +395,20 @@ export default function ApplyInternshipPage() {
                     </FormItem>
                   )}
                 />
-                
+
+                {/* Consent Checkbox */}
+                <div className="flex items-center mb-2">
+                  <Checkbox
+                    id="consent-checkbox"
+                    checked={consent}
+                    onCheckedChange={setConsent}
+                    className="mr-2 data-[state=checked]:bg-primary data-[state=checked]:border-primary"
+                  />
+                  <label htmlFor="consent-checkbox" className="text-sm text-neutral-700 select-none">
+                    I consent to PrivacyWeave processing my data for the purpose of contacting me about internship opportunities. <span className="text-primary">*</span>
+                  </label>
+                </div>
+
                 <div className="bg-blue-50 p-4 rounded-lg text-[#0a2c5a] text-sm">
                   <p className="font-medium mb-2">Performance-Based Conversion Policy</p>
                   <p>
@@ -401,11 +416,11 @@ export default function ApplyInternshipPage() {
                     skills development, and team fit during the internship period to determine possible full-time opportunities.
                   </p>
                 </div>
-                
-                <Button 
-                  type="submit" 
+
+                <Button
+                  type="submit"
                   className="w-full md:w-auto bg-[#0a2c5a] hover:bg-[#0a2c5a]/90 text-white"
-                  disabled={mutation.isPending} // Correctly use isPending from useMutation
+                  disabled={mutation.isPending || !consent} // Correctly use isPending from useMutation
                 >
                   {mutation.isPending ? (
                     <>

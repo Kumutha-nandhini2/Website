@@ -5,9 +5,9 @@ import { Inquiry, JobApplication } from '@shared/schema';
  * Check if email is properly configured
  */
 export const isEmailConfigured = (): boolean => {
-  return !!(process.env.EMAIL_SERVICE && 
-           process.env.EMAIL_USER && 
-           process.env.EMAIL_PASSWORD);
+  return !!(process.env.EMAIL_SERVICE &&
+    process.env.EMAIL_USER &&
+    process.env.EMAIL_PASSWORD);
 };
 
 /**
@@ -15,19 +15,19 @@ export const isEmailConfigured = (): boolean => {
  */
 export const getEmailConfig = () => {
   const configured = isEmailConfigured();
-  
+
   const recipients = getRecipients();
-  
+
   return {
     configured,
     service: process.env.EMAIL_SERVICE || 'Not configured',
-    user: process.env.EMAIL_USER 
-      ? `${process.env.EMAIL_USER.slice(0, 3)}...${process.env.EMAIL_USER.split('@')[1] || ''}` 
+    user: process.env.EMAIL_USER
+      ? `${process.env.EMAIL_USER.slice(0, 3)}...${process.env.EMAIL_USER.split('@')[1] || ''}`
       : 'Not configured',
     recipients,
     missingVariables: [
       !process.env.EMAIL_SERVICE && 'EMAIL_SERVICE',
-      !process.env.EMAIL_USER && 'EMAIL_USER', 
+      !process.env.EMAIL_USER && 'EMAIL_USER',
       !process.env.EMAIL_PASSWORD && 'EMAIL_PASSWORD'
     ].filter(Boolean) as string[]
   };
@@ -49,7 +49,7 @@ export const sendTestEmail = async (type: 'inquiry' | 'job-application'): Promis
       message: 'This is a test email sent from the admin panel.',
       createdAt: new Date()
     };
-    
+
     return await sendInquiryEmail(testInquiry);
   } else if (type === 'job-application') {
     // Create a test job application
@@ -64,10 +64,10 @@ export const sendTestEmail = async (type: 'inquiry' | 'job-application'): Promis
       resumePath: null,
       createdAt: new Date()
     };
-    
+
     return await sendJobApplicationEmail(testApplication);
   }
-  
+
   return false;
 };
 
@@ -91,7 +91,7 @@ interface TransportConfig {
 // Email configuration
 const getTransporter = () => {
   let transporterConfig: TransportConfig;
-  
+
   // Use service specific configuration based on service name
   if (process.env.EMAIL_SERVICE?.toLowerCase() === 'gmail') {
     transporterConfig = {
@@ -105,8 +105,8 @@ const getTransporter = () => {
         rejectUnauthorized: false // More lenient TLS requirements
       }
     };
-  } else if (process.env.EMAIL_SERVICE?.toLowerCase() === 'outlook' || 
-             process.env.EMAIL_SERVICE?.toLowerCase() === 'hotmail') {
+  } else if (process.env.EMAIL_SERVICE?.toLowerCase() === 'outlook' ||
+    process.env.EMAIL_SERVICE?.toLowerCase() === 'hotmail') {
     transporterConfig = {
       host: 'smtp-mail.outlook.com',
       port: 587,
@@ -136,22 +136,22 @@ const getTransporter = () => {
       }
     };
   }
-  
+
   // Add debug options for troubleshooting
   if (process.env.NODE_ENV !== 'production') {
     transporterConfig.debug = true;
     transporterConfig.logger = true;
   }
-  
+
   const transporter = nodemailer.createTransport(transporterConfig as any);
-  
+
   // Show connection configuration
   if (process.env.NODE_ENV !== 'production') {
     console.log('Email configuration:');
     console.log(`- Service: ${process.env.EMAIL_SERVICE}`);
     console.log(`- User: ${process.env.EMAIL_USER}`);
     console.log(`- Password: ${process.env.EMAIL_PASSWORD ? '[PROVIDED]' : '[MISSING]'}`);
-    
+
     // Log detailed configuration (excluding sensitive data)
     const safeConfig = { ...transporterConfig };
     if (safeConfig.auth) {
@@ -159,12 +159,12 @@ const getTransporter = () => {
     }
     console.log('- Detailed config:', JSON.stringify(safeConfig, null, 2));
   }
-  
+
   return transporter;
 };
 
 // Recipients list from environment variables, fallback to defaults if not specified
-const defaultRecipients = ['sadhanaa2326@gmail.com', 'mittal21jiya@gmail.com'];
+const defaultRecipients = ['teams@privacyweave.in'];
 const getRecipients = (): string[] => {
   if (process.env.EMAIL_RECIPIENTS) {
     return process.env.EMAIL_RECIPIENTS.split(',').map(email => email.trim());
@@ -182,11 +182,11 @@ export const sendInquiryEmail = async (inquiry: Inquiry): Promise<boolean> => {
       console.warn('Email credentials not configured, skipping notification');
       return false;
     }
-    
+
     const transporter = getTransporter();
-    
+
     console.log(`Attempting to send inquiry email notification for ${inquiry.company}`);
-    
+
     // Create email content
     const subject = `New Demo Request: ${inquiry.company}`;
     const text = `
@@ -203,7 +203,7 @@ export const sendInquiryEmail = async (inquiry: Inquiry): Promise<boolean> => {
       
       Submitted on: ${new Date(inquiry.createdAt || new Date()).toLocaleString()}
     `;
-    
+
     const html = `
       <h2>New Demo Request Received</h2>
       
@@ -218,7 +218,7 @@ export const sendInquiryEmail = async (inquiry: Inquiry): Promise<boolean> => {
       
       <p><em>Submitted on: ${new Date(inquiry.createdAt || new Date()).toLocaleString()}</em></p>
     `;
-    
+
     // Send email
     const info = await transporter.sendMail({
       from: process.env.EMAIL_USER,
@@ -227,19 +227,19 @@ export const sendInquiryEmail = async (inquiry: Inquiry): Promise<boolean> => {
       text,
       html
     });
-    
+
     console.log('Email sent successfully:', info.messageId);
     return true;
   } catch (error) {
     console.error('Error sending inquiry email:', error);
-    
+
     // More detailed error information for debugging
     if (error instanceof Error) {
       console.error(`Error type: ${error.name}`);
       console.error(`Error message: ${error.message}`);
       console.error(`Error stack: ${error.stack}`);
     }
-    
+
     return false;
   }
 };
@@ -254,11 +254,11 @@ export const sendJobApplicationEmail = async (application: JobApplication): Prom
       console.warn('Email credentials not configured, skipping notification');
       return false;
     }
-    
+
     const transporter = getTransporter();
-    
+
     console.log(`Attempting to send job application email notification for ${application.position}`);
-    
+
     // Create email content
     const subject = `New Career Application: ${application.position}`;
     const text = `
@@ -277,7 +277,7 @@ export const sendJobApplicationEmail = async (application: JobApplication): Prom
       
       Submitted on: ${new Date(application.createdAt || new Date()).toLocaleString()}
     `;
-    
+
     const html = `
       <h2>New Job Application Received</h2>
       
@@ -294,7 +294,7 @@ export const sendJobApplicationEmail = async (application: JobApplication): Prom
       
       <p><em>Submitted on: ${new Date(application.createdAt || new Date()).toLocaleString()}</em></p>
     `;
-    
+
     // Prepare email options
     const mailOptions: nodemailer.SendMailOptions = {
       from: process.env.EMAIL_USER,
@@ -303,7 +303,7 @@ export const sendJobApplicationEmail = async (application: JobApplication): Prom
       text,
       html
     };
-    
+
     // Add attachment if resume exists
     if (application.resumePath) {
       mailOptions.attachments = [
@@ -313,22 +313,76 @@ export const sendJobApplicationEmail = async (application: JobApplication): Prom
         }
       ];
     }
-    
+
     // Send email
     const info = await transporter.sendMail(mailOptions);
-    
+
     console.log('Email sent successfully:', info.messageId);
     return true;
   } catch (error) {
     console.error('Error sending job application email:', error);
-    
+
     // More detailed error information for debugging
     if (error instanceof Error) {
       console.error(`Error type: ${error.name}`);
       console.error(`Error message: ${error.message}`);
       console.error(`Error stack: ${error.stack}`);
     }
-    
+
+    return false;
+  }
+};
+
+/**
+ * Send confirmation email to the user after submitting a contact/inquiry form
+ */
+export const sendInquiryConfirmationEmail = async (toEmail: string, firstName?: string) => {
+  if (!process.env.EMAIL_USER || !process.env.EMAIL_PASSWORD) {
+    console.warn('Email credentials not configured, skipping confirmation email');
+    return false;
+  }
+  const transporter = getTransporter();
+  const subject = 'Thanks for Requesting a Demo - PrivacyWeave';
+  const text = `Hi${firstName ? ' ' + firstName : ''},\n\nThanks for requesting the demo. Our team will review it and get back to you soon.\n\nBest,\nPrivacyWeave Team`;
+  const html = `<p>Hi${firstName ? ' ' + firstName : ''},</p><p>Thanks for requesting the demo. Our team will review it and get back to you soon.</p><p>Best,<br/>PrivacyWeave Team</p>`;
+  try {
+    await transporter.sendMail({
+      from: process.env.EMAIL_USER,
+      to: toEmail,
+      subject,
+      text,
+      html,
+    });
+    return true;
+  } catch (error) {
+    console.error('Error sending inquiry confirmation email:', error);
+    return false;
+  }
+};
+
+/**
+ * Send confirmation email to the user after submitting a job/intern application
+ */
+export const sendJobApplicationConfirmationEmail = async (toEmail: string, firstName?: string) => {
+  if (!process.env.EMAIL_USER || !process.env.EMAIL_PASSWORD) {
+    console.warn('Email credentials not configured, skipping confirmation email');
+    return false;
+  }
+  const transporter = getTransporter();
+  const subject = 'Thanks for Applying at PrivacyWeave';
+  const text = `Hi${firstName ? ' ' + firstName : ''},\n\nThanks for applying at PrivacyWeave. We will review your application and get back to you soon.\n\nBest,\nPrivacyWeave Team`;
+  const html = `<p>Hi${firstName ? ' ' + firstName : ''},</p><p>Thanks for applying at PrivacyWeave. We will review your application and get back to you soon.</p><p>Best,<br/>PrivacyWeave Team</p>`;
+  try {
+    await transporter.sendMail({
+      from: process.env.EMAIL_USER,
+      to: toEmail,
+      subject,
+      text,
+      html,
+    });
+    return true;
+  } catch (error) {
+    console.error('Error sending job application confirmation email:', error);
     return false;
   }
 };

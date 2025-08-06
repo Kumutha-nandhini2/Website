@@ -2,6 +2,7 @@ import { Link } from "wouter";
 import { Mail, Phone } from "lucide-react";
 import { FaLinkedinIn, FaTwitter, FaFacebookF, FaInstagram } from "react-icons/fa";
 import Logo from "@/components/logo";
+import { CookieConsentManager } from "@/components/cookie-consent-manager";
 
 const Footer = () => {
   return (
@@ -48,7 +49,7 @@ const Footer = () => {
               </a>
             </div>
           </div>
-          
+
           <div>
             <h3 className="text-lg font-bold mb-6">Solutions</h3>
             <ul className="space-y-4">
@@ -59,7 +60,7 @@ const Footer = () => {
               <li><a href="#" className="text-[#0a2c5a] text-opacity-80 hover:text-opacity-100 transition-colors">Privacy Analytics</a></li>
             </ul>
           </div>
-          
+
           <div>
             <h3 className="text-lg font-bold mb-6">Resources</h3>
             <ul className="space-y-4">
@@ -70,7 +71,7 @@ const Footer = () => {
               <li><a href="#" className="text-[#0a2c5a] text-opacity-80 hover:text-opacity-100 transition-colors">Documentation</a></li>
             </ul>
           </div>
-          
+
           <div>
             <h3 className="text-lg font-bold mb-6">Company</h3>
             <ul className="space-y-4">
@@ -82,19 +83,20 @@ const Footer = () => {
             </ul>
           </div>
         </div>
-        
+
         <div className="relative my-12">
           <div className="absolute left-0 right-0 h-px bg-[#0a2c5a]/20"></div>
         </div>
-        
+
         <div className="flex flex-col md:flex-row justify-between items-center">
           <div className="mb-6 md:mb-0">
             <p className="text-[#0a2c5a]/70 text-sm font-light">© 2025 PrivacyWeave. All rights reserved.</p>
           </div>
-          <div className="flex flex-wrap justify-center gap-x-8 gap-y-2">
+          <div className="flex flex-wrap justify-center gap-x-8 gap-y-2 items-center">
             <a href="#" className="text-[#0a2c5a]/70 text-sm hover:text-[#0a2c5a] transition-all">Privacy Policy</a>
             <a href="#" className="text-[#0a2c5a]/70 text-sm hover:text-[#0a2c5a] transition-all">Terms of Service</a>
-            <a href="#" className="text-[#0a2c5a]/70 text-sm hover:text-[#0a2c5a] transition-all">Cookie Policy</a>
+            <a href="/cookie-policy" className="text-[#0a2c5a]/70 text-sm hover:text-[#0a2c5a] transition-all">Cookie Policy</a>
+            <CookieConsentManager />
           </div>
         </div>
       </div>

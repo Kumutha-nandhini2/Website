@@ -13,7 +13,7 @@ const CareerSection = () => {
   return (
     <section className="py-20 bg-gradient-to-r from-white via-gray-50 to-white text-[#0a2c5a]">
       <div className="container mx-auto px-4">
-        <motion.div 
+        <motion.div
           className="text-center mb-16"
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
@@ -25,7 +25,7 @@ const CareerSection = () => {
             We're building a team of passionate professionals dedicated to creating cutting-edge privacy solutions. If you're excited about data privacy and AI, we want to hear from you.
           </p>
         </motion.div>
-        
+
         {isLoading ? (
           <div className="flex justify-center py-8">
             <Loader2 className="h-8 w-8 animate-spin text-[#578FCA]" />
@@ -62,8 +62,8 @@ const CareerSection = () => {
             ))}
           </div>
         )}
-        
-        <motion.div 
+
+        <motion.div
           className="text-center"
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}

@@ -11,12 +11,14 @@ import ApplyJobPage from "@/pages/apply-job";
 import ApplyInternshipPage from "@/pages/apply-internship";
 import AboutPage from "@/pages/about-page";
 import AdminDashboard from "@/pages/admin-dashboard";
+import CookiePolicy from "@/pages/cookie-policy";
 import { AuthProvider } from "@/hooks/use-auth";
 import { ProtectedRoute } from "./lib/protected-route";
 import Header from "./components/layout/header";
 import Footer from "./components/layout/footer";
 import { ChatInterface } from "./components/chat/chat-interface";
 import CornerLogo from "./components/corner-logo";
+import { CookieBanner } from "./components/cookie-banner";
 import Feedback from "./pages/Feedback"; // ✅ Import Feedback component
 
 function Router() {
@@ -30,6 +32,7 @@ function Router() {
       <Route path="/about" component={AboutPage} />
       <Route path="/auth" component={AuthPage} />
       <Route path="/feedback" component={Feedback} /> {/* ✅ New Feedback route */}
+      <Route path="/cookie-policy" component={CookiePolicy} />
       <ProtectedRoute path="/admin" component={AdminDashboard} />
       <Route component={NotFound} />
     </Switch>
@@ -48,6 +51,7 @@ function App() {
           </main>
           <Footer />
           <ChatInterface />
+          <CookieBanner />
         </div>
         <Toaster />
       </AuthProvider>

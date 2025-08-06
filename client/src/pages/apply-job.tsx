@@ -18,6 +18,7 @@ import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Loader2 } from "lucide-react";
 import { useToast } from "@/hooks/use-toast";
+import { Checkbox } from "@/components/ui/checkbox";
 
 type ApplyFormValues = z.infer<typeof jobApplicationWithResumeSchema>;
 
@@ -26,6 +27,7 @@ const ApplyJobPage = () => {
   const [location, navigate] = useLocation();
   const { toast } = useToast();
   const [isSubmitting, setIsSubmitting] = useState(false);
+  const [consent, setConsent] = useState(false);
 
   // Fetch job details
   const { data: job, isLoading } = useQuery<JobListing>({
@@ -55,29 +57,29 @@ const ApplyJobPage = () => {
 
   const onSubmit = async (data: ApplyFormValues) => {
     if (!match || !job) return;
-  
+
     setIsSubmitting(true);
-  
+
     try {
       // Map resumeLink to resumePath before sending
       const payload = {
         ...data,
         resumePath: data.resumeLink,  // <-- Map here
       };
-  
+
       const response = await fetch("/api/job-applications", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify(payload),
       });
-  
+
       if (!response.ok) throw new Error("Failed to submit application");
-  
+
       toast({
         title: "Application submitted successfully!",
         description: "We'll review your application and get back to you soon.",
       });
-  
+
       navigate("/careers");
     } catch (error) {
       toast({
@@ -89,7 +91,7 @@ const ApplyJobPage = () => {
       setIsSubmitting(false);
     }
   };
-  
+
 
   if (!match) {
     navigate("/careers");
@@ -217,10 +219,22 @@ const ApplyJobPage = () => {
                   )}
                 />
 
+                {/* Consent Checkbox */}
+                <div className="flex items-center mb-2">
+                  <Checkbox
+                    id="consent-checkbox"
+                    checked={consent}
+                    onCheckedChange={setConsent}
+                    className="mr-2 data-[state=checked]:bg-primary data-[state=checked]:border-primary"
+                  />
+                  <label htmlFor="consent-checkbox" className="text-sm text-neutral-700 select-none">
+                    I consent to PrivacyWeave processing my data for the purpose of contacting me about job opportunities. <span className="text-primary">*</span>
+                  </label>
+                </div>
                 <Button
                   type="submit"
                   className="w-full"
-                  disabled={isSubmitting}
+                  disabled={isSubmitting || !consent}
                 >
                   {isSubmitting ? (
                     <>
